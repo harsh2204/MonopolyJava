@@ -5,12 +5,13 @@
  */
 package monopolyalpha;
 
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
+import javax.swing.*;
 
 /**
  *
