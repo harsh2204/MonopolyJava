@@ -22,10 +22,7 @@ public class Splash_Screen {
     public static void makeSplash() {
         JDialog d = new JDialog();
         JLabel splash = new JLabel(new ImageIcon("src/monopolyalpha/splash.png"));
-        JProgressBar p = new JProgressBar();
-        d.add(splash);
-//        d.add(p);
-//        p.setLocation(200, 100);
+        d.setSize(splash.getWidth(), splash.getHeight());
         d.setUndecorated(true);
         d.getRootPane().setOpaque(false);
         d.getContentPane().setBackground(new Color (0, 0, 0, 0));
