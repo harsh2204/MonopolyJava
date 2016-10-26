@@ -17,6 +17,7 @@ public class Splash_Screen {
     public static void makeSplash() {
         JDialog d = new JDialog();
         JLabel splash = new JLabel(new ImageIcon("src/monopolyalpha/splash.png"));
+        d.add(splash);
         d.setSize(splash.getWidth(), splash.getHeight());
         d.setUndecorated(true);
         d.getRootPane().setOpaque(false);
