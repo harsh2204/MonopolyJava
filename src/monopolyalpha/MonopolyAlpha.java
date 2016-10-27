@@ -22,7 +22,7 @@ public class MonopolyAlpha {
        
        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Save_Manager().setVisible(true);
+                new InitTest().setVisible(true);
             }
         });
      
