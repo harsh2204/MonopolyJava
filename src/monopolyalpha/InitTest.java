@@ -6,7 +6,6 @@
 package monopolyalpha;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -29,14 +28,14 @@ public class InitTest extends javax.swing.JFrame {
     String piece6 = Can.p2;
     String piece7 = Can.p3;
     String piece8 = Can.p4;
-    ImageIcon i1 = Can.i1;
-    ImageIcon i2 = Can.i2;
-    ImageIcon i3 = Can.i3;
-    ImageIcon i4 = Can.i4;
-    ImageIcon i5 = Can.i5;
-    ImageIcon i6 = Can.i6;
-    ImageIcon i7 = Can.i7;
-    ImageIcon i8 = Can.i8;
+    ImageIcon i1 = new ImageIcon("Icons/Pieces/Generic/1.png");
+     ImageIcon i2 = new ImageIcon("Icons/Pieces/Generic/2.png");
+     ImageIcon i3 = new ImageIcon("Icons/Pieces/Generic/3.png");
+     ImageIcon i4 = new ImageIcon("Icons/Pieces/Generic/4.png");
+     ImageIcon i5 = Can.i1;
+     ImageIcon i6 = Can.i2;
+     ImageIcon i7 = Can.i3;
+     ImageIcon i8 = Can.i4;
     ImageIcon [] list = {i1,i2,i3,i4,i5,i6,i7,i8};
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,7 +87,7 @@ public class InitTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComList1ActionPerformed
-        // TODO add your handling code here:
+
         int i = ComList1.getSelectedIndex();
         lblOut.setIcon(list[i]);
     }//GEN-LAST:event_ComList1ActionPerformed
