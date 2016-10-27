@@ -4,28 +4,18 @@
  * and open the template in the editor.
  */
 package monopolyalpha;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.net.MalformedURLException;
-
 /**
  *
- * @author HaardTrivedi
+ * @author Haard Trivedi
+ * Thursday October 27, 2016
  */
 public class NickNames {
 
-    public static void NickName() {
-//        JFrame nameframe = new JFrame();
-//        JLabel output = new JLabel();
-//        nameframe.add(output);
-//        nameframe.setDefaultCloseOperation(nameframe.EXIT_ON_CLOSE);
-
-        String[] first = new String[31];
-        String[] last = new String[31];
-
+    String[] first = new String[31];
+    String[] last = new String[31];
+    public String name;
+    
+    public void listName() {
         first[0] = "Master";
         first[1] = "Captain";
         first[2] = "Doctor";
@@ -91,25 +81,14 @@ public class NickNames {
         last[28] = "Big";
         last[29] = "Pants";
         last[30] = "Chick";
-        
-//        nameframe.setVisible(true);
-
-//        nameframe.addKeyListener(new KeyAdapter() {
-//            @Override
-//            public void keyPressed(KeyEvent e) {
-//
-//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//                    int rand1 = (int) (Math.random() * 31 - 1);
-//                    int rand2 = (int) (Math.random() * 31 - 1);
-//                    output.setText(first[rand1]+last[rand2]);
-//                }
-//            }
-//
-//        });
     }
-    
-    public static void main(String[] args) throws MalformedURLException{
-        NickName();
-    }
+    public void getName() {
+        int rand1 = (int) (Math.random() * 30);
+        int rand2 = (int) (Math.random() * 30);
 
+        name = first[rand1] + last[rand2];
+        System.out.println(first[rand1]);
+        System.out.println(last[rand2]);
+        System.out.println(name);
+    }
 }
