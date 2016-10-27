@@ -18,9 +18,14 @@ public class Canada_Data {
     public String p2 = "Maple Leaf";
     public String p3 = "Ski";
     public String p4 = "Telephone";
-    public ImageIcon i1 = new ImageIcon("Icons/Pieces/Canada/1.png");
-    public ImageIcon i2 = new ImageIcon("Icons/Pieces/Canada/2.png");
-    public ImageIcon i3 = new ImageIcon("Icons/Pieces/Canada/3.png");
-    public ImageIcon i4 = new ImageIcon("Icons/Pieces/Canada/4.png");
+    
+    public ImageIcon i1 = new ImageIcon("Icons/Pieces/Generic/1.png");
+    public ImageIcon i2 = new ImageIcon("Icons/Pieces/Generic/2.png");
+    public ImageIcon i3 = new ImageIcon("Icons/Pieces/Generic/3.png");
+    public ImageIcon i4 = new ImageIcon("Icons/Pieces/Generic/4.png");
+    public ImageIcon i5 = new ImageIcon("Icons/Pieces/Canada/1.png");
+    public ImageIcon i6 = new ImageIcon("Icons/Pieces/Canada/2.png");
+    public ImageIcon i7 = new ImageIcon("Icons/Pieces/Canada/3.png");
+    public ImageIcon i8 = new ImageIcon("Icons/Pieces/Canada/4.png");
 
 }
