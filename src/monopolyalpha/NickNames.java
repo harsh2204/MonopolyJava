@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package monopolyalpha;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author Haard Trivedi
@@ -13,6 +17,7 @@ public class NickNames {
 
     String[] first = new String[31];
     String[] last = new String[31];
+    ArrayList <String> firsti=new ArrayList(),lasti=new ArrayList();
     public String name;
     
     public void listName() {
@@ -81,14 +86,16 @@ public class NickNames {
         last[28] = "Big";
         last[29] = "Pants";
         last[30] = "Chick";
+        for(int i=0;i<=30;i++)
+        {
+            firsti.add(first[i]);
+            lasti.add(last[i]);
+        }
     }
     public void getName() {
-        int rand1 = (int) (Math.random() * 30);
-        int rand2 = (int) (Math.random() * 30);
-
-        name = first[rand1] + last[rand2];
-        System.out.println(first[rand1]);
-        System.out.println(last[rand2]);
+        Collections.shuffle(firsti);
+        Collections.shuffle(lasti);
+        name = firsti.get(0).concat(lasti.get(0));
         System.out.println(name);
     }
 }
