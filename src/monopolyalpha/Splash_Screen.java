@@ -16,7 +16,7 @@ public class Splash_Screen {
 
     public static void makeSplash() {
         JDialog d = new JDialog();
-        JLabel splash = new JLabel(new ImageIcon("src/monopolyalpha/splash.png"));
+        JLabel splash = new JLabel(new ImageIcon("Game-Screen.gif"));
         d.add(splash);
         d.setSize(splash.getWidth(), splash.getHeight());
         d.setUndecorated(true);
@@ -28,7 +28,7 @@ public class Splash_Screen {
         d.setVisible(true);
                 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
