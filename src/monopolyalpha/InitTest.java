@@ -20,10 +20,10 @@ public class InitTest extends javax.swing.JFrame {
         initComponents();
     }
     Canada_Data Can = new Canada_Data();
-    String piece1 = "Hat";
-    String piece2 = "Dog";
+    String piece1 = "Mic";
+    String piece2 = "Cart";
     String piece3 = "Shoe";
-    String piece4 = "Carty";
+    String piece4 = "Hat";
     String piece5 = Can.p1;
     String piece6 = Can.p2;
     String piece7 = Can.p3;
