@@ -1,0 +1,74 @@
+Monopoly Themes
+
+A. Canada Edition
+
+1.Toronto
+2.Mississauga
+3.Montreal
+4.Vancouver
+5.Ottawa
+6.Calgary
+7.Iqaluit
+8.Edmonton
+9.Fredricton
+10.St John's
+11.Charletton
+12.Halifax
+13.Yellowknife
+14.Whitehorse
+15.Quebec City
+16.Winnipeg
+17.Brampton
+18.Victoria
+19.Niagara
+20.Thunder Bay
+21.Windsor
+22.Saskatoon
+23.Regina
+24.London
+
+Special Cards:
+
+1.CN Tower
+1.Parliament Hill
+2.TD
+2.RBC
+3.Tim Hortons
+4.CNR
+
+Corners:
+1.Go
+2.Camp X
+3.Parking Ticket
+4.Lotto 649
+
+Others:
+1.Chance(2x)
+2.Community Chest(2x)
+3.HST
+4.Insurance
+
+
+
+-------------------------------------
+
+B.Superheroes
+
+1.Superman
+2.Batman
+3.Spiderman
+4.Captain America
+5.Ironman
+6.Flash
+7.Hulk
+8.Thor
+9.WonderWoman
+10.Black Widow
+11.Hawkeye{Most useless}
+12.Wolverine
+
+13.Joker
+14.Ulton
+15.Loki
+16.Dr. Doom
+17.
