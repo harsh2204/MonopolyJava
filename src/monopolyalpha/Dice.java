@@ -10,4 +10,11 @@ package monopolyalpha;
  */
 public class Dice {
     
+    
+     Random r = new Random();
+    int randomNumber = r.nextInt(6) + 1;
+
+    diceImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Images/Dice " + randomNumber + ".png")));
+
+    
 }
