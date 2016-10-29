@@ -15,8 +15,27 @@ import javax.swing.*;
 public class Splash_Screen {
 
     public static void makeSplash() {
+        JDialog d1 = new JDialog();
+        JLabel splash1 = new JLabel(new ImageIcon("Karsheel Labs.png"));
+        d1.add(splash1);
+        d1.setSize(splash1.getWidth(), splash1.getHeight());
+        d1.setUndecorated(true);
+        d1.getRootPane().setOpaque(false);
+        d1.getContentPane().setBackground(new Color (0, 0, 0, 0));
+        d1.setBackground(new Color (0, 0, 0, 0));
+        d1.pack();
+        d1.setLocationRelativeTo(null);
+        d1.setVisible(true);
+                
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        d1.setVisible(false);
+        
         JDialog d = new JDialog();
-        JLabel splash = new JLabel(new ImageIcon("Game-Screen.gif"));
+        JLabel splash = new JLabel(new ImageIcon("Splash-Gif.gif"));
         d.add(splash);
         d.setSize(splash.getWidth(), splash.getHeight());
         d.setUndecorated(true);
@@ -28,7 +47,7 @@ public class Splash_Screen {
         d.setVisible(true);
                 
         try {
-            Thread.sleep(8000);
+            Thread.sleep(4500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
