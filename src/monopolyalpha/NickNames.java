@@ -15,9 +15,9 @@ import java.util.Collections;
  */
 public class NickNames {
 
-    String[] first = new String[31];
-    String[] last = new String[31];
-    ArrayList <String> firsti=new ArrayList(),lasti=new ArrayList();
+   public String[] first = new String[31];
+    public String[] last = new String[31];
+    public ArrayList <String> firsti=new ArrayList(),lasti=new ArrayList(),namei=new ArrayList();
     public String name;
     
     public void listName() {
@@ -91,11 +91,11 @@ public class NickNames {
             firsti.add(first[i]);
             lasti.add(last[i]);
         }
+        getName();
     }
     public void getName() {
         Collections.shuffle(firsti);
         Collections.shuffle(lasti);
-        name = firsti.get(0).concat(lasti.get(0));
-        System.out.println(name);
+        name = firsti.get(12)+(lasti.get(19));
     }
 }
