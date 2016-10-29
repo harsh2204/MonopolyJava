@@ -25,7 +25,7 @@ public class Dice {
     public static int rollDice() {
         int roll=0;
         JDialog dice = new JDialog();
-        JLabel di = new JLabel(new ImageIcon("Icons/Dice/Maple/Dice 1.png"));
+        JLabel di = new JLabel(new ImageIcon(ThemeSelect.dicePath +"Dice 1.png"));
         dice.add(di);
         dice.setSize(di.getWidth(),di.getHeight());
         dice.setUndecorated(true);
@@ -40,7 +40,7 @@ public class Dice {
             sleep(100);
             Random r = new Random();
             int randomNumber = r.nextInt(6) + 1;
-            di.setIcon(new ImageIcon("Icons/Dice/Maple/Dice " + randomNumber + ".png"));
+            di.setIcon(new ImageIcon(ThemeSelect.dicePath + randomNumber + ".png"));
             di.repaint();
             roll = randomNumber;
             sleep(250);

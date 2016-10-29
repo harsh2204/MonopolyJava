@@ -96,6 +96,6 @@ public class NickNames {
     public void getName() {
         Collections.shuffle(firsti);
         Collections.shuffle(lasti);
-        name = firsti.get(12)+(lasti.get(19));
+        name = firsti.get(12)+" "+(lasti.get(19));
     }
 }

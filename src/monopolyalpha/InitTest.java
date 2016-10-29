@@ -5,109 +5,145 @@
  */
 package monopolyalpha;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.List;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import static java.util.Collections.list;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
 /**
  *
  * @author Harsh
  */
-public class InitTest extends javax.swing.JFrame
-  {
+public class InitTest extends javax.swing.JFrame {
+
+    public String piece1;
+    public String piece2;
+    public String piece3;
+    public String piece4;
+    public String piece5;
+    public String piece6;
+    public String piece7;
+    public String piece8;
+    public ImageIcon i1;
+    public ImageIcon i2;
+    public ImageIcon i3;
+    public ImageIcon i4;
+    public ImageIcon i5;
+    public ImageIcon i6;
+    public ImageIcon i7;
+    public ImageIcon i8;
+    
+    
 
     //Creates new form InitTest
-    public InitTest()
-      {
+    public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
+         this.piece1 = p1;
+        this.piece2 = p2;
+        this.piece3 = p3;
+        this.piece4 = p4;
+        this.piece5 = p5;
+        this.piece6 = p6;
+        this.piece7 = p7;
+        this.piece8 = p8;
+        this.i1 = ico1;
+        this.i2 = ico2;
+        this.i3 = ico3;
+        this.i4 = ico4;
+        this.i5 = ico5;
+        this.i6 = ico6;
+        this.i7 = ico7;
+        this.i8 = ico8;
         initComponents();
         numPlayers();
-        checker();
-        this.setAlwaysOnTop(true);
+       
+//        this.setAlwaysOnTop(true);
         this.setExtendedState(MAXIMIZED_BOTH);
-      }
+        System.out.println(piece1);
+        System.out.println(piece2);
+        System.out.println(piece3);
+        System.out.println(piece4);
+        System.out.println(piece5);
+        System.out.println(piece6);
+        System.out.println(piece7);
+        System.out.println(piece8);
+        System.out.println(i1.toString());
+        System.out.println(i2.toString());
+        System.out.println(i3.toString());
+        System.out.println(i4.toString());
+        System.out.println(i5.toString());
+        System.out.println(i6.toString());
+        System.out.println(i7.toString());
+        System.out.println(i8.toString());
+        images.add(i1);
+        images.add(i2);
+        images.add(i3);
+        images.add(i4);
+        images.add(i5);
+        images.add(i6);
+        images.add(i7);
+        images.add(i8);
+    }
     int Players;
-    Canada_Data Can = new Canada_Data();
-    String piece1 = "Mic";
-    String piece2 = "Cart";
-    String piece3 = "Shoe";
-    String piece4 = "Hat";
-    String piece5 = Can.p1;
-    String piece6 = Can.p2;
-    String piece7 = Can.p3;
-    String piece8 = Can.p4;
-    ImageIcon i1 = new ImageIcon("Icons/Pieces/Generic/1.png");
-    ImageIcon i2 = new ImageIcon("Icons/Pieces/Generic/2.png");
-    ImageIcon i3 = new ImageIcon("Icons/Pieces/Generic/3.png");
-    ImageIcon i4 = new ImageIcon("Icons/Pieces/Generic/4.png");
-    ImageIcon i5 = Can.i1;
-    ImageIcon i6 = Can.i2;
-    ImageIcon i7 = Can.i3;
-    ImageIcon i8 = Can.i4;
-    ImageIcon[] list = {i1, i2, i3, i4, i5, i6, i7, i8};
-    public ArrayList names=new ArrayList();
+    ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
+    
     public String nameo;
-    NickNames gui=new NickNames();
+    NickNames nickName = new NickNames();
     public int counter;
     public Timer ti;
-    
-    private void numPlayers()
-      {
-        sldPlayer.addChangeListener(new ChangeListener()
-          {
+
+    private void numPlayers() {
+        sldPlayer.addChangeListener(new ChangeListener() {
             @Override
-            public void stateChanged(ChangeEvent e)
-              {
+            public void stateChanged(ChangeEvent e) {
                 Players = sldPlayer.getValue();
-                  System.out.println(""+Players);
+                System.out.println("" + Players);
                 checker();
-              }
-          });
-      }
+            }
+        });
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         sldPlayer = new javax.swing.JSlider();
-        jPanel1 = new javax.swing.JPanel();
-        iconselp1 = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        namep1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        iconp1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        namep2 = new javax.swing.JTextField();
-        iconselp2 = new javax.swing.JComboBox();
-        iconp2 = new javax.swing.JLabel();
-        rand1 = new javax.swing.JButton();
-        rand2 = new javax.swing.JButton();
-        three = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        namep3 = new javax.swing.JTextField();
-        iconselp3 = new javax.swing.JComboBox();
-        iconp3 = new javax.swing.JLabel();
-        rand3 = new javax.swing.JButton();
-        four = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        namep4 = new javax.swing.JTextField();
-        iconselp4 = new javax.swing.JComboBox();
-        iconp4 = new javax.swing.JLabel();
-        rand4 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        paneP1_P2 = new javax.swing.JPanel();
+        comIconP1 = new javax.swing.JComboBox();
+        lblP1 = new javax.swing.JLabel();
+        txtNameP1 = new javax.swing.JTextField();
+        lblIcon1 = new javax.swing.JLabel();
+        lblPiece1 = new javax.swing.JLabel();
+        lblIcon2 = new javax.swing.JLabel();
+        lblP2 = new javax.swing.JLabel();
+        txtNameP2 = new javax.swing.JTextField();
+        comIconP2 = new javax.swing.JComboBox();
+        lblPiece2 = new javax.swing.JLabel();
+        btnRand1 = new javax.swing.JButton();
+        btnRand2 = new javax.swing.JButton();
+        paneP3 = new javax.swing.JPanel();
+        lblIcon3 = new javax.swing.JLabel();
+        lblP3 = new javax.swing.JLabel();
+        txtNameP3 = new javax.swing.JTextField();
+        comIconP3 = new javax.swing.JComboBox();
+        lblPiece3 = new javax.swing.JLabel();
+        btnRand3 = new javax.swing.JButton();
+        PaneP4 = new javax.swing.JPanel();
+        lblIcon4 = new javax.swing.JLabel();
+        lblP4 = new javax.swing.JLabel();
+        txtNameP4 = new javax.swing.JTextField();
+        comIconP4 = new javax.swing.JComboBox();
+        lblPiece4 = new javax.swing.JLabel();
+        btnRand4 = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
         sldPlayer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         sldPlayer.setMajorTickSpacing(2);
@@ -121,472 +157,485 @@ public class InitTest extends javax.swing.JFrame
         sldPlayer.setValue(2);
         sldPlayer.setInverted(true);
 
-        iconselp1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        iconselp1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        iconselp1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                iconselp1ActionPerformed(evt);
+        comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comIconP1ItemStateChanged(evt);
+            }
+        });
+        comIconP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comIconP1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setText("PLayer 1:");
+        lblP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblP1.setText("PLayer 1:");
 
-        namep1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel2.setText("Icon:");
+        lblIcon1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblIcon1.setText("Icon:");
 
-        iconp1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        iconp1.setEnabled(false);
+        lblPiece1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        lblPiece1.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel3.setText("Icon:");
+        lblIcon2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblIcon2.setText("Icon:");
 
-        jLabel4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel4.setText("PLayer 2:");
+        lblP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblP2.setText("PLayer 2:");
 
-        namep2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
-        iconselp2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        iconselp2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        iconselp2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                iconselp2ActionPerformed(evt);
+        comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comIconP2ActionPerformed(evt);
             }
         });
 
-        iconp2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        iconp2.setEnabled(false);
+        lblPiece2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        lblPiece2.setEnabled(false);
 
-        rand1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        rand1.setText("Random 1");
-        rand1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                rand1MouseClicked(evt);
+        btnRand1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        btnRand1.setText("Random 1");
+        btnRand1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRand1MouseClicked(evt);
             }
         });
 
-        rand2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        rand2.setText("Random 2");
-        rand2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                rand2MouseClicked(evt);
+        btnRand2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        btnRand2.setText("Random 2");
+        btnRand2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRand2MouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout paneP1_P2Layout = new javax.swing.GroupLayout(paneP1_P2);
+        paneP1_P2.setLayout(paneP1_P2Layout);
+        paneP1_P2Layout.setHorizontalGroup(
+            paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP1_P2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP1_P2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(rand1)
+                        .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(paneP1_P2Layout.createSequentialGroup()
+                                .addComponent(btnRand1)
                                 .addGap(82, 82, 82))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                            .addGroup(paneP1_P2Layout.createSequentialGroup()
+                                .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(paneP1_P2Layout.createSequentialGroup()
+                                        .addComponent(lblIcon1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(iconselp1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
+                                        .addComponent(comIconP1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneP1_P2Layout.createSequentialGroup()
+                                        .addComponent(lblP1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(namep1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtNameP1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(iconp1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                        .addComponent(lblPiece1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneP1_P2Layout.createSequentialGroup()
+                        .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(paneP1_P2Layout.createSequentialGroup()
+                                .addComponent(lblP2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(namep2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(txtNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP1_P2Layout.createSequentialGroup()
+                                .addComponent(lblIcon2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(iconselp2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comIconP2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneP1_P2Layout.createSequentialGroup()
                                 .addGap(73, 73, 73)
-                                .addComponent(rand2)))
+                                .addComponent(btnRand2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(iconp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPiece2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        paneP1_P2Layout.setVerticalGroup(
+            paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP1_P2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(namep1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneP1_P2Layout.createSequentialGroup()
+                        .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblP1)
+                            .addComponent(txtNameP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(rand1)
+                        .addComponent(btnRand1)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iconselp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addComponent(iconp1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comIconP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIcon1)))
+                    .addComponent(lblPiece1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(namep2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneP1_P2Layout.createSequentialGroup()
+                        .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblP2)
+                            .addComponent(txtNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(rand2)
+                        .addComponent(btnRand2)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iconselp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
-                    .addComponent(iconp2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(paneP1_P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comIconP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIcon2)))
+                    .addComponent(lblPiece2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel5.setText("Icon:");
+        lblIcon3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblIcon3.setText("Icon:");
 
-        jLabel6.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel6.setText("PLayer 3:");
+        lblP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblP3.setText("PLayer 3:");
 
-        namep3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
-        iconselp3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        iconselp3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        iconselp3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                iconselp3ActionPerformed(evt);
+        comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comIconP3ActionPerformed(evt);
             }
         });
 
-        iconp3.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        iconp3.setEnabled(false);
+        lblPiece3.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        lblPiece3.setEnabled(false);
 
-        rand3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        rand3.setText("Random 3");
-        rand3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                rand3MouseClicked(evt);
+        btnRand3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        btnRand3.setText("Random 3");
+        btnRand3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRand3MouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout threeLayout = new javax.swing.GroupLayout(three);
-        three.setLayout(threeLayout);
-        threeLayout.setHorizontalGroup(
-            threeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, threeLayout.createSequentialGroup()
+        javax.swing.GroupLayout paneP3Layout = new javax.swing.GroupLayout(paneP3);
+        paneP3.setLayout(paneP3Layout);
+        paneP3Layout.setHorizontalGroup(
+            paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(threeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(threeLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(paneP3Layout.createSequentialGroup()
+                        .addComponent(lblP3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(namep3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(threeLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(txtNameP3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneP3Layout.createSequentialGroup()
+                        .addComponent(lblIcon3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(iconselp3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(threeLayout.createSequentialGroup()
-                        .addComponent(rand3)
+                        .addComponent(comIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneP3Layout.createSequentialGroup()
+                        .addComponent(btnRand3)
                         .addGap(75, 75, 75)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(iconp3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        threeLayout.setVerticalGroup(
-            threeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, threeLayout.createSequentialGroup()
+        paneP3Layout.setVerticalGroup(
+            paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(threeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iconp3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(threeLayout.createSequentialGroup()
-                        .addGroup(threeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(namep3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(paneP3Layout.createSequentialGroup()
+                        .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblP3)
+                            .addComponent(txtNameP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(rand3)
+                        .addComponent(btnRand3)
                         .addGap(18, 18, 18)
-                        .addGroup(threeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iconselp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
+                        .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIcon3))))
                 .addContainerGap())
         );
 
-        jLabel7.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel7.setText("Icon:");
+        lblIcon4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblIcon4.setText("Icon:");
 
-        jLabel8.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel8.setText("PLayer 4:");
+        lblP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblP4.setText("PLayer 4:");
 
-        namep4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
-        iconselp4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        iconselp4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        iconselp4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                iconselp4ActionPerformed(evt);
+        comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comIconP4ActionPerformed(evt);
             }
         });
 
-        iconp4.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        iconp4.setEnabled(false);
+        lblPiece4.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        lblPiece4.setEnabled(false);
 
-        rand4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        rand4.setText("Random 4");
-        rand4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                rand4MouseClicked(evt);
+        btnRand4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        btnRand4.setText("Random 4");
+        btnRand4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRand4MouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout fourLayout = new javax.swing.GroupLayout(four);
-        four.setLayout(fourLayout);
-        fourLayout.setHorizontalGroup(
-            fourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fourLayout.createSequentialGroup()
+        javax.swing.GroupLayout PaneP4Layout = new javax.swing.GroupLayout(PaneP4);
+        PaneP4.setLayout(PaneP4Layout);
+        PaneP4Layout.setHorizontalGroup(
+            PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaneP4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(fourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(fourLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PaneP4Layout.createSequentialGroup()
+                        .addComponent(lblP4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(namep4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(fourLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(txtNameP4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PaneP4Layout.createSequentialGroup()
+                        .addComponent(lblIcon4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(iconselp4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(fourLayout.createSequentialGroup()
-                        .addComponent(rand4)
+                        .addComponent(comIconP4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PaneP4Layout.createSequentialGroup()
+                        .addComponent(btnRand4)
                         .addGap(77, 77, 77)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconp4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPiece4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        fourLayout.setVerticalGroup(
-            fourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fourLayout.createSequentialGroup()
+        PaneP4Layout.setVerticalGroup(
+            PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaneP4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(fourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(fourLayout.createSequentialGroup()
-                        .addGroup(fourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(namep4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PaneP4Layout.createSequentialGroup()
+                        .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblP4)
+                            .addComponent(txtNameP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(rand4)
+                        .addComponent(btnRand4)
                         .addGap(18, 18, 18)
-                        .addGroup(fourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iconselp4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)))
-                    .addComponent(iconp4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comIconP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIcon4)))
+                    .addComponent(lblPiece4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jLabel9.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("New Game");
+        lblTitle.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("New Game");
+
+        btnBack.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btnBack.setText("<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        jButton1.setText("Next>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sldPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(three, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(four, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(paneP1_P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(sldPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(paneP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(PaneP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(25, 25, 25)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(jLabel9)
+                .addComponent(lblTitle)
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(sldPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(three, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(four, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(PaneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paneP1_P2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void iconselp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconselp1ActionPerformed
-        int i = iconselp1.getSelectedIndex();
-        iconp1.setDisabledIcon(list[i]);
-    }//GEN-LAST:event_iconselp1ActionPerformed
+    private void comIconP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comIconP1ActionPerformed
+        int i = comIconP1.getSelectedIndex();
+//        System.out.println("Index of comIcon1: "+i);
+        lblPiece1.setDisabledIcon(images.get(i));
+//        lblPiece1.repaint();
+    }//GEN-LAST:event_comIconP1ActionPerformed
 
-    private void iconselp2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_iconselp2ActionPerformed
-    {//GEN-HEADEREND:event_iconselp2ActionPerformed
-        int i = iconselp2.getSelectedIndex();
-        iconp2.setDisabledIcon(list[i]);
-    }//GEN-LAST:event_iconselp2ActionPerformed
+    private void comIconP2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP2ActionPerformed
+    {//GEN-HEADEREND:event_comIconP2ActionPerformed
+        int i = comIconP2.getSelectedIndex();
+        lblPiece2.setDisabledIcon(images.get(i));
+    }//GEN-LAST:event_comIconP2ActionPerformed
 
-    private void iconselp3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_iconselp3ActionPerformed
-    {//GEN-HEADEREND:event_iconselp3ActionPerformed
-        int i = iconselp3.getSelectedIndex();
-        iconp3.setDisabledIcon(list[i]);
-    }//GEN-LAST:event_iconselp3ActionPerformed
+    private void comIconP3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP3ActionPerformed
+    {//GEN-HEADEREND:event_comIconP3ActionPerformed
+        int i = comIconP3.getSelectedIndex();
+        lblPiece3.setDisabledIcon(images.get(i));
+    }//GEN-LAST:event_comIconP3ActionPerformed
 
-    private void iconselp4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_iconselp4ActionPerformed
-    {//GEN-HEADEREND:event_iconselp4ActionPerformed
-        int i = iconselp4.getSelectedIndex();
-        iconp4.setDisabledIcon(list[i]);
-    }//GEN-LAST:event_iconselp4ActionPerformed
+    private void comIconP4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP4ActionPerformed
+    {//GEN-HEADEREND:event_comIconP4ActionPerformed
+        int i = comIconP4.getSelectedIndex();
+        lblPiece4.setDisabledIcon(images.get(i));
+    }//GEN-LAST:event_comIconP4ActionPerformed
 
-    private void rand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_rand1MouseClicked
-    {//GEN-HEADEREND:event_rand1MouseClicked
-        gui.listName();
-        nameo=gui.name;
-        namep1.setText(nameo);
-    }//GEN-LAST:event_rand1MouseClicked
+    private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
+    {//GEN-HEADEREND:event_btnRand1MouseClicked
+        nickName.listName();
+        nameo = nickName.name;
+        txtNameP1.setText(nameo);
+    }//GEN-LAST:event_btnRand1MouseClicked
 
-    private void rand2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_rand2MouseClicked
-    {//GEN-HEADEREND:event_rand2MouseClicked
-        gui.listName();
-        nameo=gui.name;
-        namep2.setText(nameo);
-    }//GEN-LAST:event_rand2MouseClicked
+    private void btnRand2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand2MouseClicked
+    {//GEN-HEADEREND:event_btnRand2MouseClicked
+        nickName.listName();
+        nameo = nickName.name;
+        txtNameP2.setText(nameo);
+    }//GEN-LAST:event_btnRand2MouseClicked
 
-    private void rand3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_rand3MouseClicked
-    {//GEN-HEADEREND:event_rand3MouseClicked
-        gui.listName();
-        nameo=gui.name;
-        namep3.setText(nameo);
-    }//GEN-LAST:event_rand3MouseClicked
+    private void btnRand3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand3MouseClicked
+    {//GEN-HEADEREND:event_btnRand3MouseClicked
+        nickName.listName();
+        nameo = nickName.name;
+        txtNameP3.setText(nameo);
+    }//GEN-LAST:event_btnRand3MouseClicked
 
-    private void rand4MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_rand4MouseClicked
-    {//GEN-HEADEREND:event_rand4MouseClicked
-        gui.listName();
-        nameo=gui.name;
-        namep4.setText(nameo);
-    }//GEN-LAST:event_rand4MouseClicked
+    private void btnRand4MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand4MouseClicked
+    {//GEN-HEADEREND:event_btnRand4MouseClicked
+        nickName.listName();
+        nameo = nickName.name;
+        txtNameP4.setText(nameo);
+    }//GEN-LAST:event_btnRand4MouseClicked
 
-    public void checker()
-      {
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
+        // TODO add your handling code here
+    }//GEN-LAST:event_comIconP1ItemStateChanged
+
+    public void checker() {
         Players = sldPlayer.getValue();
-        if (Players == 2)
-          {
-            three.setVisible(false);
-            four.setVisible(false);
-          } else if (Players == 3)
-          {
-            three.setVisible(true);
-            four.setVisible(false);
-          } else if (Players == 4)
-          {
-            three.setVisible(true);
-            four.setVisible(true);
-          }
-      }
+        if (Players == 2) {
+            paneP3.setVisible(false);
+            PaneP4.setVisible(false);
+        } else if (Players == 3) {
+            paneP3.setVisible(true);
+            PaneP4.setVisible(false);
+        } else if (Players == 4) {
+            paneP3.setVisible(true);
+            PaneP4.setVisible(true);
+        }
+    }
 
-    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
-                new InitTest().setVisible(true);
-              }
-          });
-      }
+//        java.awt.EventQueue.invokeLater(new Runnable()
+//          {
+//            public void run()
+//              {
+//                new InitTest().setVisible(true);
+//              }
+//          });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel four;
-    private javax.swing.JLabel iconp1;
-    private javax.swing.JLabel iconp2;
-    private javax.swing.JLabel iconp3;
-    private javax.swing.JLabel iconp4;
-    private javax.swing.JComboBox iconselp1;
-    private javax.swing.JComboBox iconselp2;
-    private javax.swing.JComboBox iconselp3;
-    private javax.swing.JComboBox iconselp4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField namep1;
-    private javax.swing.JTextField namep2;
-    private javax.swing.JTextField namep3;
-    private javax.swing.JTextField namep4;
-    private javax.swing.JButton rand1;
-    private javax.swing.JButton rand2;
-    private javax.swing.JButton rand3;
-    private javax.swing.JButton rand4;
+    private javax.swing.JPanel PaneP4;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRand1;
+    private javax.swing.JButton btnRand2;
+    private javax.swing.JButton btnRand3;
+    private javax.swing.JButton btnRand4;
+    private javax.swing.JComboBox comIconP1;
+    private javax.swing.JComboBox comIconP2;
+    private javax.swing.JComboBox comIconP3;
+    private javax.swing.JComboBox comIconP4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel lblIcon1;
+    private javax.swing.JLabel lblIcon2;
+    private javax.swing.JLabel lblIcon3;
+    private javax.swing.JLabel lblIcon4;
+    private javax.swing.JLabel lblP1;
+    private javax.swing.JLabel lblP2;
+    private javax.swing.JLabel lblP3;
+    private javax.swing.JLabel lblP4;
+    private javax.swing.JLabel lblPiece1;
+    private javax.swing.JLabel lblPiece2;
+    private javax.swing.JLabel lblPiece3;
+    private javax.swing.JLabel lblPiece4;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel paneP1_P2;
+    private javax.swing.JPanel paneP3;
     private javax.swing.JSlider sldPlayer;
-    private javax.swing.JPanel three;
+    private javax.swing.JTextField txtNameP1;
+    private javax.swing.JTextField txtNameP2;
+    private javax.swing.JTextField txtNameP3;
+    private javax.swing.JTextField txtNameP4;
     // End of variables declaration//GEN-END:variables
 }

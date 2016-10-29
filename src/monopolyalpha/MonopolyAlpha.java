@@ -22,10 +22,10 @@ public class MonopolyAlpha {
        
        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InitTest().setVisible(true);
+                new ThemeSelect().setVisible(true);
             }
         });
-     
+       
        
     }
 
