@@ -9,6 +9,8 @@ import java.awt.List;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -35,12 +37,10 @@ public class InitTest extends javax.swing.JFrame {
     public ImageIcon i6;
     public ImageIcon i7;
     public ImageIcon i8;
-    
-    
 
     //Creates new form InitTest
     public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
-         this.piece1 = p1;
+        this.piece1 = p1;
         this.piece2 = p2;
         this.piece3 = p3;
         this.piece4 = p4;
@@ -58,7 +58,7 @@ public class InitTest extends javax.swing.JFrame {
         this.i8 = ico8;
         initComponents();
         numPlayers();
-       
+
 //        this.setAlwaysOnTop(true);
         this.setExtendedState(MAXIMIZED_BOTH);
         System.out.println(piece1);
@@ -88,8 +88,8 @@ public class InitTest extends javax.swing.JFrame {
     }
     int Players;
     ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
-    
-    public String nameo;
+
+    public String nameo, t1, t2, t3, t4;
     NickNames nickName = new NickNames();
     public int counter;
     public Timer ti;
@@ -101,8 +101,10 @@ public class InitTest extends javax.swing.JFrame {
                 Players = sldPlayer.getValue();
                 System.out.println("" + Players);
                 checker();
+
             }
-        });
+        }
+        );
     }
 
     @SuppressWarnings("unchecked")
@@ -139,7 +141,7 @@ public class InitTest extends javax.swing.JFrame {
         btnRand4 = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -439,8 +441,13 @@ public class InitTest extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        jButton1.setText("Next>");
+        btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btnNext.setText("Next>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -464,7 +471,7 @@ public class InitTest extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnNext)
                         .addGap(25, 25, 25)))
                 .addContainerGap())
         );
@@ -484,7 +491,7 @@ public class InitTest extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(jButton1))
+                    .addComponent(btnNext))
                 .addContainerGap())
         );
 
@@ -521,6 +528,7 @@ public class InitTest extends javax.swing.JFrame {
         nickName.listName();
         nameo = nickName.name;
         txtNameP1.setText(nameo);
+        
     }//GEN-LAST:event_btnRand1MouseClicked
 
     private void btnRand2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand2MouseClicked
@@ -528,12 +536,14 @@ public class InitTest extends javax.swing.JFrame {
         nickName.listName();
         nameo = nickName.name;
         txtNameP2.setText(nameo);
+        
     }//GEN-LAST:event_btnRand2MouseClicked
 
     private void btnRand3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand3MouseClicked
     {//GEN-HEADEREND:event_btnRand3MouseClicked
         nickName.listName();
         nameo = nickName.name;
+
         txtNameP3.setText(nameo);
     }//GEN-LAST:event_btnRand3MouseClicked
 
@@ -541,6 +551,7 @@ public class InitTest extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_btnRand4MouseClicked
         nickName.listName();
         nameo = nickName.name;
+
         txtNameP4.setText(nameo);
     }//GEN-LAST:event_btnRand4MouseClicked
 
@@ -553,6 +564,11 @@ public class InitTest extends javax.swing.JFrame {
         // TODO add your handling code here
     }//GEN-LAST:event_comIconP1ItemStateChanged
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        playerduplicate();
+    }//GEN-LAST:event_btnNextActionPerformed
+
     public void checker() {
         Players = sldPlayer.getValue();
         if (Players == 2) {
@@ -564,6 +580,19 @@ public class InitTest extends javax.swing.JFrame {
         } else if (Players == 4) {
             paneP3.setVisible(true);
             PaneP4.setVisible(true);
+        }
+    }
+
+    public void playerduplicate() {
+        t1 = txtNameP1.getText();
+        t2 = txtNameP2.getText();
+        t3 = txtNameP3.getText();
+        t4 = txtNameP4.getText();
+        if (t1.equals(t2)|| t1.equals(t3)|| t1.equals(t4)|| t2.equals(t3)|| t2.equals(t4)||
+              t3.equals(t4)) {
+            JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Testin!!!@@#");
         }
     }
 
@@ -608,6 +637,7 @@ public class InitTest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaneP4;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnNext;
     private javax.swing.JButton btnRand1;
     private javax.swing.JButton btnRand2;
     private javax.swing.JButton btnRand3;
@@ -616,7 +646,6 @@ public class InitTest extends javax.swing.JFrame {
     private javax.swing.JComboBox comIconP2;
     private javax.swing.JComboBox comIconP3;
     private javax.swing.JComboBox comIconP4;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblIcon1;
     private javax.swing.JLabel lblIcon2;
     private javax.swing.JLabel lblIcon3;
