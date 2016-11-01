@@ -5,15 +5,10 @@
  */
 package monopolyalpha;
 
-import java.awt.List;
-import java.util.ArrayList;
-import static java.util.Collections.list;
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import java.util.*;;
+import javax.swing.*;
 import javax.swing.Timer;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import javax.swing.event.*;
 
 /**
  *
