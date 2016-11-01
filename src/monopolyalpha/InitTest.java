@@ -58,25 +58,11 @@ public class InitTest extends javax.swing.JFrame {
         this.i8 = ico8;
         initComponents();
         numPlayers();
+        checker();
 
 //        this.setAlwaysOnTop(true);
         this.setExtendedState(MAXIMIZED_BOTH);
-        System.out.println(piece1);
-        System.out.println(piece2);
-        System.out.println(piece3);
-        System.out.println(piece4);
-        System.out.println(piece5);
-        System.out.println(piece6);
-        System.out.println(piece7);
-        System.out.println(piece8);
-        System.out.println(i1.toString());
-        System.out.println(i2.toString());
-        System.out.println(i3.toString());
-        System.out.println(i4.toString());
-        System.out.println(i5.toString());
-        System.out.println(i6.toString());
-        System.out.println(i7.toString());
-        System.out.println(i8.toString());
+        images.add(null);
         images.add(i1);
         images.add(i2);
         images.add(i3);
@@ -88,23 +74,21 @@ public class InitTest extends javax.swing.JFrame {
     }
     int Players;
     ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
-
     public String nameo, t1, t2, t3, t4;
     NickNames nickName = new NickNames();
     public int counter;
     public Timer ti;
+    ImageIcon[] combo = new ImageIcon[4];
 
     private void numPlayers() {
         sldPlayer.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 Players = sldPlayer.getValue();
-                System.out.println("" + Players);
                 checker();
 
             }
-        }
-        );
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -160,7 +144,8 @@ public class InitTest extends javax.swing.JFrame {
         sldPlayer.setInverted(true);
 
         comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP1.setSelectedIndex(0);
         comIconP1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comIconP1ItemStateChanged(evt);
@@ -192,7 +177,8 @@ public class InitTest extends javax.swing.JFrame {
         txtNameP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
         comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP2.setSelectedIndex(0);
         comIconP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP2ActionPerformed(evt);
@@ -302,7 +288,8 @@ public class InitTest extends javax.swing.JFrame {
         txtNameP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
         comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---",piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP3.setSelectedIndex(0);
         comIconP3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP3ActionPerformed(evt);
@@ -370,7 +357,8 @@ public class InitTest extends javax.swing.JFrame {
         txtNameP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
 
         comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
+        comIconP4.setSelectedIndex(0);
         comIconP4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP4ActionPerformed(evt);
@@ -500,27 +488,33 @@ public class InitTest extends javax.swing.JFrame {
 
     private void comIconP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comIconP1ActionPerformed
         int i = comIconP1.getSelectedIndex();
-//        System.out.println("Index of comIcon1: "+i);
         lblPiece1.setDisabledIcon(images.get(i));
-//        lblPiece1.repaint();
+        combo[0] = images.get(i);
+        NextCopy();
     }//GEN-LAST:event_comIconP1ActionPerformed
 
     private void comIconP2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP2ActionPerformed
     {//GEN-HEADEREND:event_comIconP2ActionPerformed
         int i = comIconP2.getSelectedIndex();
         lblPiece2.setDisabledIcon(images.get(i));
+        combo[1] = images.get(i);
+        NextCopy();
     }//GEN-LAST:event_comIconP2ActionPerformed
 
     private void comIconP3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP3ActionPerformed
     {//GEN-HEADEREND:event_comIconP3ActionPerformed
         int i = comIconP3.getSelectedIndex();
         lblPiece3.setDisabledIcon(images.get(i));
+        combo[2] = images.get(i);
+        NextCopy();
     }//GEN-LAST:event_comIconP3ActionPerformed
 
     private void comIconP4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP4ActionPerformed
     {//GEN-HEADEREND:event_comIconP4ActionPerformed
         int i = comIconP4.getSelectedIndex();
         lblPiece4.setDisabledIcon(images.get(i));
+        combo[3] = images.get(i);
+        NextCopy();
     }//GEN-LAST:event_comIconP4ActionPerformed
 
     private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
@@ -528,7 +522,7 @@ public class InitTest extends javax.swing.JFrame {
         nickName.listName();
         nameo = nickName.name;
         txtNameP1.setText(nameo);
-        
+
     }//GEN-LAST:event_btnRand1MouseClicked
 
     private void btnRand2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand2MouseClicked
@@ -536,7 +530,7 @@ public class InitTest extends javax.swing.JFrame {
         nickName.listName();
         nameo = nickName.name;
         txtNameP2.setText(nameo);
-        
+
     }//GEN-LAST:event_btnRand2MouseClicked
 
     private void btnRand3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand3MouseClicked
@@ -565,9 +559,26 @@ public class InitTest extends javax.swing.JFrame {
     }//GEN-LAST:event_comIconP1ItemStateChanged
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-        playerduplicate();
+        if (paneP1_P2.isVisible() && paneP3.isVisible() && PaneP4.isVisible()) {
+            playerduplicate(Players);
+        } else if (paneP1_P2.isVisible() && paneP3.isVisible()) {
+            playerduplicate(Players);
+        } else if (paneP1_P2.isVisible()) {
+            playerduplicate(Players);
+        }
+
+
     }//GEN-LAST:event_btnNextActionPerformed
+
+    public void NextCopy() {
+        if (paneP1_P2.isVisible() && paneP3.isVisible() && PaneP4.isVisible()) {
+            playerduplicate(Players);
+        } else if (paneP1_P2.isVisible() && paneP3.isVisible()) {
+            playerduplicate(Players);
+        } else if (paneP1_P2.isVisible()) {
+            playerduplicate(Players);
+        }
+    }
 
     public void checker() {
         Players = sldPlayer.getValue();
@@ -583,16 +594,46 @@ public class InitTest extends javax.swing.JFrame {
         }
     }
 
-    public void playerduplicate() {
+    public void playerduplicate(int Playa) {
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
-        if (t1.equals(t2)|| t1.equals(t3)|| t1.equals(t4)|| t2.equals(t3)|| t2.equals(t4)||
-              t3.equals(t4)) {
-            JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Testin!!!@@#");
+
+
+        if (Playa == 2) {
+            if (t1.equalsIgnoreCase(t2)) {
+                JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+            } else if (combo[0] == combo[1]) {
+                lblPiece2.setDisabledIcon(null);
+                lblPiece2.revalidate();
+                comIconP2.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Testin!!!@@#");
+            }
+        } else if (Playa == 3) {
+            if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t3)) {
+                JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+            } else if (combo[1] == combo[2]) {
+                lblPiece3.setDisabledIcon(null);
+                lblPiece3.revalidate();
+                comIconP3.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Testin!!!@@#");
+            }
+        } else if (Playa == 4) {
+            if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)
+                    || t3.equalsIgnoreCase(t4)) {
+            } else if (combo[2] == combo[3]) {
+                lblPiece4.setDisabledIcon(null);
+                lblPiece4.revalidate();
+                comIconP4.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Testin!!!@@#");
+            }
         }
     }
 
@@ -633,7 +674,6 @@ public class InitTest extends javax.swing.JFrame {
 //              }
 //          });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaneP4;
     private javax.swing.JButton btnBack;
