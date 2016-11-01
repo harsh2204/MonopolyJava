@@ -485,7 +485,7 @@ public class InitTest extends javax.swing.JFrame {
         int i = comIconP1.getSelectedIndex();
         lblPiece1.setDisabledIcon(images.get(i));
         combo[0] = images.get(i);
-        NextCopy();
+        NextCopy(1);
     }//GEN-LAST:event_comIconP1ActionPerformed
 
     private void comIconP2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP2ActionPerformed
@@ -493,7 +493,7 @@ public class InitTest extends javax.swing.JFrame {
         int i = comIconP2.getSelectedIndex();
         lblPiece2.setDisabledIcon(images.get(i));
         combo[1] = images.get(i);
-        NextCopy();
+        NextCopy(2);
     }//GEN-LAST:event_comIconP2ActionPerformed
 
     private void comIconP3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP3ActionPerformed
@@ -501,7 +501,7 @@ public class InitTest extends javax.swing.JFrame {
         int i = comIconP3.getSelectedIndex();
         lblPiece3.setDisabledIcon(images.get(i));
         combo[2] = images.get(i);
-        NextCopy();
+        NextCopy(3);
     }//GEN-LAST:event_comIconP3ActionPerformed
 
     private void comIconP4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP4ActionPerformed
@@ -509,7 +509,7 @@ public class InitTest extends javax.swing.JFrame {
         int i = comIconP4.getSelectedIndex();
         lblPiece4.setDisabledIcon(images.get(i));
         combo[3] = images.get(i);
-        NextCopy();
+        NextCopy(4);
     }//GEN-LAST:event_comIconP4ActionPerformed
 
     private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
@@ -565,14 +565,8 @@ public class InitTest extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNextActionPerformed
 
-    public void NextCopy() {
-        if (paneP1_P2.isVisible() && paneP3.isVisible() && PaneP4.isVisible()) {
-            playerduplicate(Players);
-        } else if (paneP1_P2.isVisible() && paneP3.isVisible()) {
-            playerduplicate(Players);
-        } else if (paneP1_P2.isVisible()) {
-            playerduplicate(Players);
-        }
+    public void NextCopy(int plnum) {
+        playerduplicate(plnum);
     }
 
     public void checker() {
@@ -595,40 +589,43 @@ public class InitTest extends javax.swing.JFrame {
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
 
-
-        if (Playa == 2) {
+        if (Playa == 1) {
             if (t1.equalsIgnoreCase(t2)) {
                 JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
-            } else if (combo[0] == combo[1]) {
+            } else if (combo[0] == combo[1]||combo[0]==combo[2]||combo[0]==combo[3]) {
+                lblPiece1.setDisabledIcon(null);
+                lblPiece1.revalidate();
+                comIconP1.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+            }
+        }
+        else if (Playa == 2) {
+            if (t1.equalsIgnoreCase(t2)) {
+                JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+            }else if (combo[1] == combo[0]||combo[1]==combo[2]||combo[1]==combo[3]) {
                 lblPiece2.setDisabledIcon(null);
                 lblPiece2.revalidate();
                 comIconP2.setSelectedIndex(0);
                 JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Testin!!!@@#");
-            }
+            } 
         } else if (Playa == 3) {
             if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t3)) {
                 JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
-            } else if (combo[1] == combo[2]) {
+            }else if (combo[2] == combo[0]||combo[2]==combo[1]||combo[2]==combo[3]) {
                 lblPiece3.setDisabledIcon(null);
                 lblPiece3.revalidate();
                 comIconP3.setSelectedIndex(0);
                 JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Testin!!!@@#");
             }
         } else if (Playa == 4) {
             if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)
                     || t3.equalsIgnoreCase(t4)) {
-            } else if (combo[2] == combo[3]) {
+            } else if (combo[3] == combo[0]||combo[3]==combo[1]||combo[3]==combo[2]) {
                 lblPiece4.setDisabledIcon(null);
                 lblPiece4.revalidate();
                 comIconP4.setSelectedIndex(0);
                 JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Testin!!!@@#");
-            }
+            } 
         }
     }
 
