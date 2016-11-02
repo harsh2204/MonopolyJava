@@ -224,7 +224,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PLayer 1:"/>
+            <Property name="text" type="java.lang.String" value="Player 1:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNameP1">
@@ -265,7 +265,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PLayer 2:"/>
+            <Property name="text" type="java.lang.String" value="Player 2:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNameP2">
@@ -393,7 +393,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PLayer 3:"/>
+            <Property name="text" type="java.lang.String" value="Player 3:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNameP3">
@@ -510,7 +510,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PLayer 4:"/>
+            <Property name="text" type="java.lang.String" value="Player 4:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNameP4">
