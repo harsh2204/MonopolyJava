@@ -47,6 +47,7 @@ public class InitTest extends javax.swing.JFrame {
     public int counter;
     public Timer ti;
     ImageIcon[] combo = new ImageIcon[4];
+    String[] combos=new String[5];
     //Creates new form InitTest
 
     public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
@@ -600,25 +601,25 @@ public class InitTest extends javax.swing.JFrame {
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
          if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        t1 = txtNameP1.getText();
+        combos[0] = txtNameP1.getText();
         playernameduplicate(1);}
     }//GEN-LAST:event_txtNameP1KeyPressed
 
     private void txtNameP2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP2KeyPressed
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        t2 = txtNameP1.getText();
+        combos[1] = txtNameP1.getText();
         playernameduplicate(2);}
     }//GEN-LAST:event_txtNameP2KeyPressed
 
     private void txtNameP3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP3KeyPressed
          if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        t3 = txtNameP1.getText();
+        combos[2] = txtNameP1.getText();
         playernameduplicate(3);}
     }//GEN-LAST:event_txtNameP3KeyPressed
 
     private void txtNameP4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP4KeyPressed
          if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        t4 = txtNameP1.getText();
+        combos[3] = txtNameP1.getText();
         playernameduplicate(4);}
     }//GEN-LAST:event_txtNameP4KeyPressed
 
@@ -698,19 +699,15 @@ public class InitTest extends javax.swing.JFrame {
 
     public void playernameduplicate(int plnum) {
         switch (plnum) {
-            case 1: {
-                t2=txtNameP2.getText();
-                t3=txtNameP3.getText();
-                t4=txtNameP4.getText();
-                
+            case 1:                 
                 if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP1.setText(null);
                     t1=null;
                 }
                 break;
-            }
-            case 2: {
+            
+            case 2: 
                 t1=txtNameP1.getText();
                 t3=txtNameP3.getText();
                 t4=txtNameP4.getText();
@@ -720,7 +717,7 @@ public class InitTest extends javax.swing.JFrame {
                     t2=null;
                 }
                 break;
-            }case 3: {
+            case 3: 
                 t2=txtNameP2.getText();
                 t1=txtNameP1.getText();
                 t4=txtNameP4.getText();
@@ -730,7 +727,7 @@ public class InitTest extends javax.swing.JFrame {
                     t3=null;
                 }
                 break;
-            }case 4: {
+            case 4: 
                 t2=txtNameP2.getText();
                 t3=txtNameP3.getText();
                 t1=txtNameP1.getText();
@@ -740,7 +737,7 @@ public class InitTest extends javax.swing.JFrame {
                     t4=null;
                 }
                 break;
-            }
+            
         }
     }
 
