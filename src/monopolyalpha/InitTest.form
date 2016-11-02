@@ -233,6 +233,9 @@
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP1KeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblIcon1">
           <Properties>
@@ -274,6 +277,9 @@
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP2KeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comIconP2">
           <Properties>
@@ -402,6 +408,9 @@
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP3KeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comIconP3">
           <Properties>
@@ -519,6 +528,9 @@
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP4KeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comIconP4">
           <Properties>

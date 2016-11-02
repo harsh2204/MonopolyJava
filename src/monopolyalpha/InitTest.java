@@ -5,7 +5,12 @@
  */
 package monopolyalpha;
 
-import java.util.*;;
+import java.awt.event.KeyEvent;
+import java.util.*;
+;
+import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.event.*;
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.event.*;
@@ -14,8 +19,11 @@ import javax.swing.event.*;
  *
  * @author Harsh
  */
+
+
 public class InitTest extends javax.swing.JFrame {
     //Initialize piece name and image variables
+
     public String piece1;
     public String piece2;
     public String piece3;
@@ -32,8 +40,15 @@ public class InitTest extends javax.swing.JFrame {
     public ImageIcon i6;
     public ImageIcon i7;
     public ImageIcon i8;
-
+    int Players;
+    ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
+    public String nameo, t1, t2, t3, t4;
+    NickNames nickName = new NickNames();
+    public int counter;
+    public Timer ti;
+    ImageIcon[] combo = new ImageIcon[4];
     //Creates new form InitTest
+
     public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
 //      Add piece name and icon to Pane  
         this.piece1 = p1;
@@ -70,16 +85,7 @@ public class InitTest extends javax.swing.JFrame {
         images.add(i7);
         images.add(i8);
     }
-    int Players;
-    ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
-    public String nameo, t1, t2, t3, t4;
-    NickNames nickName = new NickNames();
-    public int counter;
-    //Timer for loading screen
-    public Timer ti;
-    //Icon for selected player piece
-    ImageIcon[] combo = new ImageIcon[4];
-    
+
 //  Use slider to set number of players playing
     private void numPlayers() {
         sldPlayer.addChangeListener(new ChangeListener() {
@@ -162,6 +168,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP1.setText("Player 1:");
 
         txtNameP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameP1KeyPressed(evt);
+            }
+        });
 
         lblIcon1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblIcon1.setText("Icon:");
@@ -176,6 +187,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP2.setText("Player 2:");
 
         txtNameP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameP2KeyPressed(evt);
+            }
+        });
 
         comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
@@ -287,6 +303,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP3.setText("Player 3:");
 
         txtNameP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameP3KeyPressed(evt);
+            }
+        });
 
         comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---",piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
@@ -356,6 +377,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP4.setText("Player 4:");
 
         txtNameP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameP4KeyPressed(evt);
+            }
+        });
 
         comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
@@ -559,21 +585,45 @@ public class InitTest extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
-
+      
     }//GEN-LAST:event_comIconP1ItemStateChanged
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if (paneP1_P2.isVisible() && paneP3.isVisible() && PaneP4.isVisible()) {
-            playerduplicate(Players);
+            pliconduplicate(Players);
         } else if (paneP1_P2.isVisible() && paneP3.isVisible()) {
-            playerduplicate(Players);
+            pliconduplicate(Players);
         } else if (paneP1_P2.isVisible()) {
-            playerduplicate(Players);
+            pliconduplicate(Players);
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
+    private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        t1 = txtNameP1.getText();
+        playernameduplicate(1);}
+    }//GEN-LAST:event_txtNameP1KeyPressed
+
+    private void txtNameP2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP2KeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        t2 = txtNameP1.getText();
+        playernameduplicate(2);}
+    }//GEN-LAST:event_txtNameP2KeyPressed
+
+    private void txtNameP3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP3KeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        t3 = txtNameP1.getText();
+        playernameduplicate(3);}
+    }//GEN-LAST:event_txtNameP3KeyPressed
+
+    private void txtNameP4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP4KeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        t4 = txtNameP1.getText();
+        playernameduplicate(4);}
+    }//GEN-LAST:event_txtNameP4KeyPressed
+
     public void NextCopy(int plnum) {
-        playerduplicate(plnum);
+        pliconduplicate(plnum);
     }
 
     public void checker() {
@@ -596,23 +646,20 @@ public class InitTest extends javax.swing.JFrame {
                 break;
         }
     }
-    
-    public void playerduplicate(int Playa) {
+
+    public void pliconduplicate(int plnum) {
         //Get anmes of each player
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
 
-        switch (Playa) {
+        switch (plnum) {
             //If there is 1 player selected
             case 1:
                 //If Player 1 name is same as Player 2 name
-                if (t1.equalsIgnoreCase(t2)) {
-                    //Prompt user to change name
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
-                }// If selected piece is already chosen by another player
-                else if (combo[0] == combo[1]||combo[0]==combo[2]||combo[0]==combo[3]) {
+
+                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3]) {
                     //Set piece image to blank
                     lblPiece1.setDisabledIcon(null);
                     lblPiece1.revalidate();
@@ -620,35 +667,80 @@ public class InitTest extends javax.swing.JFrame {
                     comIconP1.setSelectedIndex(0);
                     //Prompt user to chane game piece
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }   break;
+                }
+                break;
             case 2:
-                if (t1.equalsIgnoreCase(t2)) {
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
-                }else if (combo[1] == combo[0]||combo[1]==combo[2]||combo[1]==combo[3]) {
+                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3]) {
                     lblPiece2.setDisabledIcon(null);
                     lblPiece2.revalidate();
                     comIconP2.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }   break;
+                }
+                break;
             case 3:
-                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t3)) {
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
-                }else if (combo[2] == combo[0]||combo[2]==combo[1]||combo[2]==combo[3]) {
+                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3]) {
                     lblPiece3.setDisabledIcon(null);
                     lblPiece3.revalidate();
                     comIconP3.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }   break;
+                }
+                break;
             case 4:
-                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)
-                        || t3.equalsIgnoreCase(t4)) {
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
-                } else if (combo[3] == combo[0]||combo[3]==combo[1]||combo[3]==combo[2]) {
+                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2]) {
                     lblPiece4.setDisabledIcon(null);
                     lblPiece4.revalidate();
                     comIconP4.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }   break; 
+                }
+                break;
+        }
+    }
+
+    public void playernameduplicate(int plnum) {
+        switch (plnum) {
+            case 1: {
+                t2=txtNameP2.getText();
+                t3=txtNameP3.getText();
+                t4=txtNameP4.getText();
+                
+                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4)) {
+                    JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
+                    txtNameP1.setText(null);
+                    t1=null;
+                }
+                break;
+            }
+            case 2: {
+                t1=txtNameP1.getText();
+                t3=txtNameP3.getText();
+                t4=txtNameP4.getText();
+                if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)) {
+                    JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
+                    txtNameP2.setText(null);
+                    t2=null;
+                }
+                break;
+            }case 3: {
+                t2=txtNameP2.getText();
+                t1=txtNameP1.getText();
+                t4=txtNameP4.getText();
+                if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4)) {
+                    JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
+                    txtNameP3.setText(null);
+                    t3=null;
+                }
+                break;
+            }case 4: {
+                t2=txtNameP2.getText();
+                t3=txtNameP3.getText();
+                t1=txtNameP1.getText();
+                if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3)) {
+                    JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
+                    txtNameP4.setText(null);
+                    t4=null;
+                }
+                break;
+            }
         }
     }
 
