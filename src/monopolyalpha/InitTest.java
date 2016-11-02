@@ -15,7 +15,7 @@ import javax.swing.event.*;
  * @author Harsh
  */
 public class InitTest extends javax.swing.JFrame {
-
+    //Initialize piece name and image variables
     public String piece1;
     public String piece2;
     public String piece3;
@@ -35,6 +35,7 @@ public class InitTest extends javax.swing.JFrame {
 
     //Creates new form InitTest
     public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
+//      Add piece name and icon to Pane  
         this.piece1 = p1;
         this.piece2 = p2;
         this.piece3 = p3;
@@ -52,11 +53,13 @@ public class InitTest extends javax.swing.JFrame {
         this.i7 = ico7;
         this.i8 = ico8;
         initComponents();
+//      Get number of players from slider 
         numPlayers();
         checker();
 
-//        this.setAlwaysOnTop(true);
+//      this.setAlwaysOnTop(true);
         this.setExtendedState(MAXIMIZED_BOTH);
+//      Add images to ComboBox
         images.add(null);
         images.add(i1);
         images.add(i2);
@@ -72,9 +75,12 @@ public class InitTest extends javax.swing.JFrame {
     public String nameo, t1, t2, t3, t4;
     NickNames nickName = new NickNames();
     public int counter;
+    //Timer for loading screen
     public Timer ti;
+    //Icon for selected player piece
     ImageIcon[] combo = new ImageIcon[4];
-
+    
+//  Use slider to set number of players playing
     private void numPlayers() {
         sldPlayer.addChangeListener(new ChangeListener() {
             @Override
@@ -482,9 +488,13 @@ public class InitTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comIconP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comIconP1ActionPerformed
+        //Get piece name
         int i = comIconP1.getSelectedIndex();
+        //Add piece image to label
         lblPiece1.setDisabledIcon(images.get(i));
+        //Add image to check wehter piece has been used before
         combo[0] = images.get(i);
+        //Check if piece has been used before
         NextCopy(1);
     }//GEN-LAST:event_comIconP1ActionPerformed
 
@@ -514,10 +524,12 @@ public class InitTest extends javax.swing.JFrame {
 
     private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
     {//GEN-HEADEREND:event_btnRand1MouseClicked
+        //Generate random nickname
         nickName.listName();
+        //Get nickname from nickName class
         nameo = nickName.name;
+        //Add nickname to textbox
         txtNameP1.setText(nameo);
-
     }//GEN-LAST:event_btnRand1MouseClicked
 
     private void btnRand2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand2MouseClicked
@@ -525,14 +537,12 @@ public class InitTest extends javax.swing.JFrame {
         nickName.listName();
         nameo = nickName.name;
         txtNameP2.setText(nameo);
-
     }//GEN-LAST:event_btnRand2MouseClicked
 
     private void btnRand3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand3MouseClicked
     {//GEN-HEADEREND:event_btnRand3MouseClicked
         nickName.listName();
         nameo = nickName.name;
-
         txtNameP3.setText(nameo);
     }//GEN-LAST:event_btnRand3MouseClicked
 
@@ -540,17 +550,16 @@ public class InitTest extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_btnRand4MouseClicked
         nickName.listName();
         nameo = nickName.name;
-
         txtNameP4.setText(nameo);
     }//GEN-LAST:event_btnRand4MouseClicked
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        // Exit
         System.exit(0);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
-        // TODO add your handling code here
+
     }//GEN-LAST:event_comIconP1ItemStateChanged
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -570,35 +579,46 @@ public class InitTest extends javax.swing.JFrame {
     public void checker() {
         Players = sldPlayer.getValue();
         switch (Players) {
+            //If there are 2 players selected
             case 2:
                 paneP3.setVisible(false);
                 PaneP4.setVisible(false);
                 break;
+            //If there are 3 players selected
             case 3:
                 paneP3.setVisible(true);
                 PaneP4.setVisible(false);
                 break;
+            //If there are 4 players selected
             case 4:
                 paneP3.setVisible(true);
                 PaneP4.setVisible(true);
                 break;
         }
     }
-
+    
     public void playerduplicate(int Playa) {
+        //Get anmes of each player
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
 
         switch (Playa) {
+            //If there is 1 player selected
             case 1:
+                //If Player 1 name is same as Player 2 name
                 if (t1.equalsIgnoreCase(t2)) {
+                    //Prompt user to change name
                     JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
-                } else if (combo[0] == combo[1]||combo[0]==combo[2]||combo[0]==combo[3]) {
+                }// If selected piece is already chosen by another player
+                else if (combo[0] == combo[1]||combo[0]==combo[2]||combo[0]==combo[3]) {
+                    //Set piece image to blank
                     lblPiece1.setDisabledIcon(null);
                     lblPiece1.revalidate();
+                    //Set game piece name to nothing
                     comIconP1.setSelectedIndex(0);
+                    //Prompt user to chane game piece
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                 }   break;
             case 2:
@@ -629,8 +649,6 @@ public class InitTest extends javax.swing.JFrame {
                     comIconP4.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                 }   break; 
-            default:
-                break;
         }
     }
 
