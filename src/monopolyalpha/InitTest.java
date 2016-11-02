@@ -569,15 +569,19 @@ public class InitTest extends javax.swing.JFrame {
 
     public void checker() {
         Players = sldPlayer.getValue();
-        if (Players == 2) {
-            paneP3.setVisible(false);
-            PaneP4.setVisible(false);
-        } else if (Players == 3) {
-            paneP3.setVisible(true);
-            PaneP4.setVisible(false);
-        } else if (Players == 4) {
-            paneP3.setVisible(true);
-            PaneP4.setVisible(true);
+        switch (Players) {
+            case 2:
+                paneP3.setVisible(false);
+                PaneP4.setVisible(false);
+                break;
+            case 3:
+                paneP3.setVisible(true);
+                PaneP4.setVisible(false);
+                break;
+            case 4:
+                paneP3.setVisible(true);
+                PaneP4.setVisible(true);
+                break;
         }
     }
 
@@ -590,39 +594,40 @@ public class InitTest extends javax.swing.JFrame {
         switch (Playa) {
             case 1:
                 if (t1.equalsIgnoreCase(t2)) {
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
                 } else if (combo[0] == combo[1]||combo[0]==combo[2]||combo[0]==combo[3]) {
                     lblPiece1.setDisabledIcon(null);
                     lblPiece1.revalidate();
                     comIconP1.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                 }   break;
             case 2:
                 if (t1.equalsIgnoreCase(t2)) {
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
                 }else if (combo[1] == combo[0]||combo[1]==combo[2]||combo[1]==combo[3]) {
                     lblPiece2.setDisabledIcon(null);
                     lblPiece2.revalidate();
                     comIconP2.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                 }   break;
             case 3:
                 if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t3)) {
-                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
                 }else if (combo[2] == combo[0]||combo[2]==combo[1]||combo[2]==combo[3]) {
                     lblPiece3.setDisabledIcon(null);
                     lblPiece3.revalidate();
                     comIconP3.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                 }   break;
             case 4:
                 if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)
                         || t3.equalsIgnoreCase(t4)) {
+                    JOptionPane.showMessageDialog(null, "Please select another name for one of the players!");
                 } else if (combo[3] == combo[0]||combo[3]==combo[1]||combo[3]==combo[2]) {
                     lblPiece4.setDisabledIcon(null);
                     lblPiece4.revalidate();
                     comIconP4.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!!");
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                 }   break; 
             default:
                 break;
