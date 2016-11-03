@@ -27,46 +27,47 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="798" max="32767" attributes="0"/>
-              <Component id="btnNext" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Component id="paneP1_P2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="sldPlayer" min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblStartup" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                  <Component id="lblDice" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                  <Component id="paneP3" max="32767" attributes="0"/>
+                  <Component id="PaneP4" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="tbtnDiceToggle1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="tbtnDiceToggle2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="comMoney" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="lblStartup" min="-2" pref="270" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="comMoney" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="798" max="-2" attributes="0"/>
+                      <Component id="btnNext" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblTitle" max="32767" attributes="0"/>
+                  <Component id="lblTitle" min="-2" pref="969" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="paneP1_P2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="sldPlayer" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="paneP3" pref="0" max="32767" attributes="0"/>
-                          <Component id="PaneP4" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="lblDice" min="-2" pref="210" max="-2" attributes="0"/>
+                      <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
+                      <Component id="dicetoggle" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,32 +77,38 @@
               <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="sldPlayer" pref="384" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="paneP1_P2" max="32767" attributes="0"/>
+                  <Component id="sldPlayer" min="-2" pref="384" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Component id="paneP3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
                       <Component id="PaneP4" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="paneP1_P2" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDice" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="tbtnDiceToggle1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tbtnDiceToggle2" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="lblDice" min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="dicetoggle" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblStartup" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="comMoney" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="comMoney" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                      <Component id="btnNext" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                      <Component id="lblStartup" min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -220,7 +227,7 @@
                       </Group>
                       <Component id="lblPiece2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -595,6 +602,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand4MouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRand4ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -632,13 +640,21 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="comMoney">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Showcard Gothic" size="18" style="1"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="$ 500"/>
-            <StringItem index="1" value="$ 1000"/>
-            <StringItem index="2" value="$ 1500"/>
-            <StringItem index="3" value="$ 2000"/>
+          <StringArray count="5">
+            <StringItem index="0" value="----"/>
+            <StringItem index="1" value="$ 500"/>
+            <StringItem index="2" value="$ 1000"/>
+            <StringItem index="3" value="$ 1500"/>
+            <StringItem index="4" value="$ 2000"/>
           </StringArray>
+        </Property>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -649,7 +665,7 @@
     <Component class="javax.swing.JLabel" name="lblDice">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="0"/>
+          <Font name="Showcard Gothic" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Number of Dice:"/>
       </Properties>
@@ -657,20 +673,21 @@
     <Component class="javax.swing.JLabel" name="lblStartup">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="0"/>
+          <Font name="Showcard Gothic" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Amount of Startup money:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="tbtnDiceToggle2">
+    <Component class="javax.swing.JToggleButton" name="dicetoggle">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dice 2"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Showcard Gothic" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="1 Dice"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="tbtnDiceToggle1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Dice 1"/>
-      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dicetoggleMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
