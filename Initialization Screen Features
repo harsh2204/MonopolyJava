@@ -1,9 +1,9 @@
 
 <strike>1) Input for player names</strike>
 <strike>2) Selection of badges/pieces</strike>
-3) No. of dice
-4) Initial Cash for players
-5) Bank starts with no money/ all the money is with players
+3) No. of dice   dd
+4) Initial Cash for players     dd
+5) Bank starts with no money/ all the money is with players     dd
 6) End game scenario:-
     a. Last Player Standing
     b. 45/60/75 Turns per player (player with the most amount of money at the end wins)
@@ -11,6 +11,6 @@
     a. Property can be mortgaged where the bank gives the player half the money and the property goes underconstruction.(it can be bought back for the price given to the bank)*
     b. Proper can be sold to the bank.
 8)Snake eye bonus (roll a pair of ones)*
-9)Jail fee (x amount taken when player lands on jail)
+9)Bail fee (x amount taken when player lands on jail)
 
 *means extended features

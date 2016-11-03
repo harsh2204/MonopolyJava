@@ -24,6 +24,9 @@ import javax.swing.event.*;
 public class InitTest extends javax.swing.JFrame {
     //Initialize piece name and image variables
 
+    public int startmoney;
+    public int dicenum;
+    public int lotterymoney;
     public String piece1;
     public String piece2;
     public String piece3;
@@ -47,7 +50,7 @@ public class InitTest extends javax.swing.JFrame {
     public int counter;
     public Timer ti;
     ImageIcon[] combo = new ImageIcon[4];
-    String[] combos=new String[5];
+    String[] combos = new String[5];
     //Creates new form InitTest
 
     public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
@@ -134,6 +137,11 @@ public class InitTest extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
+        comMoney = new javax.swing.JComboBox();
+        lblDice = new javax.swing.JLabel();
+        lblStartup = new javax.swing.JLabel();
+        tbtnDiceToggle2 = new javax.swing.JToggleButton();
+        tbtnDiceToggle1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -363,9 +371,9 @@ public class InitTest extends javax.swing.JFrame {
                     .addGroup(paneP3Layout.createSequentialGroup()
                         .addComponent(btnRand3)
                         .addGap(75, 75, 75)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
         paneP3Layout.setVerticalGroup(
             paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,30 +493,63 @@ public class InitTest extends javax.swing.JFrame {
             }
         });
 
+        comMoney.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$ 500", "$ 1000", "$ 1500", "$ 2000" }));
+        comMoney.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comMoneyItemStateChanged(evt);
+            }
+        });
+        comMoney.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comMoneyActionPerformed(evt);
+            }
+        });
+
+        lblDice.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblDice.setText("Number of Dice:");
+
+        lblStartup.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblStartup.setText("Amount of Startup money:");
+
+        tbtnDiceToggle2.setText("Dice 2");
+
+        tbtnDiceToggle1.setText("Dice 1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 798, Short.MAX_VALUE)
+                .addComponent(btnNext)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addComponent(tbtnDiceToggle1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tbtnDiceToggle2))
+                    .addComponent(comMoney, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(paneP1_P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sldPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(paneP1_P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(sldPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(paneP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(PaneP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNext)
-                        .addGap(25, 25, 25)))
+                            .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(PaneP4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -524,7 +565,16 @@ public class InitTest extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addComponent(PaneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(paneP1_P2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbtnDiceToggle1)
+                    .addComponent(tbtnDiceToggle2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnNext))
@@ -606,7 +656,6 @@ public class InitTest extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
-      
     }//GEN-LAST:event_comIconP1ItemStateChanged
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -617,30 +666,35 @@ public class InitTest extends javax.swing.JFrame {
         } else if (paneP1_P2.isVisible()) {
             pliconduplicate(Players);
         }
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
-         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        combos[0] = txtNameP1.getText();
-        playernameduplicate(1);}
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            combos[0] = txtNameP1.getText();
+            playernameduplicate(1);
+        }
     }//GEN-LAST:event_txtNameP1KeyPressed
 
     private void txtNameP2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP2KeyPressed
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        combos[1] = txtNameP1.getText();
-        playernameduplicate(2);}
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            combos[1] = txtNameP1.getText();
+            playernameduplicate(2);
+        }
     }//GEN-LAST:event_txtNameP2KeyPressed
 
     private void txtNameP3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP3KeyPressed
-         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        combos[2] = txtNameP1.getText();
-        playernameduplicate(3);}
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            combos[2] = txtNameP1.getText();
+            playernameduplicate(3);
+        }
     }//GEN-LAST:event_txtNameP3KeyPressed
 
     private void txtNameP4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP4KeyPressed
-         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-        combos[3] = txtNameP1.getText();
-        playernameduplicate(4);}
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            combos[3] = txtNameP1.getText();
+            playernameduplicate(4);
+        }
     }//GEN-LAST:event_txtNameP4KeyPressed
 
     private void txtNameP1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP1FocusLost
@@ -658,6 +712,30 @@ public class InitTest extends javax.swing.JFrame {
     private void txtNameP4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP4FocusLost
         playernameduplicate(4);
     }//GEN-LAST:event_txtNameP4FocusLost
+
+    private void comMoneyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comMoneyItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comMoneyItemStateChanged
+
+    private void comMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comMoneyActionPerformed
+        //Get startup value
+        int i = comMoney.getSelectedIndex();
+        //Add money to public int
+        switch (i) {
+
+            case 0:
+                startmoney = 500;
+
+            case 1:
+                startmoney = 1000;
+
+            case 2:
+                startmoney = 1500;
+
+            case 3:
+                startmoney = 2000;
+        }
+    }//GEN-LAST:event_comMoneyActionPerformed
 
     public void NextCopy(int plnum) {
         pliconduplicate(plnum);
@@ -738,43 +816,51 @@ public class InitTest extends javax.swing.JFrame {
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
-        if(t1==null){t1="1";}
-        if(t2==null){t2="2";}
-        if(t3==null){t3="3";}
-        if(t4==null){t4="4";}
-        
-        
+        if (t1 == null) {
+            t1 = "1";
+        }
+        if (t2 == null) {
+            t2 = "2";
+        }
+        if (t3 == null) {
+            t3 = "3";
+        }
+        if (t4 == null) {
+            t4 = "4";
+        }
+
+
         switch (plnum) {
-            case 1:                 
+            case 1:
                 if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP1.setText(null);
-                    t1=null;
+                    t1 = null;
                 }
                 break;
-            
-            case 2: 
+
+            case 2:
                 if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP2.setText(null);
-                    t2=null;
+                    t2 = null;
                 }
                 break;
-            case 3: 
+            case 3:
                 if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP3.setText(null);
-                    t3=null;
+                    t3 = null;
                 }
                 break;
-            case 4: 
+            case 4:
                 if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP4.setText(null);
-                    t4=null;
+                    t4 = null;
                 }
                 break;
-            
+
         }
     }
 
@@ -827,6 +913,8 @@ public class InitTest extends javax.swing.JFrame {
     private javax.swing.JComboBox comIconP2;
     private javax.swing.JComboBox comIconP3;
     private javax.swing.JComboBox comIconP4;
+    private javax.swing.JComboBox comMoney;
+    private javax.swing.JLabel lblDice;
     private javax.swing.JLabel lblIcon1;
     private javax.swing.JLabel lblIcon2;
     private javax.swing.JLabel lblIcon3;
@@ -839,10 +927,13 @@ public class InitTest extends javax.swing.JFrame {
     private javax.swing.JLabel lblPiece2;
     private javax.swing.JLabel lblPiece3;
     private javax.swing.JLabel lblPiece4;
+    private javax.swing.JLabel lblStartup;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel paneP1_P2;
     private javax.swing.JPanel paneP3;
     private javax.swing.JSlider sldPlayer;
+    private javax.swing.JToggleButton tbtnDiceToggle1;
+    private javax.swing.JToggleButton tbtnDiceToggle2;
     private javax.swing.JTextField txtNameP1;
     private javax.swing.JTextField txtNameP2;
     private javax.swing.JTextField txtNameP3;
