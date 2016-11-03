@@ -169,6 +169,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP1.setText("Player 1:");
 
         txtNameP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameP1FocusLost(evt);
+            }
+        });
         txtNameP1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP1KeyPressed(evt);
@@ -188,6 +193,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP2.setText("Player 2:");
 
         txtNameP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameP2FocusLost(evt);
+            }
+        });
         txtNameP2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP2KeyPressed(evt);
@@ -304,6 +314,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP3.setText("Player 3:");
 
         txtNameP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameP3FocusLost(evt);
+            }
+        });
         txtNameP3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP3KeyPressed(evt);
@@ -378,6 +393,11 @@ public class InitTest extends javax.swing.JFrame {
         lblP4.setText("Player 4:");
 
         txtNameP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        txtNameP4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameP4FocusLost(evt);
+            }
+        });
         txtNameP4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP4KeyPressed(evt);
@@ -623,6 +643,22 @@ public class InitTest extends javax.swing.JFrame {
         playernameduplicate(4);}
     }//GEN-LAST:event_txtNameP4KeyPressed
 
+    private void txtNameP1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP1FocusLost
+        playernameduplicate(1);
+    }//GEN-LAST:event_txtNameP1FocusLost
+
+    private void txtNameP2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP2FocusLost
+        playernameduplicate(2);
+    }//GEN-LAST:event_txtNameP2FocusLost
+
+    private void txtNameP3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP3FocusLost
+        playernameduplicate(3);
+    }//GEN-LAST:event_txtNameP3FocusLost
+
+    private void txtNameP4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP4FocusLost
+        playernameduplicate(4);
+    }//GEN-LAST:event_txtNameP4FocusLost
+
     public void NextCopy(int plnum) {
         pliconduplicate(plnum);
     }
@@ -698,6 +734,16 @@ public class InitTest extends javax.swing.JFrame {
     }
 
     public void playernameduplicate(int plnum) {
+        t1 = txtNameP1.getText();
+        t2 = txtNameP2.getText();
+        t3 = txtNameP3.getText();
+        t4 = txtNameP4.getText();
+        if(t1==null){t1="1";}
+        if(t2==null){t2="2";}
+        if(t3==null){t3="3";}
+        if(t4==null){t4="4";}
+        
+        
         switch (plnum) {
             case 1:                 
                 if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4)) {
@@ -708,9 +754,6 @@ public class InitTest extends javax.swing.JFrame {
                 break;
             
             case 2: 
-                t1=txtNameP1.getText();
-                t3=txtNameP3.getText();
-                t4=txtNameP4.getText();
                 if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP2.setText(null);
@@ -718,9 +761,6 @@ public class InitTest extends javax.swing.JFrame {
                 }
                 break;
             case 3: 
-                t2=txtNameP2.getText();
-                t1=txtNameP1.getText();
-                t4=txtNameP4.getText();
                 if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP3.setText(null);
@@ -728,9 +768,6 @@ public class InitTest extends javax.swing.JFrame {
                 }
                 break;
             case 4: 
-                t2=txtNameP2.getText();
-                t3=txtNameP3.getText();
-                t1=txtNameP1.getText();
                 if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP4.setText(null);
