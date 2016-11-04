@@ -28,17 +28,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="paneP1_P2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Component id="sldPlayer" min="-2" pref="47" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="paneP3" max="32767" attributes="0"/>
-                  <Component id="PaneP4" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -61,6 +50,16 @@
           <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="paneP1_P2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="sldPlayer" min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="paneP3" max="32767" attributes="0"/>
+                          <Component id="PaneP4" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
                   <Component id="lblTitle" min="-2" pref="969" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="lblDice" min="-2" pref="210" max="-2" attributes="0"/>

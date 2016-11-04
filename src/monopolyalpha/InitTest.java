@@ -7,13 +7,9 @@ package monopolyalpha;
 
 import java.awt.event.KeyEvent;
 import java.util.*;
-;
 import javax.swing.*;
-import javax.swing.Timer;
 import javax.swing.event.*;
-import javax.swing.*;
 import javax.swing.Timer;
-import javax.swing.event.*;
 
 /**
  *
@@ -102,6 +98,7 @@ public class InitTest extends javax.swing.JFrame
               {
                 Players = sldPlayer.getValue();
                 checker();
+                reset();
 
               }
           });
@@ -910,7 +907,27 @@ public class InitTest extends javax.swing.JFrame
                 break;
           }
       }
-
+    
+    public void reset(){
+        if (Players==2){
+            lblPiece3.setDisabledIcon(null);
+            lblPiece3.revalidate();
+            comIconP3.setSelectedIndex(0);
+            txtNameP3.setText(null);
+            lblPiece4.setDisabledIcon(null);
+            lblPiece4.revalidate();
+            comIconP4.setSelectedIndex(0);
+            txtNameP4.setText(null);
+        }
+        else if (Players==3){
+            lblPiece4.setDisabledIcon(null);
+            lblPiece4.revalidate();
+            comIconP4.setSelectedIndex(0);
+            txtNameP4.setText(null);           
+        }
+                
+    }
+    
     public void playernameduplicate(int plnum)
       {
         t1 = txtNameP1.getText();
