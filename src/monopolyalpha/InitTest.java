@@ -501,7 +501,7 @@ public class InitTest extends javax.swing.JFrame {
         });
 
         comMoney.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        comMoney.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "----", "$ 500", "$ 1000", "$ 1500", "$ 2000" }));
+        comMoney.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$ 500", "$ 1000", "$ 1500", "$ 2000" }));
         comMoney.setAutoscrolls(true);
         comMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comMoney.addItemListener(new java.awt.event.ItemListener() {
@@ -538,7 +538,7 @@ public class InitTest extends javax.swing.JFrame {
         lblEGS.setText("End Game Scenario:");
 
         comEGS.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
-        comEGS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "----", "Last player standing", "45 turns per player", "60 turns per player", "75 turns per player" }));
+        comEGS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Last player standing", "45 turns per player", "60 turns per player", "75 turns per player" }));
 
         rndSnake.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         rndSnake.setText("Snake Eye Bonus");
@@ -595,8 +595,8 @@ public class InitTest extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblEGS)
-                                .addGap(99, 99, 99)
-                                .addComponent(comEGS, 0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)

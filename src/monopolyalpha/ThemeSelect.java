@@ -54,8 +54,7 @@ public class ThemeSelect extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         btnCanada = new javax.swing.JButton();
         btnSuper = new javax.swing.JButton();
@@ -67,29 +66,22 @@ public class ThemeSelect extends javax.swing.JFrame {
         setUndecorated(true);
 
         btnCanada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeCanada.png"))); // NOI18N
-        btnCanada.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCanada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCanadaActionPerformed(evt);
             }
         });
 
         btnSuper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeSuper.png"))); // NOI18N
-        btnSuper.setEnabled(false);
-        btnSuper.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnSuper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuperActionPerformed(evt);
             }
         });
 
         btnGeneric.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeGeneric.png"))); // NOI18N
-        btnGeneric.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnGeneric.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenericActionPerformed(evt);
             }
         });
@@ -100,10 +92,8 @@ public class ThemeSelect extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -150,7 +140,6 @@ public class ThemeSelect extends javax.swing.JFrame {
     private void btnCanadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanadaActionPerformed
         // TODO add your handling code here:
         theme = "Canada";
-        dicePath = "Icons/Dice/Maple/";
         Canada_Data can = new Canada_Data();
         piece1 = "Mic";
         piece2 = "Carty";
@@ -174,12 +163,31 @@ public class ThemeSelect extends javax.swing.JFrame {
 
     private void btnSuperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuperActionPerformed
         // TODO add your handling code here:
+        theme = "SuperHeros";
+        SuperHero_Data sup = new SuperHero_Data();
+        piece1 = "Dog";
+        piece2 = "Ship";
+        piece3 = "Iron";
+        piece4 = "Buggy";
+        piece5 = sup.p1;
+        piece6 = sup.p2;
+        piece7 = sup.p3;
+        piece8 = sup.p4;
+        i1 = new ImageIcon("Icons/Pieces/Generic/5.png");
+        i2 = new ImageIcon("Icons/Pieces/Generic/6.png");
+        i3 = new ImageIcon("Icons/Pieces/Generic/7.png");
+        i4 = new ImageIcon("Icons/Pieces/Generic/8.png");
+        i5 = sup.i1;
+        i6 = sup.i2;
+        i7 = sup.i3;
+        i8 = sup.i4;
+        this.setVisible(false);
+        goNext();
     }//GEN-LAST:event_btnSuperActionPerformed
 
     private void btnGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenericActionPerformed
         // TODO add your handling code here:
         theme = "Generic";
-        dicePath = "Icons/Dice/Maple/"; // neeed generic di faces
         piece1 = "Mic";
         piece2 = "Carty";
         piece3 = "Shoe";
