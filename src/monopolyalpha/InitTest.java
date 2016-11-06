@@ -19,14 +19,14 @@ public class InitTest extends javax.swing.JFrame
   {
     //Initialize piece name and image variables
 
-    public int startmoney, dicenum = 1, lotterymoney, Players, pane,index0,index1,index2,index3;
-    public String piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8;
-    public ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
-    ArrayList<ImageIcon> images = new ArrayList<>();
+    public int startmoney,dicenum = 1,lotterymoney,counter,Players;
+    public String piece1,piece2,piece3,piece4,piece5,piece6,piece7,piece8;
+    public ImageIcon i1,i2,i3,i4,i5,i6,i7,i8;
+    ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     public String nameo, t1, t2, t3, t4;
     NickNames nickName = new NickNames();
-    public int counter;
     public Timer ti;
+    ImageIcon[] combo = new ImageIcon[4];
     String[] combos = new String[5];
     //Creates new form InitTest
 
@@ -669,36 +669,32 @@ public class InitTest extends javax.swing.JFrame
     private void comIconP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comIconP1ActionPerformed
         int i = comIconP1.getSelectedIndex();
         lblPiece1.setDisabledIcon(images.get(i));
-        index0 = i;
-        pane = 1;
-        NextCopy(1, pane);
+        combo[0] = images.get(i);
+        NextCopy(1);
     }//GEN-LAST:event_comIconP1ActionPerformed
 
     private void comIconP2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP2ActionPerformed
     {//GEN-HEADEREND:event_comIconP2ActionPerformed
         int i = comIconP2.getSelectedIndex();
         lblPiece2.setDisabledIcon(images.get(i));
-        index1 = i;
-        pane = 1;
-        NextCopy(2, pane);
+        combo[1] = images.get(i);
+        NextCopy(2);
     }//GEN-LAST:event_comIconP2ActionPerformed
 
     private void comIconP3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP3ActionPerformed
     {//GEN-HEADEREND:event_comIconP3ActionPerformed
         int i = comIconP3.getSelectedIndex();
         lblPiece3.setDisabledIcon(images.get(i));
-        index2 = i;
-        pane = 2;
-        NextCopy(3, pane);
+        combo[2] = images.get(i);
+        NextCopy(3);
     }//GEN-LAST:event_comIconP3ActionPerformed
 
     private void comIconP4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP4ActionPerformed
     {//GEN-HEADEREND:event_comIconP4ActionPerformed
         int i = comIconP4.getSelectedIndex();
         lblPiece4.setDisabledIcon(images.get(i));
-        index3 = i;
-        pane = 4;
-        NextCopy(4, pane);
+        combo[3] = images.get(i);
+        NextCopy(4);
     }//GEN-LAST:event_comIconP4ActionPerformed
 
     private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
@@ -743,13 +739,13 @@ public class InitTest extends javax.swing.JFrame
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if (paneP1_P2.isVisible() && paneP3.isVisible() && PaneP4.isVisible())
           {
-            pliconduplicate(Players,1);
+            pliconduplicate(Players);
           } else if (paneP1_P2.isVisible() && paneP3.isVisible())
           {
-            pliconduplicate(Players,2);
+            pliconduplicate(Players);
           } else if (paneP1_P2.isVisible())
           {
-            pliconduplicate(Players,3);
+            pliconduplicate(Players);
           }
 
     }//GEN-LAST:event_btnNextActionPerformed
@@ -858,9 +854,9 @@ public class InitTest extends javax.swing.JFrame
           }
     }//GEN-LAST:event_btnDiceActionPerformed
 
-    public void NextCopy(int plnum, int pane)
+    public void NextCopy(int plnum)
       {
-        pliconduplicate(plnum, pane);
+        pliconduplicate(plnum);
       }
 
     public void checker()
@@ -886,118 +882,58 @@ public class InitTest extends javax.swing.JFrame
           }
       }
 
-    public void pliconduplicate(int plnum, int pane)
+    public void pliconduplicate(int plnum)
       {
-        if(Integer.toString(index0)==null){index0=1;}
-        if(Integer.toString(index1)==null){index1=2;}
-        if(Integer.toString(index2)==null){index2=3;}
-        if(Integer.toString(index3)==null){index3=4;}
+        //Get anmes of each player
+        t1 = txtNameP1.getText();
+        t2 = txtNameP2.getText();
+        t3 = txtNameP3.getText();
+        t4 = txtNameP4.getText();
 
-        switch (pane)
+        switch (plnum)
           {
+            //If there is 1 player selected
             case 1:
-                if (plnum == 1)
-                  {
-                    if (index0 == index1)
-                      {
-                        //Set piece image to blank
-                        lblPiece1.setDisabledIcon(null);
-                        lblPiece1.revalidate();
-                        //Set game piece name to nothing
-                        comIconP1.setSelectedIndex(0);
-                        //Prompt user to chane game piece
-                        JOptionPane.showMessageDialog(null, "1Please select another piece for one of the players!");
-                      }
-                  } else if (plnum == 2)
-                  {
-                    if (index1 == index0)
-                      {
-                        lblPiece2.setDisabledIcon(null);
-                        lblPiece2.revalidate();
-                        comIconP2.setSelectedIndex(0);
-                        JOptionPane.showMessageDialog(null, "2Please select another piece for one of the players!");
-                      }
-                  }
+                //If Player 1 name is same as Player 2 name
 
+                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3])
+                  {
+                    //Set piece image to blank
+                    lblPiece1.setDisabledIcon(null);
+                    lblPiece1.revalidate();
+                    //Set game piece name to nothing
+                    comIconP1.setSelectedIndex(0);
+                    //Prompt user to chane game piece
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                  }
                 break;
             case 2:
-                switch (plnum)
+                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3])
                   {
-                    case 1:
-                        if (index0 == index1 || index0 == index2)
-                          {
-                            lblPiece1.setDisabledIcon(null);
-                            lblPiece1.revalidate();
-                            comIconP1.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "1Please select another piece for one of the players!");
-                          }
-                        break;
-                    case 2:
-                        if (index1 == index0 || index1 == index2)
-                          {
-                            lblPiece2.setDisabledIcon(null);
-                            lblPiece2.revalidate();
-                            comIconP2.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "2Please select another piece for one of the players!");
-                          }
-                        break;
-                    case 3:
-                        if (index2 == index0 || index2 == index1)
-                          {
-                            lblPiece3.setDisabledIcon(null);
-                            lblPiece3.revalidate();
-                            comIconP3.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "3Please select another piece for one of the players!");
-                          }
-                        break;
-                    default:
-                        break;
+                    lblPiece2.setDisabledIcon(null);
+                    lblPiece2.revalidate();
+                    comIconP2.setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                   }
                 break;
             case 3:
-                switch (plnum)
+                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3])
                   {
-                    case 1:
-                        if (index0 == index1 || index0 == index2||index0==index3)
-                          {
-                            lblPiece1.setDisabledIcon(null);
-                            lblPiece1.revalidate();
-                            comIconP1.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                          }
-                        break;
-                    case 2:
-                        if (index1 == index0 || index1 == index2||index1==index3)
-                          {
-                            lblPiece2.setDisabledIcon(null);
-                            lblPiece2.revalidate();
-                            comIconP2.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                          }
-                        break;
-                    case 3:
-                        if (index2 == index0 || index2 == index1||index2==index3)
-                          {
-                            lblPiece3.setDisabledIcon(null);
-                            lblPiece3.revalidate();
-                            comIconP3.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                          }
-                        break;
-                        case 4:
-                        if (index3 == index0 || index3 == index1||index3==index2)
-                          {
-                            lblPiece4.setDisabledIcon(null);
-                            lblPiece4.revalidate();
-                            comIconP4.setSelectedIndex(0);
-                            JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                          }
-                        break;
-                    default:
-                        break;
+                    lblPiece3.setDisabledIcon(null);
+                    lblPiece3.revalidate();
+                    comIconP3.setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                   }
                 break;
-
+            case 4:
+                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2])
+                  {
+                    lblPiece4.setDisabledIcon(null);
+                    lblPiece4.revalidate();
+                    comIconP4.setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                  }
+                break;
           }
       }
 
