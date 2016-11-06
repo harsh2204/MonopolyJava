@@ -19,7 +19,7 @@ public class InitTest extends javax.swing.JFrame {
     //Initialize piece name and image variables
 
     public int startmoney;
-    public int dicenum;
+    public int dicenum =1;
     public int lotterymoney;
     public String piece1;
     public String piece2;
@@ -135,7 +135,6 @@ public class InitTest extends javax.swing.JFrame {
         comMoney = new javax.swing.JComboBox();
         lblDice = new javax.swing.JLabel();
         lblStartup = new javax.swing.JLabel();
-        dicetoggle = new javax.swing.JToggleButton();
         lblEGS = new javax.swing.JLabel();
         comEGS = new javax.swing.JComboBox();
         rndSnake = new javax.swing.JRadioButton();
@@ -144,6 +143,7 @@ public class InitTest extends javax.swing.JFrame {
         comBonAmt = new javax.swing.JComboBox();
         lblBailFee = new javax.swing.JLabel();
         comBailFee = new javax.swing.JComboBox();
+        btnDice = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -521,19 +521,6 @@ public class InitTest extends javax.swing.JFrame {
         lblStartup.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblStartup.setText("Amount of Startup money:");
 
-        dicetoggle.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        dicetoggle.setText("1 Dice");
-        dicetoggle.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dicetoggleMouseClicked(evt);
-            }
-        });
-        dicetoggle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dicetoggleActionPerformed(evt);
-            }
-        });
-
         lblEGS.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblEGS.setText("End Game Scenario:");
 
@@ -572,6 +559,14 @@ public class InitTest extends javax.swing.JFrame {
         comBailFee.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$100", "$150", "$200" }));
         comBailFee.setEnabled(false);
 
+        btnDice.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnDice.setText("1 Dice");
+        btnDice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -597,11 +592,13 @@ public class InitTest extends javax.swing.JFrame {
                                 .addComponent(lblEGS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(comEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBack)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnBack))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDice)
+                                    .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -625,9 +622,7 @@ public class InitTest extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(dicetoggle)
-                        .addGap(215, 215, 215)
+                        .addGap(374, 374, 374)
                         .addComponent(rndSnake)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -649,11 +644,11 @@ public class InitTest extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(dicetoggle)
-                        .addComponent(rndSnake)))
-                .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDice)))
+                    .addComponent(rndSnake))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -844,19 +839,6 @@ public class InitTest extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRand4ActionPerformed
 
-    private void dicetoggleMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_dicetoggleMouseClicked
-    {//GEN-HEADEREND:event_dicetoggleMouseClicked
-        if (dicetoggle.isSelected() == true) {
-            dicetoggle.setText("2 Dice");
-        } else if (dicetoggle.isSelected() == false) {
-            dicetoggle.setText("1 Dice");
-        }
-    }//GEN-LAST:event_dicetoggleMouseClicked
-
-    private void dicetoggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dicetoggleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dicetoggleActionPerformed
-
     private void rndBailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rndBailActionPerformed
         // TODO add your handling code here:
         lblBailFee.setEnabled(rndBail.isSelected());
@@ -868,6 +850,17 @@ public class InitTest extends javax.swing.JFrame {
         lblBonAmt.setEnabled(rndSnake.isSelected());
         comBonAmt.setEnabled(rndSnake.isSelected());
     }//GEN-LAST:event_rndSnakeActionPerformed
+
+    private void btnDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiceActionPerformed
+        // TODO add your handling code here:
+        if(dicenum ==1){
+            btnDice.setText("2 Dice");
+            dicenum = 2;
+        }else {
+            btnDice.setText("1 Dice");
+            dicenum = 1;
+        }
+    }//GEN-LAST:event_btnDiceActionPerformed
 
     public void NextCopy(int plnum) {
         pliconduplicate(plnum);
@@ -1054,6 +1047,7 @@ public class InitTest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaneP4;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDice;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnRand1;
     private javax.swing.JButton btnRand2;
@@ -1067,7 +1061,6 @@ public class InitTest extends javax.swing.JFrame {
     private javax.swing.JComboBox comIconP3;
     private javax.swing.JComboBox comIconP4;
     private javax.swing.JComboBox comMoney;
-    private javax.swing.JToggleButton dicetoggle;
     private javax.swing.JLabel lblBailFee;
     private javax.swing.JLabel lblBonAmt;
     private javax.swing.JLabel lblDice;
