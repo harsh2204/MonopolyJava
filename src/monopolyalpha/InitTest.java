@@ -13,7 +13,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Harsh
+ * @author Harsh, Karmit, Haard, Neel(barely)
  */
 public class InitTest extends javax.swing.JFrame
   {
