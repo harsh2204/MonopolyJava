@@ -296,7 +296,7 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
             </Property>
             <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="0" type="code"/>
+              <Connection code="1" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -377,7 +377,7 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
             </Property>
             <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="0" type="code"/>
+              <Connection code="2" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -509,7 +509,7 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;---&quot;,piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
             </Property>
             <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="0" type="code"/>
+              <Connection code="3" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -630,7 +630,7 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
             </Property>
             <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="0" type="code"/>
+              <Connection code="4" type="code"/>
             </Property>
           </Properties>
           <Events>

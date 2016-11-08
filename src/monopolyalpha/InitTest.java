@@ -149,7 +149,7 @@ public class InitTest extends javax.swing.JFrame
 
         comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        comIconP1.setSelectedIndex(0);
+        comIconP1.setSelectedIndex(1);
         comIconP1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comIconP1ItemStateChanged(evt);
@@ -202,7 +202,7 @@ public class InitTest extends javax.swing.JFrame
 
         comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        comIconP2.setSelectedIndex(0);
+        comIconP2.setSelectedIndex(2);
         comIconP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP2ActionPerformed(evt);
@@ -323,7 +323,7 @@ public class InitTest extends javax.swing.JFrame
 
         comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---",piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        comIconP3.setSelectedIndex(0);
+        comIconP3.setSelectedIndex(3);
         comIconP3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP3ActionPerformed(evt);
@@ -402,7 +402,7 @@ public class InitTest extends javax.swing.JFrame
 
         comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
-        comIconP4.setSelectedIndex(0);
+        comIconP4.setSelectedIndex(4);
         comIconP4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP4ActionPerformed(evt);
@@ -639,8 +639,7 @@ public class InitTest extends javax.swing.JFrame
                     .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)))
+                        .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEGS)
@@ -941,13 +940,13 @@ public class InitTest extends javax.swing.JFrame
       {
         if (Players == 2)
           {
-            comIconP3.setSelectedIndex(0);
+            comIconP3.setSelectedIndex(3);
             txtNameP3.setText(null);
-            comIconP4.setSelectedIndex(0);
+            comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
           } else if (Players == 3)
           {
-            comIconP4.setSelectedIndex(0);
+            comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
           }
 
