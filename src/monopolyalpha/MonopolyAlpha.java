@@ -16,16 +16,17 @@ public class MonopolyAlpha {
      */
     public static void main(String[] args)  {
         // TODO code application logic here
-        
-       Splash_Screen splash = new Splash_Screen();
-       splash.makeSplash();
-       
-       java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThemeSelect().setVisible(true);
-            }
-        });
-       
+        Testingmain ts = new Testingmain();
+        ts.GetProp();
+//       Splash_Screen splash = new Splash_Screen();
+//       splash.makeSplash();
+//       
+//       java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ThemeSelect().setVisible(true);
+//            }
+//        });
+//       
        
     }
 
