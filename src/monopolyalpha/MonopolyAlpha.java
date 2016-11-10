@@ -16,8 +16,8 @@ public class MonopolyAlpha {
      */
     public static void main(String[] args)  {
         // TODO code application logic here
-        Testingmain ts = new Testingmain();
-        ts.GetProp();
+        Properties_Data property= new Properties_Data();
+        property.GetProp();
 //       Splash_Screen splash = new Splash_Screen();
 //       splash.makeSplash();
 //       
