@@ -27,7 +27,7 @@ A. Canada Edition
 23.Regina
 24.London
 
-Special Cards:
+Special Cards:(6)
 
 1.CN Tower
 1.Parliament Hill
@@ -36,13 +36,13 @@ Special Cards:
 3.Tim Hortons
 4.CNR
 
-Corners:
+Corners:(4)
 1.Go
 2.Camp X
 3.Parking Ticket
 4.Lotto 649
 
-Others:
+Others:(6)
 1.Chance(2x)
 2.Community Chest(2x)
 3.HST
