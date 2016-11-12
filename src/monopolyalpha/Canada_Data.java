@@ -159,7 +159,7 @@ public class Canada_Data {
         property[19].rent3 = 520;
         property[19].rent4 = 700;
         property[19].rentH = 910;
-        property[19].priceHouse = 125;
+        property[19].priceHouse = 150;
         property[19].colour = 4;
         //[9] ST JOHNS
         property[9].price = 220;
@@ -168,7 +168,7 @@ public class Canada_Data {
         property[9].rent3 = 540;
         property[9].rent4 = 725;
         property[9].rentH = 925;
-        property[9].priceHouse = 125;
+        property[9].priceHouse = 150;
         property[9].colour = 4;
         //[14] QUEBEC CITY
         property[13].price = 220;
@@ -177,7 +177,7 @@ public class Canada_Data {
         property[13].rent3 = 540;
         property[13].rent4 = 725;
         property[13].rentH = 925;
-        property[13].priceHouse = 125;
+        property[13].priceHouse = 150;
         property[13].colour = 4;
         //[11] HALIFAX
         property[10].price = 250;
@@ -186,7 +186,7 @@ public class Canada_Data {
         property[10].rent3 = 550;
         property[10].rent4 = 750;
         property[10].rentH = 950;
-        property[10].priceHouse = 125;
+        property[10].priceHouse = 150;
         property[10].colour = 4;
         //======================================================================
         //SUITE OF RED----------------------------------------------------------
@@ -197,7 +197,7 @@ public class Canada_Data {
         property[14].rent3 = 750;
         property[14].rent4 = 975;
         property[14].rentH = 1000;
-        property[14].priceHouse = 150;
+        property[14].priceHouse = 200;
         property[14].colour = 5;
         //[7] EDMONTON
         property[7].price = 290;
@@ -206,7 +206,7 @@ public class Canada_Data {
         property[7].rent3 = 800;
         property[7].rent4 = 1000;
         property[7].rentH = 1100;
-        property[7].priceHouse = 150;
+        property[7].priceHouse = 200;
         property[7].colour = 5;
         //[5] CALGARY
         property[5].price = 290;
@@ -215,7 +215,7 @@ public class Canada_Data {
         property[5].rent3 = 800;
         property[5].rent4 = 1000;
         property[5].rentH = 1100;
-        property[5].priceHouse = 150;
+        property[5].priceHouse = 200;
         property[5].colour = 5;
         //[4] OTTAWA
         property[4].price = 325;
@@ -224,7 +224,7 @@ public class Canada_Data {
         property[4].rent3 = 850;
         property[4].rent4 = 1100;
         property[4].rentH = 1200;
-        property[4].priceHouse = 150;
+        property[4].priceHouse = 200;
         property[4].colour = 5;
         //======================================================================
         //SUITE OF ORANGE-------------------------------------------------------
