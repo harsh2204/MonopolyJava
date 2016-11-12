@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Harsh
+ * @author Harsh, Haard
  */
 public class SuperHero_Data {
      public String p1 = "Captain America";

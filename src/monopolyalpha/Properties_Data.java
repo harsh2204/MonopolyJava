@@ -20,8 +20,8 @@ public void GetProp(){
        for(int i = 0; i<prop.length;i++){
            prop[i]= new Properties_Data();
            prop[i].name = can.property[i].propName;
-           System.out.println("CANADA DATA NAME: "+can.property[i].propName+"          ");
-           System.out.print("TEST CLASS NAME: "+prop[i].name+"         ");
+           System.out.print("CANADA DATA NAME: "+can.property[i].propName+"          ");
+           System.out.println("TEST CLASS NAME: "+prop[i].name);
        }
    }
 }
