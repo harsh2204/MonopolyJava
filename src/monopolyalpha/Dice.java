@@ -6,13 +6,10 @@ package monopolyalpha;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 
 /**
  *

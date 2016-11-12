@@ -13,7 +13,7 @@ public class Properties_Data {
 
     public int rentB, rent1, rent2, rentH, colour;
     public String name;
-    Properties_Data prop[] = new Properties_Data[24];
+    Properties_Data prop[] = new Properties_Data[20];
 public void GetProp(){
        Canada_Data can = new Canada_Data();
        can.setProp();
