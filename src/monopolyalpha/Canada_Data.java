@@ -30,11 +30,11 @@ public class Canada_Data {
      4:Green
      5:Red
      6:Orange
-     7:White
-     8:Grey
+     7:Grey
+     8:White
      9:Black
      */
-    public Canada_Data property[] = new Canada_Data[20];
+    public Canada_Data property[] = new Canada_Data[26];
 
     public Canada_Data[] setProp() {
         //Initializing the object array.
@@ -62,6 +62,13 @@ public class Canada_Data {
         property[17].propName = "Vancouver";//
         property[18].propName = "Montreal";//
         property[19].propName = "Toronto";//
+        property[20].propName = "Parliament Hill";
+        property[21].propName = "Niagara Falls";
+        property[22].propName = "Canadian National Tower";
+        property[23].propName = "Canadian National Railway";
+        property[24].propName = "Royal Bank of Canada";
+        property[25].propName = "Tim Horton's";
+        
         
         //Adding property rents
         //======================================================================
@@ -230,7 +237,7 @@ public class Canada_Data {
         //======================================================================
         //ORANGE SUITE----------------------------------------------------------
         //VANCOUVER
-        property[17].price = 350;
+        property[17].price = 375;
         property[17].rent1 = 175;
         property[17].rent2 = 500;
         property[17].rent3 = 1100;
@@ -256,6 +263,32 @@ public class Canada_Data {
         property[19].rentH = 2100;
         property[19].priceHouse=300;
         property[19].colour = 6;
+        //======================================================================
+        //GREY SUITE------------------------------------------------------------
+        //PARLIAMENT HILL
+        //Rent = 25x roll, 50x roll if Niagara Falls is owned
+        property[20].price = 375;
+        property[20].colour = 7;
+        //NIAGARA FALLS
+        //Rent = 25x roll, 50x roll if Parliament is owned
+        property[21].price = 375;
+        property[21].colour = 7;
+        //CN TOWER
+        //Rent = 25x roll, 50x roll if CNR is owned
+        property[22].price = 375;
+        property[22].colour = 7;
+        //CNR
+        //Rent = 25x roll, 50x roll if CN Tower is owned
+        property[23].price = 375;
+        property[23].colour = 7;
+        //RBC
+        //Rent = 25x roll & tax rebate
+        property[24].price = 325;
+        property[24].colour = 7;
+        //TIM HORTON'S
+        //Rent = 25x roll & +25 rent on all properties
+        property[25].price = 325;
+        property[25].colour = 7;
         //======================================================================
         
         return property;
