@@ -34,6 +34,8 @@ public class Canada_Data {
      8:White
      9:Black
      */
+    public String chance[]= new String[16];
+    public String community[]= new String[16];
     public Canada_Data property[] = new Canada_Data[26];
 
     public Canada_Data[] setProp() {
@@ -292,5 +294,42 @@ public class Canada_Data {
         //======================================================================
         
         return property;
+    }
+    public void getCards(){
+        //SETTING UP THE CARDS
+        //CHANCE CHEST
+        chance[0]="Advance to Go (Collect $200) ";
+        chance[1]="Bank error in your favor – collect $75 ";
+        chance[2]="Insurance fees – Pay $50 ";
+        chance[3]="Get out of jail free – this card may be kept until needed, or sold ";
+        chance[4]="Holiday Fund matures - Receive $100";
+        chance[5]="It is your birthday Collect $10 from each player ";
+        chance[6]="Blue Jays opening night – collect $50 from every player for opening night seats ";
+        chance[7]="Income Tax refund – collect $20 ";
+        chance[8]="Life Insurance Matures – collect $100 ";
+        chance[9]="Pay Hospital Room Fees of $100 ";
+        chance[10]="Pay University Fees of $50 ";
+        chance[11]="Receive $25 Consultancy Fee ";
+        chance[12]="You are assessed for street winter damage – $40 per house, $115 per hotel ";
+        chance[13]="You have won second prize in a poutine eating contest– collect $10 ";
+        chance[14]="You inherit $100";
+        chance[15]="From sale of stock you get $50 ";
+        //COMMUNITY CHEST
+        community[0]="Advance to Go (Collect $200)";
+        community[1]="Advance to Windsor";
+        community[2]="Advance token to CN Tower";
+        community[3]="Advance token to CNR";
+        community[4]="Advance to St. John's – if you pass Go, collect $200";
+        community[5]="Bank pays you dividend of $50";
+        community[6]="Get out of Jail free – this card may be kept until needed, or traded/sold";
+        community[7]="Go back 3 spaces";
+        community[8]="Go directly to Jail – do not pass Go, do not collect $200";
+        community[9]="Make shingle repairs on all your property – for each house pay $25 – for each hotel $100";
+        community[10]="Pay poor tax of $15";
+        community[11]="Take a trip to Timmies – if you pass Go collect $200";
+        community[12]="Take a walk on the Niagara Falls – advance token to Niagara Falls";
+        community[13]="You have been elected chairman of the board – pay each player $50";
+        community[14]="You win a curling tournanment – collect $150";
+        community[15]="You have won a hockey game - collect $100";
     }
 }
