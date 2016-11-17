@@ -227,7 +227,12 @@ public class ThemeSelect extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-       System.exit(0);
+       this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new StartScreenfrm().setVisible(true);
+            }
+        });       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

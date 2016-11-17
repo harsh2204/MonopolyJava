@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -186,6 +186,9 @@
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="paneP1_P2">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="paneP1_P2.setBackground(new Color(0, 0, 0, 0));"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -225,14 +228,14 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtNameP2" min="-2" pref="183" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="btnRand2" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblIcon2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="comIconP2" min="-2" pref="183" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                  <Component id="btnRand2" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -266,7 +269,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblP2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNameP2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -279,9 +282,9 @@
                               <Component id="lblIcon2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="lblPiece2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="lblPiece2" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -669,6 +672,9 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="New Game"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="this.setContentPane(new JLabel(new ImageIcon(&quot;src/monopolyalpha/Mcdonalds Monopoly resize.png&quot;)));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>

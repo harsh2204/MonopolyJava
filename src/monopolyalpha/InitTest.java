@@ -5,6 +5,7 @@
  */
 package monopolyalpha;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.*;
 import javax.swing.*;
@@ -28,6 +29,7 @@ public class InitTest extends javax.swing.JFrame
     public Timer ti;
     ImageIcon[] combo = new ImageIcon[4];
     String[] combos = new String[5];
+    
     //Creates new form InitTest
 
     public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8)
@@ -147,6 +149,8 @@ public class InitTest extends javax.swing.JFrame
         sldPlayer.setValue(2);
         sldPlayer.setInverted(true);
 
+        paneP1_P2.setBackground(new Color(0, 0, 0, 0));
+
         comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP1.setSelectedIndex(1);
@@ -259,13 +263,13 @@ public class InitTest extends javax.swing.JFrame
                                 .addComponent(lblP2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneP1_P2Layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(btnRand2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP1_P2Layout.createSequentialGroup()
                                 .addComponent(lblIcon2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comIconP2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(paneP1_P2Layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(btnRand2)))
+                                .addComponent(comIconP2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPiece2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -469,6 +473,7 @@ public class InitTest extends javax.swing.JFrame
         lblTitle.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("New Game");
+        this.setContentPane(new JLabel(new ImageIcon("src/monopolyalpha/Mcdonalds Monopoly resize.png")));
 
         btnBack.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnBack.setText("<Back");
@@ -728,8 +733,12 @@ public class InitTest extends javax.swing.JFrame
     }//GEN-LAST:event_btnRand4MouseClicked
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // Exit
-        System.exit(0);
+        // Back
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ThemeSelect().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged

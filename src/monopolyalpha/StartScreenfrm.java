@@ -128,7 +128,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
 
-        this.setVisible(false);
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed

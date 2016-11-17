@@ -16,10 +16,14 @@ public class MonopolyAlpha {
      */
     public static void main(String[] args)  {
         // TODO code application logic here
-        Properties_Data property= new Properties_Data();
-        property.GetProp();
-//       Splash_Screen splash = new Splash_Screen();
-//       splash.makeSplash();
+        Splash_Screen splash = new Splash_Screen();
+       splash.makeSplash();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new StartScreenfrm().setVisible(true);
+            }
+        });
+       
 //       
 //       java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {

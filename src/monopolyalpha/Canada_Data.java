@@ -37,7 +37,7 @@ public class Canada_Data {
     public String chance[]= new String[16];
     public String community[]= new String[16];
     public Canada_Data property[] = new Canada_Data[26];
-
+    
     public Canada_Data[] setProp() {
         //Initializing the object array.
         for (int i = 0; i < property.length; i++) {
