@@ -18,44 +18,47 @@ public class StartScreenfrm extends javax.swing.JFrame {
      * Creates new form StartScreenfrm
      */
     
-//    public int w,h;
-//    public ImageIcon bkpc=new ImageIcon("E:\\ICS3UO\\Monopoly Game\\Monopoly\\src\\monopolyalpha\\bkpc.png"); school pc size
-//    public ImageIcon bkdesk=new ImageIcon("E:\\ICS3UO\\Monopoly Game\\Monopoly\\src\\monopolyalpha\\bkdesk.png"); lcd desktop0
-//    public ImageIcon bklap=new ImageIcon("E:\\ICS3UO\\Monopoly Game\\Monopoly\\src\\monopolyalpha\\bklap.png"); normal none wide laptop size
-//    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public int w,h;
+    public ImageIcon bkpc=new ImageIcon("src/monopolyalpha/bkpc.png"); //school pc size
+    public ImageIcon bkdesk=new ImageIcon("src/monopolyalpha/bkdesk.png"); //lcd desktop0
+    public ImageIcon bklap=new ImageIcon("src/monopolyalpha/bklap.png"); //normal none wide laptop size
+    public ImageIcon bklapwide=new ImageIcon("src/monopolyalpha/bklapwide.png");//wide laps
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     
     public StartScreenfrm() {
         initComponents();
 
         this.setExtendedState(MAXIMIZED_BOTH);
-//        w=(int) screenSize.getWidth();
-//        h=(int) screenSize.getHeight();
-//        bk.setSize(w,h);
-//        backset(w,h);
+        w=(int) screenSize.getWidth();
+        h=(int) screenSize.getHeight();
+        bk.setSize(w,h);
+        bkpanel.setSize(w,h);
+        System.out.println(w+""+h);
+        backset(w,h);
     }
     
-//    public void backset(int w,int h)
-//      {
-//        if(w==1024&&h==768)
-//          {
-////            bk.setSize(w, h);
-//            bk.setIcon(bkpc);
-//          }
-//        else if(w==1280&&h==768)
-//          {
-////            bk.setSize(w, h);
-//            bk.setIcon(bkdesk);
-//          }
-//        else if(w==1280&&h==1024)
-//          {
-////            bk.setSize(w, h);
-//            bk.setIcon(bklap);
-//          }
-//        else{
-//            bk.setIcon(bkdesk);
-//        }
-//      }
+    public void backset(int w,int h)
+      {
+        if(w==1024&&h==768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bkpc);
+          }
+        else if(w==1280&&h==768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bkdesk);
+          }
+        else if(w==1280&&h==1024)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bklap);
+          }
+        else if (w==1366&&h==768){
+            bk.setIcon(bklapwide);
+        }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,11 +70,12 @@ public class StartScreenfrm extends javax.swing.JFrame {
     private void initComponents()
     {
 
-        btnExit = new javax.swing.JButton();
-        btnLoadGame = new javax.swing.JButton();
+        bkpanel = new javax.swing.JPanel();
         btnNewGame = new javax.swing.JButton();
+        btnLoadGame = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         bk = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,29 +83,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);
 
-        btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit);
-        btnExit.setBounds(410, 630, 220, 70);
-
-        btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnLoadGame.setText("Load Game");
-        btnLoadGame.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnLoadGameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLoadGame);
-        btnLoadGame.setBounds(410, 360, 220, 70);
+        bkpanel.setOpaque(false);
 
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnNewGame.setText("New Game");
@@ -112,8 +94,16 @@ public class StartScreenfrm extends javax.swing.JFrame {
                 btnNewGameActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNewGame);
-        btnNewGame.setBounds(410, 270, 220, 70);
+
+        btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnLoadGame.setText("Load Game");
+        btnLoadGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnLoadGameActionPerformed(evt);
+            }
+        });
 
         btnHelp.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnHelp.setText("Help");
@@ -124,8 +114,6 @@ public class StartScreenfrm extends javax.swing.JFrame {
                 btnHelpActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHelp);
-        btnHelp.setBounds(410, 450, 220, 70);
 
         btnAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnAbout.setText("About");
@@ -136,15 +124,55 @@ public class StartScreenfrm extends javax.swing.JFrame {
                 btnAboutActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAbout);
-        btnAbout.setBounds(410, 540, 220, 70);
+
+        btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout bkpanelLayout = new javax.swing.GroupLayout(bkpanel);
+        bkpanel.setLayout(bkpanelLayout);
+        bkpanelLayout.setHorizontalGroup(
+            bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bkpanelLayout.createSequentialGroup()
+                .addContainerGap(285, Short.MAX_VALUE)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLoadGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(285, Short.MAX_VALUE))
+        );
+        bkpanelLayout.setVerticalGroup(
+            bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bkpanelLayout.createSequentialGroup()
+                .addContainerGap(253, Short.MAX_VALUE)
+                .addComponent(btnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnLoadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(bkpanel);
+        bkpanel.setBounds(0, 0, 790, 760);
 
         bk.setLabelFor(bk);
         bk.setMaximumSize(new java.awt.Dimension(1900, 1900));
         bk.setPreferredSize(new java.awt.Dimension(1024, 768));
         getContentPane().add(bk);
-        bk.setBounds(0, 0, 1024, 768);
-        bk.getAccessibleContext().setAccessibleParent(null);
+        bk.setBounds(0, 0, 1024, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,6 +247,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bk;
+    private javax.swing.JPanel bkpanel;
     private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHelp;
