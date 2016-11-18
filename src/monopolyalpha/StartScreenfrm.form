@@ -45,7 +45,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="285" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnLoadGame" max="32767" attributes="0"/>
+                      <Component id="btnLoadGame" pref="0" max="32767" attributes="0"/>
                       <Component id="btnHelp" max="32767" attributes="0"/>
                       <Component id="btnAbout" max="32767" attributes="0"/>
                       <Component id="btnExit" max="32767" attributes="0"/>
@@ -79,7 +79,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="New Game"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/monopolyalpha/ngnpr.png"/>
+            </Property>
+            <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/monopolyalpha/ngprs.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewGameActionPerformed"/>
@@ -90,7 +95,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Load Game"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/monopolyalpha/lgnpr.png"/>
+            </Property>
+            <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/monopolyalpha/lgprs.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoadGameActionPerformed"/>

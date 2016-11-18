@@ -86,7 +86,8 @@ public class StartScreenfrm extends javax.swing.JFrame {
         bkpanel.setOpaque(false);
 
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnNewGame.setText("New Game");
+        btnNewGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/ngnpr.png"))); // NOI18N
+        btnNewGame.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/ngprs.png"))); // NOI18N
         btnNewGame.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -96,7 +97,8 @@ public class StartScreenfrm extends javax.swing.JFrame {
         });
 
         btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnLoadGame.setText("Load Game");
+        btnLoadGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/lgnpr.png"))); // NOI18N
+        btnLoadGame.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/lgprs.png"))); // NOI18N
         btnLoadGame.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -142,7 +144,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bkpanelLayout.createSequentialGroup()
                 .addContainerGap(285, Short.MAX_VALUE)
                 .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLoadGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLoadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
