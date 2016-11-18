@@ -4,6 +4,8 @@
  */
 package monopolyalpha;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,13 +17,45 @@ public class StartScreenfrm extends javax.swing.JFrame {
     /**
      * Creates new form StartScreenfrm
      */
+    
+//    public int w,h;
+//    public ImageIcon bkpc=new ImageIcon("E:\\ICS3UO\\Monopoly Game\\Monopoly\\src\\monopolyalpha\\bkpc.png"); school pc size
+//    public ImageIcon bkdesk=new ImageIcon("E:\\ICS3UO\\Monopoly Game\\Monopoly\\src\\monopolyalpha\\bkdesk.png"); lcd desktop0
+//    public ImageIcon bklap=new ImageIcon("E:\\ICS3UO\\Monopoly Game\\Monopoly\\src\\monopolyalpha\\bklap.png"); normal none wide laptop size
+//    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+    
     public StartScreenfrm() {
         initComponents();
 
         this.setExtendedState(MAXIMIZED_BOTH);
-
-
+//        w=(int) screenSize.getWidth();
+//        h=(int) screenSize.getHeight();
+//        bk.setSize(w,h);
+//        backset(w,h);
     }
+    
+//    public void backset(int w,int h)
+//      {
+//        if(w==1024&&h==768)
+//          {
+////            bk.setSize(w, h);
+//            bk.setIcon(bkpc);
+//          }
+//        else if(w==1280&&h==768)
+//          {
+////            bk.setSize(w, h);
+//            bk.setIcon(bkdesk);
+//          }
+//        else if(w==1280&&h==1024)
+//          {
+////            bk.setSize(w, h);
+//            bk.setIcon(bklap);
+//          }
+//        else{
+//            bk.setIcon(bkdesk);
+//        }
+//      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,14 +64,15 @@ public class StartScreenfrm extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         btnExit = new javax.swing.JButton();
         btnLoadGame = new javax.swing.JButton();
         btnNewGame = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
-        lblBackGround = new javax.swing.JLabel();
+        bk = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -46,8 +81,10 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExitActionPerformed(evt);
             }
         });
@@ -56,8 +93,10 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
         btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnLoadGame.setText("Load Game");
-        btnLoadGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLoadGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLoadGameActionPerformed(evt);
             }
         });
@@ -66,8 +105,10 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnNewGame.setText("New Game");
-        btnNewGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnNewGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnNewGameActionPerformed(evt);
             }
         });
@@ -76,8 +117,10 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
         btnHelp.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnHelp.setText("Help");
-        btnHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnHelp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnHelpActionPerformed(evt);
             }
         });
@@ -86,17 +129,22 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
         btnAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnAbout.setText("About");
-        btnAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAbout.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAboutActionPerformed(evt);
             }
         });
         getContentPane().add(btnAbout);
         btnAbout.setBounds(410, 540, 220, 70);
 
-        lblBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Mcdonalds Monopoly resize.png"))); // NOI18N
-        getContentPane().add(lblBackGround);
-        lblBackGround.setBounds(0, 0, 1030, 768);
+        bk.setLabelFor(bk);
+        bk.setMaximumSize(new java.awt.Dimension(1900, 1900));
+        bk.setPreferredSize(new java.awt.Dimension(1024, 768));
+        getContentPane().add(bk);
+        bk.setBounds(0, 0, 1024, 768);
+        bk.getAccessibleContext().setAccessibleParent(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,11 +218,11 @@ public class StartScreenfrm extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bk;
     private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnLoadGame;
     private javax.swing.JButton btnNewGame;
-    private javax.swing.JLabel lblBackGround;
     // End of variables declaration//GEN-END:variables
 }
