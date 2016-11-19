@@ -16,24 +16,25 @@ import javax.swing.Timer;
  *
  * @author Harsh, Karmit, Haard, Neel(barely)
  */
-public class InitTest extends javax.swing.JFrame
-  {
+public class InitTest extends javax.swing.JFrame {
+
     //Initialize piece name and image variables
 
-    public int startmoney,dicenum = 1,lotterymoney,counter,Players;
-    public String piece1,piece2,piece3,piece4,piece5,piece6,piece7,piece8;
-    public ImageIcon i1,i2,i3,i4,i5,i6,i7,i8;
+    String theme;
+    public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players;
+    public String piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8;
+    public ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
     ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     public String nameo, t1, t2, t3, t4;
     NickNames nickName = new NickNames();
     public Timer ti;
     ImageIcon[] combo = new ImageIcon[4];
     String[] combos = new String[5];
-    
+    String[][] player = new String[4][2];// [pID][name, icon path]
     //Creates new form InitTest
 
-    public InitTest(String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8)
-      {
+    public InitTest(String theme, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
+        this.theme = theme;
 //      Add piece name and icon to Pane  
         this.piece1 = p1;
         this.piece2 = p2;
@@ -68,22 +69,19 @@ public class InitTest extends javax.swing.JFrame
         images.add(i6);
         images.add(i7);
         images.add(i8);
-      }
+    }
 
 //  Use slider to set number of players playing
-    private void numPlayers()
-      {
-        sldPlayer.addChangeListener(new ChangeListener()
-          {
+    private void numPlayers() {
+        sldPlayer.addChangeListener(new ChangeListener() {
             @Override
-            public void stateChanged(ChangeEvent e)
-              {
+            public void stateChanged(ChangeEvent e) {
                 Players = sldPlayer.getValue();
                 checker();
                 reset();
-              }
-          });
-      }
+            }
+        });
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -541,6 +539,11 @@ public class InitTest extends javax.swing.JFrame
         comBonAmt.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         comBonAmt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$50", "$100", "$120" }));
         comBonAmt.setEnabled(false);
+        comBonAmt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comBonAmtActionPerformed(evt);
+            }
+        });
 
         lblBailFee.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblBailFee.setText("BAIL FEE:");
@@ -549,6 +552,11 @@ public class InitTest extends javax.swing.JFrame
         comBailFee.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         comBailFee.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$100", "$150", "$200" }));
         comBailFee.setEnabled(false);
+        comBailFee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comBailFeeActionPerformed(evt);
+            }
+        });
 
         btnDice.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnDice.setText("1 Dice");
@@ -743,51 +751,63 @@ public class InitTest extends javax.swing.JFrame
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
     }//GEN-LAST:event_comIconP1ItemStateChanged
-
+    public void setPlayers() {
+        if (sldPlayer.getValue() < 3) {
+            player[0][0] = txtNameP1.getText();
+            System.out.println(lblPiece1.getDisabledIcon().toString());
+            player[1][0] = txtNameP2.getText();
+            player[0][1] = lblPiece1.getDisabledIcon().toString();
+            player[1][1] = lblPiece2.getDisabledIcon().toString();
+        }
+        if (sldPlayer.getValue() > 2) {
+            player[0][0] = txtNameP1.getText();
+            player[1][0] = txtNameP2.getText();
+            player[2][0] = txtNameP3.getText();
+            player[0][1] = lblPiece1.getDisabledIcon().toString();
+            player[1][1] = lblPiece2.getDisabledIcon().toString();
+            player[2][1] = lblPiece3.getDisabledIcon().toString();
+        }
+        if (sldPlayer.getValue() > 3) {
+            player[3][0] = txtNameP4.getText();
+            player[3][1] = lblPiece4.getDisabledIcon().toString();
+        }       
+    }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if (paneP1_P2.isVisible() && paneP3.isVisible() && PaneP4.isVisible())
-          {
-            pliconduplicate(Players);
-          } else if (paneP1_P2.isVisible() && paneP3.isVisible())
-          {
-            pliconduplicate(Players);
-          } else if (paneP1_P2.isVisible())
-          {
-            pliconduplicate(Players);
-          }
+        setPlayers();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Board(player, sldPlayer.getValue(), startmoney, dicenum, comEGS.getSelectedIndex(), rndSnake.isSelected(), bonusmoney, rndBail.isSelected(), jailfee, theme).setVisible(true);
+            }
+        });
 
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             combos[0] = txtNameP1.getText();
             playernameduplicate(1);
-          }
+        }
     }//GEN-LAST:event_txtNameP1KeyPressed
 
     private void txtNameP2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP2KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             combos[1] = txtNameP1.getText();
             playernameduplicate(2);
-          }
+        }
     }//GEN-LAST:event_txtNameP2KeyPressed
 
     private void txtNameP3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP3KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             combos[2] = txtNameP1.getText();
             playernameduplicate(3);
-          }
+        }
     }//GEN-LAST:event_txtNameP3KeyPressed
 
     private void txtNameP4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP4KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             combos[3] = txtNameP1.getText();
             playernameduplicate(4);
-          }
+        }
     }//GEN-LAST:event_txtNameP4KeyPressed
 
     private void txtNameP1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP1FocusLost
@@ -814,8 +834,7 @@ public class InitTest extends javax.swing.JFrame
         //Get startup value
         int i = comMoney.getSelectedIndex();
         //Add money to public int
-        switch (i)
-          {
+        switch (i) {
 
             case 1:
                 startmoney = 500;
@@ -829,7 +848,7 @@ public class InitTest extends javax.swing.JFrame
             case 4:
                 startmoney = 2000;
                 break;
-          }
+        }
     }//GEN-LAST:event_comMoneyActionPerformed
 
     private void btnRand4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRand4ActionPerformed
@@ -851,27 +870,60 @@ public class InitTest extends javax.swing.JFrame
 
     private void btnDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiceActionPerformed
         // TODO add your handling code here:
-        if (dicenum == 1)
-          {
+        if (dicenum == 1) {
             btnDice.setText("2 Dice");
             dicenum = 2;
-          } else
-          {
+        } else {
             btnDice.setText("1 Dice");
             dicenum = 1;
-          }
+        }
     }//GEN-LAST:event_btnDiceActionPerformed
 
-    public void NextCopy(int plnum)
-      {
-        pliconduplicate(plnum);
-      }
+    private void comBonAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBonAmtActionPerformed
+        // TODO add your handling code here:
+        //Get bonus value
+        int i = comBonAmt.getSelectedIndex();
+        //Add money to public int
+        switch (i) {
 
-    public void checker()
-      {
+            case 1:
+                bonusmoney = 50;
+                break;
+            case 2:
+                bonusmoney = 100;
+                break;
+            case 3:
+                bonusmoney = 120;
+                break;
+        }
+    }//GEN-LAST:event_comBonAmtActionPerformed
+
+    private void comBailFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBailFeeActionPerformed
+        // TODO add your handling code here:
+        //Get fee value
+        int i = comBailFee.getSelectedIndex();
+        //Add money to public int
+        switch (i) {
+
+            case 1:
+                bonusmoney = 100;
+                break;
+            case 2:
+                bonusmoney = 150;
+                break;
+            case 3:
+                bonusmoney = 200;
+                break;
+        }
+    }//GEN-LAST:event_comBailFeeActionPerformed
+
+    public void NextCopy(int plnum) {
+        pliconduplicate(plnum);
+    }
+
+    public void checker() {
         Players = sldPlayer.getValue();
-        switch (Players)
-          {
+        switch (Players) {
             //If there are 2 players selected
             case 2:
                 paneP3.setVisible(false);
@@ -887,25 +939,22 @@ public class InitTest extends javax.swing.JFrame
                 paneP3.setVisible(true);
                 PaneP4.setVisible(true);
                 break;
-          }
-      }
+        }
+    }
 
-    public void pliconduplicate(int plnum)
-      {
+    public void pliconduplicate(int plnum) {
         //Get anmes of each player
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
 
-        switch (plnum)
-          {
+        switch (plnum) {
             //If there is 1 player selected
             case 1:
                 //If Player 1 name is same as Player 2 name
 
-                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3])
-                  {
+                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3]) {
                     //Set piece image to blank
                     lblPiece1.setDisabledIcon(null);
                     lblPiece1.revalidate();
@@ -913,150 +962,126 @@ public class InitTest extends javax.swing.JFrame
                     comIconP1.setSelectedIndex(0);
                     //Prompt user to chane game piece
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                  }
+                }
                 break;
             case 2:
-                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3])
-                  {
+                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3]) {
                     lblPiece2.setDisabledIcon(null);
                     lblPiece2.revalidate();
                     comIconP2.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                  }
+                }
                 break;
             case 3:
-                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3])
-                  {
+                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3]) {
                     lblPiece3.setDisabledIcon(null);
                     lblPiece3.revalidate();
                     comIconP3.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                  }
+                }
                 break;
             case 4:
-                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2])
-                  {
+                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2]) {
                     lblPiece4.setDisabledIcon(null);
                     lblPiece4.revalidate();
                     comIconP4.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                  }
+                }
                 break;
-          }
-      }
+        }
+    }
 
-    public void reset()
-      {
-        if (Players == 2)
-          {
+    public void reset() {
+        if (Players == 2) {
             comIconP3.setSelectedIndex(3);
             txtNameP3.setText(null);
             comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
-          } else if (Players == 3)
-          {
+        } else if (Players == 3) {
             comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
-          }
+        }
 
-      }
+    }
 
-    public void playernameduplicate(int plnum)
-      {
+    public void playernameduplicate(int plnum) {
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
-        if (t1.isEmpty() == true)
-          {
+        if (t1.isEmpty() == true) {
             t1 = "1";
-          }
-        if (t2.isEmpty() == true)
-          {
+        }
+        if (t2.isEmpty() == true) {
             t2 = "2";
-          }
-        if (t3.isEmpty() == true)
-          {
+        }
+        if (t3.isEmpty() == true) {
             t3 = "3";
-          }
-        if (t4.isEmpty() == true)
-          {
+        }
+        if (t4.isEmpty() == true) {
             t4 = "4";
-          }
+        }
 
-        switch (plnum)
-          {
+        switch (plnum) {
             case 1:
-                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4))
-                  {
+                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP1.setText(null);
                     t1 = null;
-                  }
+                }
                 break;
 
             case 2:
-                if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4))
-                  {
+                if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP2.setText(null);
                     t2 = null;
-                  }
+                }
                 break;
             case 3:
-                if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4))
-                  {
+                if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP3.setText(null);
                     t3 = null;
-                  }
+                }
                 break;
             case 4:
-                if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3))
-                  {
+                if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3)) {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP4.setText(null);
                     t4 = null;
-                  }
+                }
                 break;
 
-          }
-      }
+        }
+    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
@@ -1067,7 +1092,7 @@ public class InitTest extends javax.swing.JFrame
 //                new InitTest().setVisible(true);
 //              }
 //          });
-      }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaneP4;
     private javax.swing.JButton btnBack;

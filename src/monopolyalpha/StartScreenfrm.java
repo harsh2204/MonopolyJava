@@ -67,8 +67,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         bkpanel = new javax.swing.JPanel();
         btnNewGame = new javax.swing.JButton();
@@ -88,10 +87,8 @@ public class StartScreenfrm extends javax.swing.JFrame {
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnNewGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/ngnpr.png"))); // NOI18N
         btnNewGame.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/ngprs.png"))); // NOI18N
-        btnNewGame.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnNewGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewGameActionPerformed(evt);
             }
         });
@@ -99,40 +96,32 @@ public class StartScreenfrm extends javax.swing.JFrame {
         btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnLoadGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/lgnpr.png"))); // NOI18N
         btnLoadGame.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/lgprs.png"))); // NOI18N
-        btnLoadGame.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLoadGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadGameActionPerformed(evt);
             }
         });
 
         btnHelp.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnHelp.setText("Help");
-        btnHelp.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHelpActionPerformed(evt);
             }
         });
 
         btnAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnAbout.setText("About");
-        btnAbout.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAboutActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });

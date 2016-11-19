@@ -42,7 +42,7 @@ public class ThemeSelect extends javax.swing.JFrame {
     public void goNext(){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InitTest(piece1,piece2,piece3,piece4,piece5,piece6,piece7,piece8,i1,i2,i3,i4,i5,i6,i7,i8).setVisible(true);
+                new InitTest(theme,piece1,piece2,piece3,piece4,piece5,piece6,piece7,piece8,i1,i2,i3,i4,i5,i6,i7,i8).setVisible(true);
             }
         });
     

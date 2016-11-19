@@ -23,17 +23,6 @@ public class Canada_Data {
     public ImageIcon i4 = new ImageIcon("Icons/Pieces/Canada/4.png");
     String propName;
     int price,priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
-    /*Colour Scheme Codes:
-     1:Yellow
-     2:Blue
-     3:Purple
-     4:Green
-     5:Red
-     6:Orange
-     7:Grey
-     8:White
-     9:Black
-     */
     public String chance[]= new String[16];
     public String community[]= new String[16];
     public Canada_Data property[] = new Canada_Data[26];

@@ -805,6 +805,9 @@
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBonAmtActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblBailFee">
       <Properties>
@@ -829,6 +832,9 @@
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBailFeeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDice">
       <Properties>
