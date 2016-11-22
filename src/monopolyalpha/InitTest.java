@@ -6,6 +6,8 @@
 package monopolyalpha;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.*;
 import javax.swing.*;
@@ -16,10 +18,16 @@ import javax.swing.Timer;
  *
  * @author Harsh, Karmit, Haard, Neel(barely)
  */
-public class InitTest extends javax.swing.JFrame {
+public class InitTest extends javax.swing.JFrame
+  {
 
     //Initialize piece name and image variables
-
+    public int w, h;
+    public ImageIcon bkpc = new ImageIcon("src/monopolyalpha/bkpc.png"); //school pc size
+    public ImageIcon bkdesk = new ImageIcon("src/monopolyalpha/bkdesk.png"); //lcd desktop0
+    public ImageIcon bklap = new ImageIcon("src/monopolyalpha/bklap.png"); //normal none wide laptop size
+    public ImageIcon bklapwide = new ImageIcon("src/monopolyalpha/bklapwide.png");//wide laps
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     String theme;
     public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players;
     public String piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8;
@@ -33,7 +41,8 @@ public class InitTest extends javax.swing.JFrame {
     String[][] player = new String[4][2];// [pID][name, icon path]
     //Creates new form InitTest
 
-    public InitTest(String theme, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8) {
+    public InitTest(String theme, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, ImageIcon ico1, ImageIcon ico2, ImageIcon ico3, ImageIcon ico4, ImageIcon ico5, ImageIcon ico6, ImageIcon ico7, ImageIcon ico8)
+      {
         this.theme = theme;
 //      Add piece name and icon to Pane  
         this.piece1 = p1;
@@ -69,24 +78,56 @@ public class InitTest extends javax.swing.JFrame {
         images.add(i6);
         images.add(i7);
         images.add(i8);
-    }
 
+        w = (int) screenSize.getWidth();
+        h = (int) screenSize.getHeight();
+        bkpanel.setSize(w, h);
+        bk.setSize(w, h);
+        System.out.println(w + "" + h);
+        backset(w, h);
+      }
+
+    public void backset(int w, int h)
+      {
+        if (w == 1024 && h == 768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bkpc);
+          } else if (w == 1280 && h == 768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bkdesk);
+          } else if (w == 1280 && h == 1024)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bklap);
+          } else if (w == 1366 && h == 768)
+          {
+            bk.setIcon(bklapwide);
+          }
+      }
 //  Use slider to set number of players playing
-    private void numPlayers() {
-        sldPlayer.addChangeListener(new ChangeListener() {
+
+    private void numPlayers()
+      {
+        sldPlayer.addChangeListener(new ChangeListener()
+          {
             @Override
-            public void stateChanged(ChangeEvent e) {
+            public void stateChanged(ChangeEvent e)
+              {
                 Players = sldPlayer.getValue();
                 checker();
                 reset();
-            }
-        });
-    }
+              }
+          });
+      }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
+        bkpanel = new javax.swing.JPanel();
         sldPlayer = new javax.swing.JSlider();
         paneP1_P2 = new javax.swing.JPanel();
         comIconP1 = new javax.swing.JComboBox();
@@ -130,10 +171,14 @@ public class InitTest extends javax.swing.JFrame {
         lblBailFee = new javax.swing.JLabel();
         comBailFee = new javax.swing.JComboBox();
         btnDice = new javax.swing.JButton();
+        bk = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bkpanel.setOpaque(false);
 
         sldPlayer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         sldPlayer.setMajorTickSpacing(2);
@@ -146,19 +191,25 @@ public class InitTest extends javax.swing.JFrame {
         sldPlayer.setSnapToTicks(true);
         sldPlayer.setValue(2);
         sldPlayer.setInverted(true);
+        sldPlayer.setOpaque(false);
 
         paneP1_P2.setBackground(new Color(0, 0, 0, 0));
+        paneP1_P2.setOpaque(false);
 
         comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP1.setSelectedIndex(1);
-        comIconP1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        comIconP1.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
                 comIconP1ItemStateChanged(evt);
             }
         });
-        comIconP1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comIconP1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comIconP1ActionPerformed(evt);
             }
         });
@@ -167,13 +218,17 @@ public class InitTest extends javax.swing.JFrame {
         lblP1.setText("Player 1:");
 
         txtNameP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txtNameP1.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txtNameP1FocusLost(evt);
             }
         });
-        txtNameP1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtNameP1.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtNameP1KeyPressed(evt);
             }
         });
@@ -191,13 +246,17 @@ public class InitTest extends javax.swing.JFrame {
         lblP2.setText("Player 2:");
 
         txtNameP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txtNameP2.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txtNameP2FocusLost(evt);
             }
         });
-        txtNameP2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtNameP2.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtNameP2KeyPressed(evt);
             }
         });
@@ -205,8 +264,10 @@ public class InitTest extends javax.swing.JFrame {
         comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP2.setSelectedIndex(2);
-        comIconP2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comIconP2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comIconP2ActionPerformed(evt);
             }
         });
@@ -216,16 +277,20 @@ public class InitTest extends javax.swing.JFrame {
 
         btnRand1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand1.setText("Random 1");
-        btnRand1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnRand1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnRand1MouseClicked(evt);
             }
         });
 
         btnRand2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand2.setText("Random 2");
-        btnRand2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnRand2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnRand2MouseClicked(evt);
             }
         });
@@ -305,6 +370,8 @@ public class InitTest extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        paneP3.setOpaque(false);
+
         lblIcon3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblIcon3.setText("Icon:");
 
@@ -312,13 +379,17 @@ public class InitTest extends javax.swing.JFrame {
         lblP3.setText("Player 3:");
 
         txtNameP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txtNameP3.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txtNameP3FocusLost(evt);
             }
         });
-        txtNameP3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtNameP3.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtNameP3KeyPressed(evt);
             }
         });
@@ -326,8 +397,10 @@ public class InitTest extends javax.swing.JFrame {
         comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---",piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP3.setSelectedIndex(3);
-        comIconP3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comIconP3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comIconP3ActionPerformed(evt);
             }
         });
@@ -337,8 +410,10 @@ public class InitTest extends javax.swing.JFrame {
 
         btnRand3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand3.setText("Random 3");
-        btnRand3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnRand3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnRand3MouseClicked(evt);
             }
         });
@@ -351,27 +426,25 @@ public class InitTest extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(paneP3Layout.createSequentialGroup()
-                        .addComponent(lblP3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNameP3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneP3Layout.createSequentialGroup()
                         .addComponent(lblIcon3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paneP3Layout.createSequentialGroup()
-                        .addComponent(btnRand3)
-                        .addGap(75, 75, 75)))
+                        .addComponent(lblP3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRand3)
+                            .addComponent(txtNameP3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
         paneP3Layout.setVerticalGroup(
             paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP3Layout.createSequentialGroup()
+            .addGroup(paneP3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(paneP3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP3Layout.createSequentialGroup()
                         .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblP3)
                             .addComponent(txtNameP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -380,9 +453,14 @@ public class InitTest extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIcon3))))
-                .addContainerGap())
+                            .addComponent(lblIcon3))
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP3Layout.createSequentialGroup()
+                        .addComponent(lblPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
+
+        PaneP4.setOpaque(false);
 
         lblIcon4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblIcon4.setText("Icon:");
@@ -391,13 +469,17 @@ public class InitTest extends javax.swing.JFrame {
         lblP4.setText("Player 4:");
 
         txtNameP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP4.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txtNameP4.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txtNameP4FocusLost(evt);
             }
         });
-        txtNameP4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtNameP4.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtNameP4KeyPressed(evt);
             }
         });
@@ -405,8 +487,10 @@ public class InitTest extends javax.swing.JFrame {
         comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP4.setSelectedIndex(4);
-        comIconP4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comIconP4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comIconP4ActionPerformed(evt);
             }
         });
@@ -416,13 +500,17 @@ public class InitTest extends javax.swing.JFrame {
 
         btnRand4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand4.setText("Random 4");
-        btnRand4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnRand4.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 btnRand4MouseClicked(evt);
             }
         });
-        btnRand4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRand4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRand4ActionPerformed(evt);
             }
         });
@@ -452,19 +540,20 @@ public class InitTest extends javax.swing.JFrame {
         PaneP4Layout.setVerticalGroup(
             PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaneP4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblP4)
+                    .addComponent(txtNameP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRand4)
+                .addGap(18, 18, 18)
+                .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comIconP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblIcon4))
+                .addGap(36, 36, 36))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaneP4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PaneP4Layout.createSequentialGroup()
-                        .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblP4)
-                            .addComponent(txtNameP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRand4)
-                        .addGap(18, 18, 18)
-                        .addGroup(PaneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comIconP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIcon4)))
-                    .addComponent(lblPiece4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblPiece4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -475,16 +564,20 @@ public class InitTest extends javax.swing.JFrame {
 
         btnBack.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnBack.setText("<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBackActionPerformed(evt);
             }
         });
 
         btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnNext.setText("Next>");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnNext.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnNextActionPerformed(evt);
             }
         });
@@ -493,13 +586,17 @@ public class InitTest extends javax.swing.JFrame {
         comMoney.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$ 500", "$ 1000", "$ 1500", "$ 2000" }));
         comMoney.setAutoscrolls(true);
         comMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        comMoney.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        comMoney.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
                 comMoneyItemStateChanged(evt);
             }
         });
-        comMoney.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comMoney.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comMoneyActionPerformed(evt);
             }
         });
@@ -515,19 +612,32 @@ public class InitTest extends javax.swing.JFrame {
 
         comEGS.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         comEGS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Last player standing", "45 turns per player", "60 turns per player", "75 turns per player" }));
+        comEGS.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                comEGSActionPerformed(evt);
+            }
+        });
 
         rndSnake.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         rndSnake.setText("Snake Eye Bonus");
-        rndSnake.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rndSnake.setOpaque(false);
+        rndSnake.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 rndSnakeActionPerformed(evt);
             }
         });
 
         rndBail.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         rndBail.setText("JAIL BAIL");
-        rndBail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rndBail.setOpaque(false);
+        rndBail.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 rndBailActionPerformed(evt);
             }
         });
@@ -539,8 +649,10 @@ public class InitTest extends javax.swing.JFrame {
         comBonAmt.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         comBonAmt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$50", "$100", "$120" }));
         comBonAmt.setEnabled(false);
-        comBonAmt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comBonAmt.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comBonAmtActionPerformed(evt);
             }
         });
@@ -552,128 +664,130 @@ public class InitTest extends javax.swing.JFrame {
         comBailFee.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         comBailFee.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$100", "$150", "$200" }));
         comBailFee.setEnabled(false);
-        comBailFee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        comBailFee.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 comBailFeeActionPerformed(evt);
             }
         });
 
         btnDice.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnDice.setText("1 Dice");
-        btnDice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnDiceActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout bkpanelLayout = new javax.swing.GroupLayout(bkpanel);
+        bkpanel.setLayout(bkpanelLayout);
+        bkpanelLayout.setHorizontalGroup(
+            bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bkpanelLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addComponent(lblEGS)
+                        .addGap(70, 70, 70)
+                        .addComponent(comEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rndBail)
+                            .addGroup(bkpanelLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(lblBailFee)))
+                        .addGap(43, 43, 43)
+                        .addComponent(comBailFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
                         .addComponent(paneP1_P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(sldPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(paneP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PaneP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEGS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnBack)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnDice)
-                                    .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNext))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblBailFee)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(comBailFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(114, 114, 114)
-                                            .addComponent(rndBail))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(150, 150, 150)
-                                            .addComponent(lblBonAmt)
-                                            .addGap(43, 43, 43)
-                                            .addComponent(comBonAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PaneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bkpanelLayout.createSequentialGroup()
                         .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(374, 374, 374)
-                        .addComponent(rndSnake)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(70, 70, 70)
+                        .addComponent(btnDice)
+                        .addGap(221, 221, 221)
+                        .addComponent(rndSnake))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150)
+                        .addComponent(lblBonAmt)
+                        .addGap(43, 43, 43)
+                        .addComponent(comBonAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(816, 816, 816)
+                        .addComponent(btnNext)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+        bkpanelLayout.setVerticalGroup(
+            bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bkpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblTitle)
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneP1_P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sldPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(bkpanelLayout.createSequentialGroup()
                         .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(PaneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(paneP1_P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PaneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDice, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDice)))
+                        .addComponent(btnDice))
                     .addComponent(rndSnake))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEGS)
-                    .addComponent(comEGS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(4, 4, 4)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(lblStartup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(comMoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblBonAmt))
+                    .addComponent(comBonAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblEGS))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(comEGS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addComponent(rndBail)
+                        .addGap(1, 1, 1)
+                        .addComponent(lblBailFee))
+                    .addGroup(bkpanelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(comBailFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(btnNext))
-                .addContainerGap(12, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(513, 513, 513)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBonAmt)
-                    .addComponent(comBonAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(rndBail)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBailFee)
-                    .addComponent(comBailFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        getContentPane().add(bkpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 650));
+        getContentPane().add(bk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -742,72 +856,80 @@ public class InitTest extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // Back
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThemeSelect().setVisible(true);
-            }
-        });
+        this.setVisible(false);
+        new ThemeSelect().setVisible(true);
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
     }//GEN-LAST:event_comIconP1ItemStateChanged
-    public void setPlayers() {
-        if (sldPlayer.getValue() < 3) {
+    public void setPlayers()
+      {
+        if (sldPlayer.getValue() < 3)
+          {
             player[0][0] = txtNameP1.getText();
             System.out.println(lblPiece1.getDisabledIcon().toString());
             player[1][0] = txtNameP2.getText();
             player[0][1] = lblPiece1.getDisabledIcon().toString();
             player[1][1] = lblPiece2.getDisabledIcon().toString();
-        }
-        if (sldPlayer.getValue() > 2) {
+          }
+        if (sldPlayer.getValue() > 2)
+          {
             player[0][0] = txtNameP1.getText();
             player[1][0] = txtNameP2.getText();
             player[2][0] = txtNameP3.getText();
             player[0][1] = lblPiece1.getDisabledIcon().toString();
             player[1][1] = lblPiece2.getDisabledIcon().toString();
             player[2][1] = lblPiece3.getDisabledIcon().toString();
-        }
-        if (sldPlayer.getValue() > 3) {
+          }
+        if (sldPlayer.getValue() > 3)
+          {
             player[3][0] = txtNameP4.getText();
             player[3][1] = lblPiece4.getDisabledIcon().toString();
-        }       
-    }
+          }
+      }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         setPlayers();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new Board(player, sldPlayer.getValue(), startmoney, dicenum, comEGS.getSelectedIndex(), rndSnake.isSelected(), bonusmoney, rndBail.isSelected(), jailfee, theme).setVisible(true);
-            }
-        });
+              }
+          });
 
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
             combos[0] = txtNameP1.getText();
             playernameduplicate(1);
-        }
+          }
     }//GEN-LAST:event_txtNameP1KeyPressed
 
     private void txtNameP2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP2KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
             combos[1] = txtNameP1.getText();
             playernameduplicate(2);
-        }
+          }
     }//GEN-LAST:event_txtNameP2KeyPressed
 
     private void txtNameP3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP3KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
             combos[2] = txtNameP1.getText();
             playernameduplicate(3);
-        }
+          }
     }//GEN-LAST:event_txtNameP3KeyPressed
 
     private void txtNameP4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP4KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+          {
             combos[3] = txtNameP1.getText();
             playernameduplicate(4);
-        }
+          }
     }//GEN-LAST:event_txtNameP4KeyPressed
 
     private void txtNameP1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP1FocusLost
@@ -834,7 +956,8 @@ public class InitTest extends javax.swing.JFrame {
         //Get startup value
         int i = comMoney.getSelectedIndex();
         //Add money to public int
-        switch (i) {
+        switch (i)
+          {
 
             case 1:
                 startmoney = 500;
@@ -848,7 +971,7 @@ public class InitTest extends javax.swing.JFrame {
             case 4:
                 startmoney = 2000;
                 break;
-        }
+          }
     }//GEN-LAST:event_comMoneyActionPerformed
 
     private void btnRand4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRand4ActionPerformed
@@ -870,13 +993,15 @@ public class InitTest extends javax.swing.JFrame {
 
     private void btnDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiceActionPerformed
         // TODO add your handling code here:
-        if (dicenum == 1) {
+        if (dicenum == 1)
+          {
             btnDice.setText("2 Dice");
             dicenum = 2;
-        } else {
+          } else
+          {
             btnDice.setText("1 Dice");
             dicenum = 1;
-        }
+          }
     }//GEN-LAST:event_btnDiceActionPerformed
 
     private void comBonAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBonAmtActionPerformed
@@ -884,7 +1009,8 @@ public class InitTest extends javax.swing.JFrame {
         //Get bonus value
         int i = comBonAmt.getSelectedIndex();
         //Add money to public int
-        switch (i) {
+        switch (i)
+          {
 
             case 1:
                 bonusmoney = 50;
@@ -895,7 +1021,7 @@ public class InitTest extends javax.swing.JFrame {
             case 3:
                 bonusmoney = 120;
                 break;
-        }
+          }
     }//GEN-LAST:event_comBonAmtActionPerformed
 
     private void comBailFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBailFeeActionPerformed
@@ -903,7 +1029,8 @@ public class InitTest extends javax.swing.JFrame {
         //Get fee value
         int i = comBailFee.getSelectedIndex();
         //Add money to public int
-        switch (i) {
+        switch (i)
+          {
 
             case 1:
                 bonusmoney = 100;
@@ -914,16 +1041,24 @@ public class InitTest extends javax.swing.JFrame {
             case 3:
                 bonusmoney = 200;
                 break;
-        }
+          }
     }//GEN-LAST:event_comBailFeeActionPerformed
 
-    public void NextCopy(int plnum) {
-        pliconduplicate(plnum);
-    }
+    private void comEGSActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comEGSActionPerformed
+    {//GEN-HEADEREND:event_comEGSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comEGSActionPerformed
 
-    public void checker() {
+    public void NextCopy(int plnum)
+      {
+        pliconduplicate(plnum);
+      }
+
+    public void checker()
+      {
         Players = sldPlayer.getValue();
-        switch (Players) {
+        switch (Players)
+          {
             //If there are 2 players selected
             case 2:
                 paneP3.setVisible(false);
@@ -939,22 +1074,25 @@ public class InitTest extends javax.swing.JFrame {
                 paneP3.setVisible(true);
                 PaneP4.setVisible(true);
                 break;
-        }
-    }
+          }
+      }
 
-    public void pliconduplicate(int plnum) {
+    public void pliconduplicate(int plnum)
+      {
         //Get anmes of each player
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
 
-        switch (plnum) {
+        switch (plnum)
+          {
             //If there is 1 player selected
             case 1:
                 //If Player 1 name is same as Player 2 name
 
-                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3]) {
+                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3])
+                  {
                     //Set piece image to blank
                     lblPiece1.setDisabledIcon(null);
                     lblPiece1.revalidate();
@@ -962,126 +1100,150 @@ public class InitTest extends javax.swing.JFrame {
                     comIconP1.setSelectedIndex(0);
                     //Prompt user to chane game piece
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }
+                  }
                 break;
             case 2:
-                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3]) {
+                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3])
+                  {
                     lblPiece2.setDisabledIcon(null);
                     lblPiece2.revalidate();
                     comIconP2.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }
+                  }
                 break;
             case 3:
-                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3]) {
+                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3])
+                  {
                     lblPiece3.setDisabledIcon(null);
                     lblPiece3.revalidate();
                     comIconP3.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }
+                  }
                 break;
             case 4:
-                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2]) {
+                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2])
+                  {
                     lblPiece4.setDisabledIcon(null);
                     lblPiece4.revalidate();
                     comIconP4.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
-                }
+                  }
                 break;
-        }
-    }
+          }
+      }
 
-    public void reset() {
-        if (Players == 2) {
+    public void reset()
+      {
+        if (Players == 2)
+          {
             comIconP3.setSelectedIndex(3);
             txtNameP3.setText(null);
             comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
-        } else if (Players == 3) {
+          } else if (Players == 3)
+          {
             comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
-        }
+          }
 
-    }
+      }
 
-    public void playernameduplicate(int plnum) {
+    public void playernameduplicate(int plnum)
+      {
         t1 = txtNameP1.getText();
         t2 = txtNameP2.getText();
         t3 = txtNameP3.getText();
         t4 = txtNameP4.getText();
-        if (t1.isEmpty() == true) {
+        if (t1.isEmpty() == true)
+          {
             t1 = "1";
-        }
-        if (t2.isEmpty() == true) {
+          }
+        if (t2.isEmpty() == true)
+          {
             t2 = "2";
-        }
-        if (t3.isEmpty() == true) {
+          }
+        if (t3.isEmpty() == true)
+          {
             t3 = "3";
-        }
-        if (t4.isEmpty() == true) {
+          }
+        if (t4.isEmpty() == true)
+          {
             t4 = "4";
-        }
+          }
 
-        switch (plnum) {
+        switch (plnum)
+          {
             case 1:
-                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4)) {
+                if (t1.equalsIgnoreCase(t2) || t1.equalsIgnoreCase(t3) || t1.equalsIgnoreCase(t4))
+                  {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP1.setText(null);
                     t1 = null;
-                }
+                  }
                 break;
 
             case 2:
-                if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4)) {
+                if (t2.equalsIgnoreCase(t1) || t2.equalsIgnoreCase(t3) || t2.equalsIgnoreCase(t4))
+                  {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP2.setText(null);
                     t2 = null;
-                }
+                  }
                 break;
             case 3:
-                if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4)) {
+                if (t3.equalsIgnoreCase(t2) || t3.equalsIgnoreCase(t1) || t3.equalsIgnoreCase(t4))
+                  {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP3.setText(null);
                     t3 = null;
-                }
+                  }
                 break;
             case 4:
-                if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3)) {
+                if (t4.equalsIgnoreCase(t1) || t4.equalsIgnoreCase(t2) || t4.equalsIgnoreCase(t3))
+                  {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP4.setText(null);
                     t4 = null;
-                }
+                  }
                 break;
 
-        }
-    }
+          }
+      }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(InitTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
@@ -1092,9 +1254,11 @@ public class InitTest extends javax.swing.JFrame {
 //                new InitTest().setVisible(true);
 //              }
 //          });
-    }
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaneP4;
+    private javax.swing.JLabel bk;
+    private javax.swing.JPanel bkpanel;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDice;
     private javax.swing.JButton btnNext;

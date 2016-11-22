@@ -22,830 +22,859 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-118,0,0,3,-15"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="paneP1_P2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="sldPlayer" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="paneP3" max="32767" attributes="0"/>
-                          <Component id="PaneP4" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="lblTitle" min="-2" pref="969" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblEGS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="comEGS" min="-2" pref="219" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="btnBack" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblStartup" min="-2" pref="270" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnDice" min="-2" max="-2" attributes="0"/>
-                                  <Component id="comMoney" min="-2" pref="190" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnNext" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblBailFee" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="comBailFee" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="114" pref="114" max="-2" attributes="0"/>
-                                          <Component id="rndBail" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="lblBonAmt" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="comBonAmt" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblDice" min="-2" pref="210" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="374" max="-2" attributes="0"/>
-                      <Component id="rndSnake" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
-              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="sldPlayer" min="-2" pref="384" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="paneP3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
-                      <Component id="PaneP4" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="paneP1_P2" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDice" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="btnDice" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="rndSnake" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="comMoney" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                      <Component id="lblStartup" min="-2" pref="26" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblEGS" min="-2" max="-2" attributes="0"/>
-                  <Component id="comEGS" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="513" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblBonAmt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="comBonAmt" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="rndBail" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblBailFee" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="comBailFee" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JSlider" name="sldPlayer">
+    <Container class="javax.swing.JPanel" name="bkpanel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="1"/>
-        </Property>
-        <Property name="majorTickSpacing" type="int" value="2"/>
-        <Property name="maximum" type="int" value="4"/>
-        <Property name="minimum" type="int" value="2"/>
-        <Property name="minorTickSpacing" type="int" value="1"/>
-        <Property name="orientation" type="int" value="1"/>
-        <Property name="paintLabels" type="boolean" value="true"/>
-        <Property name="paintTicks" type="boolean" value="true"/>
-        <Property name="snapToTicks" type="boolean" value="true"/>
-        <Property name="value" type="int" value="2"/>
-        <Property name="inverted" type="boolean" value="true"/>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
-    </Component>
-    <Container class="javax.swing.JPanel" name="paneP1_P2">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="paneP1_P2.setBackground(new Color(0, 0, 0, 0));"/>
-      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="1010" height="650"/>
+        </Constraint>
+      </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnRand1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblEGS" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="comEGS" min="-2" pref="224" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rndBail" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="88" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lblBailFee" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblIcon1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="comIconP1" min="-2" pref="183" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblP1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtNameP1" min="-2" pref="183" max="-2" attributes="0"/>
-                                      </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="comBailFee" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="paneP1_P2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="sldPlayer" min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="PaneP4" min="-2" max="-2" attributes="0"/>
+                              <Component id="paneP3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="lblTitle" min="-2" pref="969" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblDice" min="-2" pref="210" max="-2" attributes="0"/>
+                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
+                          <Component id="btnDice" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="221" pref="221" max="-2" attributes="0"/>
+                          <Component id="rndSnake" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lblStartup" min="-2" pref="270" max="-2" attributes="0"/>
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Component id="comMoney" min="-2" pref="190" max="-2" attributes="0"/>
+                          <EmptySpace min="150" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblBonAmt" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
+                          <Component id="comBonAmt" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="816" pref="816" max="-2" attributes="0"/>
+                          <Component id="btnNext" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="paneP1_P2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="sldPlayer" min="-2" pref="384" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="paneP3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
+                          <Component id="PaneP4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="lblDice" min="-2" pref="26" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Component id="btnDice" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="rndSnake" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                          <Component id="lblStartup" min="-2" pref="26" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
+                          <Component id="comMoney" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          <Component id="lblBonAmt" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="comBonAmt" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                          <Component id="lblEGS" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                          <Component id="comEGS" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="rndBail" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          <Component id="lblBailFee" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                          <Component id="comBailFee" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnNext" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JSlider" name="sldPlayer">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="18" style="1"/>
+            </Property>
+            <Property name="majorTickSpacing" type="int" value="2"/>
+            <Property name="maximum" type="int" value="4"/>
+            <Property name="minimum" type="int" value="2"/>
+            <Property name="minorTickSpacing" type="int" value="1"/>
+            <Property name="orientation" type="int" value="1"/>
+            <Property name="paintLabels" type="boolean" value="true"/>
+            <Property name="paintTicks" type="boolean" value="true"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+            <Property name="value" type="int" value="2"/>
+            <Property name="inverted" type="boolean" value="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="paneP1_P2">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="paneP1_P2.setBackground(new Color(0, 0, 0, 0));"/>
+          </AuxValues>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnRand1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblIcon1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="comIconP1" min="-2" pref="183" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblP1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtNameP1" min="-2" pref="183" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="lblPiece1" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblP2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtNameP2" min="-2" pref="183" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="btnRand2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblIcon2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="comIconP2" min="-2" pref="183" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblPiece2" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblP1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameP1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnRand1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="comIconP1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblIcon1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lblPiece1" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lblP2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtNameP2" min="-2" pref="183" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblP2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameP2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                  <Component id="btnRand2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblIcon2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comIconP2" min="-2" pref="183" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnRand2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="comIconP2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblIcon2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblPiece2" min="-2" pref="150" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblP1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNameP1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnRand1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="comIconP1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblIcon1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="lblPiece1" min="-2" pref="150" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblP2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNameP2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnRand2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="comIconP2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblIcon2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="lblPiece2" min="-2" pref="150" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JComboBox" name="comIconP1">
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JComboBox" name="comIconP1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
+                </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="1" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comIconP1ItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblP1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Player 1:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNameP1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP1FocusLost"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP1KeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblIcon1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Icon:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPiece1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
+                  </Border>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblIcon2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Icon:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblP2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Player 2:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNameP2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP2FocusLost"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP2KeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comIconP2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
+                </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="2" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPiece2">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
+                  </Border>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRand1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Random 1"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand1MouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRand2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Random 2"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand2MouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="paneP3">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
-            </Property>
-            <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="1" type="code"/>
-            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comIconP1ItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblP1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Player 1:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNameP1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP1FocusLost"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP1KeyPressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblIcon1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Icon:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPiece1">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
-              </Border>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblIcon2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Icon:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblP2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Player 2:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNameP2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP2FocusLost"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP2KeyPressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comIconP2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
-            </Property>
-            <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="2" type="code"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPiece2">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
-              </Border>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnRand1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Random 1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand1MouseClicked"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnRand2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Random 2"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand2MouseClicked"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="paneP3">
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblP3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNameP3" min="-2" pref="183" max="-2" attributes="0"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblIcon3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="comIconP3" min="-2" pref="183" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblP3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnRand3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameP3" min="-2" pref="183" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblIcon3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="comIconP3" min="-2" pref="183" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnRand3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblPiece3" min="-2" pref="150" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblPiece3" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblP3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNameP3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblP3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameP3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnRand3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="comIconP3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblIcon3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnRand3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="comIconP3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblIcon3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblPiece3" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblIcon3">
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblIcon3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Icon:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblP3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Player 3:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNameP3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP3FocusLost"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP3KeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comIconP3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;---&quot;,piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
+                </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="3" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP3ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPiece3">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
+                  </Border>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRand3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Random 3"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand3MouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PaneP4">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Icon:"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblP3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Player 3:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNameP3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP3FocusLost"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP3KeyPressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comIconP3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;---&quot;,piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
-            </Property>
-            <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="3" type="code"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPiece3">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
-              </Border>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnRand3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Random 3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand3MouseClicked"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="PaneP4">
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblP4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNameP4" min="-2" pref="183" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblIcon4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="comIconP4" min="-2" pref="183" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnRand4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblPiece4" min="-2" pref="150" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblP4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNameP4" alignment="3" min="-2" max="-2" attributes="0"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblP4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtNameP4" min="-2" pref="183" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnRand4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="comIconP4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblIcon4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblIcon4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="comIconP4" min="-2" pref="183" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnRand4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblPiece4" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblIcon4">
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblP4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNameP4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnRand4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="comIconP4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIcon4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblPiece4" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblIcon4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Icon:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblP4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Player 4:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNameP4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP4FocusLost"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP4KeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comIconP4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
+                </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="4" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPiece4">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
+                  </Border>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRand4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Showcard Gothic" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Random 4"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand4MouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRand4ActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="lblTitle">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="48" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="New Game"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="this.setContentPane(new JLabel(new ImageIcon(&quot;src/monopolyalpha/Mcdonalds Monopoly resize.png&quot;)));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnBack">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnNext">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Next&gt;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comMoney">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Showcard Gothic" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Icon:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblP4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="$ 500"/>
+                <StringItem index="1" value="$ 1000"/>
+                <StringItem index="2" value="$ 1500"/>
+                <StringItem index="3" value="$ 2000"/>
+              </StringArray>
             </Property>
-            <Property name="text" type="java.lang.String" value="Player 4:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNameP4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNameP4FocusLost"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameP4KeyPressed"/>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comMoneyItemStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comMoneyActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comIconP4">
+        <Component class="javax.swing.JLabel" name="lblDice">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
+              <Font name="Showcard Gothic" size="18" style="0"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;---&quot;, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8})" type="code"/>
+            <Property name="text" type="java.lang.String" value="Number of Dice:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblStartup">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="18" style="0"/>
             </Property>
-            <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="4" type="code"/>
+            <Property name="text" type="java.lang.String" value="Amount of Startup money:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEGS">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="End Game Scenario:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comEGS">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="14" style="1"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Last player standing"/>
+                <StringItem index="1" value="45 turns per player"/>
+                <StringItem index="2" value="60 turns per player"/>
+                <StringItem index="3" value="75 turns per player"/>
+              </StringArray>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comIconP4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comEGSActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblPiece4">
+        <Component class="javax.swing.JRadioButton" name="rndSnake">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="2" right="2" top="2"/>
-              </Border>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="18" style="0"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Snake Eye Bonus"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rndSnakeActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rndBail">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="JAIL BAIL"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rndBailActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBonAmt">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="BONUS AMOUNT :"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRand4">
+        <Component class="javax.swing.JComboBox" name="comBonAmt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Showcard Gothic" size="18" style="1"/>
+              <Font name="Showcard Gothic" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Random 4"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="$50"/>
+                <StringItem index="1" value="$100"/>
+                <StringItem index="2" value="$120"/>
+              </StringArray>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRand4MouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRand4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBonAmtActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBailFee">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="BAIL FEE:"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="comBailFee">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="12" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="$100"/>
+                <StringItem index="1" value="$150"/>
+                <StringItem index="2" value="$200"/>
+              </StringArray>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBailFeeActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDice">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Showcard Gothic" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="1 Dice"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDiceActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblTitle">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="48" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="New Game"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="this.setContentPane(new JLabel(new ImageIcon(&quot;src/monopolyalpha/Mcdonalds Monopoly resize.png&quot;)));"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnBack">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&lt;Back"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNext">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Next&gt;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comMoney">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="1"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="$ 500"/>
-            <StringItem index="1" value="$ 1000"/>
-            <StringItem index="2" value="$ 1500"/>
-            <StringItem index="3" value="$ 2000"/>
-          </StringArray>
-        </Property>
-        <Property name="autoscrolls" type="boolean" value="true"/>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comMoneyItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comMoneyActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblDice">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Number of Dice:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblStartup">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Amount of Startup money:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblEGS">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="End Game Scenario:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comEGS">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="1"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Last player standing"/>
-            <StringItem index="1" value="45 turns per player"/>
-            <StringItem index="2" value="60 turns per player"/>
-            <StringItem index="3" value="75 turns per player"/>
-          </StringArray>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rndSnake">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Snake Eye Bonus"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rndSnakeActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rndBail">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="JAIL BAIL"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rndBailActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblBonAmt">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="BONUS AMOUNT :"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comBonAmt">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="12" style="0"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="$50"/>
-            <StringItem index="1" value="$100"/>
-            <StringItem index="2" value="$120"/>
-          </StringArray>
-        </Property>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBonAmtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblBailFee">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="BAIL FEE:"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comBailFee">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="12" style="0"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="$100"/>
-            <StringItem index="1" value="$150"/>
-            <StringItem index="2" value="$200"/>
-          </StringArray>
-        </Property>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBailFeeActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDice">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="1 Dice"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDiceActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JLabel" name="bk">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="990" height="650"/>
+        </Constraint>
+      </Constraints>
     </Component>
   </SubComponents>
 </Form>
