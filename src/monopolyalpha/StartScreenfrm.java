@@ -4,9 +4,16 @@
  */
 package monopolyalpha;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 
 /**
  *
@@ -17,48 +24,39 @@ public class StartScreenfrm extends javax.swing.JFrame {
     /**
      * Creates new form StartScreenfrm
      */
-    
-    public int w,h;
-    public ImageIcon bkpc=new ImageIcon("src/monopolyalpha/bkpc.png"); //school pc size
-    public ImageIcon bkdesk=new ImageIcon("src/monopolyalpha/bkdesk.png"); //lcd desktop0
-    public ImageIcon bklap=new ImageIcon("src/monopolyalpha/bklap.png"); //normal none wide laptop size
-    public ImageIcon bklapwide=new ImageIcon("src/monopolyalpha/bklapwide.png");//wide laps
+    public int w, h;
+    public ImageIcon bkpc = new ImageIcon("src/monopolyalpha/bkpc.png"); //school pc size
+    public ImageIcon bkdesk = new ImageIcon("src/monopolyalpha/bkdesk.png"); //lcd desktop0
+    public ImageIcon bklap = new ImageIcon("src/monopolyalpha/bklap.png"); //normal none wide laptop size
+    public ImageIcon bklapwide = new ImageIcon("src/monopolyalpha/bklapwide.png");//wide laps
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    
     public StartScreenfrm() {
         initComponents();
 
         this.setExtendedState(MAXIMIZED_BOTH);
-        w=(int) screenSize.getWidth();
-        h=(int) screenSize.getHeight();
-        bk.setSize(w,h);
-        bkpanel.setSize(w,h);
-        System.out.println(w+""+h);
-        backset(w,h);
+        w = (int) screenSize.getWidth();
+        h = (int) screenSize.getHeight();
+        bk.setSize(w, h);
+        bkpanel.setSize(w, h);
+        System.out.println(w + "" + h);
+        backset(w, h);
     }
-    
-    public void backset(int w,int h)
-      {
-        if(w==1024&&h==768)
-          {
+
+    public void backset(int w, int h) {
+        if (w == 1024 && h == 768) {
 //            bk.setSize(w, h);
             bk.setIcon(bkpc);
-          }
-        else if(w==1280&&h==768)
-          {
+        } else if (w == 1280 && h == 768) {
 //            bk.setSize(w, h);
             bk.setIcon(bkdesk);
-          }
-        else if(w==1280&&h==1024)
-          {
+        } else if (w == 1280 && h == 1024) {
 //            bk.setSize(w, h);
             bk.setIcon(bklap);
-          }
-        else if (w==1366&&h==768){
+        } else if (w == 1366 && h == 768) {
             bk.setIcon(bklapwide);
         }
-      }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,8 +83,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
         bkpanel.setOpaque(false);
 
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnNewGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/ngnpr.png"))); // NOI18N
-        btnNewGame.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/ngprs.png"))); // NOI18N
+        btnNewGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/red/red 1.png"));
         btnNewGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewGameActionPerformed(evt);
@@ -94,7 +91,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
         });
 
         btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnLoadGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/lgnpr.png"))); // NOI18N
+        btnLoadGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/red/red 2.png"));
         btnLoadGame.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/lgprs.png"))); // NOI18N
         btnLoadGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +100,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
         });
 
         btnHelp.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnHelp.setText("Help");
+        btnHelp.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/red/red 3.png"));
         btnHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHelpActionPerformed(evt);
@@ -111,7 +108,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
         });
 
         btnAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnAbout.setText("About");
+        btnAbout.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/red/red 4.png"));
         btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAboutActionPerformed(evt);
@@ -119,7 +116,7 @@ public class StartScreenfrm extends javax.swing.JFrame {
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnExit.setText("Exit");
+        btnExit.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/red/red 5.png"));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -131,14 +128,14 @@ public class StartScreenfrm extends javax.swing.JFrame {
         bkpanelLayout.setHorizontalGroup(
             bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bkpanelLayout.createSequentialGroup()
-                .addContainerGap(285, Short.MAX_VALUE)
-                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLoadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnHelp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAbout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoadGame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNewGame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bkpanelLayout.setVerticalGroup(
             bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,6 +197,43 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
         // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AboutFrame().setVisible(true);
+            }
+        });
+        //////NICE TRY AYY LMAO
+//        JDialog about = new JDialog();
+//        JLayeredPane jp = new JLayeredPane();
+//        jp.setBounds(this.getBounds());
+//        jp.setLayout(null);
+//        jp.setBackground(Color.yellow);
+//        JLabel ab = new JLabel("<html>About text goes here:<br>"
+//                + "AND HERE I AM TRYING TO CODE ASDINTAS<br>"
+//                + "SEND HELP<br>"
+//                + "THE ABOUT ENDS HERE", JLabel.CENTER);
+//        JLabel ico1 = new JLabel(new ImageIcon("Icons/Dice/Generic/Dice 1.png"));
+//        JLabel ico2 = new JLabel(new ImageIcon("Icons/Dice/Maple/Dice 1.png"));
+//        JLabel ico3 = new JLabel(new ImageIcon("Icons/Dice/Superhero/Dice 1.png"));
+//        JLabel bg = new JLabel(new ImageIcon("C:\\Users\\Harsh\\Documents\\Monopoly Proj\\green pattern.png"));
+//        jp.add(ico1, 2);
+//        jp.add(ico2, 2);
+//        jp.add(ico3, 2);
+//        jp.add(ab, 2);
+//        jp.add(bg,1);
+////        about.add(ico1, BorderLayout.LINE_START);
+////        about.add(ico2, BorderLayout.NORTH);
+////        about.add(ico3, BorderLayout.LINE_END);      
+////        about.add(ab, BorderLayout.SOUTH);
+//        
+//        about.add(jp);
+//        about.setSize(w, h);
+//        about.setUndecorated(true);
+//        about.pack();
+//        about.setLocationRelativeTo(null);
+//        about.setVisible(true);
+
+
     }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
