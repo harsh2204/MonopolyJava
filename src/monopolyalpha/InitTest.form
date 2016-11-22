@@ -299,6 +299,9 @@
           <SubComponents>
             <Component class="javax.swing.JComboBox" name="comIconP1">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -380,6 +383,9 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="comIconP2">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -406,6 +412,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnRand1">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="yellow" palette="1" red="ff" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -417,6 +426,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnRand2">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="yellow" palette="1" red="ff" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -517,6 +529,9 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="comIconP3">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -543,6 +558,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnRand3">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="yellow" palette="1" red="ff" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -641,6 +659,9 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="comIconP4">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>
@@ -667,6 +688,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnRand4">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="ff" id="yellow" palette="1" red="ff" type="palette"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="1"/>
                 </Property>

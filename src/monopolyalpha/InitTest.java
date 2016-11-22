@@ -196,6 +196,7 @@ public class InitTest extends javax.swing.JFrame
         paneP1_P2.setBackground(new Color(0, 0, 0, 0));
         paneP1_P2.setOpaque(false);
 
+        comIconP1.setBackground(java.awt.Color.green);
         comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP1.setSelectedIndex(1);
@@ -261,6 +262,7 @@ public class InitTest extends javax.swing.JFrame
             }
         });
 
+        comIconP2.setBackground(java.awt.Color.green);
         comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP2.setSelectedIndex(2);
@@ -275,6 +277,7 @@ public class InitTest extends javax.swing.JFrame
         lblPiece2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         lblPiece2.setEnabled(false);
 
+        btnRand1.setBackground(java.awt.Color.yellow);
         btnRand1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand1.setText("Random 1");
         btnRand1.addMouseListener(new java.awt.event.MouseAdapter()
@@ -285,6 +288,7 @@ public class InitTest extends javax.swing.JFrame
             }
         });
 
+        btnRand2.setBackground(java.awt.Color.yellow);
         btnRand2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand2.setText("Random 2");
         btnRand2.addMouseListener(new java.awt.event.MouseAdapter()
@@ -394,6 +398,7 @@ public class InitTest extends javax.swing.JFrame
             }
         });
 
+        comIconP3.setBackground(java.awt.Color.green);
         comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---",piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP3.setSelectedIndex(3);
@@ -408,6 +413,7 @@ public class InitTest extends javax.swing.JFrame
         lblPiece3.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         lblPiece3.setEnabled(false);
 
+        btnRand3.setBackground(java.awt.Color.yellow);
         btnRand3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand3.setText("Random 3");
         btnRand3.addMouseListener(new java.awt.event.MouseAdapter()
@@ -484,6 +490,7 @@ public class InitTest extends javax.swing.JFrame
             }
         });
 
+        comIconP4.setBackground(java.awt.Color.green);
         comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP4.setSelectedIndex(4);
@@ -498,6 +505,7 @@ public class InitTest extends javax.swing.JFrame
         lblPiece4.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         lblPiece4.setEnabled(false);
 
+        btnRand4.setBackground(java.awt.Color.yellow);
         btnRand4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand4.setText("Random 4");
         btnRand4.addMouseListener(new java.awt.event.MouseAdapter()
