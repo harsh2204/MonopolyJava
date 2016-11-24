@@ -21,12 +21,8 @@ import javax.swing.Timer;
 public class InitTest extends javax.swing.JFrame
   {
 
-    //Initialize piece name and image variables
-    public int w, h;
-    public ImageIcon bkpc = new ImageIcon("src/monopolyalpha/bkpc.png"); //school pc size
-    public ImageIcon bkdesk = new ImageIcon("src/monopolyalpha/bkdesk.png"); //lcd desktop0
-    public ImageIcon bklap = new ImageIcon("src/monopolyalpha/bklap.png"); //normal none wide laptop size
-    public ImageIcon bklapwide = new ImageIcon("src/monopolyalpha/bklapwide.png");//wide laps
+    //Initialize piece name and image variables   
+    public ImageIcon bg = new ImageIcon("Icons/Miscellaneous/green pattern.png");
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     String theme;
     public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players;
@@ -61,8 +57,29 @@ public class InitTest extends javax.swing.JFrame
         this.i6 = ico6;
         this.i7 = ico7;
         this.i8 = ico8;
+        
+        int w = (int) screenSize.getWidth();
+        int h = (int) screenSize.getHeight();
+        
+        
         initComponents();
 //      Get number of players from slider 
+        if (w == 1024 && h == 768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bg);
+          } else if (w == 1280 && h == 768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bg);
+          } else if (w == 1280 && h == 1024)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bg);
+          } else if (w == 1366 && h == 768)
+          {
+            bk.setIcon(bg);
+          }
         numPlayers();
         checker();
 
@@ -78,33 +95,16 @@ public class InitTest extends javax.swing.JFrame
         images.add(i6);
         images.add(i7);
         images.add(i8);
-
-        w = (int) screenSize.getWidth();
-        h = (int) screenSize.getHeight();
+        
+        
         bkpanel.setSize(w, h);
         bk.setSize(w, h);
         System.out.println(w + "" + h);
-        backset(w, h);
+        
       }
 
-    public void backset(int w, int h)
-      {
-        if (w == 1024 && h == 768)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bkpc);
-          } else if (w == 1280 && h == 768)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bkdesk);
-          } else if (w == 1280 && h == 1024)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bklap);
-          } else if (w == 1366 && h == 768)
-          {
-            bk.setIcon(bklapwide);
-          }
+    public void backset(int w, int h){
+        
       }
 //  Use slider to set number of players playing
 
@@ -124,8 +124,7 @@ public class InitTest extends javax.swing.JFrame
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         bkpanel = new javax.swing.JPanel();
         sldPlayer = new javax.swing.JSlider();
@@ -176,7 +175,6 @@ public class InitTest extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bkpanel.setOpaque(false);
 
@@ -200,17 +198,13 @@ public class InitTest extends javax.swing.JFrame
         comIconP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP1.setSelectedIndex(1);
-        comIconP1.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        comIconP1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comIconP1ItemStateChanged(evt);
             }
         });
-        comIconP1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comIconP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP1ActionPerformed(evt);
             }
         });
@@ -219,17 +213,13 @@ public class InitTest extends javax.swing.JFrame
         lblP1.setText("Player 1:");
 
         txtNameP1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP1.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+        txtNameP1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNameP1FocusLost(evt);
             }
         });
-        txtNameP1.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtNameP1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP1KeyPressed(evt);
             }
         });
@@ -247,17 +237,13 @@ public class InitTest extends javax.swing.JFrame
         lblP2.setText("Player 2:");
 
         txtNameP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP2.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+        txtNameP2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNameP2FocusLost(evt);
             }
         });
-        txtNameP2.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtNameP2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP2KeyPressed(evt);
             }
         });
@@ -266,10 +252,8 @@ public class InitTest extends javax.swing.JFrame
         comIconP2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP2.setSelectedIndex(2);
-        comIconP2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comIconP2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP2ActionPerformed(evt);
             }
         });
@@ -280,10 +264,8 @@ public class InitTest extends javax.swing.JFrame
         btnRand1.setBackground(java.awt.Color.yellow);
         btnRand1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand1.setText("Random 1");
-        btnRand1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnRand1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRand1MouseClicked(evt);
             }
         });
@@ -291,10 +273,8 @@ public class InitTest extends javax.swing.JFrame
         btnRand2.setBackground(java.awt.Color.yellow);
         btnRand2.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand2.setText("Random 2");
-        btnRand2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnRand2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRand2MouseClicked(evt);
             }
         });
@@ -383,17 +363,13 @@ public class InitTest extends javax.swing.JFrame
         lblP3.setText("Player 3:");
 
         txtNameP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP3.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+        txtNameP3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNameP3FocusLost(evt);
             }
         });
-        txtNameP3.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtNameP3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP3KeyPressed(evt);
             }
         });
@@ -402,10 +378,8 @@ public class InitTest extends javax.swing.JFrame
         comIconP3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---",piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP3.setSelectedIndex(3);
-        comIconP3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comIconP3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP3ActionPerformed(evt);
             }
         });
@@ -416,10 +390,8 @@ public class InitTest extends javax.swing.JFrame
         btnRand3.setBackground(java.awt.Color.yellow);
         btnRand3.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand3.setText("Random 3");
-        btnRand3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnRand3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRand3MouseClicked(evt);
             }
         });
@@ -475,17 +447,13 @@ public class InitTest extends javax.swing.JFrame
         lblP4.setText("Player 4:");
 
         txtNameP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        txtNameP4.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+        txtNameP4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNameP4FocusLost(evt);
             }
         });
-        txtNameP4.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        txtNameP4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNameP4KeyPressed(evt);
             }
         });
@@ -494,10 +462,8 @@ public class InitTest extends javax.swing.JFrame
         comIconP4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         comIconP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"---", piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8}));
         comIconP4.setSelectedIndex(4);
-        comIconP4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comIconP4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comIconP4ActionPerformed(evt);
             }
         });
@@ -508,17 +474,13 @@ public class InitTest extends javax.swing.JFrame
         btnRand4.setBackground(java.awt.Color.yellow);
         btnRand4.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnRand4.setText("Random 4");
-        btnRand4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        btnRand4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRand4MouseClicked(evt);
             }
         });
-        btnRand4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRand4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRand4ActionPerformed(evt);
             }
         });
@@ -572,20 +534,16 @@ public class InitTest extends javax.swing.JFrame
 
         btnBack.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnBack.setText("<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
         btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnNext.setText("Next>");
-        btnNext.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
@@ -594,17 +552,13 @@ public class InitTest extends javax.swing.JFrame
         comMoney.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$ 500", "$ 1000", "$ 1500", "$ 2000" }));
         comMoney.setAutoscrolls(true);
         comMoney.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        comMoney.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        comMoney.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comMoneyItemStateChanged(evt);
             }
         });
-        comMoney.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comMoney.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comMoneyActionPerformed(evt);
             }
         });
@@ -620,10 +574,8 @@ public class InitTest extends javax.swing.JFrame
 
         comEGS.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         comEGS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Last player standing", "45 turns per player", "60 turns per player", "75 turns per player" }));
-        comEGS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comEGS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comEGSActionPerformed(evt);
             }
         });
@@ -631,10 +583,8 @@ public class InitTest extends javax.swing.JFrame
         rndSnake.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         rndSnake.setText("Snake Eye Bonus");
         rndSnake.setOpaque(false);
-        rndSnake.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rndSnake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rndSnakeActionPerformed(evt);
             }
         });
@@ -642,10 +592,8 @@ public class InitTest extends javax.swing.JFrame
         rndBail.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         rndBail.setText("JAIL BAIL");
         rndBail.setOpaque(false);
-        rndBail.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rndBail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rndBailActionPerformed(evt);
             }
         });
@@ -657,10 +605,8 @@ public class InitTest extends javax.swing.JFrame
         comBonAmt.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         comBonAmt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$50", "$100", "$120" }));
         comBonAmt.setEnabled(false);
-        comBonAmt.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comBonAmt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comBonAmtActionPerformed(evt);
             }
         });
@@ -672,20 +618,16 @@ public class InitTest extends javax.swing.JFrame
         comBailFee.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         comBailFee.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "$100", "$150", "$200" }));
         comBailFee.setEnabled(false);
-        comBailFee.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        comBailFee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comBailFeeActionPerformed(evt);
             }
         });
 
         btnDice.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnDice.setText("1 Dice");
-        btnDice.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiceActionPerformed(evt);
             }
         });
@@ -741,7 +683,7 @@ public class InitTest extends javax.swing.JFrame
         bkpanelLayout.setVerticalGroup(
             bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bkpanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 11, Short.MAX_VALUE)
                 .addComponent(lblTitle)
                 .addGap(6, 6, 6)
                 .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,11 +733,21 @@ public class InitTest extends javax.swing.JFrame
                 .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(btnNext))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(bkpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 650));
-        getContentPane().add(bk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 650));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bkpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bk, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bkpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bk, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
