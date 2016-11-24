@@ -22,7 +22,11 @@ public class InitTest extends javax.swing.JFrame
   {
 
     //Initialize piece name and image variables   
-    public ImageIcon bg = new ImageIcon("Icons/Miscellaneous/green pattern.png");
+    public ImageIcon bg1024768 = new ImageIcon("Icons/Miscellaneous/red1024-768.png");
+    public ImageIcon bg1280768 = new ImageIcon("Icons/Miscellaneous/red1280-768.png");
+    public ImageIcon bg12801024 = new ImageIcon("Icons/Miscellaneous/red1280-1024.png");
+    public ImageIcon bg1366768 = new ImageIcon("Icons/Miscellaneous/red1366-768.png");
+    
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     String theme;
     public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players;
@@ -64,25 +68,9 @@ public class InitTest extends javax.swing.JFrame
         
         initComponents();
 //      Get number of players from slider 
-        if (w == 1024 && h == 768)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bg);
-          } else if (w == 1280 && h == 768)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bg);
-          } else if (w == 1280 && h == 1024)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bg);
-          } else if (w == 1366 && h == 768)
-          {
-            bk.setIcon(bg);
-          }
+        
         numPlayers();
         checker();
-
 //      this.setAlwaysOnTop(true);
         this.setExtendedState(MAXIMIZED_BOTH);
 //      Add images to ComboBox
@@ -99,12 +87,28 @@ public class InitTest extends javax.swing.JFrame
         
         bkpanel.setSize(w, h);
         bk.setSize(w, h);
+        backset(w, h);
         System.out.println(w + "" + h);
         
       }
 
     public void backset(int w, int h){
-        
+        if (w == 1024 && h == 768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bg1024768);
+          } else if (w == 1280 && h == 768)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bg1280768);
+          } else if (w == 1280 && h == 1024)
+          {
+//            bk.setSize(w, h);
+            bk.setIcon(bg12801024);
+          } else if (w == 1366 && h == 768)
+          {
+            bk.setIcon(bg1366768);
+          }
       }
 //  Use slider to set number of players playing
 
