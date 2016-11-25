@@ -65,7 +65,8 @@ public class StartScreenfrm extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         bkpanel = new javax.swing.JPanel();
         btnNewGame = new javax.swing.JButton();
@@ -83,41 +84,56 @@ public class StartScreenfrm extends javax.swing.JFrame {
         bkpanel.setOpaque(false);
 
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnNewGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 1.png"));
-        btnNewGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnNewGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 1npr.png"));
+        btnNewGame.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 1.png"));
+        btnNewGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnNewGameActionPerformed(evt);
             }
         });
 
         btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnLoadGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 2.png"));
-        btnLoadGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLoadGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 2npr.png"));
+        btnLoadGame.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 2.png"));
+        btnLoadGame.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLoadGameActionPerformed(evt);
             }
         });
 
         btnHelp.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnHelp.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 3.png"));
-        btnHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnHelp.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 3npr.png"));
+        btnHelp.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 3.png"));
+        btnHelp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnHelpActionPerformed(evt);
             }
         });
 
         btnAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnAbout.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 4.png"));
-        btnAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAbout.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 4npr.png"));
+        btnAbout.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 4.png"));
+        btnAbout.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAboutActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnExit.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 5.png"));
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExit.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 5npr.png"));
+        btnExit.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 5.png"));
+        btnExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExitActionPerformed(evt);
             }
         });
@@ -129,27 +145,27 @@ public class StartScreenfrm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bkpanelLayout.createSequentialGroup()
                 .addContainerGap(286, Short.MAX_VALUE)
                 .addGroup(bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnAbout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLoadGame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNewGame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(284, Short.MAX_VALUE))
+                    .addComponent(btnAbout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoadGame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNewGame, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         bkpanelLayout.setVerticalGroup(
             bkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bkpanelLayout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
-                .addComponent(btnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(255, Short.MAX_VALUE)
+                .addComponent(btnNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btnLoadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLoadGame, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         getContentPane().add(bkpanel);
