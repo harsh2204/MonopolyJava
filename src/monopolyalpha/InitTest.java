@@ -22,11 +22,6 @@ public class InitTest extends javax.swing.JFrame
   {
 
     //Initialize piece name and image variables   
-    public ImageIcon bg1024768 = new ImageIcon("Icons/Miscellaneous/red1024-768.png");
-    public ImageIcon bg1280768 = new ImageIcon("Icons/Miscellaneous/red1280-768.png");
-    public ImageIcon bg12801024 = new ImageIcon("Icons/Miscellaneous/red1280-1024.png");
-    public ImageIcon bg1366768 = new ImageIcon("Icons/Miscellaneous/red1366-768.png");
-    
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     String theme;
     public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players;
@@ -86,30 +81,10 @@ public class InitTest extends javax.swing.JFrame
         
         
         bkpanel.setSize(w, h);
-        bk.setSize(w, h);
-        backset(w, h);
         System.out.println(w + "" + h);
         
       }
-
-    public void backset(int w, int h){
-        if (w == 1024 && h == 768)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bg1024768);
-          } else if (w == 1280 && h == 768)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bg1280768);
-          } else if (w == 1280 && h == 1024)
-          {
-//            bk.setSize(w, h);
-            bk.setIcon(bg12801024);
-          } else if (w == 1366 && h == 768)
-          {
-            bk.setIcon(bg1366768);
-          }
-      }
+    
 //  Use slider to set number of players playing
 
     private void numPlayers()
@@ -174,7 +149,6 @@ public class InitTest extends javax.swing.JFrame
         lblBailFee = new javax.swing.JLabel();
         comBailFee = new javax.swing.JComboBox();
         btnDice = new javax.swing.JButton();
-        bk = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -534,7 +508,17 @@ public class InitTest extends javax.swing.JFrame
         lblTitle.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("New Game");
-        this.setContentPane(new JLabel(new ImageIcon("src/monopolyalpha/Mcdonalds Monopoly resize.png")));
+        int w = (int) screenSize.getWidth();
+        int h = (int) screenSize.getHeight();
+        if (w == 1024 && h == 768){
+            this.setContentPane(new JLabel(new ImageIcon("Icons/Miscellaneous/red1024-768.png")));
+        }else if (w == 1280 && h == 768){
+            this.setContentPane(new JLabel(new ImageIcon("Icons/Miscellaneous/red1280-768.png")));
+        } else if (w == 1280 && h == 1024){
+            this.setContentPane(new JLabel(new ImageIcon("Icons/Miscellaneous/red1280-1024.png")));
+        } else if (w == 1366 && h == 768){
+            this.setContentPane(new JLabel(new ImageIcon("Icons/Miscellaneous/red1366-768.png")));
+        }
 
         btnBack.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnBack.setText("<Back");
@@ -745,12 +729,10 @@ public class InitTest extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bkpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(bk, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bkpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(bk, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -1221,7 +1203,6 @@ public class InitTest extends javax.swing.JFrame
       }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaneP4;
-    private javax.swing.JLabel bk;
     private javax.swing.JPanel bkpanel;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDice;

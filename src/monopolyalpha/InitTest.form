@@ -28,13 +28,11 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="bkpanel" min="-2" max="-2" attributes="0"/>
-          <Component id="bk" min="-2" pref="990" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="bkpanel" min="-2" max="-2" attributes="0"/>
-          <Component id="bk" min="-2" pref="650" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -717,7 +715,7 @@
             <Property name="text" type="java.lang.String" value="New Game"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="this.setContentPane(new JLabel(new ImageIcon(&quot;src/monopolyalpha/Mcdonalds Monopoly resize.png&quot;)));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="int w = (int) screenSize.getWidth();&#xa;        int h = (int) screenSize.getHeight();&#xa;            if (w == 1024 &amp;&amp; h == 768){&#xa;            this.setContentPane(new JLabel(new ImageIcon(&quot;Icons/Miscellaneous/red1024-768.png&quot;)));&#xa;          }else if (w == 1280 &amp;&amp; h == 768){&#xa;            this.setContentPane(new JLabel(new ImageIcon(&quot;Icons/Miscellaneous/red1280-768.png&quot;)));&#xa;          } else if (w == 1280 &amp;&amp; h == 1024){          &#xa;            this.setContentPane(new JLabel(new ImageIcon(&quot;Icons/Miscellaneous/red1280-1024.png&quot;)));&#xa;          } else if (w == 1366 &amp;&amp; h == 768){&#xa;            this.setContentPane(new JLabel(new ImageIcon(&quot;Icons/Miscellaneous/red1366-768.png&quot;)));&#xa;          }"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnBack">
@@ -898,7 +896,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="bk">
-    </Component>
   </SubComponents>
 </Form>
