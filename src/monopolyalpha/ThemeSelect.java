@@ -59,7 +59,8 @@ public class ThemeSelect extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         btnCanada = new javax.swing.JButton();
         btnSuper = new javax.swing.JButton();
@@ -70,23 +71,32 @@ public class ThemeSelect extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
 
-        btnCanada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeCanada.png"))); // NOI18N
-        btnCanada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCanada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeCanadanpr.png"))); // NOI18N
+        btnCanada.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeCanada.png"))); // NOI18N
+        btnCanada.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCanadaActionPerformed(evt);
             }
         });
 
-        btnSuper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeSuper.png"))); // NOI18N
-        btnSuper.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSuper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeSupernpr.png"))); // NOI18N
+        btnSuper.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeSuper.png"))); // NOI18N
+        btnSuper.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnSuperActionPerformed(evt);
             }
         });
 
-        btnGeneric.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeGeneric.png"))); // NOI18N
-        btnGeneric.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGeneric.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeGenericnpr.png"))); // NOI18N
+        btnGeneric.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeGeneric.png"))); // NOI18N
+        btnGeneric.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnGenericActionPerformed(evt);
             }
         });
@@ -97,8 +107,10 @@ public class ThemeSelect extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -115,7 +127,7 @@ public class ThemeSelect extends javax.swing.JFrame {
                 .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnSuper, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnCanada, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCanada, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(0, 97, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()

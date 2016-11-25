@@ -33,7 +33,7 @@
               <EmptySpace pref="72" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="btnSuper" alignment="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="btnCanada" min="-2" pref="474" max="-2" attributes="0"/>
+                  <Component id="btnCanada" min="-2" pref="470" max="-2" attributes="0"/>
                   <Component id="btnGeneric" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
@@ -67,6 +67,9 @@
     <Component class="javax.swing.JButton" name="btnCanada">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/monopolyalpha/themeCanadanpr.png"/>
+        </Property>
+        <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/monopolyalpha/themeCanada.png"/>
         </Property>
       </Properties>
@@ -77,6 +80,9 @@
     <Component class="javax.swing.JButton" name="btnSuper">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/monopolyalpha/themeSupernpr.png"/>
+        </Property>
+        <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/monopolyalpha/themeSuper.png"/>
         </Property>
       </Properties>
@@ -87,6 +93,9 @@
     <Component class="javax.swing.JButton" name="btnGeneric">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/monopolyalpha/themeGenericnpr.png"/>
+        </Property>
+        <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/monopolyalpha/themeGeneric.png"/>
         </Property>
       </Properties>
