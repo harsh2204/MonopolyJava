@@ -12,24 +12,26 @@ import javax.swing.ImageIcon;
  * @author Harsh
  */
 public class ThemeSelect extends javax.swing.JFrame {
- public String theme = "Generic";
+
+    public String theme = "Generic";
     public static String dicePath;
-   public  String piece1 ;
-   public String piece2 ;
-   public String piece3 ;
-   public String piece4;
-   public String piece5 ;
-   public String piece6 ;
-   public String piece7 ;
-   public String piece8 ;
-   public ImageIcon i1 ;
-   public ImageIcon i2 ;
-   public ImageIcon i3 ;
-   public ImageIcon i4;
-   public ImageIcon i5;
-   public ImageIcon i6 ;
-   public ImageIcon i7 ;
-   public ImageIcon i8;
+    public String piece1;
+    public String piece2;
+    public String piece3;
+    public String piece4;
+    public String piece5;
+    public String piece6;
+    public String piece7;
+    public String piece8;
+    public ImageIcon i1;
+    public ImageIcon i2;
+    public ImageIcon i3;
+    public ImageIcon i4;
+    public ImageIcon i5;
+    public ImageIcon i6;
+    public ImageIcon i7;
+    public ImageIcon i8;
+
     /**
      * Creates new form ThemeSelect
      */
@@ -38,15 +40,18 @@ public class ThemeSelect extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
+
    
-    public void goNext(){
+
+    public void goNext() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InitTest(theme,piece1,piece2,piece3,piece4,piece5,piece6,piece7,piece8,i1,i2,i3,i4,i5,i6,i7,i8).setVisible(true);
+                new InitTest(theme, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8, i1, i2, i3, i4, i5, i6, i7, i8).setVisible(true);
             }
         });
-    
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,19 +228,19 @@ public class ThemeSelect extends javax.swing.JFrame {
         System.out.println(i7.toString());
         System.out.println(i8.toString());
         new StartScreenfrm().setVisible(false);
-        
+
         this.setVisible(false);
         goNext();
     }//GEN-LAST:event_btnGenericActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartScreenfrm().setVisible(true);
             }
-        });       
+        });
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -272,7 +277,6 @@ public class ThemeSelect extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCanada;
     private javax.swing.JButton btnGeneric;

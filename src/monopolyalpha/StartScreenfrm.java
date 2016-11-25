@@ -174,12 +174,8 @@ public class StartScreenfrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoadGameActionPerformed
 
     private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
-        // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThemeSelect().setVisible(true);
-            }
-        });
+        
+        new ThemeSelect().setVisible(true);
 
     }//GEN-LAST:event_btnNewGameActionPerformed
 
