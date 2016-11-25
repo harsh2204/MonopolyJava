@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -190,23 +192,47 @@ public class StartScreenfrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoadGameActionPerformed
 
     private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
-        
+        try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
         new ThemeSelect().setVisible(true);
 
     }//GEN-LAST:event_btnNewGameActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-        // TODO add your handling code here:
+        try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
     }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
 
+        try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-        // TODO add your handling code here:
+       try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AboutFrame().setVisible(true);

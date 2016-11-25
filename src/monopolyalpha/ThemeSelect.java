@@ -5,6 +5,8 @@
  */
 package monopolyalpha;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -174,6 +176,13 @@ public class ThemeSelect extends javax.swing.JFrame {
         i6 = can.i2;
         i7 = can.i3;
         i8 = can.i4;
+        try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
         new StartScreenfrm().setVisible(false);
         this.setVisible(false);
         goNext();
@@ -199,6 +208,13 @@ public class ThemeSelect extends javax.swing.JFrame {
         i6 = sup.i2;
         i7 = sup.i3;
         i8 = sup.i4;
+        try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
         new StartScreenfrm().setVisible(false);
         this.setVisible(false);
         goNext();
@@ -240,7 +256,13 @@ public class ThemeSelect extends javax.swing.JFrame {
         System.out.println(i7.toString());
         System.out.println(i8.toString());
         new StartScreenfrm().setVisible(false);
-
+        try
+          {
+            Thread.sleep(200);
+          } catch (InterruptedException ex)
+          {
+            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+          }
         this.setVisible(false);
         goNext();
     }//GEN-LAST:event_btnGenericActionPerformed
