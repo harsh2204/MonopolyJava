@@ -16,8 +16,8 @@ public class MonopolyAlpha {
      */
     public static void main(String[] args)  {
         
-        Splash_Screen splash = new Splash_Screen();
-       splash.makeSplash();
+//        Splash_Screen splash = new Splash_Screen();
+//       splash.makeSplash();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartScreenfrm().setVisible(true);
