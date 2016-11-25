@@ -157,6 +157,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         i6 = can.i2;
         i7 = can.i3;
         i8 = can.i4;
+        new StartScreenfrm().setVisible(false);
         this.setVisible(false);
         goNext();
     }//GEN-LAST:event_btnCanadaActionPerformed
@@ -181,6 +182,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         i6 = sup.i2;
         i7 = sup.i3;
         i8 = sup.i4;
+        new StartScreenfrm().setVisible(false);
         this.setVisible(false);
         goNext();
     }//GEN-LAST:event_btnSuperActionPerformed
@@ -220,6 +222,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         System.out.println(i6.toString());
         System.out.println(i7.toString());
         System.out.println(i8.toString());
+        new StartScreenfrm().setVisible(false);
         
         this.setVisible(false);
         goNext();
@@ -265,7 +268,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThemeSelect().setVisible(true);
+                new StartScreenfrm().setVisible(true);
             }
         });
     }
