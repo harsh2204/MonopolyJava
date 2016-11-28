@@ -84,6 +84,7 @@ public class Board extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1024, 768));
 
+        lblBoard.setIcon(new ImageIcon("Board Images/Canada/New Board.png"));
         lblBoard.setPreferredSize(new java.awt.Dimension(700, 700));
 
         jButton1.setText("jButton1");
@@ -132,7 +133,7 @@ public class Board extends javax.swing.JFrame {
             System.out.println(board[i].player + "   ");
             System.out.print(board[i].piece);
         }
-
+        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
