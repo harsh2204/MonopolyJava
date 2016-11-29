@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Panel;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -21,19 +22,19 @@ import javax.swing.JLayeredPane;
  *
  * @author 714449
  */
-public class StartScreenfrm extends javax.swing.JFrame {
+public class StartScreenfrm extends javax.swing.JFrame
+  {
 
     /**
      * Creates new form StartScreenfrm
      */
     public int w, h;
-    public ImageIcon bkpc = new ImageIcon("src/monopolyalpha/bkpc.png"); //school pc size
-    public ImageIcon bkdesk = new ImageIcon("src/monopolyalpha/bkdesk.png"); //lcd desktop0
-    public ImageIcon bklap = new ImageIcon("src/monopolyalpha/bklap.png"); //normal none wide laptop size
-    public ImageIcon bklapwide = new ImageIcon("src/monopolyalpha/bklapwide.png");//wide laps
+    public ImageIcon ic = new ImageIcon("src/monopolyalpha/bklap.png");
+    public Image ig;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    public StartScreenfrm() {
+    public StartScreenfrm()
+      {
         initComponents();
 
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -41,24 +42,12 @@ public class StartScreenfrm extends javax.swing.JFrame {
         h = (int) screenSize.getHeight();
         bk.setSize(w, h);
         bkpanel.setSize(w, h);
-        System.out.println(w + "" + h);
-        backset(w, h);
-    }
+        ig = ic.getImage().getScaledInstance(bk.getWidth(), bk.getHeight(), Image.SCALE_SMOOTH);
+        ic = new ImageIcon(ig);
+        System.out.println(w + "" + h);        
+        bk.setIcon(ic);
+      }
 
-    public void backset(int w, int h) {
-        if (w == 1024 && h == 768) {
-//            bk.setSize(w, h);
-            bk.setIcon(bkpc);
-        } else if (w == 1280 && h == 768) {
-//            bk.setSize(w, h);
-            bk.setIcon(bkdesk);
-        } else if (w == 1280 && h == 1024) {
-//            bk.setSize(w, h);
-            bk.setIcon(bklap);
-        } else if (w == 1366 && h == 768) {
-            bk.setIcon(bklapwide);
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,11 +173,13 @@ public class StartScreenfrm extends javax.swing.JFrame {
 
     private void btnLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadGameActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new Save_Manager().setVisible(true);
-            }
-        });
+              }
+          });
     }//GEN-LAST:event_btnLoadGameActionPerformed
 
     private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
@@ -226,18 +217,20 @@ public class StartScreenfrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-       try
+        try
           {
             Thread.sleep(200);
           } catch (InterruptedException ex)
           {
             Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
           }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new AboutFrame().setVisible(true);
-            }
-        });
+              }
+          });
         //////NICE TRY AYY LMAO
 //        JDialog about = new JDialog();
 //        JLayeredPane jp = new JLayeredPane();
@@ -275,37 +268,47 @@ public class StartScreenfrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new StartScreenfrm().setVisible(true);
-            }
-        });
-    }
+              }
+          });
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bk;
     private javax.swing.JPanel bkpanel;
