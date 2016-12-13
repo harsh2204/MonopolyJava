@@ -4,8 +4,9 @@
  */
 package monopolyalpha;
 
-import java.awt.Color;
+import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -30,9 +31,11 @@ public class Board extends javax.swing.JFrame {
     Board[] board;
     String[][] pl;
     boolean snake=false, bail=false;
-
+    JLabel[][] boxes = new JLabel[4][36];
+    
     public Board(String[][] players, int pCount, int iniCash, int diCount, int EGS, boolean snk, int snkAmt, boolean jail, int jailFee, String theme) {
         initComponents();
+        setupLabels();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.theme = theme;
@@ -66,7 +69,161 @@ public class Board extends javax.swing.JFrame {
             
         }
     }
-
+ private void setupLabels() {
+        //1
+        boxes[0][0] = this.P1B1;
+        boxes[0][1] = P1B2;
+        boxes[0][2] = P1B3;
+        boxes[0][3] = P1B4;
+        boxes[0][4] = P1B5;
+        boxes[0][5] = P1B6;
+        boxes[0][6] = P1B7;
+        boxes[0][7] = P1B8;
+        boxes[0][8] = P1B9;
+        boxes[0][9] = P1B10;
+        boxes[0][10] = P1B11;
+        boxes[0][11] = P1B12;
+        boxes[0][12] = P1B13;
+        boxes[0][13] = P1B14;
+        boxes[0][14] = P1B15;
+        boxes[0][15] = P1B16;
+        boxes[0][16] = P1B17;
+        boxes[0][17] = P1B18;
+        boxes[0][18] = P1B19;
+        boxes[0][19] = P1B20;
+        boxes[0][20] = P1B21;
+        boxes[0][21] = P1B22;
+        boxes[0][22] = P1B23;
+        boxes[0][23] = P1B24;
+        boxes[0][24] = P1B25;
+        boxes[0][25] = P1B26;
+        boxes[0][26] = P1B27;
+        boxes[0][27] = P1B28;
+        boxes[0][28] = P1B29;
+        boxes[0][29] = P1B30;
+        boxes[0][30] = P1B31;
+        boxes[0][31] = P1B32;
+        boxes[0][32] = P1B33;
+        boxes[0][33] = P1B34;
+        boxes[0][34] = P1B35;
+        boxes[0][35] = P1B36;
+        //2
+        boxes[1][0] = P2B1;
+        boxes[1][1] = P2B2;
+        boxes[1][2] = P2B3;
+        boxes[1][3] = P2B4;
+        boxes[1][4] = P2B5;
+        boxes[1][5] = P2B6;
+        boxes[1][6] = P2B7;
+        boxes[1][7] = P2B8;
+        boxes[1][8] = P2B9;
+        boxes[1][9] = P2B10;
+        boxes[1][10] = P2B11;
+        boxes[1][11] = P2B12;
+        boxes[1][12] = P2B13;
+        boxes[1][13] = P2B14;
+        boxes[1][14] = P2B15;
+        boxes[1][15] = P2B16;
+        boxes[1][16] = P2B17;
+        boxes[1][17] = P2B18;
+        boxes[1][18] = P2B19;
+        boxes[1][19] = P2B20;
+        boxes[1][20] = P2B21;
+        boxes[1][21] = P2B22;
+        boxes[1][22] = P2B23;
+        boxes[1][23] = P2B24;
+        boxes[1][24] = P2B25;
+        boxes[1][25] = P2B26;
+        boxes[1][26] = P2B27;
+        boxes[1][27] = P2B28;
+        boxes[1][28] = P2B29;
+        boxes[1][29] = P2B30;
+        boxes[1][30] = P2B31;
+        boxes[1][31] = P2B32;
+        boxes[1][32] = P2B33;
+        boxes[1][33] = P2B34;
+        boxes[1][34] = P2B35;
+        boxes[1][35] = P2B36;
+        //3
+        boxes[2][0] = P3B1;
+        boxes[2][1] = P3B2;
+        boxes[2][2] = P3B3;
+        boxes[2][3] = P3B4;
+        boxes[2][4] = P3B5;
+        boxes[2][5] = P3B6;
+        boxes[2][6] = P3B7;
+        boxes[2][7] = P3B8;
+        boxes[2][8] = P3B9;
+        boxes[2][9] = P3B10;
+        boxes[2][10] = P3B11;
+        boxes[2][11] = P3B12;
+        boxes[2][12] = P3B13;
+        boxes[2][13] = P3B14;
+        boxes[2][14] = P3B15;
+        boxes[2][15] = P3B16;
+        boxes[2][16] = P3B17;
+        boxes[2][17] = P3B18;
+        boxes[2][18] = P3B19;
+        boxes[2][19] = P3B20;
+        boxes[2][20] = P3B21;
+        boxes[2][21] = P3B22;
+        boxes[2][22] = P3B23;
+        boxes[2][23] = P3B24;
+        boxes[2][24] = P3B25;
+        boxes[2][25] = P3B26;
+        boxes[2][26] = P3B27;
+        boxes[2][27] = P3B28;
+        boxes[2][28] = P3B29;
+        boxes[2][29] = P3B30;
+        boxes[2][30] = P3B31;
+        boxes[2][31] = P3B32;
+        boxes[2][32] = P3B33;
+        boxes[2][33] = P3B34;
+        boxes[2][34] = P3B35;
+        boxes[2][35] = P3B36;
+        //4
+        boxes[3][0] = P4B1;
+        boxes[3][1] = P4B2;
+        boxes[3][2] = P4B3;
+        boxes[3][3] = P4B4;
+        boxes[3][4] = P4B5;
+        boxes[3][5] = P4B6;
+        boxes[3][6] = P4B7;
+        boxes[3][7] = P4B8;
+        boxes[3][8] = P4B9;
+        boxes[3][9] = P4B10;
+        boxes[3][10] = P4B11;
+        boxes[3][11] = P4B12;
+        boxes[3][12] = P4B13;
+        boxes[3][13] = P4B14;
+        boxes[3][14] = P4B15;
+        boxes[3][15] = P4B16;
+        boxes[3][16] = P4B17;
+        boxes[3][17] = P4B18;
+        boxes[3][18] = P4B19;
+        boxes[3][19] = P4B20;
+        boxes[3][20] = P4B21;
+        boxes[3][21] = P4B22;
+        boxes[3][22] = P4B23;
+        boxes[3][23] = P4B24;
+        boxes[3][24] = P4B25;
+        boxes[3][25] = P4B26;
+        boxes[3][26] = P4B27;
+        boxes[3][27] = P4B28;
+        boxes[3][28] = P4B29;
+        boxes[3][29] = P4B30;
+        boxes[3][30] = P4B31;
+        boxes[3][31] = P4B32;
+        boxes[3][32] = P4B33;
+        boxes[3][33] = P4B34;
+        boxes[3][34] = P4B35;
+        boxes[3][35] = P4B36;
+//        for (int i = 0; i < 4; i++) {
+//            for (int k = 0; k < 36; k++) {
+//               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
+//            }
+//        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -258,6 +415,7 @@ public class Board extends javax.swing.JFrame {
         P3B36 = new javax.swing.JLabel();
         P4B36 = new javax.swing.JLabel();
         lblBoard = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -1523,29 +1681,77 @@ public class Board extends javax.swing.JFrame {
         paneB36.setBounds(95, 640, 60, 51);
         jLayeredPane1.add(paneB36, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        lblBoard.setIcon(new javax.swing.ImageIcon("G:\\Documents\\NetBeansProjects\\MonopolyJava\\Board Pictures\\Canada\\Canada Green Board.png")); // NOI18N
+        lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
         lblBoard.setBounds(0, 0, 700, 700);
         jLayeredPane1.add(lblBoard, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
                 .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(21, 21, 21)
+                .addComponent(jButton1)
+                .addGap(39, 39, 39)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         addPlayers();
+
+        for (int i = 0; i < playerCount; i++) {
+            for (int k = 0; k < 36; k++) {
+                if (i == 0) { //1
+                    Image image1 = board[0].piece.getImage(); // transform it 
+                    Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
+                    boxes[i][k].setIcon(imageIcon1);
+                }
+                if (i == 1) { //2
+                    Image image2 = board[1].piece.getImage(); // transform it 
+                    Image newimg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon2 = new ImageIcon(newimg2);  // transform it back
+                    boxes[i][k].setIcon(imageIcon2);
+                }
+                if (i == 2) {//3
+                    Image image3 = board[2].piece.getImage(); // transform it 
+                    Image newimg3 = image3.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon3 = new ImageIcon(newimg3);  // transform it back    
+                    boxes[i][k].setIcon(imageIcon3);
+                }
+                if (i == 3) { //4
+                    Image image4 = board[3].piece.getImage(); // transform it 
+                    Image newimg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon4 = new ImageIcon(newimg4);  // transform it back  
+                    boxes[i][k].setIcon(imageIcon4);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1726,6 +1932,7 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JLabel P4B7;
     private javax.swing.JLabel P4B8;
     private javax.swing.JLabel P4B9;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBoard;
     private javax.swing.JPanel paneB1;
