@@ -4,8 +4,11 @@
  */
 package monopolyalpha;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 /**
@@ -28,10 +31,12 @@ public class Board extends javax.swing.JFrame {
     //
     Properties_Data properties = new Properties_Data(theme);
     ImageIcon piece;
+    ImageIcon i;
     Board[] board;
     String[][] pl;
     boolean snake=false, bail=false;
     JLabel[][] boxes = new JLabel[4][36];
+    JDialog property = new JDialog();
     
     public Board(String[][] players, int pCount, int iniCash, int diCount, int EGS, boolean snk, int snkAmt, boolean jail, int jailFee, String theme) {
         initComponents();
@@ -234,6 +239,7 @@ public class Board extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        lblHoverB1 = new javax.swing.JLabel();
         paneB1 = new javax.swing.JPanel();
         P1B1 = new javax.swing.JLabel();
         P2B1 = new javax.swing.JLabel();
@@ -420,6 +426,17 @@ public class Board extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1024, 768));
+
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB1MouseExited(evt);
+            }
+        });
+        lblHoverB1.setBounds(2, 545, 90, 60);
+        jLayeredPane1.add(lblHoverB1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         paneB1.setBackground(new java.awt.Color(255, 255, 255));
         paneB1.setOpaque(false);
@@ -1753,6 +1770,22 @@ public class Board extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void lblHoverB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseEntered
+        // TODO add your handling code here:
+        
+        i=null;
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Card(Color.YELLOW,i,0,theme).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_lblHoverB1MouseEntered
+
+    private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
+        // TODO add your handling code here:
+        property.setVisible(false);
+    }//GEN-LAST:event_lblHoverB1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1935,6 +1968,7 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBoard;
+    private javax.swing.JLabel lblHoverB1;
     private javax.swing.JPanel paneB1;
     private javax.swing.JPanel paneB10;
     private javax.swing.JPanel paneB11;
