@@ -16,30 +16,37 @@ public class Card extends javax.swing.JFrame {
     /**
      * Creates new form Card
      */
-    String title, price, baseRent,rent1, rent2, rent3,rentHotel,mortgage, house, hotel;
+    String title, price, baseRent, rent1, rent2, rent3, rentHotel, mortgage, house, hotel;
     Color background;
     ImageIcon ic;
-    
+
     public Card(Color bg, ImageIcon icon, int index, String theme) {
-        this.background= bg;
-        this.ic= icon;
+        this.background = bg;
+        this.ic = icon;
         System.out.println(ic);
         Properties_Data p = new Properties_Data(theme);
         p.GetProp();
         title = p.prop[index].name;
-        price = "Price $"+ p.prop[index].price;
-        baseRent = "RENT $"+p.prop[index].rent1;
-        rent1 = "With 1 House $"+p.prop[index].rent2;
-        rent2 = "With 2 House $"+p.prop[index].rent3;
-        rent3 = "With 3 House $"+p.prop[index].rent4;
-        rentHotel = "With Hotel $"+p.prop[index].rentH;
-        mortgage = "Mortgage value $"+p.prop[index].price/2;
-        house = "Houses cost $"+p.prop[index].priceHouse;
-        hotel = "Hotel costs $"+((p.prop[index].priceHouse*1.5)+50);
+        price = "Price $" + p.prop[index].price;
+        if (p.prop[index].rent2 == 0) {
+            rent1 = p.prop[index].desc1;
+            rent2 = p.prop[index].desc2;
+            mortgage = "Mortgage value $" + p.prop[index].price / 2;
+        }
+        if (p.prop[index].rent2 != 0) {
+            baseRent = "RENT $" + p.prop[index].rent1;
+            rent1 = "With 1 House $" + p.prop[index].rent2;
+            rent2 = "With 2 House $" + p.prop[index].rent3;
+            rent3 = "With 3 House $" + p.prop[index].rent4;
+            rentHotel = "With Hotel $" + p.prop[index].rentH;
+            mortgage = "Mortgage value $" + p.prop[index].price / 2;
+            house = "Houses cost $" + p.prop[index].priceHouse;
+            hotel = "Hotel costs $" + ((p.prop[index].priceHouse * 1.5) + 50);
+        }
         initComponents();
         this.setLocationRelativeTo(null);
     }
-       
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
