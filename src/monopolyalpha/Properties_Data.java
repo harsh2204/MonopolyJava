@@ -271,8 +271,9 @@ public class Properties_Data {
                 prop[i].rent4 = can.property[i].rent4;
                 prop[i].rentH = can.property[i].rentH;
                 prop[i].colour = can.property[i].colour;
-                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
-                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
+                prop[i].priceHouse = can.property[i].priceHouse;                
+//                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
+//                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
             }
         }
         if (thm.equals("Generic")) {

@@ -112,6 +112,7 @@
         <Property name="snapToTicks" type="boolean" value="true"/>
         <Property name="value" type="int" value="2"/>
         <Property name="inverted" type="boolean" value="true"/>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="paneP1_P2">
