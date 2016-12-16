@@ -23,7 +23,6 @@ public class Card extends javax.swing.JFrame {
     public Card(Color bg, ImageIcon icon, int index, String theme) {
         this.background = bg;
         this.ic = icon;
-        System.out.println(ic);
         Properties_Data p = new Properties_Data(theme);
         p.GetProp();
         title = p.prop[index].name;

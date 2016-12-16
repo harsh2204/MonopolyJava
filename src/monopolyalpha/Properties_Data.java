@@ -14,7 +14,8 @@ public class Properties_Data {
     public int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
     boolean owned;
     int owner;
-    String thm;
+    String thm, desc1, desc2;
+    
 
     public Properties_Data(String theme) {
         this.thm = theme;
@@ -271,7 +272,9 @@ public class Properties_Data {
                 prop[i].rent4 = can.property[i].rent4;
                 prop[i].rentH = can.property[i].rentH;
                 prop[i].colour = can.property[i].colour;
-                prop[i].priceHouse = can.property[i].priceHouse;                
+                prop[i].priceHouse = can.property[i].priceHouse;
+                prop[i].desc1 = can.property[i].desc1;
+                prop[i].desc2 = can.property[i].desc2;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
             }

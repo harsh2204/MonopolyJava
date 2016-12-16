@@ -6,9 +6,12 @@ package monopolyalpha;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -50,7 +53,7 @@ public class Dice {
                 break;
         }
         if (num == 1) {
-            JDialog dice = new JDialog();
+            final JDialog dice = new JDialog();
             dice.setAlwaysOnTop(true);
             JLabel di = new JLabel(new ImageIcon(path + "1.png"));
             dice.add(di);
@@ -76,9 +79,16 @@ public class Dice {
                 sleep(500);
             }
 //            blinkingDie(dice);
+            di.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    dice.setVisible(false);
+                }
+            });
+            sleep(3000);
+            dice.setVisible(false);
         }
         if (num == 2) {
-            JDialog dice = new JDialog();
+            final JDialog dice = new JDialog();
             dice.setAlwaysOnTop(true);
             JLabel di1 = new JLabel(new ImageIcon(path + "1.png"));
             JLabel di2 = new JLabel(new ImageIcon(path + "1.png"));
@@ -113,8 +123,21 @@ public class Dice {
                 }
                 sleep(500);
             }
-//            blinkingDie(dice);
+//            blinkingDie(dice);            
+            di1.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    dice.setVisible(false);
+                }
+            });
+            di2.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    dice.setVisible(false);
+                }
+            });
+            sleep(1500);
+            dice.setVisible(false);
         }
+
         return roll;
     }
 }

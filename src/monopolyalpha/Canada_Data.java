@@ -21,12 +21,12 @@ public class Canada_Data {
     public ImageIcon i2 = new ImageIcon("Icons/Pieces/Canada/2.png");
     public ImageIcon i3 = new ImageIcon("Icons/Pieces/Canada/3.png");
     public ImageIcon i4 = new ImageIcon("Icons/Pieces/Canada/4.png");
-    String propName;
-    int price,priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
-    public String chance[]= new String[16];
-    public String community[]= new String[16];
+    String propName, desc1, desc2;
+    int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
+    public String chance[] = new String[16];
+    public String community[] = new String[16];
     public Canada_Data property[] = new Canada_Data[26];
-    
+
     public Canada_Data[] setProp() {
         //Initializing the object array.
         for (int i = 0; i < property.length; i++) {
@@ -59,8 +59,7 @@ public class Canada_Data {
         property[23].propName = "Canadian National Railway";
         property[24].propName = "Royal Bank of Canada";
         property[25].propName = "Tim Horton's";
-        
-        
+
         //Adding property rents
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
@@ -71,7 +70,7 @@ public class Canada_Data {
         property[0].rent3 = 90;
         property[0].rent4 = 160;
         property[0].rentH = 250;
-        property[0].priceHouse=50;
+        property[0].priceHouse = 50;
         property[0].colour = 1;
         //MISSISSAUGA
         property[1].price = 60;
@@ -80,7 +79,7 @@ public class Canada_Data {
         property[1].rent3 = 180;
         property[1].rent4 = 320;
         property[1].rentH = 450;
-        property[1].priceHouse=50;
+        property[1].priceHouse = 50;
         property[1].colour = 1;
         //YELLOW KNIFE
         property[2].price = 80;
@@ -89,7 +88,7 @@ public class Canada_Data {
         property[2].rent3 = 220;
         property[2].rent4 = 350;
         property[2].rentH = 500;
-        property[2].priceHouse=50;
+        property[2].priceHouse = 50;
         property[2].colour = 1;
         //======================================================================
         //BLUE SUITE------------------------------------------------------------
@@ -235,7 +234,7 @@ public class Canada_Data {
         property[17].rent4 = 1300;
         property[17].rentH = 1500;
         property[17].colour = 6;
-        property[17].priceHouse=300;        
+        property[17].priceHouse = 300;
         //MONTREAL
         property[18].price = 400;
         property[18].rent1 = 200;
@@ -243,7 +242,7 @@ public class Canada_Data {
         property[18].rent3 = 1400;
         property[18].rent4 = 1700;
         property[18].rentH = 2000;
-        property[18].priceHouse=300;
+        property[18].priceHouse = 300;
         property[18].colour = 6;
         //TORONTO
         property[19].price = 500;
@@ -252,73 +251,79 @@ public class Canada_Data {
         property[19].rent3 = 1500;
         property[19].rent4 = 1850;
         property[19].rentH = 2100;
-        property[19].priceHouse=300;
+        property[19].priceHouse = 300;
         property[19].colour = 6;
         //======================================================================
         //GREY SUITE------------------------------------------------------------
         //PARLIAMENT HILL
-        //Rent = 25x roll, 50x roll if Niagara Falls is owned
+        property[20].desc1 = "Rent = 25x roll, 50x roll ";
+        property[20].desc2 = " if Niagara Falls is owned";
         property[20].price = 375;
         property[20].colour = 7;
         //NIAGARA FALLS
-        //Rent = 25x roll, 50x roll if Parliament is owned
+        property[21].desc1 = "Rent = 25x roll, 50x roll ";
+        property[21].desc2 = " if Parliament is owned";
         property[21].price = 375;
         property[21].colour = 7;
         //CN TOWER
-        //Rent = 25x roll, 50x roll if CNR is owned
+        property[22].desc1 = "Rent = 25x roll, 50x ";
+        property[22].desc2 = "roll if CNR is owned";
         property[22].price = 375;
         property[22].colour = 7;
         //CNR
-        //Rent = 25x roll, 50x roll if CN Tower is owned
+        property[23].desc1 = "Rent = 25x roll, 50x roll ";
+        property[23].desc2 = "if CN Tower is owned";
         property[23].price = 375;
         property[23].colour = 7;
         //RBC
-        //Rent = 25x roll & tax rebate
+        property[24].desc1 = "Rent = 25x roll & tax rebate";
         property[24].price = 325;
         property[24].colour = 7;
         //TIM HORTON'S
-        //Rent = 25x roll & +25 rent on all properties
+        property[25].desc1 = "Rent = 25x roll & +25 ";
+        property[25].desc2 = "rent on all properties";
         property[25].price = 325;
         property[25].colour = 7;
         //======================================================================
-        
+
         return property;
     }
-    public void getCards(){
+
+    public void getCards() {
         //SETTING UP THE CARDS
         //CHANCE CHEST
-        chance[0]="Advance to Go (Collect $200) ";
-        chance[1]="Bank error in your favor – collect $75 ";
-        chance[2]="Insurance fees – Pay $50 ";
-        chance[3]="Get out of jail free – this card may be kept until needed, or sold ";
-        chance[4]="Holiday Fund matures - Receive $100";
-        chance[5]="It is your birthday Collect $10 from each player ";
-        chance[6]="Blue Jays opening night – collect $50 from every player for opening night seats ";
-        chance[7]="Income Tax refund – collect $20 ";
-        chance[8]="Life Insurance Matures – collect $100 ";
-        chance[9]="Pay Hospital Room Fees of $100 ";
-        chance[10]="Pay University Fees of $50 ";
-        chance[11]="Receive $25 Consultancy Fee ";
-        chance[12]="You are assessed for street winter damage – $40 per house, $115 per hotel ";
-        chance[13]="You have won second prize in a poutine eating contest– collect $10 ";
-        chance[14]="You inherit $100";
-        chance[15]="From sale of stock you get $50 ";
+        chance[0] = "Advance to Go (Collect $200) ";
+        chance[1] = "Bank error in your favor – collect $75 ";
+        chance[2] = "Insurance fees – Pay $50 ";
+        chance[3] = "Get out of jail free – this card may be kept until needed, or sold ";
+        chance[4] = "Holiday Fund matures - Receive $100";
+        chance[5] = "It is your birthday Collect $10 from each player ";
+        chance[6] = "Blue Jays opening night – collect $50 from every player for opening night seats ";
+        chance[7] = "Income Tax refund – collect $20 ";
+        chance[8] = "Life Insurance Matures – collect $100 ";
+        chance[9] = "Pay Hospital Room Fees of $100 ";
+        chance[10] = "Pay University Fees of $50 ";
+        chance[11] = "Receive $25 Consultancy Fee ";
+        chance[12] = "You are assessed for street winter damage – $40 per house, $115 per hotel ";
+        chance[13] = "You have won second prize in a poutine eating contest– collect $10 ";
+        chance[14] = "You inherit $100";
+        chance[15] = "From sale of stock you get $50 ";
         //COMMUNITY CHEST
-        community[0]="Advance to Go (Collect $200)";
-        community[1]="Advance to Windsor";
-        community[2]="Advance token to CN Tower";
-        community[3]="Advance token to CNR";
-        community[4]="Advance to St. John's – if you pass Go, collect $200";
-        community[5]="Bank pays you dividend of $50";
-        community[6]="Get out of Jail free – this card may be kept until needed, or traded/sold";
-        community[7]="Go back 3 spaces";
-        community[8]="Go directly to Jail – do not pass Go, do not collect $200";
-        community[9]="Make shingle repairs on all your property – for each house pay $25 – for each hotel $100";
-        community[10]="Pay poor tax of $15";
-        community[11]="Take a trip to Timmies – if you pass Go collect $200";
-        community[12]="Take a walk on the Niagara Falls – advance token to Niagara Falls";
-        community[13]="You have been elected chairman of the board – pay each player $50";
-        community[14]="You win a curling tournanment – collect $150";
-        community[15]="You have won a hockey game - collect $100";
+        community[0] = "Advance to Go (Collect $200)";
+        community[1] = "Advance to Windsor";
+        community[2] = "Advance token to CN Tower";
+        community[3] = "Advance token to CNR";
+        community[4] = "Advance to St. John's – if you pass Go, collect $200";
+        community[5] = "Bank pays you dividend of $50";
+        community[6] = "Get out of Jail free – this card may be kept until needed, or traded/sold";
+        community[7] = "Go back 3 spaces";
+        community[8] = "Go directly to Jail – do not pass Go, do not collect $200";
+        community[9] = "Make shingle repairs on all your property – for each house pay $25 – for each hotel $100";
+        community[10] = "Pay poor tax of $15";
+        community[11] = "Take a trip to Timmies – if you pass Go collect $200";
+        community[12] = "Take a walk on the Niagara Falls – advance token to Niagara Falls";
+        community[13] = "You have been elected chairman of the board – pay each player $50";
+        community[14] = "You win a curling tournanment – collect $150";
+        community[15] = "You have won a hockey game - collect $100";
     }
 }

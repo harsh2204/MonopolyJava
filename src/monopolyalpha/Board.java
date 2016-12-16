@@ -5,10 +5,8 @@
 package monopolyalpha;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 /**
@@ -35,7 +33,6 @@ public class Board extends javax.swing.JFrame {
     String[][] pl;
     boolean snake = false, bail = false;
     JLabel[][] boxes = new JLabel[4][36];
-    JDialog property = new JDialog();    
     Card c;
 
     public Board(String[][] players, int pCount, int iniCash, int diCount, int EGS, boolean snk, int snkAmt, boolean jail, int jailFee, String theme) {
@@ -61,9 +58,34 @@ public class Board extends javax.swing.JFrame {
             pl[i] = players[i].clone();
         }
         board = new Board[pCount];
+
+//        final JDialog start = new JDialog();        
+//        start.setLayout(new BorderLayout());
+//        JButton go = new JButton();
+//        go.setFont(new java.awt.Font("Showcard Gothic", 0, 18));
+//        go.setText("Start Game!");
+//        go.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+//        start.add(go, BorderLayout.CENTER);
+//        start.setUndecorated(true);
+//        go.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                start.dispose();
+//                addPlayers(true);
+//            }
+//        });
+//        start.setAlwaysOnTop(true);        
+//        start.pack();
+//        start.setVisible(true);            
     }
 
-    public void addPlayers() {
+    private void setupPlayers() {
+        lblNameP1.setText(board[0].player);
+        lblIconP1.setIcon(board[0].piece);
+        lblNameP2.setText(board[1].player);
+        lblIconP2.setIcon(board[1].piece);
+    }
+
+    private void addPlayers() {
         for (int i = 0; i < board.length; i++) {
             board[i] = new Board(pl, playerCount, startCash, di, EGS, snake, snakeAmt, bail, jailFee, theme);
         }
@@ -71,8 +93,11 @@ public class Board extends javax.swing.JFrame {
 
             board[i].player = pl[i][0];
             board[i].piece = new ImageIcon(pl[i][1]);
-
+            board[i].playerID = i;
+            board[i].cash = startCash;
+            board[i].propCount = 0;
         }
+        setupPlayers();
     }
 
     private void setupLabels() {
@@ -232,13 +257,46 @@ public class Board extends javax.swing.JFrame {
     }
 
     public void makeCard(Color bg, ImageIcon i, int index) {
-                      
-             c= new Card(Color.yellow, i, index, theme);        
-             c.setVisible(true);
+
+        c = new Card(bg, i, index, theme);
+        c.setVisible(true);
     }
 
     public void breakCard() {
         c.setVisible(false);
+    }
+
+    public void testPieces() {
+        addPlayers();
+
+        for (int i = 0; i < playerCount; i++) {
+            for (int k = 0; k < 36; k++) {
+                if (i == 0) { //1
+                    Image image1 = board[0].piece.getImage(); // transform it 
+                    Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
+                    boxes[i][k].setIcon(imageIcon1);
+                }
+                if (i == 1) { //2
+                    Image image2 = board[1].piece.getImage(); // transform it 
+                    Image newimg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon2 = new ImageIcon(newimg2);  // transform it back
+                    boxes[i][k].setIcon(imageIcon2);
+                }
+                if (i == 2) {//3
+                    Image image3 = board[2].piece.getImage(); // transform it 
+                    Image newimg3 = image3.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon3 = new ImageIcon(newimg3);  // transform it back    
+                    boxes[i][k].setIcon(imageIcon3);
+                }
+                if (i == 3) { //4
+                    Image image4 = board[3].piece.getImage(); // transform it 
+                    Image newimg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    ImageIcon imageIcon4 = new ImageIcon(newimg4);  // transform it back  
+                    boxes[i][k].setIcon(imageIcon4);
+                }
+            }
+        }
     }
 
     /**
@@ -251,6 +309,12 @@ public class Board extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        lblHoverB7 = new javax.swing.JLabel();
+        lblHoverB6 = new javax.swing.JLabel();
+        lblHoverB5 = new javax.swing.JLabel();
+        lblHoverB4 = new javax.swing.JLabel();
+        lblHoverB3 = new javax.swing.JLabel();
+        lblHoverB2 = new javax.swing.JLabel();
         lblHoverB1 = new javax.swing.JLabel();
         paneB1 = new javax.swing.JPanel();
         P1B1 = new javax.swing.JLabel();
@@ -433,11 +497,84 @@ public class Board extends javax.swing.JFrame {
         P3B36 = new javax.swing.JLabel();
         P4B36 = new javax.swing.JLabel();
         lblBoard = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        paneControls = new javax.swing.JPanel();
+        btnRoll = new javax.swing.JButton();
+        btnStart = new javax.swing.JButton();
+        paneP1 = new javax.swing.JPanel();
+        lblNameP1 = new javax.swing.JLabel();
+        lblIconP1 = new javax.swing.JLabel();
+        paneP2 = new javax.swing.JPanel();
+        lblNameP2 = new javax.swing.JLabel();
+        lblIconP2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
+
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB7MouseExited(evt);
+            }
+        });
+        jLayeredPane1.add(lblHoverB7);
+        lblHoverB7.setBounds(2, 98, 90, 60);
+
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB6MouseExited(evt);
+            }
+        });
+        jLayeredPane1.add(lblHoverB6);
+        lblHoverB6.setBounds(2, 160, 90, 60);
+
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB5MouseExited(evt);
+            }
+        });
+        jLayeredPane1.add(lblHoverB5);
+        lblHoverB5.setBounds(2, 288, 90, 60);
+
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB4MouseExited(evt);
+            }
+        });
+        jLayeredPane1.add(lblHoverB4);
+        lblHoverB4.setBounds(2, 352, 90, 60);
+
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB3MouseExited(evt);
+            }
+        });
+        jLayeredPane1.add(lblHoverB3);
+        lblHoverB3.setBounds(2, 415, 90, 60);
+
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHoverB2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHoverB2MouseExited(evt);
+            }
+        });
+        jLayeredPane1.add(lblHoverB2);
+        lblHoverB2.setBounds(2, 480, 90, 60);
 
         lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -502,7 +639,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB2Layout.setVerticalGroup(
             paneB2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,7 +655,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB2);
-        paneB2.setBounds(10, 550, 60, 50);
+        paneB2.setBounds(10, 550, 58, 50);
 
         paneB3.setBackground(new java.awt.Color(255, 255, 255));
         paneB3.setOpaque(false);
@@ -537,7 +674,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB3Layout.setVerticalGroup(
             paneB3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +690,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB3);
-        paneB3.setBounds(10, 485, 60, 51);
+        paneB3.setBounds(10, 485, 58, 51);
 
         paneB4.setBackground(new java.awt.Color(255, 255, 255));
         paneB4.setOpaque(false);
@@ -572,7 +709,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB4Layout.setVerticalGroup(
             paneB4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -588,7 +725,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB4);
-        paneB4.setBounds(10, 420, 60, 51);
+        paneB4.setBounds(10, 420, 58, 51);
 
         paneB5.setBackground(new java.awt.Color(255, 255, 255));
         paneB5.setOpaque(false);
@@ -607,7 +744,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB5Layout.setVerticalGroup(
             paneB5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -623,7 +760,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB5);
-        paneB5.setBounds(10, 355, 60, 51);
+        paneB5.setBounds(10, 355, 58, 51);
 
         paneB6.setBackground(new java.awt.Color(255, 255, 255));
         paneB6.setOpaque(false);
@@ -642,7 +779,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB6Layout.setVerticalGroup(
             paneB6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,7 +795,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB6);
-        paneB6.setBounds(10, 295, 60, 51);
+        paneB6.setBounds(10, 295, 58, 51);
 
         paneB7.setBackground(new java.awt.Color(255, 255, 255));
         paneB7.setOpaque(false);
@@ -677,7 +814,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB7Layout.setVerticalGroup(
             paneB7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -693,7 +830,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB7);
-        paneB7.setBounds(10, 230, 60, 51);
+        paneB7.setBounds(10, 230, 58, 51);
 
         paneB8.setBackground(new java.awt.Color(255, 255, 255));
         paneB8.setOpaque(false);
@@ -712,7 +849,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB8Layout.setVerticalGroup(
             paneB8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -728,7 +865,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB8);
-        paneB8.setBounds(10, 165, 60, 51);
+        paneB8.setBounds(10, 165, 58, 51);
 
         paneB9.setBackground(new java.awt.Color(255, 255, 255));
         paneB9.setOpaque(false);
@@ -747,7 +884,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB9Layout.setVerticalGroup(
             paneB9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -763,7 +900,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB9);
-        paneB9.setBounds(10, 100, 60, 51);
+        paneB9.setBounds(10, 100, 58, 51);
 
         paneB10.setBackground(new java.awt.Color(255, 255, 255));
         paneB10.setOpaque(false);
@@ -782,7 +919,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB10Layout.setVerticalGroup(
             paneB10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,7 +935,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB10);
-        paneB10.setBounds(5, 10, 60, 51);
+        paneB10.setBounds(5, 10, 58, 51);
 
         paneB11.setBackground(new java.awt.Color(255, 255, 255));
         paneB11.setOpaque(false);
@@ -817,7 +954,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB11Layout.setVerticalGroup(
             paneB11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -833,7 +970,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB11);
-        paneB11.setBounds(98, 10, 60, 51);
+        paneB11.setBounds(98, 10, 58, 51);
 
         paneB12.setBackground(new java.awt.Color(255, 255, 255));
         paneB12.setOpaque(false);
@@ -852,7 +989,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB12Layout.setVerticalGroup(
             paneB12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -868,7 +1005,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB12);
-        paneB12.setBounds(160, 10, 60, 51);
+        paneB12.setBounds(160, 10, 58, 51);
 
         paneB13.setBackground(new java.awt.Color(255, 255, 255));
         paneB13.setOpaque(false);
@@ -887,7 +1024,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB13Layout.setVerticalGroup(
             paneB13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -903,7 +1040,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB13);
-        paneB13.setBounds(225, 10, 60, 51);
+        paneB13.setBounds(225, 10, 58, 51);
 
         paneB14.setBackground(new java.awt.Color(255, 255, 255));
         paneB14.setOpaque(false);
@@ -922,7 +1059,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB14Layout.setVerticalGroup(
             paneB14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -938,7 +1075,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB14);
-        paneB14.setBounds(290, 10, 60, 51);
+        paneB14.setBounds(290, 10, 58, 51);
 
         paneB15.setBackground(new java.awt.Color(255, 255, 255));
         paneB15.setOpaque(false);
@@ -957,7 +1094,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB15Layout.setVerticalGroup(
             paneB15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,7 +1110,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB15);
-        paneB15.setBounds(355, 10, 60, 51);
+        paneB15.setBounds(355, 10, 58, 51);
 
         paneB16.setBackground(new java.awt.Color(255, 255, 255));
         paneB16.setOpaque(false);
@@ -992,7 +1129,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB16Layout.setVerticalGroup(
             paneB16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1008,7 +1145,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB16);
-        paneB16.setBounds(415, 10, 60, 51);
+        paneB16.setBounds(415, 10, 58, 51);
 
         paneB17.setBackground(new java.awt.Color(255, 255, 255));
         paneB17.setOpaque(false);
@@ -1027,7 +1164,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B17, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B17, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB17Layout.setVerticalGroup(
             paneB17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1043,7 +1180,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB17);
-        paneB17.setBounds(480, 10, 60, 51);
+        paneB17.setBounds(480, 10, 58, 51);
 
         paneB18.setBackground(new java.awt.Color(255, 255, 255));
         paneB18.setOpaque(false);
@@ -1062,7 +1199,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB18Layout.setVerticalGroup(
             paneB18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1078,7 +1215,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB18);
-        paneB18.setBounds(545, 10, 60, 51);
+        paneB18.setBounds(545, 10, 58, 51);
 
         paneB19.setBackground(new java.awt.Color(255, 255, 255));
         paneB19.setOpaque(false);
@@ -1097,7 +1234,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB19Layout.setVerticalGroup(
             paneB19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1113,7 +1250,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB19);
-        paneB19.setBounds(630, 10, 60, 51);
+        paneB19.setBounds(630, 10, 58, 51);
 
         paneB20.setBackground(new java.awt.Color(255, 255, 255));
         paneB20.setOpaque(false);
@@ -1132,7 +1269,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB20Layout.setVerticalGroup(
             paneB20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1148,7 +1285,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB20);
-        paneB20.setBounds(630, 100, 60, 51);
+        paneB20.setBounds(630, 100, 58, 51);
 
         paneB21.setBackground(new java.awt.Color(255, 255, 255));
         paneB21.setOpaque(false);
@@ -1167,7 +1304,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB21Layout.setVerticalGroup(
             paneB21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1183,7 +1320,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB21);
-        paneB21.setBounds(630, 165, 60, 51);
+        paneB21.setBounds(630, 165, 58, 51);
 
         paneB22.setBackground(new java.awt.Color(255, 255, 255));
         paneB22.setOpaque(false);
@@ -1202,7 +1339,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B22, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B22, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB22Layout.setVerticalGroup(
             paneB22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1218,7 +1355,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB22);
-        paneB22.setBounds(630, 230, 60, 51);
+        paneB22.setBounds(630, 230, 58, 51);
 
         paneB23.setBackground(new java.awt.Color(255, 255, 255));
         paneB23.setOpaque(false);
@@ -1237,7 +1374,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB23Layout.setVerticalGroup(
             paneB23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1253,7 +1390,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB23);
-        paneB23.setBounds(630, 295, 60, 51);
+        paneB23.setBounds(630, 295, 58, 51);
 
         paneB24.setBackground(new java.awt.Color(255, 255, 255));
         paneB24.setOpaque(false);
@@ -1272,7 +1409,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB24Layout.setVerticalGroup(
             paneB24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1288,7 +1425,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB24);
-        paneB24.setBounds(630, 355, 60, 51);
+        paneB24.setBounds(630, 355, 58, 51);
 
         paneB25.setBackground(new java.awt.Color(255, 255, 255));
         paneB25.setOpaque(false);
@@ -1307,7 +1444,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB25Layout.setVerticalGroup(
             paneB25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1323,7 +1460,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB25);
-        paneB25.setBounds(630, 420, 60, 51);
+        paneB25.setBounds(630, 420, 58, 51);
 
         paneB26.setBackground(new java.awt.Color(255, 255, 255));
         paneB26.setOpaque(false);
@@ -1342,7 +1479,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB26Layout.setVerticalGroup(
             paneB26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1358,7 +1495,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB26);
-        paneB26.setBounds(630, 485, 60, 51);
+        paneB26.setBounds(630, 485, 58, 51);
 
         paneB27.setBackground(new java.awt.Color(255, 255, 255));
         paneB27.setOpaque(false);
@@ -1377,7 +1514,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B27, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B27, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB27Layout.setVerticalGroup(
             paneB27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1393,7 +1530,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB27);
-        paneB27.setBounds(630, 545, 60, 51);
+        paneB27.setBounds(630, 545, 58, 51);
 
         paneB28.setBackground(new java.awt.Color(255, 255, 255));
         paneB28.setOpaque(false);
@@ -1412,7 +1549,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB28Layout.setVerticalGroup(
             paneB28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1428,7 +1565,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB28);
-        paneB28.setBounds(630, 640, 60, 51);
+        paneB28.setBounds(630, 640, 58, 51);
 
         paneB29.setBackground(new java.awt.Color(255, 255, 255));
         paneB29.setOpaque(false);
@@ -1447,7 +1584,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB29Layout.setVerticalGroup(
             paneB29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1463,7 +1600,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB29);
-        paneB29.setBounds(545, 640, 60, 51);
+        paneB29.setBounds(545, 640, 58, 51);
 
         paneB30.setBackground(new java.awt.Color(255, 255, 255));
         paneB30.setOpaque(false);
@@ -1482,7 +1619,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B30, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B30, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB30Layout.setVerticalGroup(
             paneB30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1498,7 +1635,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB30);
-        paneB30.setBounds(480, 640, 60, 51);
+        paneB30.setBounds(480, 640, 58, 51);
 
         paneB31.setBackground(new java.awt.Color(255, 255, 255));
         paneB31.setOpaque(false);
@@ -1517,7 +1654,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B31, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B31, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB31Layout.setVerticalGroup(
             paneB31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1533,7 +1670,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB31);
-        paneB31.setBounds(415, 640, 60, 51);
+        paneB31.setBounds(415, 640, 58, 51);
 
         paneB32.setBackground(new java.awt.Color(255, 255, 255));
         paneB32.setOpaque(false);
@@ -1552,7 +1689,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B32, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B32, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB32Layout.setVerticalGroup(
             paneB32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1568,7 +1705,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB32);
-        paneB32.setBounds(352, 640, 60, 51);
+        paneB32.setBounds(352, 640, 58, 51);
 
         paneB33.setBackground(new java.awt.Color(255, 255, 255));
         paneB33.setOpaque(false);
@@ -1587,7 +1724,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B33, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B33, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB33Layout.setVerticalGroup(
             paneB33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1603,7 +1740,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB33);
-        paneB33.setBounds(290, 640, 60, 51);
+        paneB33.setBounds(290, 640, 58, 51);
 
         paneB34.setBackground(new java.awt.Color(255, 255, 255));
         paneB34.setOpaque(false);
@@ -1622,7 +1759,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB34Layout.setVerticalGroup(
             paneB34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1638,7 +1775,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB34);
-        paneB34.setBounds(225, 640, 60, 51);
+        paneB34.setBounds(225, 640, 58, 51);
 
         paneB35.setBackground(new java.awt.Color(255, 255, 255));
         paneB35.setOpaque(false);
@@ -1657,7 +1794,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B35, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B35, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB35Layout.setVerticalGroup(
             paneB35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1673,7 +1810,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB35);
-        paneB35.setBounds(160, 640, 60, 51);
+        paneB35.setBounds(160, 640, 58, 51);
 
         paneB36.setBackground(new java.awt.Color(255, 255, 255));
         paneB36.setOpaque(false);
@@ -1692,7 +1829,7 @@ public class Board extends javax.swing.JFrame {
                         .addComponent(P4B36, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(P3B36, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paneB36Layout.setVerticalGroup(
             paneB36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1708,79 +1845,119 @@ public class Board extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(paneB36);
-        paneB36.setBounds(95, 640, 60, 51);
+        paneB36.setBounds(95, 640, 58, 51);
 
         lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
         jLayeredPane1.add(lblBoard);
         lblBoard.setBounds(0, 0, 700, 700);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnRoll.setText("Roll!");
+        btnRoll.setEnabled(false);
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRollActionPerformed(evt);
             }
         });
+
+        btnStart.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnStart.setText("GO!");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout paneControlsLayout = new javax.swing.GroupLayout(paneControls);
+        paneControls.setLayout(paneControlsLayout);
+        paneControlsLayout.setHorizontalGroup(
+            paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneControlsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        paneControlsLayout.setVerticalGroup(
+            paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNameP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout paneP1Layout = new javax.swing.GroupLayout(paneP1);
+        paneP1.setLayout(paneP1Layout);
+        paneP1Layout.setHorizontalGroup(
+            paneP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNameP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(paneP1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblIconP1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        paneP1Layout.setVerticalGroup(
+            paneP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP1Layout.createSequentialGroup()
+                .addComponent(lblNameP1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIconP1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 152, Short.MAX_VALUE))
+        );
+
+        lblNameP2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNameP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout paneP2Layout = new javax.swing.GroupLayout(paneP2);
+        paneP2.setLayout(paneP2Layout);
+        paneP2Layout.setHorizontalGroup(
+            paneP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNameP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(paneP2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblIconP2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        paneP2Layout.setVerticalGroup(
+            paneP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP2Layout.createSequentialGroup()
+                .addComponent(lblNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIconP2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 130, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(paneControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        addPlayers();
-
-        for (int i = 0; i < playerCount; i++) {
-            for (int k = 0; k < 36; k++) {
-                if (i == 0) { //1
-                    Image image1 = board[0].piece.getImage(); // transform it 
-                    Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
-                    boxes[i][k].setIcon(imageIcon1);
-                }
-                if (i == 1) { //2
-                    Image image2 = board[1].piece.getImage(); // transform it 
-                    Image newimg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon2 = new ImageIcon(newimg2);  // transform it back
-                    boxes[i][k].setIcon(imageIcon2);
-                }
-                if (i == 2) {//3
-                    Image image3 = board[2].piece.getImage(); // transform it 
-                    Image newimg3 = image3.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon3 = new ImageIcon(newimg3);  // transform it back    
-                    boxes[i][k].setIcon(imageIcon3);
-                }
-                if (i == 3) { //4
-                    Image image4 = board[3].piece.getImage(); // transform it 
-                    Image newimg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon4 = new ImageIcon(newimg4);  // transform it back  
-                    boxes[i][k].setIcon(imageIcon4);
-                }
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lblHoverB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseEntered
         // TODO add your handling code here:        
@@ -1792,6 +1969,84 @@ public class Board extends javax.swing.JFrame {
         // TODO add your handling code here:        
         breakCard();
     }//GEN-LAST:event_lblHoverB1MouseExited
+
+    private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
+        // TODO add your handling code here:
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
+        makeCard(Color.yellow, i, 1);
+    }//GEN-LAST:event_lblHoverB2MouseEntered
+
+    private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
+        // TODO add your handling code here:
+        breakCard();
+    }//GEN-LAST:event_lblHoverB2MouseExited
+
+    private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
+        // TODO add your handling code here:
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
+        makeCard(Color.gray, i, 20);
+    }//GEN-LAST:event_lblHoverB3MouseEntered
+
+    private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
+        // TODO add your handling code here:
+        breakCard();
+    }//GEN-LAST:event_lblHoverB3MouseExited
+
+    private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
+        // TODO add your handling code here:
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
+        makeCard(Color.yellow, i, 2);
+    }//GEN-LAST:event_lblHoverB4MouseEntered
+
+    private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
+        // TODO add your handling code here:
+        breakCard();
+    }//GEN-LAST:event_lblHoverB4MouseExited
+
+    private void lblHoverB5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseEntered
+        // TODO add your handling code here:
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
+        makeCard(Color.gray, i, 21);
+    }//GEN-LAST:event_lblHoverB5MouseEntered
+
+    private void lblHoverB5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseExited
+        // TODO add your handling code here:
+        breakCard();
+    }//GEN-LAST:event_lblHoverB5MouseExited
+
+    private void lblHoverB6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseEntered
+        // TODO add your handling code here:
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/WH Image.jpg");
+        makeCard(Color.blue, i, 3);
+    }//GEN-LAST:event_lblHoverB6MouseEntered
+
+    private void lblHoverB6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseExited
+        // TODO add your handling code here:
+        breakCard();
+    }//GEN-LAST:event_lblHoverB6MouseExited
+
+    private void lblHoverB7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseEntered
+        // TODO add your handling code here:
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/Iqa Image.jpg");
+        makeCard(Color.blue, i, 4);
+    }//GEN-LAST:event_lblHoverB7MouseEntered
+
+    private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
+        // TODO add your handling code here:
+        breakCard();
+    }//GEN-LAST:event_lblHoverB7MouseExited
+
+    private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
+        // TODO add your handling code here:        
+        roll = Dice.rollDice(theme, di);
+    }//GEN-LAST:event_btnRollActionPerformed
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        // TODO add your handling code here:
+        addPlayers();
+        btnStart.setEnabled(false);
+        btnRoll.setEnabled(true);
+    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1807,16 +2062,21 @@ public class Board extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Board.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Board.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Board.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Board.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Board.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Board.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Board.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Board.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1972,10 +2232,21 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JLabel P4B7;
     private javax.swing.JLabel P4B8;
     private javax.swing.JLabel P4B9;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRoll;
+    private javax.swing.JButton btnStart;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBoard;
     private javax.swing.JLabel lblHoverB1;
+    private javax.swing.JLabel lblHoverB2;
+    private javax.swing.JLabel lblHoverB3;
+    private javax.swing.JLabel lblHoverB4;
+    private javax.swing.JLabel lblHoverB5;
+    private javax.swing.JLabel lblHoverB6;
+    private javax.swing.JLabel lblHoverB7;
+    private javax.swing.JLabel lblIconP1;
+    private javax.swing.JLabel lblIconP2;
+    private javax.swing.JLabel lblNameP1;
+    private javax.swing.JLabel lblNameP2;
     private javax.swing.JPanel paneB1;
     private javax.swing.JPanel paneB10;
     private javax.swing.JPanel paneB11;
@@ -2012,5 +2283,8 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JPanel paneB7;
     private javax.swing.JPanel paneB8;
     private javax.swing.JPanel paneB9;
+    private javax.swing.JPanel paneControls;
+    private javax.swing.JPanel paneP1;
+    private javax.swing.JPanel paneP2;
     // End of variables declaration//GEN-END:variables
 }
