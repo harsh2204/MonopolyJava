@@ -6,8 +6,11 @@ package monopolyalpha;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  *
@@ -18,14 +21,16 @@ public class Board extends javax.swing.JFrame {
     /**
      * Creates new form Board
      */
-    int playerCount, startCash, di, EGS, snakeAmt, jailFee, roll;
-
+    int playerCount, startCash, di, EGS, snakeAmt, jailFee, roll, turn = 1, totturn = 0;
     String theme;
     //for object array
     String player;//name
     int playerID; //player id
     int cash;//money
     int propCount;//number of properties
+    int position;
+    Timer tmr;
+    int a = 0, b;
     //
     Properties_Data properties = new Properties_Data(theme);
     ImageIcon piece;
@@ -296,6 +301,115 @@ public class Board extends javax.swing.JFrame {
                     boxes[i][k].setIcon(imageIcon4);
                 }
             }
+        }
+    }
+
+    public void moveTo(final int playerID, int pos) {
+        switch (playerID) {
+            case 1:
+                b = 0;
+                tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (a > 0) {
+                            boxes[0][a - 1].setIcon(null);
+                        }
+                        if (a == 36) {
+                            a = 0;
+                        }
+                        if (a == 0) {
+                            boxes[0][35].setIcon(null);
+                        }
+
+                        boxes[0][a].setIcon(board[playerID].piece);
+                        b++;
+                        a++;
+                        System.out.println(a + " " + b + " ");
+
+                        if (b == roll) {
+                            tmr.stop();
+                        }
+                    }
+                });
+                tmr.start(); break;
+            case 2:
+                b = 0;
+                tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (a > 0) {
+                            boxes[1][a - 1].setIcon(null);
+                        }
+                        if (a == 36) {
+                            a = 0;
+                        }
+                        if (a == 0) {
+                            boxes[1][35].setIcon(null);
+                        }
+
+                        boxes[1][a].setIcon(board[playerID].piece);
+                        b++;
+                        a++;
+                        System.out.println(a + " " + b + " ");
+
+                        if (b == roll) {
+                            tmr.stop();
+                        }
+                    }
+                });
+                tmr.start(); break;
+            case 3:
+                b = 0;
+                tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (a > 0) {
+                            boxes[2][a - 1].setIcon(null);
+                        }
+                        if (a == 36) {
+                            a = 0;
+                        }
+                        if (a == 0) {
+                            boxes[2][35].setIcon(null);
+                        }
+
+                        boxes[2][a].setIcon(board[playerID].piece);
+                        b++;
+                        a++;
+                        System.out.println(a + " " + b + " ");
+
+                        if (b == roll) {
+                            tmr.stop();
+                        }
+                    }
+                });
+                tmr.start(); break;
+            case 4:
+                b = 0;
+                tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (a > 0) {
+                            boxes[3][a - 1].setIcon(null);
+                        }
+                        if (a == 36) {
+                            a = 0;
+                        }
+                        if (a == 0) {
+                            boxes[3][35].setIcon(null);
+                        }
+
+                        boxes[3][a].setIcon(board[playerID].piece);
+                        b++;
+                        a++;
+                        System.out.println(a + " " + b + " ");
+
+                        if (b == roll) {
+                            tmr.stop();
+                        }
+                    }
+                });
+                tmr.start(); break;
         }
     }
 
@@ -2037,8 +2151,27 @@ public class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
-        // TODO add your handling code here:        
         roll = Dice.rollDice(theme, di);
+        turn++;
+        totturn++;
+        switch (playerCount) {
+            case 2:
+                if (turn == 3) {
+                    turn = turn - 2;
+                }
+                break;
+            case 3:
+                if (turn == 4) {
+                    turn = turn - 3;
+                }
+                break;
+            case 4:
+                if (turn == 5) {
+                    turn = turn - 4;
+                }
+                break;
+        }
+        moveTo(turn, roll);
     }//GEN-LAST:event_btnRollActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
