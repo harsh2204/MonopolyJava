@@ -13,46 +13,33 @@ import javax.swing.ImageIcon;
  *
  * @author Harsh
  */
-public class ThemeSelect extends javax.swing.JFrame {
+public class ThemeSelect extends javax.swing.JFrame
+  {
 
-    public String theme = "Generic";
-    public static String dicePath;
-    public String piece1;
-    public String piece2;
-    public String piece3;
-    public String piece4;
-    public String piece5;
-    public String piece6;
-    public String piece7;
-    public String piece8;
-    public ImageIcon i1;
-    public ImageIcon i2;
-    public ImageIcon i3;
-    public ImageIcon i4;
-    public ImageIcon i5;
-    public ImageIcon i6;
-    public ImageIcon i7;
-    public ImageIcon i8;
+    public static String theme, dicePath, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8;
+    public static ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
 
     /**
      * Creates new form ThemeSelect
      */
-    public ThemeSelect() {
+    public ThemeSelect()
+      {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-    }
 
-   
+      }
 
-    public void goNext() {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InitTest(theme, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8, i1, i2, i3, i4, i5, i6, i7, i8).setVisible(true);
-            }
-        });
+    public void goNext()
+      {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
+                new InitTest().setVisible(true);
+              }
+          });
 
-    }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,7 +55,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         btnSuper = new javax.swing.JButton();
         btnGeneric = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -107,13 +94,13 @@ public class ThemeSelect extends javax.swing.JFrame {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("PLEASE SELECT A THEME");
 
-        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        back.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        back.setText("BACK");
+        back.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
@@ -134,7 +121,7 @@ public class ThemeSelect extends javax.swing.JFrame {
                 .addGap(0, 97, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton1)
+                .addComponent(back)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,7 +136,7 @@ public class ThemeSelect extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(back)
                 .addContainerGap())
         );
 
@@ -158,38 +145,44 @@ public class ThemeSelect extends javax.swing.JFrame {
 
     private void btnCanadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanadaActionPerformed
         // TODO add your handling code here:
-        theme = "Canada";
-        Canada_Data can = new Canada_Data();
-        piece1 = "Mic";
-        piece2 = "Carty";
-        piece3 = "Shoe";
-        piece4 = "Hat";
-        piece5 = can.p1;
-        piece6 = can.p2;
-        piece7 = can.p3;
-        piece8 = can.p4;
-        i1 = new ImageIcon("Icons/Pieces/Generic/1.png");
-        i2 = new ImageIcon("Icons/Pieces/Generic/2.png");
-        i3 = new ImageIcon("Icons/Pieces/Generic/3.png");
-        i4 = new ImageIcon("Icons/Pieces/Generic/4.png");
-        i5 = can.i1;
-        i6 = can.i2;
-        i7 = can.i3;
-        i8 = can.i4;
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
+        canth();
         new StartScreenfrm().setVisible(false);
         this.setVisible(false);
-        goNext();
+        new InitTest().setVisible(true);
+//        goNext();
     }//GEN-LAST:event_btnCanadaActionPerformed
 
     private void btnSuperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuperActionPerformed
         // TODO add your handling code here:
+        supth();
+        new StartScreenfrm().setVisible(false);
+        this.setVisible(false);
+        new InitTest().setVisible(true);
+//        goNext();
+    }//GEN-LAST:event_btnSuperActionPerformed
+
+    private void btnGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenericActionPerformed
+        // TODO add your handling code here:
+        genth();
+        new StartScreenfrm().setVisible(false);
+        this.setVisible(false);
+        new InitTest().setVisible(true);
+    }//GEN-LAST:event_btnGenericActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backActionPerformed
+    {//GEN-HEADEREND:event_backActionPerformed
+        this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
+                new StartScreenfrm().setVisible(true);
+              }
+          });
+    }//GEN-LAST:event_backActionPerformed
+
+    public void supth()
+      {
         theme = "SuperHeros";
         SuperHero_Data sup = new SuperHero_Data();
         piece1 = "Dog";
@@ -208,20 +201,10 @@ public class ThemeSelect extends javax.swing.JFrame {
         i6 = sup.i2;
         i7 = sup.i3;
         i8 = sup.i4;
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
-        new StartScreenfrm().setVisible(false);
-        this.setVisible(false);
-        goNext();
-    }//GEN-LAST:event_btnSuperActionPerformed
-
-    private void btnGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenericActionPerformed
-        // TODO add your handling code here:
+      }
+    
+    public void genth()
+      {
         theme = "Generic";
         piece1 = "Mic";
         piece2 = "Carty";
@@ -239,83 +222,79 @@ public class ThemeSelect extends javax.swing.JFrame {
         i6 = new ImageIcon("Icons/Pieces/Generic/6.png");
         i7 = new ImageIcon("Icons/Pieces/Generic/7.png");
         i8 = new ImageIcon("Icons/Pieces/Generic/8.png");
-        System.out.println(piece1);
-        System.out.println(piece2);
-        System.out.println(piece3);
-        System.out.println(piece4);
-        System.out.println(piece5);
-        System.out.println(piece6);
-        System.out.println(piece7);
-        System.out.println(piece8);
-        System.out.println(i1.toString());
-        System.out.println(i2.toString());
-        System.out.println(i3.toString());
-        System.out.println(i4.toString());
-        System.out.println(i5.toString());
-        System.out.println(i6.toString());
-        System.out.println(i7.toString());
-        System.out.println(i8.toString());
-        new StartScreenfrm().setVisible(false);
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
-        this.setVisible(false);
-        goNext();
-    }//GEN-LAST:event_btnGenericActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        this.setVisible(false);
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StartScreenfrm().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_jButton1ActionPerformed
+      }
+    
+    public void canth()
+      {
+        theme = "Canada";
+        Canada_Data can = new Canada_Data();
+        piece1 = "Mic";
+        piece2 = "Carty";
+        piece3 = "Shoe";
+        piece4 = "Hat";
+        piece5 = can.p1;
+        piece6 = can.p2;
+        piece7 = can.p3;
+        piece8 = can.p4;
+        i1 = new ImageIcon("Icons/Pieces/Generic/1.png");
+        i2 = new ImageIcon("Icons/Pieces/Generic/2.png");
+        i3 = new ImageIcon("Icons/Pieces/Generic/3.png");
+        i4 = new ImageIcon("Icons/Pieces/Generic/4.png");
+        i5 = can.i1;
+        i6 = can.i2;
+        i7 = can.i3;
+        i8 = can.i4;
+      }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new StartScreenfrm().setVisible(true);
-            }
-        });
-    }
+              }
+          });
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JButton btnCanada;
     private javax.swing.JButton btnGeneric;
     private javax.swing.JButton btnSuper;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
