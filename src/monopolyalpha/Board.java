@@ -102,12 +102,13 @@ public class Board extends javax.swing.JFrame {
             board[i].cash = startCash;
             board[i].propCount = 0;
         }
+        
         setupPlayers();
     }
 
     private void setupLabels() {
         //1
-        boxes[0][0] = this.P1B1;
+        boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
         boxes[0][2] = P1B3;
         boxes[0][3] = P1B4;
@@ -304,7 +305,7 @@ public class Board extends javax.swing.JFrame {
         }
     }
 
-    public void moveTo(final int playerID, int pos) {
+    public void moveTo(final int playerID, final int pos) {
         switch (playerID) {
             case 1:
                 b = 0;
@@ -321,12 +322,12 @@ public class Board extends javax.swing.JFrame {
                             boxes[0][35].setIcon(null);
                         }
 
-                        boxes[0][a].setIcon(board[playerID].piece);
+                        boxes[0][a].setIcon(board[playerID-1].piece);
                         b++;
                         a++;
                         System.out.println(a + " " + b + " ");
 
-                        if (b == roll) {
+                        if (b == pos) {
                             tmr.stop();
                         }
                     }
@@ -347,12 +348,12 @@ public class Board extends javax.swing.JFrame {
                             boxes[1][35].setIcon(null);
                         }
 
-                        boxes[1][a].setIcon(board[playerID].piece);
+                        boxes[1][a].setIcon(board[playerID-1].piece);
                         b++;
                         a++;
                         System.out.println(a + " " + b + " ");
 
-                        if (b == roll) {
+                        if (b == pos) {
                             tmr.stop();
                         }
                     }
@@ -373,12 +374,12 @@ public class Board extends javax.swing.JFrame {
                             boxes[2][35].setIcon(null);
                         }
 
-                        boxes[2][a].setIcon(board[playerID].piece);
+                        boxes[2][a].setIcon(board[playerID-1].piece);
                         b++;
                         a++;
                         System.out.println(a + " " + b + " ");
 
-                        if (b == roll) {
+                        if (b == pos) {
                             tmr.stop();
                         }
                     }
@@ -399,12 +400,12 @@ public class Board extends javax.swing.JFrame {
                             boxes[3][35].setIcon(null);
                         }
 
-                        boxes[3][a].setIcon(board[playerID].piece);
+                        boxes[3][a].setIcon(board[playerID-1].piece);
                         b++;
                         a++;
                         System.out.println(a + " " + b + " ");
 
-                        if (b == roll) {
+                        if (b == pos) {
                             tmr.stop();
                         }
                     }
@@ -2159,24 +2160,30 @@ public class Board extends javax.swing.JFrame {
                 if (turn == 3) {
                     turn = turn - 2;
                 }
+                moveTo(turn, roll);
                 break;
             case 3:
                 if (turn == 4) {
                     turn = turn - 3;
                 }
+                moveTo(turn, roll);
                 break;
             case 4:
                 if (turn == 5) {
                     turn = turn - 4;
                 }
+                moveTo(turn, roll);
                 break;
         }
-        moveTo(turn, roll);
+        
     }//GEN-LAST:event_btnRollActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
         addPlayers();
+        for (int i = 0; i < playerCount; i++){
+            boxes[i][0].setIcon(board[i].piece);
+        }
         btnStart.setEnabled(false);
         btnRoll.setEnabled(true);
     }//GEN-LAST:event_btnStartActionPerformed
