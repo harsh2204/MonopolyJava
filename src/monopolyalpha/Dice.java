@@ -65,7 +65,7 @@ public class Dice {
             dice.pack();
             dice.setLocationRelativeTo(null);
             dice.setVisible(true);
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 15; i++) {
                 dice.setVisible(false);
                 sleep(100);
                 Random r = new Random();
@@ -73,10 +73,10 @@ public class Dice {
                 di.setIcon(new ImageIcon(path + randomNumber + ".png"));
                 dice.setVisible(true);
                 di.repaint();
-                if (i == 8) {
+                if (i == 14) {
                     roll = randomNumber;
                 }
-                sleep(500);
+                sleep(50);
             }
 //            blinkingDie(dice);
             di.addMouseListener(new MouseAdapter() {
@@ -105,7 +105,7 @@ public class Dice {
             dice.setLocationRelativeTo(null);
 
             dice.setVisible(true);
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 15; i++) {
                 dice.setEnabled(false);
                 dice.setVisible(false);
                 sleep(100);
@@ -118,10 +118,10 @@ public class Dice {
                 dice.setVisible(true);
                 di1.repaint();
                 di2.repaint();
-                if (i == 8) {
+                if (i == 14) {
                     roll = randomNumber1 + randomNumber2;
                 }
-                sleep(500);
+                sleep(50);
             }
 //            blinkingDie(dice);            
             di1.addMouseListener(new MouseAdapter() {

@@ -21,7 +21,7 @@ public class Board extends javax.swing.JFrame {
     /**
      * Creates new form Board
      */
-    int playerCount, startCash, di, EGS, snakeAmt, jailFee, roll, turn = 1, totturn = 0;
+    int playerCount, startCash, di, EGS, snakeAmt, jailFee, roll, turn = 0, totturn = 0;
     String theme;
     //for object array
     String player;//name
@@ -30,7 +30,7 @@ public class Board extends javax.swing.JFrame {
     int propCount;//number of properties
     int position;
     Timer tmr;
-    int a = 0, b;
+    int b, pp1=1,pp2=1,pp3=1,pp4=1;
     //
     Properties_Data properties = new Properties_Data(theme);
     ImageIcon piece;
@@ -101,6 +101,7 @@ public class Board extends javax.swing.JFrame {
             board[i].playerID = i;
             board[i].cash = startCash;
             board[i].propCount = 0;
+            board[i].position = 0;
         }
         
         setupPlayers();
@@ -261,7 +262,14 @@ public class Board extends javax.swing.JFrame {
 //            }
 //        }
     }
-
+    public void makePieces() {
+        for (int i = 0; i < playerCount; i++) {
+            Image image1 = board[i].piece.getImage(); // transform it 
+            Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+            ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
+            board[i].piece = imageIcon1;
+        }
+    }
     public void makeCard(Color bg, ImageIcon i, int index) {
 
         c = new Card(bg, i, index, theme);
@@ -312,20 +320,20 @@ public class Board extends javax.swing.JFrame {
                 tmr = new Timer(500, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (a > 0) {
-                            boxes[0][a - 1].setIcon(null);
+                        if (pp1 > 0) {
+                            boxes[0][pp1 - 1].setIcon(null);
                         }
-                        if (a == 36) {
-                            a = 0;
+                        if (pp1 == 36) {
+                            pp1 = 0;
                         }
-                        if (a == 0) {
+                        if (pp1 == 0) {
                             boxes[0][35].setIcon(null);
                         }
 
-                        boxes[0][a].setIcon(board[playerID-1].piece);
+                        boxes[0][pp1].setIcon(board[playerID-1].piece);
                         b++;
-                        a++;
-                        System.out.println(a + " " + b + " ");
+                        pp1++;
+                        System.out.println(pp1 + " " + b + " ");
 
                         if (b == pos) {
                             tmr.stop();
@@ -338,20 +346,20 @@ public class Board extends javax.swing.JFrame {
                 tmr = new Timer(500, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (a > 0) {
-                            boxes[1][a - 1].setIcon(null);
+                        if (pp2 > 0) {
+                            boxes[1][pp2 - 1].setIcon(null);
                         }
-                        if (a == 36) {
-                            a = 0;
+                        if (pp2 == 36) {
+                            pp2 = 0;
                         }
-                        if (a == 0) {
+                        if (pp2 == 0) {
                             boxes[1][35].setIcon(null);
                         }
 
-                        boxes[1][a].setIcon(board[playerID-1].piece);
+                        boxes[1][pp2].setIcon(board[playerID-1].piece);
                         b++;
-                        a++;
-                        System.out.println(a + " " + b + " ");
+                        pp2++;
+                        System.out.println(pp2 + " " + b + " ");
 
                         if (b == pos) {
                             tmr.stop();
@@ -364,20 +372,20 @@ public class Board extends javax.swing.JFrame {
                 tmr = new Timer(500, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (a > 0) {
-                            boxes[2][a - 1].setIcon(null);
+                        if (pp3 > 0) {
+                            boxes[2][pp3 - 1].setIcon(null);
                         }
-                        if (a == 36) {
-                            a = 0;
+                        if (pp3 == 36) {
+                            pp3 = 0;
                         }
-                        if (a == 0) {
+                        if (pp3 == 0) {
                             boxes[2][35].setIcon(null);
                         }
 
-                        boxes[2][a].setIcon(board[playerID-1].piece);
+                        boxes[2][pp3].setIcon(board[playerID-1].piece);
                         b++;
-                        a++;
-                        System.out.println(a + " " + b + " ");
+                        pp3++;
+                        System.out.println(pp3 + " " + b + " ");
 
                         if (b == pos) {
                             tmr.stop();
@@ -390,21 +398,20 @@ public class Board extends javax.swing.JFrame {
                 tmr = new Timer(500, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (a > 0) {
-                            boxes[3][a - 1].setIcon(null);
+                        if (pp4 > 0) {
+                            boxes[3][pp4 - 1].setIcon(null);
                         }
-                        if (a == 36) {
-                            a = 0;
+                        if (pp4 == 36) {
+                            pp4 = 0;
                         }
-                        if (a == 0) {
+                        if (pp4 == 0) {
                             boxes[3][35].setIcon(null);
                         }
 
-                        boxes[3][a].setIcon(board[playerID-1].piece);
+                        boxes[3][pp4].setIcon(board[playerID-1].piece);
                         b++;
-                        a++;
-                        System.out.println(a + " " + b + " ");
-
+                        pp4++;
+                        System.out.println(pp4 + " " + b + " ");                        
                         if (b == pos) {
                             tmr.stop();
                         }
@@ -2181,6 +2188,7 @@ public class Board extends javax.swing.JFrame {
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
         addPlayers();
+        makePieces();
         for (int i = 0; i < playerCount; i++){
             boxes[i][0].setIcon(board[i].piece);
         }
