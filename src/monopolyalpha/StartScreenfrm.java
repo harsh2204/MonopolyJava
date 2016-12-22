@@ -4,19 +4,12 @@
  */
 package monopolyalpha;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 
 /**
  *
@@ -44,10 +37,9 @@ public class StartScreenfrm extends javax.swing.JFrame
         bkpanel.setSize(w, h);
         ig = ic.getImage().getScaledInstance(bk.getWidth(), bk.getHeight(), Image.SCALE_SMOOTH);
         ic = new ImageIcon(ig);
-        System.out.println(w + "" + h);        
+        System.out.println(w + "" + h);
         bk.setIcon(ic);
       }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -173,64 +165,56 @@ public class StartScreenfrm extends javax.swing.JFrame
 
     private void btnLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadGameActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
-                new Save_Manager().setVisible(true);
-              }
-          });
+
+        new Save_Manager().setVisible(true);
+
     }//GEN-LAST:event_btnLoadGameActionPerformed
 
     private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
+//        try
+//          {
+//            Thread.sleep(200);
+//          } catch (InterruptedException ex)
+//          {
+//            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+//          }
         new ThemeSelect().setVisible(true);
 
     }//GEN-LAST:event_btnNewGameActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
+//        try
+//          {
+//            Thread.sleep(200);
+//          } catch (InterruptedException ex)
+//          {
+//            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+//          }
     }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
 
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
+//        try
+//          {
+//            Thread.sleep(200);
+//          } catch (InterruptedException ex)
+//          {
+//            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+//          }
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-        try
-          {
-            Thread.sleep(200);
-          } catch (InterruptedException ex)
-          {
-            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
-          }
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
-                new AboutFrame().setVisible(true);
-              }
-          });
+//        try
+//          {
+//            Thread.sleep(200);
+//          } catch (InterruptedException ex)
+//          {
+//            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
+//          }
+
+        new AboutFrame().setVisible(true);
+
         //////NICE TRY AYY LMAO
 //        JDialog about = new JDialog();
 //        JLayeredPane jp = new JLayeredPane();
@@ -261,7 +245,6 @@ public class StartScreenfrm extends javax.swing.JFrame
 //        about.pack();
 //        about.setLocationRelativeTo(null);
 //        about.setVisible(true);
-
 
     }//GEN-LAST:event_btnAboutActionPerformed
 
