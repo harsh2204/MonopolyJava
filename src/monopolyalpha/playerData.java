@@ -11,34 +11,44 @@ package monopolyalpha;
  */
 public class playerData
   {
-    public int numplayers,i;
+
+    public int numplayers, i,dice,chance;
     public String theme;
-    public int[] money,numprop,cpos,npos,bonus,jailfee;
-    public String[] icon,name;
+    public int[] money, numprop, cpos, npos, bonus, jailfee;
+    public String[] icon, name;
     //1D array used so that everything can be called individually
     //Although it might take more time and more code lines it will make it easy in future 
-    ThemeSelect ts=new ThemeSelect();
-    InitTest it=new InitTest();
-    
+    ThemeSelect ts = new ThemeSelect();
+    InitTest it = new InitTest();
+    Dice di = new Dice();
+
     public playerData()
       {
-        numplayers=it.Players;
+        numplayers = it.Players;
         datatransfer();
+        playermovement();
       }
-        
+
     public void datatransfer()
-      {for(i=0;i<=numplayers;i++)
-         {
-           name[i]=it.player[i][0];
-           icon[i]=it.player[i][1];
-           money[i]=Integer.parseInt(it.player[i][2]);
-           numprop[i]=0;
-           bonus[i]=Integer.parseInt(it.player[i][3]);
-           jailfee[i]=Integer.parseInt(it.player[i][4]);
-           cpos[i]=0;
-           
-         }
+      {
+        for (i = 0; i <= numplayers; i++)
+          {
+            name[i] = it.player[i][0];
+            icon[i] = it.player[i][1];
+            money[i] = Integer.parseInt(it.player[i][2]);
+            numprop[i] = 0;
+            bonus[i] = Integer.parseInt(it.player[i][3]);
+            jailfee[i] = Integer.parseInt(it.player[i][4]);
+            cpos[i] = 0;
+          }
       }
     
-  }
+    public void playermovement()
+      {
+        dice=di.roll;//Please Add a variable which stores the roll in the dice class
+        chance=Board.chance; //This is a variable in Board which Kiska chance hai woh and this variable would be used as array index in everything
+        //If u dont get this part message me on FB
+        
+      }
 
+  }
