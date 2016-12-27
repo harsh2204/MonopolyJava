@@ -9,19 +9,21 @@ package monopolyalpha;
  *
  * @author Harsh
  */
-public class Properties_Data {
+public class Properties_Data
+  {
 
     public int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
     boolean owned;
     int owner;
     String thm, desc1, desc2;
-    
 
-    public Properties_Data(String theme) {
+    public Properties_Data(String theme)
+      {
         this.thm = theme;
-    }
+      }
     public String name;
     Properties_Data prop[] = new Properties_Data[26];
+
     /*Colour Scheme Codes:
      1:Yellow
      2:Blue
@@ -33,8 +35,8 @@ public class Properties_Data {
      8:White
      9:Black
      */
-
-    public void setProp() { //TEMPLATE
+    public void setProp()
+      { //TEMPLATE
         //Adding property rents
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
@@ -255,14 +257,21 @@ public class Properties_Data {
         prop[25].price = 325;
         prop[25].colour = 7;
         //======================================================================
+        for (int i = 0; i < 35; i++)
+          {
+            prop[i].owner = -1;
+            prop[i].owned = false;
+          }
+      }
 
-    }
-
-    public void GetProp() {
-        if (thm.equals("Canada")) {
+    public void GetProp()
+      {
+        if (thm.equals("Canada"))
+          {
             Canada_Data can = new Canada_Data();
             can.setProp();
-            for (int i = 0; i < prop.length; i++) {
+            for (int i = 0; i < prop.length; i++)
+              {
                 prop[i] = new Properties_Data(thm);
                 prop[i].name = can.property[i].propName;
                 prop[i].price = can.property[i].price;
@@ -275,14 +284,18 @@ public class Properties_Data {
                 prop[i].priceHouse = can.property[i].priceHouse;
                 prop[i].desc1 = can.property[i].desc1;
                 prop[i].desc2 = can.property[i].desc2;
+                prop[i].owner = -1;
+                prop[i].owned = false;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-            }
-        }
-        if (thm.equals("Generic")) {
+              }
+          }
+        if (thm.equals("Generic"))
+          {
             Canada_Data can = new Canada_Data();//change to generic
             can.setProp();//same as above
-            for (int i = 0; i < prop.length; i++) {
+            for (int i = 0; i < prop.length; i++)
+              {
                 prop[i] = new Properties_Data(thm);
                 prop[i].name = can.property[i].propName;
                 prop[i].price = can.property[i].price;
@@ -292,14 +305,18 @@ public class Properties_Data {
                 prop[i].rent4 = can.property[i].rent4;
                 prop[i].rentH = can.property[i].rentH;
                 prop[i].colour = can.property[i].colour;
-                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
-                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-            }
-        }
-        if (thm.equals("Super")) {
+                prop[i].owner = -1;
+                prop[i].owned = false;
+//                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
+//                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
+              }
+          }
+        if (thm.equals("Super"))
+          {
             Canada_Data can = new Canada_Data();//Change to super
             can.setProp();//same as above.
-            for (int i = 0; i < prop.length; i++) {
+            for (int i = 0; i < prop.length; i++)
+              {
                 prop[i] = new Properties_Data(thm);
                 prop[i].name = can.property[i].propName;
                 prop[i].price = can.property[i].price;
@@ -309,9 +326,11 @@ public class Properties_Data {
                 prop[i].rent4 = can.property[i].rent4;
                 prop[i].rentH = can.property[i].rentH;
                 prop[i].colour = can.property[i].colour;
-                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
-                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-            }
-        }
-    }
-}
+                prop[i].owner = -1;
+                prop[i].owned = false;
+//                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
+//                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
+              }
+          }
+      }
+  }
