@@ -18,54 +18,41 @@ import javax.swing.Timer;
  *
  * @author Harsh, Karmit, Haard, Neel(barely)
  */
-public final class InitTest extends JFrame
+public class InitTest extends JFrame
   {
 
     //Initialize piece name and image variables   
-    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static String theme;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    String theme;
     public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players, w, h, i;
-    public static String piecep1, piecep2, piecep3, piecep4, piecep5, piecep6, piecep7, piecep8;
-    public static ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
-    public static ArrayList<ImageIcon> images = new ArrayList<>();
-    public static String nameo, t1, t2, t3, t4;
-    public static NickNames nickName = new NickNames();
-    public static Timer ti;
-    public static int[] startm = new int[4], bonusm = new int[4], jailfeem = new int[4];
-    public static ImageIcon[] combo = new ImageIcon[100], icon = new ImageIcon[4];
-    public static String[] combos = new String[100], pieces = new String[100], name = new String[4];
-    public static String[][] player = new String[4][100];
-    public ThemeSelect ts = new ThemeSelect();
-    public static JTextField[] plnames = new JTextField[4];
-    public static JLabel[] plicons = new JLabel[4];
-    public static Boolean snake = false, jail = false;
+    public String piecep1, piecep2, piecep3, piecep4, piecep5, piecep6, piecep7, piecep8;
+    public ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
+    ArrayList<ImageIcon> images = new ArrayList<>();
+    public String nameo, t1, t2, t3, t4;
+    NickNames nickName = new NickNames();
+    public Timer ti;
+    ImageIcon[] combo = new ImageIcon[100];
+    String[] combos = new String[100], pieces = new String[100];
+    String[][] player = new String[100][100];// [pID][name, icon path]
+    ThemeSelect ts = new ThemeSelect();
+//    public JComboBox<String> comIconP1, comIconP2, comIconP3, comIconP4;
 
     public InitTest()
       {
         datatransfer();
+//        System.out.println(pieces[1] + " " + pieces[2] + " " + pieces[3] + " " + pieces[4] + " " + pieces[5] + " " + pieces[6] + " " + pieces[7] + " ");
+
         initComponents();
         combosetting();
         numPlayers();
         checker();
         this.setExtendedState(MAXIMIZED_BOTH);
         imagesetting();
-        setup();
-      }
-
-    public void setup()
-      {
-        plnames[0] = txtNameP1;
-        plnames[1] = txtNameP2;
-        plnames[2] = txtNameP3;
-        plnames[3] = txtNameP4;
-        plicons[0] = lblPiece1;
-        plicons[1] = lblPiece2;
-        plicons[2] = lblPiece3;
-        plicons[3] = lblPiece4;
       }
 
     public void imagesetting()
       {
+
         images.add(0, null);
         images.add(1, i1);
         images.add(2, i2);
@@ -103,15 +90,15 @@ public final class InitTest extends JFrame
           {
             case "Canada":
                 ts.canth();
-                System.out.println("" + ts.theme);
+                System.out.println(""+ts.theme);
                 break;
             case "Generic":
                 ts.genth();
-                System.out.println("" + ts.theme);
+                System.out.println(""+ts.theme);
                 break;
             case "SuperHeroes":
                 ts.supth();
-                System.out.println("" + ts.theme);
+                System.out.println(""+ts.theme);
                 break;
           }
         this.theme = ts.theme;
@@ -155,60 +142,6 @@ public final class InitTest extends JFrame
                 reset();
               }
           });
-      }
-
-    public void setStartmoney()
-      {
-        int i = comMoney.getSelectedIndex();
-        switch (i)
-          {
-            case 0:
-                startmoney = 500;
-                break;
-            case 1:
-                startmoney = 1000;
-                break;
-            case 2:
-                startmoney = 1500;
-                break;
-            case 3:
-                startmoney = 2000;
-                break;
-          }
-      }
-
-    public void setBonusmoney()
-      {
-        int i = comBonAmt.getSelectedIndex();
-        switch (i)
-          {
-            case 0:
-                bonusmoney = 50;
-                break;
-            case 1:
-                bonusmoney = 100;
-                break;
-            case 2:
-                bonusmoney = 120;
-                break;
-          }
-      }
-
-    public void setBailfee()
-      {
-        int i = comBailFee.getSelectedIndex();
-        switch (i)
-          {
-            case 0:
-                jailfee = 100;
-                break;
-            case 1:
-                jailfee = 150;
-                break;
-            case 2:
-                jailfee = 200;
-                break;
-          }
       }
 
     @SuppressWarnings("unchecked")
@@ -973,8 +906,11 @@ public final class InitTest extends JFrame
 
     private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
     {//GEN-HEADEREND:event_btnRand1MouseClicked
+        //Generate random nickname
         nickName.listName();
+        //Get nickname from nickName class
         nameo = nickName.name;
+        //Add nickname to textbox
         txtNameP1.setText(nameo);
     }//GEN-LAST:event_btnRand1MouseClicked
 
@@ -1008,47 +944,41 @@ public final class InitTest extends JFrame
 
     private void comIconP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comIconP1ItemStateChanged
     }//GEN-LAST:event_comIconP1ItemStateChanged
-
     public void setPlayers()
       {
-        setStartmoney();
-        setBonusmoney();
-        setBailfee();
-        if (rndSnake.isSelected())
+        if (sldPlayer.getValue() < 3)
           {
-            snake = true;
+            player[0][0] = txtNameP1.getText();
+            System.out.println(lblPiece1.getDisabledIcon().toString());
+            player[1][0] = txtNameP2.getText();
+            player[0][1] = lblPiece1.getDisabledIcon().toString();
+            player[1][1] = lblPiece2.getDisabledIcon().toString();
           }
-        if (rndBail.isSelected())
+        if (sldPlayer.getValue() > 2)
           {
-            jail = true;
+            player[0][0] = txtNameP1.getText();
+            player[1][0] = txtNameP2.getText();
+            player[2][0] = txtNameP3.getText();
+            player[0][1] = lblPiece1.getDisabledIcon().toString();
+            player[1][1] = lblPiece2.getDisabledIcon().toString();
+            player[2][1] = lblPiece3.getDisabledIcon().toString();
           }
-        Players = sldPlayer.getValue();
-        for (i = 0; i < Players; i++)
+        if (sldPlayer.getValue() > 3)
           {
-            name[i] = plnames[i].getText();
-            icon[i] = (ImageIcon) plicons[i].getDisabledIcon();
-            startm[i] = startmoney;
-            if (snake == true)
-              {
-                bonusm[i] = bonusmoney;
-              } else
-              {
-                bonusm[i] = 0;
-              }
-            if (jail == true)
-              {
-                jailfeem[i] = jailfee;
-              } else
-              {
-                jailfeem[i] = 0;
-              }
-            System.out.println("InitTest: Info:-" + i + " " + name[i] + " " + icon[i] + " " + startm[i] + "Players: " + Players);
+            player[3][0] = txtNameP4.getText();
+            player[3][1] = lblPiece4.getDisabledIcon().toString();
           }
-        System.out.println("InitTest: Number of Players: " + Players);
       }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         setPlayers();
-        new Board().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
+                new Board(player, sldPlayer.getValue(), startmoney, dicenum, comEGS.getSelectedIndex(), rndSnake.isSelected(), bonusmoney, rndBail.isSelected(), jailfee, theme).setVisible(true);
+              }
+          });
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
@@ -1104,7 +1034,25 @@ public final class InitTest extends JFrame
     }//GEN-LAST:event_comMoneyItemStateChanged
 
     private void comMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comMoneyActionPerformed
-        setStartmoney();
+        //Get startup value
+        int i = comMoney.getSelectedIndex();
+        //Add money to public int
+        switch (i)
+          {
+
+            case 1:
+                startmoney = 500;
+                break;
+            case 2:
+                startmoney = 1000;
+                break;
+            case 3:
+                startmoney = 1500;
+                break;
+            case 4:
+                startmoney = 2000;
+                break;
+          }
     }//GEN-LAST:event_comMoneyActionPerformed
 
     private void btnRand4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRand4ActionPerformed
@@ -1114,14 +1062,12 @@ public final class InitTest extends JFrame
 
     private void rndBailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rndBailActionPerformed
         // TODO add your handling code here:
-        jail = true;
         lblBailFee.setEnabled(rndBail.isSelected());
         comBailFee.setEnabled(rndBail.isSelected());
     }//GEN-LAST:event_rndBailActionPerformed
 
     private void rndSnakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rndSnakeActionPerformed
         // TODO add your handling code here:
-        snake = true;
         lblBonAmt.setEnabled(rndSnake.isSelected());
         comBonAmt.setEnabled(rndSnake.isSelected());
     }//GEN-LAST:event_rndSnakeActionPerformed
@@ -1140,11 +1086,43 @@ public final class InitTest extends JFrame
     }//GEN-LAST:event_btnDiceActionPerformed
 
     private void comBonAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBonAmtActionPerformed
-        setBonusmoney();
+        // TODO add your handling code here:
+        //Get bonus value
+        int i = comBonAmt.getSelectedIndex();
+        //Add money to public int
+        switch (i)
+          {
+
+            case 1:
+                bonusmoney = 50;
+                break;
+            case 2:
+                bonusmoney = 100;
+                break;
+            case 3:
+                bonusmoney = 120;
+                break;
+          }
     }//GEN-LAST:event_comBonAmtActionPerformed
 
     private void comBailFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBailFeeActionPerformed
-        setBailfee();
+        // TODO add your handling code here:
+        //Get fee value
+        int i = comBailFee.getSelectedIndex();
+        //Add money to public int
+        switch (i)
+          {
+
+            case 1:
+                bonusmoney = 100;
+                break;
+            case 2:
+                bonusmoney = 150;
+                break;
+            case 3:
+                bonusmoney = 200;
+                break;
+          }
     }//GEN-LAST:event_comBailFeeActionPerformed
 
     private void comEGSActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comEGSActionPerformed
@@ -1399,7 +1377,7 @@ public final class InitTest extends JFrame
     private javax.swing.JPanel paneP3;
     private javax.swing.JRadioButton rndBail;
     private javax.swing.JRadioButton rndSnake;
-    public static javax.swing.JSlider sldPlayer;
+    private javax.swing.JSlider sldPlayer;
     private javax.swing.JTextField txtNameP1;
     private javax.swing.JTextField txtNameP2;
     private javax.swing.JTextField txtNameP3;
