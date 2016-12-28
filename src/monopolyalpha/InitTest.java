@@ -195,7 +195,24 @@ public final class InitTest extends JFrame
                 break;
           }
       }
-
+    
+    private void snakeEyeBonus(){
+        if (dicenum == 1)
+          {
+            btnDice.setText("2 Dice");
+            dicenum = 2;
+            rndSnake.setEnabled(true);
+          } else
+          {
+            btnDice.setText("1 Dice");
+            dicenum = 1;
+            rndSnake.setSelected(false);
+            rndSnake.setEnabled(false);
+            lblBonAmt.setEnabled(false);
+            comBonAmt.setEnabled(false);
+          }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -1122,15 +1139,7 @@ public final class InitTest extends JFrame
 
     private void btnDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiceActionPerformed
         // TODO add your handling code here:
-        if (dicenum == 1)
-          {
-            btnDice.setText("2 Dice");
-            dicenum = 2;
-          } else
-          {
-            btnDice.setText("1 Dice");
-            dicenum = 1;
-          }
+        snakeEyeBonus();
     }//GEN-LAST:event_btnDiceActionPerformed
 
     private void comBonAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBonAmtActionPerformed
