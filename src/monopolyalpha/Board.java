@@ -21,93 +21,36 @@ public class Board extends javax.swing.JFrame {
     /**
      * Creates new form Board
      */
-    int playerCount, startCash, di, EGS, snakeAmt, jailFee, roll, turn = 0, totturn = 0;
-    String theme;
-    //for object array
-    String player;//name
-    int playerID; //player id
-    int cash;//money
-    int propCount;//number of properties
-    int position;
-    Timer tmr;
-    int b, pp1=1,pp2=1,pp3=1,pp4=1;
-    //
+    static String theme;
     Properties_Data properties = new Properties_Data(theme);
-    ImageIcon piece;
-    Board[] board;
-    String[][] pl;
-    boolean snake = false, bail = false;
-    JLabel[][] boxes = new JLabel[4][36];
+    static ImageIcon piece;
+    static Board[] board;
+    static JLabel[][] boxes = new JLabel[4][36];
     Card c;
+    Game game = new Game();
+    Players players;
 
-    public Board(String[][] players, int pCount, int iniCash, int diCount, int EGS, boolean snk, int snkAmt, boolean jail, int jailFee, String theme) {
-        initComponents();
-        setupLabels();
+    public Board() {
+        initComponents();        
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
-        this.theme = theme;
-        this.playerCount = pCount;
-        this.startCash = iniCash;
-        this.di = diCount;
-        this.EGS = EGS;
-        if (snk) {
-            this.snake = true;
-            this.snakeAmt = snkAmt;
-        }
-        if (jail) {
-            this.bail = true;
-            this.jailFee = jailFee;
-        }
-        this.pl = new String[players.length][];
-        for (int i = 0; i < players.length; i++) {
-            pl[i] = players[i].clone();
-        }
-        board = new Board[pCount];
-
-//        final JDialog start = new JDialog();        
-//        start.setLayout(new BorderLayout());
-//        JButton go = new JButton();
-//        go.setFont(new java.awt.Font("Showcard Gothic", 0, 18));
-//        go.setText("Start Game!");
-//        go.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-//        start.add(go, BorderLayout.CENTER);
-//        start.setUndecorated(true);
-//        go.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                start.dispose();
-//                addPlayers(true);
-//            }
-//        });
-//        start.setAlwaysOnTop(true);        
-//        start.pack();
-//        start.setVisible(true);            
+        setupLabels();
     }
 
-    private void setupPlayers() {
-        lblNameP1.setText(board[0].player);
-        lblIconP1.setIcon(board[0].piece);
-        lblNameP2.setText(board[1].player);
-        lblIconP2.setIcon(board[1].piece);
+    public void setupPlayers() {
+        players = new Players();
+        lblNameP1.setText(Players.peeps[0].name);
+        lblIconP1.setIcon(Players.peeps[0].icon);
+        lblNameP2.setText(Players.peeps[1].name);
+        lblIconP2.setIcon(Players.peeps[1].icon);
+//        lblNameP2.setText(player.peeps[2].name);
+//        lblIconP2.setIcon(player.peeps[2].icon);
+//        lblNameP2.setText(player.peeps[3].name);
+//        lblIconP2.setIcon(player.peeps[3].icon);
+
     }
 
-    private void addPlayers() {
-        for (int i = 0; i < board.length; i++) {
-            board[i] = new Board(pl, playerCount, startCash, di, EGS, snake, snakeAmt, bail, jailFee, theme);
-        }
-        for (int i = 0; i < playerCount; i++) {
-
-            board[i].player = pl[i][0];
-            board[i].piece = new ImageIcon(pl[i][1]);
-            board[i].playerID = i;
-            board[i].cash = startCash;
-            board[i].propCount = 0;
-            board[i].position = 0;
-        }
-        
-        setupPlayers();
-    }
-
-    private void setupLabels() {
+    public void setupLabels() {
         //1
         boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
@@ -256,23 +199,119 @@ public class Board extends javax.swing.JFrame {
         boxes[3][33] = P4B34;
         boxes[3][34] = P4B35;
         boxes[3][35] = P4B36;
-//        for (int i = 0; i < 4; i++) {
-//            for (int k = 0; k < 36; k++) {
-//               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
-//            }
-//        }
+
     }
-    public void makePieces() {
-        for (int i = 0; i < playerCount; i++) {
-            Image image1 = board[i].piece.getImage(); // transform it 
-            Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-            ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
-            board[i].piece = imageIcon1;
+    
+     public static void moveTo(final int playerID, final int pos) {
+        switch (playerID) {
+            case 1:
+                Game.b = 0;
+                Game.tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (Game.pp1 > 0) {
+                            boxes[0][Game.pp1 - 1].setIcon(null);
+                        }
+                        if (Game.pp1 == 36) {
+                            Game.pp1 = 0;
+                        }
+                        if (Game.pp1 == 0) {
+                            boxes[0][35].setIcon(null);
+                        }
+                        boxes[0][Game.pp1].setIcon(board[playerID-1].piece);
+                        Game.b++;
+                        Game.pp1++;
+                        System.out.println(Game.pp1 + " " + Game.b + " ");
+
+                        if (Game.b == pos) {
+                            Game.tmr.stop();
+                        }
+                    }
+                });
+                Game.tmr.start(); break;
+            case 2:
+                Game.b = 0;
+                Game.tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (Game.pp2 > 0) {
+                            boxes[1][Game.pp2 - 1].setIcon(null);
+                        }
+                        if (Game.pp2 == 36) {
+                            Game.pp2 = 0;
+                        }
+                        if (Game.pp2 == 0) {
+                            boxes[1][35].setIcon(null);
+                        }
+
+                        boxes[1][Game.pp2].setIcon(board[playerID-1].piece);
+                        Game.b++;
+                        Game.pp2++;
+                        System.out.println(Game.pp2 + " " + Game.b + " ");
+
+                        if (Game.b == pos) {
+                            Game.tmr.stop();
+                        }
+                    }
+                });
+                Game.tmr.start(); break;
+            case 3:
+                Game.b = 0;
+                Game.tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (Game.pp3 > 0) {
+                            boxes[2][Game.pp3 - 1].setIcon(null);
+                        }
+                        if (Game.pp3 == 36) {
+                            Game.pp3 = 0;
+                        }
+                        if (Game.pp3 == 0) {
+                            boxes[2][35].setIcon(null);
+                        }
+
+                        boxes[2][Game.pp3].setIcon(board[playerID-1].piece);
+                        Game.b++;
+                        Game.pp3++;
+                        System.out.println(Game.pp3 + " " + Game.b + " ");
+
+                        if (Game.b == pos) {
+                            Game.tmr.stop();
+                        }
+                    }
+                });
+                Game.tmr.start(); break;
+            case 4:
+                Game.b = 0;
+                Game.tmr = new Timer(500, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (Game.pp4 > 0) {
+                            boxes[3][Game.pp4 - 1].setIcon(null);
+                        }
+                        if (Game.pp4 == 36) {
+                            Game.pp4 = 0;
+                        }
+                        if (Game.pp4 == 0) {
+                            boxes[3][35].setIcon(null);
+                        }
+
+                        boxes[3][Game.pp4].setIcon(board[playerID-1].piece);
+                        Game.b++;
+                        Game.pp4++;
+                        System.out.println(Game.pp4 + " " + Game.b + " ");                        
+                        if (Game.b == pos) {
+                            Game.tmr.stop();
+                        }
+                    }
+                });
+                Game.tmr.start(); break;
         }
     }
+
     public void makeCard(Color bg, ImageIcon i, int index) {
 
-        c = new Card(bg, i, index, theme);
+        c = new Card(i, index, theme);
         c.setVisible(true);
     }
 
@@ -280,147 +319,38 @@ public class Board extends javax.swing.JFrame {
         c.setVisible(false);
     }
 
-    public void testPieces() {
-        addPlayers();
-
-        for (int i = 0; i < playerCount; i++) {
-            for (int k = 0; k < 36; k++) {
-                if (i == 0) { //1
-                    Image image1 = board[0].piece.getImage(); // transform it 
-                    Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
-                    boxes[i][k].setIcon(imageIcon1);
-                }
-                if (i == 1) { //2
-                    Image image2 = board[1].piece.getImage(); // transform it 
-                    Image newimg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon2 = new ImageIcon(newimg2);  // transform it back
-                    boxes[i][k].setIcon(imageIcon2);
-                }
-                if (i == 2) {//3
-                    Image image3 = board[2].piece.getImage(); // transform it 
-                    Image newimg3 = image3.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon3 = new ImageIcon(newimg3);  // transform it back    
-                    boxes[i][k].setIcon(imageIcon3);
-                }
-                if (i == 3) { //4
-                    Image image4 = board[3].piece.getImage(); // transform it 
-                    Image newimg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon4 = new ImageIcon(newimg4);  // transform it back  
-                    boxes[i][k].setIcon(imageIcon4);
-                }
-            }
-        }
-    }
-
-    public void moveTo(final int playerID, final int pos) {
-        switch (playerID) {
-            case 1:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp1 > 0) {
-                            boxes[0][pp1 - 1].setIcon(null);
-                        }
-                        if (pp1 == 36) {
-                            pp1 = 0;
-                        }
-                        if (pp1 == 0) {
-                            boxes[0][35].setIcon(null);
-                        }
-
-                        boxes[0][pp1].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp1++;
-                        System.out.println(pp1 + " " + b + " ");
-
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-            case 2:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp2 > 0) {
-                            boxes[1][pp2 - 1].setIcon(null);
-                        }
-                        if (pp2 == 36) {
-                            pp2 = 0;
-                        }
-                        if (pp2 == 0) {
-                            boxes[1][35].setIcon(null);
-                        }
-
-                        boxes[1][pp2].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp2++;
-                        System.out.println(pp2 + " " + b + " ");
-
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-            case 3:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp3 > 0) {
-                            boxes[2][pp3 - 1].setIcon(null);
-                        }
-                        if (pp3 == 36) {
-                            pp3 = 0;
-                        }
-                        if (pp3 == 0) {
-                            boxes[2][35].setIcon(null);
-                        }
-
-                        boxes[2][pp3].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp3++;
-                        System.out.println(pp3 + " " + b + " ");
-
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-            case 4:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp4 > 0) {
-                            boxes[3][pp4 - 1].setIcon(null);
-                        }
-                        if (pp4 == 36) {
-                            pp4 = 0;
-                        }
-                        if (pp4 == 0) {
-                            boxes[3][35].setIcon(null);
-                        }
-
-                        boxes[3][pp4].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp4++;
-                        System.out.println(pp4 + " " + b + " ");                        
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-        }
-    }
-
+//    public void testPieces() {
+//        addPlayers();
+//
+//        for (int i = 0; i < playerCount; i++) {
+//            for (int k = 0; k < 36; k++) {
+//                if (i == 0) { //1
+//                    Image image1 = board[0].piece.getImage(); // transform it 
+//                    Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+//                    ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
+//                    boxes[i][k].setIcon(imageIcon1);
+//                }
+//                if (i == 1) { //2
+//                    Image image2 = board[1].piece.getImage(); // transform it 
+//                    Image newimg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+//                    ImageIcon imageIcon2 = new ImageIcon(newimg2);  // transform it back
+//                    boxes[i][k].setIcon(imageIcon2);
+//                }
+//                if (i == 2) {//3
+//                    Image image3 = board[2].piece.getImage(); // transform it 
+//                    Image newimg3 = image3.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+//                    ImageIcon imageIcon3 = new ImageIcon(newimg3);  // transform it back    
+//                    boxes[i][k].setIcon(imageIcon3);
+//                }
+//                if (i == 3) { //4
+//                    Image image4 = board[3].piece.getImage(); // transform it 
+//                    Image newimg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+//                    ImageIcon imageIcon4 = new ImageIcon(newimg4);  // transform it back  
+//                    boxes[i][k].setIcon(imageIcon4);
+//                }
+//            }
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -621,7 +551,6 @@ public class Board extends javax.swing.JFrame {
         lblBoard = new javax.swing.JLabel();
         paneControls = new javax.swing.JPanel();
         btnRoll = new javax.swing.JButton();
-        btnStart = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
         lblIconP1 = new javax.swing.JLabel();
@@ -1975,18 +1904,9 @@ public class Board extends javax.swing.JFrame {
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.setEnabled(false);
         btnRoll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
-            }
-        });
-
-        btnStart.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        btnStart.setText("GO!");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
             }
         });
 
@@ -1997,15 +1917,11 @@ public class Board extends javax.swing.JFrame {
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -2096,6 +2012,7 @@ public class Board extends javax.swing.JFrame {
         // TODO add your handling code here:
         ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
         makeCard(Color.yellow, i, 1);
+
     }//GEN-LAST:event_lblHoverB2MouseEntered
 
     private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
@@ -2159,42 +2076,8 @@ public class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
-        roll = Dice.rollDice(theme, di);
-        turn++;
-        totturn++;
-        switch (playerCount) {
-            case 2:
-                if (turn == 3) {
-                    turn = turn - 2;
-                }
-                moveTo(turn, roll);
-                break;
-            case 3:
-                if (turn == 4) {
-                    turn = turn - 3;
-                }
-                moveTo(turn, roll);
-                break;
-            case 4:
-                if (turn == 5) {
-                    turn = turn - 4;
-                }
-                moveTo(turn, roll);
-                break;
-        }
-        
+        Game.roll();
     }//GEN-LAST:event_btnRollActionPerformed
-
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        // TODO add your handling code here:
-        addPlayers();
-        makePieces();
-        for (int i = 0; i < playerCount; i++){
-            boxes[i][0].setIcon(board[i].piece);
-        }
-        btnStart.setEnabled(false);
-        btnRoll.setEnabled(true);
-    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2381,7 +2264,6 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JLabel P4B8;
     private javax.swing.JLabel P4B9;
     private javax.swing.JButton btnRoll;
-    private javax.swing.JButton btnStart;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBoard;
     private javax.swing.JLabel lblHoverB1;

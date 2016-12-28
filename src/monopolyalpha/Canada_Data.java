@@ -5,6 +5,7 @@
  */
 package monopolyalpha;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,10 +23,12 @@ public class Canada_Data {
     public ImageIcon i3 = new ImageIcon("Icons/Pieces/Canada/3.png");
     public ImageIcon i4 = new ImageIcon("Icons/Pieces/Canada/4.png");
     String propName, desc1, desc2;
-    int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
+    int price, priceHouse, rent1, rent2, rent3, rent4, rentH;
     public String chance[] = new String[16];
     public String community[] = new String[16];
     public Canada_Data property[] = new Canada_Data[26];
+    Color colour;
+    Color purple = new Color(128, 0, 128);
 
     public Canada_Data[] setProp() {
         //Initializing the object array.
@@ -71,7 +74,7 @@ public class Canada_Data {
         property[0].rent4 = 160;
         property[0].rentH = 250;
         property[0].priceHouse = 50;
-        property[0].colour = 1;
+        property[0].colour = Color.yellow;
         //MISSISSAUGA
         property[1].price = 60;
         property[1].rent1 = 20;
@@ -80,7 +83,7 @@ public class Canada_Data {
         property[1].rent4 = 320;
         property[1].rentH = 450;
         property[1].priceHouse = 50;
-        property[1].colour = 1;
+        property[1].colour = Color.yellow;
         //YELLOW KNIFE
         property[2].price = 80;
         property[2].rent1 = 30;
@@ -89,7 +92,7 @@ public class Canada_Data {
         property[2].rent4 = 350;
         property[2].rentH = 500;
         property[2].priceHouse = 50;
-        property[2].colour = 1;
+        property[2].colour = Color.yellow;
         //======================================================================
         //BLUE SUITE------------------------------------------------------------
         //WHITEHORSE
@@ -100,7 +103,7 @@ public class Canada_Data {
         property[3].rent4 = 400;
         property[3].rentH = 550;
         property[3].priceHouse = 75;
-        property[3].colour = 2;
+        property[3].colour = Color.blue;
         //IQALUIT
         property[4].price = 120;
         property[4].rent1 = 40;
@@ -109,7 +112,7 @@ public class Canada_Data {
         property[4].rent4 = 450;
         property[4].rentH = 600;
         property[4].priceHouse = 75;
-        property[4].colour = 2;
+        property[4].colour = Color.blue;
         //SASKATOON
         property[5].price = 120;
         property[5].rent1 = 40;
@@ -118,7 +121,7 @@ public class Canada_Data {
         property[5].rent4 = 420;
         property[5].rentH = 580;
         property[5].priceHouse = 75;
-        property[5].colour = 2;
+        property[5].colour = Color.blue;
         //======================================================================
         //PURPLE SUITE----------------------------------------------------------
         //THUNDER BAY
@@ -129,7 +132,7 @@ public class Canada_Data {
         property[6].rent4 = 625;
         property[6].rentH = 700;
         property[6].priceHouse = 100;
-        property[6].colour = 3;
+        property[6].colour = purple;
         //WINDSOR
         property[7].price = 150;
         property[7].rent1 = 60;
@@ -138,7 +141,7 @@ public class Canada_Data {
         property[7].rent4 = 650;
         property[7].rentH = 750;
         property[7].priceHouse = 100;
-        property[7].colour = 3;
+        property[7].colour = purple;
         //FREDRICTION
         property[8].price = 180;
         property[8].rent1 = 80;
@@ -147,7 +150,7 @@ public class Canada_Data {
         property[8].rent4 = 680;
         property[8].rentH = 900;
         property[8].priceHouse = 100;
-        property[8].colour = 3;
+        property[8].colour = purple;
         //======================================================================
         //GREEN SUITE-----------------------------------------------------------
         //REGINA
@@ -158,7 +161,7 @@ public class Canada_Data {
         property[9].rent4 = 700;
         property[9].rentH = 910;
         property[9].priceHouse = 150;
-        property[9].colour = 4;
+        property[9].colour = Color.green;
         //ST. JOHN'S
         property[10].price = 220;
         property[10].rent1 = 110;
@@ -167,7 +170,7 @@ public class Canada_Data {
         property[10].rent4 = 725;
         property[10].rentH = 925;
         property[10].priceHouse = 150;
-        property[10].colour = 4;
+        property[10].colour = Color.green;
         //QUEBEC CITY
         property[11].price = 220;
         property[11].rent1 = 110;
@@ -176,7 +179,7 @@ public class Canada_Data {
         property[11].rent4 = 725;
         property[11].rentH = 925;
         property[11].priceHouse = 150;
-        property[11].colour = 4;
+        property[11].colour = Color.green;
         //HALIFAX
         property[12].price = 250;
         property[12].rent1 = 125;
@@ -185,7 +188,7 @@ public class Canada_Data {
         property[12].rent4 = 750;
         property[12].rentH = 950;
         property[12].priceHouse = 150;
-        property[12].colour = 4;
+        property[12].colour = Color.green;
         //======================================================================
         //RED SUITE-------------------------------------------------------------
         //WINNIPEG
@@ -196,7 +199,7 @@ public class Canada_Data {
         property[13].rent4 = 975;
         property[13].rentH = 1000;
         property[13].priceHouse = 200;
-        property[13].colour = 5;
+        property[13].colour = Color.red;
         //EDMONTON
         property[14].price = 290;
         property[14].rent1 = 150;
@@ -205,7 +208,7 @@ public class Canada_Data {
         property[14].rent4 = 1000;
         property[14].rentH = 1100;
         property[14].priceHouse = 200;
-        property[14].colour = 5;
+        property[14].colour = Color.red;
         //CALGARY
         property[15].price = 290;
         property[15].rent1 = 150;
@@ -214,7 +217,7 @@ public class Canada_Data {
         property[15].rent4 = 1000;
         property[15].rentH = 1100;
         property[15].priceHouse = 200;
-        property[15].colour = 5;
+        property[15].colour = Color.red;
         //OTTAWA
         property[16].price = 325;
         property[16].rent1 = 170;
@@ -223,7 +226,7 @@ public class Canada_Data {
         property[16].rent4 = 1100;
         property[16].rentH = 1200;
         property[16].priceHouse = 200;
-        property[16].colour = 5;
+        property[16].colour = Color.red;
         //======================================================================
         //ORANGE SUITE----------------------------------------------------------
         //VANCOUVER
@@ -233,7 +236,7 @@ public class Canada_Data {
         property[17].rent3 = 1100;
         property[17].rent4 = 1300;
         property[17].rentH = 1500;
-        property[17].colour = 6;
+        property[17].colour = Color.orange;
         property[17].priceHouse = 300;
         //MONTREAL
         property[18].price = 400;
@@ -243,7 +246,7 @@ public class Canada_Data {
         property[18].rent4 = 1700;
         property[18].rentH = 2000;
         property[18].priceHouse = 300;
-        property[18].colour = 6;
+        property[18].colour = Color.orange;
         //TORONTO
         property[19].price = 500;
         property[19].rent1 = 250;
@@ -252,38 +255,38 @@ public class Canada_Data {
         property[19].rent4 = 1850;
         property[19].rentH = 2100;
         property[19].priceHouse = 300;
-        property[19].colour = 6;
+        property[19].colour = Color.orange;
         //======================================================================
         //GREY SUITE------------------------------------------------------------
         //PARLIAMENT HILL
         property[20].desc1 = "Rent = 25x roll, 50x roll ";
         property[20].desc2 = " if Niagara Falls is owned";
         property[20].price = 375;
-        property[20].colour = 7;
+        property[20].colour = Color.gray;
         //NIAGARA FALLS
         property[21].desc1 = "Rent = 25x roll, 50x roll ";
         property[21].desc2 = " if Parliament is owned";
         property[21].price = 375;
-        property[21].colour = 7;
+        property[21].colour = Color.gray;
         //CN TOWER
         property[22].desc1 = "Rent = 25x roll, 50x ";
         property[22].desc2 = "roll if CNR is owned";
         property[22].price = 375;
-        property[22].colour = 7;
+        property[22].colour = Color.gray;
         //CNR
         property[23].desc1 = "Rent = 25x roll, 50x roll ";
         property[23].desc2 = "if CN Tower is owned";
         property[23].price = 375;
-        property[23].colour = 7;
+        property[23].colour = Color.gray;
         //RBC
         property[24].desc1 = "Rent = 25x roll & tax rebate";
         property[24].price = 325;
-        property[24].colour = 7;
+        property[24].colour = Color.gray;
         //TIM HORTON'S
         property[25].desc1 = "Rent = 25x roll & +25 ";
         property[25].desc2 = "rent on all properties";
         property[25].price = 325;
-        property[25].colour = 7;
+        property[25].colour = Color.gray;
         //======================================================================
 
         return property;

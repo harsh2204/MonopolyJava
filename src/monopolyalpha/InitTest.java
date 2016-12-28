@@ -24,7 +24,7 @@ public class InitTest extends JFrame
     //Initialize piece name and image variables   
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     String theme;
-    public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, Players, w, h, i;
+    public int startmoney, dicenum = 1, bonusmoney, jailfee, counter, pCount, w, h, i;
     public String piecep1, piecep2, piecep3, piecep4, piecep5, piecep6, piecep7, piecep8;
     public ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
     ArrayList<ImageIcon> images = new ArrayList<>();
@@ -137,7 +137,7 @@ public class InitTest extends JFrame
             @Override
             public void stateChanged(ChangeEvent e)
               {
-                Players = sldPlayer.getValue();
+                pCount = sldPlayer.getValue();
                 checker();
                 reset();
               }
@@ -971,14 +971,14 @@ public class InitTest extends JFrame
       }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         setPlayers();
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
-                new Board(player, sldPlayer.getValue(), startmoney, dicenum, comEGS.getSelectedIndex(), rndSnake.isSelected(), bonusmoney, rndBail.isSelected(), jailfee, theme).setVisible(true);
-              }
-          });
-
+//        java.awt.EventQueue.invokeLater(new Runnable()
+//          {
+//            public void run()
+//              {
+//                new Board().setVisible(true);
+//              }
+//          });
+        new Game(player, startmoney, pCount, dicenum, comEGS.getSelectedIndex(), rndSnake.isSelected(), rndBail.isSelected(), bonusmoney, jailfee, theme).Start();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
@@ -1137,8 +1137,8 @@ public class InitTest extends JFrame
 
     public final void checker()
       {
-        Players = sldPlayer.getValue();
-        switch (Players)
+        pCount = sldPlayer.getValue();
+        switch (pCount)
           {
             //If there are 2 players selected
             case 2:
@@ -1215,13 +1215,13 @@ public class InitTest extends JFrame
 
     public void reset()
       {
-        if (Players == 2)
+        if (pCount == 2)
           {
             comIconP3.setSelectedIndex(3);
             txtNameP3.setText(null);
             comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);
-          } else if (Players == 3)
+          } else if (pCount == 3)
           {
             comIconP4.setSelectedIndex(4);
             txtNameP4.setText(null);

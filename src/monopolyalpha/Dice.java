@@ -39,8 +39,8 @@ public class Dice {
 
     public static int rollDice(String theme, int num) {
         int roll = 0;
+        System.out.println("in Dice java  : "+ theme);
         String path = null;
-
         switch (theme) {
             case "Generic":
                 path = "Icons/Dice/Generic/Dice ";
