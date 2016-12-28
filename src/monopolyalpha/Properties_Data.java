@@ -12,16 +12,17 @@ package monopolyalpha;
 public class Properties_Data
   {
 
-    public int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
-    boolean owned;
-    int owner;
-    String thm, desc1, desc2;
+    public static int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
+   public static boolean owned;
+    public static int owner;
+    public static String thm, desc1, desc2;
+    ThemeSelect ts=new ThemeSelect();
 
-    public Properties_Data(String theme)
+    public Properties_Data()
       {
-        this.thm = theme;
+        this.thm = ts.theme;
       }
-    public String name;
+    public static String name;
     Properties_Data prop[] = new Properties_Data[26];
 
     /*Colour Scheme Codes:
@@ -272,7 +273,7 @@ public class Properties_Data
             can.setProp();
             for (int i = 0; i < prop.length; i++)
               {
-                prop[i] = new Properties_Data(thm);
+                prop[i] = new Properties_Data();
                 prop[i].name = can.property[i].propName;
                 prop[i].price = can.property[i].price;
                 prop[i].rent1 = can.property[i].rent1;
@@ -296,7 +297,7 @@ public class Properties_Data
             can.setProp();//same as above
             for (int i = 0; i < prop.length; i++)
               {
-                prop[i] = new Properties_Data(thm);
+                prop[i] = new Properties_Data();
                 prop[i].name = can.property[i].propName;
                 prop[i].price = can.property[i].price;
                 prop[i].rent1 = can.property[i].rent1;
@@ -317,7 +318,7 @@ public class Properties_Data
             can.setProp();//same as above.
             for (int i = 0; i < prop.length; i++)
               {
-                prop[i] = new Properties_Data(thm);
+                prop[i] = new Properties_Data();
                 prop[i].name = can.property[i].propName;
                 prop[i].price = can.property[i].price;
                 prop[i].rent1 = can.property[i].rent1;

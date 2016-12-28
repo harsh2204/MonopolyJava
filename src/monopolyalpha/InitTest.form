@@ -38,7 +38,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="paneDice" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
@@ -72,7 +72,7 @@
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="sldPlayer" pref="384" max="32767" attributes="0"/>
+                  <Component id="sldPlayer" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="paneP3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -115,6 +115,12 @@
         <Property name="inverted" type="boolean" value="true"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="sldPlayerStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JPanel" name="paneP1_P2">
       <Properties>
@@ -796,7 +802,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="447" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="451" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -831,7 +837,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="159" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="166" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>

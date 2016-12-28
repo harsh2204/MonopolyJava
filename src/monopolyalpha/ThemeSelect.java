@@ -5,6 +5,7 @@
  */
 package monopolyalpha;
 
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -26,7 +27,7 @@ public class ThemeSelect extends javax.swing.JFrame
       {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        this.getContentPane().setBackground(Color.red);
       }
 
     public void goNext()

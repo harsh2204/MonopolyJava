@@ -8,106 +8,103 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
  *
- * @author Harsh Gupta
+ * @author Harsh Gupta, Karmit Patel
  */
-public class Board extends javax.swing.JFrame {
+public final class Board extends javax.swing.JFrame
+  {
 
     /**
      * Creates new form Board
      */
-    int playerCount, startCash, di, EGS, snakeAmt, jailFee, roll, turn = 0, totturn = 0;
-    String theme;
-    //for object array
-    String player;//name
-    int playerID; //player id
-    int cash;//money
-    int propCount;//number of properties
-    int position;
-    Timer tmr;
-    int b, pp1=1,pp2=1,pp3=1,pp4=1;
-    //
-    Properties_Data properties = new Properties_Data(theme);
-    ImageIcon piece;
-    Board[] board;
-    String[][] pl;
-    boolean snake = false, bail = false;
-    JLabel[][] boxes = new JLabel[4][36];
+    public static int players, i, dice, chance, roll, turn = 0, count = 0, propOwner;
+    public static String theme;
+    public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4];
+    public static String[] name = new String[4];
+    public ThemeSelect ts = new ThemeSelect();
+    public InitTest it = new InitTest();
+    public Dice di = new Dice();
+    public Properties_Data pd = new Properties_Data();
+    public static ImageIcon piece;
+    public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4];
+    public static boolean snake = false, bail = false, propOwned = false;
+    public static JLabel[][] boxes = new JLabel[4][37];
+    public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4];
     Card c;
+    public static Image image;
+    public static Timer moveTimer;
 
-    public Board(String[][] players, int pCount, int iniCash, int diCount, int EGS, boolean snk, int snkAmt, boolean jail, int jailFee, String theme) {
+    public Board(int playerCount)
+      {
         initComponents();
-        setupLabels();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
-        this.theme = theme;
-        this.playerCount = pCount;
-        this.startCash = iniCash;
-        this.di = diCount;
-        this.EGS = EGS;
-        if (snk) {
-            this.snake = true;
-            this.snakeAmt = snkAmt;
-        }
-        if (jail) {
-            this.bail = true;
-            this.jailFee = jailFee;
-        }
-        this.pl = new String[players.length][];
-        for (int i = 0; i < players.length; i++) {
-            pl[i] = players[i].clone();
-        }
-        board = new Board[pCount];
+        this.players = playerCount;
+        datatransfer();
+        System.out.println("Board: Number of pCount: " + players);
+//        setPlayernumber();
+        setupLabels();
+        setupplabels();
+        changeimages();
+        addpCount();
+      }
 
-//        final JDialog start = new JDialog();        
-//        start.setLayout(new BorderLayout());
-//        JButton go = new JButton();
-//        go.setFont(new java.awt.Font("Showcard Gothic", 0, 18));
-//        go.setText("Start Game!");
-//        go.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-//        start.add(go, BorderLayout.CENTER);
-//        start.setUndecorated(true);
-//        go.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                start.dispose();
-//                addPlayers(true);
-//            }
-//        });
-//        start.setAlwaysOnTop(true);        
-//        start.pack();
-//        start.setVisible(true);            
-    }
+    public void changeimages()
+      {
+        for (i = 0; i < players; i++)
+          {
+            image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            icons[i] = new ImageIcon(image);
+          }
+        System.out.println("Board: Image Changed!");
+      }
 
-    private void setupPlayers() {
-        lblNameP1.setText(board[0].player);
-        lblIconP1.setIcon(board[0].piece);
-        lblNameP2.setText(board[1].player);
-        lblIconP2.setIcon(board[1].piece);
-    }
+    public void setupplabels()
+      {
+        plnames[0] = lblNameP1;
+        plnames[1] = lblNameP2;
+        plicons[0] = lblIconP1;
+        plicons[1] = lblIconP2;
+        plmoney[0] = lblMoneyP1;
+        plmoney[1] = lblMoneyP2;
+        plnames[2] = lblNameP3;
+        plnames[3] = lblNameP4;
+        plicons[2] = lblIconP3;
+        plicons[3] = lblIconP4;
+        plmoney[2] = lblMoneyP3;
+        plmoney[3] = lblMoneyP4;
+        System.out.println("Board: Labels setup done!");
+      }
 
-    private void addPlayers() {
-        for (int i = 0; i < board.length; i++) {
-            board[i] = new Board(pl, playerCount, startCash, di, EGS, snake, snakeAmt, bail, jailFee, theme);
-        }
-        for (int i = 0; i < playerCount; i++) {
+    public void datatransfer()
+      {
+//        it.setplayers();
+//        this.players=it.sldPlayer.getValue();
+//        this.players = it.pCount;  //This is the only errror it takes 2 as default value instead of "pCount" from Init Test Fix it if u can
+        this.name = it.name;
+        this.icon = it.icon;
+        this.money = it.startm;
+        this.bonus = it.bonusm;
+        this.jailfee = it.jailfeem;
+        this.dice = it.dicenum;
+        for (i = 0; i < players; i++)
+          {
+            numprop[i] = 0;
+            cpos[i] = 0;
+            npos[i] = 0;
+            System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
+          }
+        System.out.println("Board: Data Transfered!");
+      }
 
-            board[i].player = pl[i][0];
-            board[i].piece = new ImageIcon(pl[i][1]);
-            board[i].playerID = i;
-            board[i].cash = startCash;
-            board[i].propCount = 0;
-            board[i].position = 0;
-        }
-        
-        setupPlayers();
-    }
-
-    private void setupLabels() {
+    private void setupLabels()
+      {
         //1
         boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
@@ -261,165 +258,122 @@ public class Board extends javax.swing.JFrame {
 //               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
 //            }
 //        }
-    }
-    public void makePieces() {
-        for (int i = 0; i < playerCount; i++) {
-            Image image1 = board[i].piece.getImage(); // transform it 
-            Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-            ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
-            board[i].piece = imageIcon1;
-        }
-    }
-    public void makeCard(Color bg, ImageIcon i, int index) {
+      }
+
+    public void addpCount()
+      {
+        for (i = 0; i < players; i++)
+          {
+            plnames[i].setText("" + name[i]);
+            plicons[i].setIcon(icon[i]);
+            plmoney[i].setText("$" + Integer.toString(money[i]));
+            boxes[i][cpos[i]].setIcon(icons[i]);
+          }
+        paneP1.setVisible(true);
+        paneP2.setVisible(true);
+        System.out.println("Board: pCount Added!");
+      }
+
+    public void makeCard(Color bg, ImageIcon i, int index)
+      {
 
         c = new Card(bg, i, index, theme);
         c.setVisible(true);
-    }
+      }
 
-    public void breakCard() {
+    public void breakCard()
+      {
         c.setVisible(false);
-    }
+      }
 
-    public void testPieces() {
-        addPlayers();
+    public void move(final int turnn)
+      {
+        npos[turnn] = cpos[turnn] + roll;
+        System.out.println("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
+        if (npos[turnn] > 35)
+          {
+            npos[turnn] = npos[turnn] - 35;
+          }
+        rands.setText("Turn:" + turnn + "Roll:" + roll);
+        count = 0;
+        moveTimer = new Timer(500, new ActionListener()
+          {
+            @Override
+            public void actionPerformed(ActionEvent e)
+              {
+                btnRoll.setEnabled(false);
+                count++;
+                cpos[turnn]++;
+                if (cpos[turnn] > 35)
+                  {
+                    cpos[turnn] = 0;
+                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
+                    boxes[turnn][35].setIcon(null);
+                  } else
+                  {
+                    System.out.println("Current Position: " + cpos[turnn]);
+                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
+                    boxes[turnn][cpos[turnn] - 1].setIcon(null);
+                  }
+                if (count == roll)
+                  {
+                    btnRoll.setEnabled(true);
+                    moveTimer.stop();
+                    propcall(cpos, turnn);
+                  }
+              }
+          });
+        moveTimer.start();
+      }
 
-        for (int i = 0; i < playerCount; i++) {
-            for (int k = 0; k < 36; k++) {
-                if (i == 0) { //1
-                    Image image1 = board[0].piece.getImage(); // transform it 
-                    Image newimg1 = image1.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon1 = new ImageIcon(newimg1);  // transform it back
-                    boxes[i][k].setIcon(imageIcon1);
-                }
-                if (i == 1) { //2
-                    Image image2 = board[1].piece.getImage(); // transform it 
-                    Image newimg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon2 = new ImageIcon(newimg2);  // transform it back
-                    boxes[i][k].setIcon(imageIcon2);
-                }
-                if (i == 2) {//3
-                    Image image3 = board[2].piece.getImage(); // transform it 
-                    Image newimg3 = image3.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon3 = new ImageIcon(newimg3);  // transform it back    
-                    boxes[i][k].setIcon(imageIcon3);
-                }
-                if (i == 3) { //4
-                    Image image4 = board[3].piece.getImage(); // transform it 
-                    Image newimg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                    ImageIcon imageIcon4 = new ImageIcon(newimg4);  // transform it back  
-                    boxes[i][k].setIcon(imageIcon4);
-                }
-            }
-        }
-    }
+    public void propcall(int[] cpos, int turn)
+      {
+        pd.GetProp();
+        propOwned = pd.prop[cpos[turn]].owned;
+        System.out.println("Board: " + cpos[turn] + " Turn: " + turn + " Owned: " + propOwned);
+      }
 
-    public void moveTo(final int playerID, final int pos) {
-        switch (playerID) {
-            case 1:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp1 > 0) {
-                            boxes[0][pp1 - 1].setIcon(null);
-                        }
-                        if (pp1 == 36) {
-                            pp1 = 0;
-                        }
-                        if (pp1 == 0) {
-                            boxes[0][35].setIcon(null);
-                        }
-
-                        boxes[0][pp1].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp1++;
-                        System.out.println(pp1 + " " + b + " ");
-
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-            case 2:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp2 > 0) {
-                            boxes[1][pp2 - 1].setIcon(null);
-                        }
-                        if (pp2 == 36) {
-                            pp2 = 0;
-                        }
-                        if (pp2 == 0) {
-                            boxes[1][35].setIcon(null);
-                        }
-
-                        boxes[1][pp2].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp2++;
-                        System.out.println(pp2 + " " + b + " ");
-
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-            case 3:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp3 > 0) {
-                            boxes[2][pp3 - 1].setIcon(null);
-                        }
-                        if (pp3 == 36) {
-                            pp3 = 0;
-                        }
-                        if (pp3 == 0) {
-                            boxes[2][35].setIcon(null);
-                        }
-
-                        boxes[2][pp3].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp3++;
-                        System.out.println(pp3 + " " + b + " ");
-
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-            case 4:
-                b = 0;
-                tmr = new Timer(500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (pp4 > 0) {
-                            boxes[3][pp4 - 1].setIcon(null);
-                        }
-                        if (pp4 == 36) {
-                            pp4 = 0;
-                        }
-                        if (pp4 == 0) {
-                            boxes[3][35].setIcon(null);
-                        }
-
-                        boxes[3][pp4].setIcon(board[playerID-1].piece);
-                        b++;
-                        pp4++;
-                        System.out.println(pp4 + " " + b + " ");                        
-                        if (b == pos) {
-                            tmr.stop();
-                        }
-                    }
-                });
-                tmr.start(); break;
-        }
-    }
+//    public void checkProp(int turn, int[] cpos)
+//      {
+//        pd.setProp();
+//        this.propOwner = pd.prop[cpos[turn]].owner;
+//        this.propOwned = pd.prop[cpos[turn]].owned;
+////        switch (propOwner)
+////          {
+////            case -1:
+////                buymenu(turn);//To be added
+////                break;
+////            case 0:
+////                paymenu(0);//To be added
+////                break;
+////            case 1:
+////                paymenu(1);//To be added
+////                break;
+////            case 2:
+////                paymenu(2);//To be added
+////                break;
+////            case 3:
+////                paymenu(3);//To be added
+////                break;
+////          }
+//      }
+    public void rolling()
+      {
+        if (turn == players)
+          {
+            turn = 0;
+          }
+//        roll=di.rollDice();//Temporary Testing Cause
+        if (dice == 2)
+          {
+            roll = (int) (Math.random() * 12 + 1);
+          } else
+          {
+            roll = (int) (Math.random() * 6 + 1);
+          }
+        move(turn);
+        turn++;
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -428,8 +382,10 @@ public class Board extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
+        paneBoss = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lblHoverB7 = new javax.swing.JLabel();
         lblHoverB6 = new javax.swing.JLabel();
@@ -621,88 +577,120 @@ public class Board extends javax.swing.JFrame {
         lblBoard = new javax.swing.JLabel();
         paneControls = new javax.swing.JPanel();
         btnRoll = new javax.swing.JButton();
-        btnStart = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
         lblIconP1 = new javax.swing.JLabel();
+        lblMoneyP1 = new javax.swing.JLabel();
         paneP2 = new javax.swing.JPanel();
         lblNameP2 = new javax.swing.JLabel();
         lblIconP2 = new javax.swing.JLabel();
+        lblMoneyP2 = new javax.swing.JLabel();
+        paneP3 = new javax.swing.JPanel();
+        lblNameP3 = new javax.swing.JLabel();
+        lblIconP3 = new javax.swing.JLabel();
+        lblMoneyP3 = new javax.swing.JLabel();
+        paneP4 = new javax.swing.JPanel();
+        lblNameP4 = new javax.swing.JLabel();
+        lblIconP4 = new javax.swing.JLabel();
+        lblMoneyP4 = new javax.swing.JLabel();
+        rands = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB7MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB7);
         lblHoverB7.setBounds(2, 98, 90, 60);
 
-        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB6MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB6MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB6);
         lblHoverB6.setBounds(2, 160, 90, 60);
 
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB5MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB5MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
 
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB4MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB4MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
 
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB3MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB3MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB3);
         lblHoverB3.setBounds(2, 415, 90, 60);
 
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB2MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB2MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
 
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB1MouseExited(evt);
             }
         });
@@ -1975,18 +1963,18 @@ public class Board extends javax.swing.JFrame {
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.setEnabled(false);
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRollActionPerformed(evt);
             }
         });
-
-        btnStart.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        btnStart.setText("GO!");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
+                btnRollKeyReleased(evt);
             }
         });
 
@@ -1997,41 +1985,48 @@ public class Board extends javax.swing.JFrame {
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(583, Short.MAX_VALUE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        lblMoneyP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout paneP1Layout = new javax.swing.GroupLayout(paneP1);
         paneP1.setLayout(paneP1Layout);
         paneP1Layout.setHorizontalGroup(
             paneP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNameP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(paneP1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblIconP1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addGroup(paneP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNameP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblMoneyP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIconP1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneP1Layout.setVerticalGroup(
             paneP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneP1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblNameP1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(lblIconP1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 152, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMoneyP1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblNameP2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblMoneyP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout paneP2Layout = new javax.swing.GroupLayout(paneP2);
         paneP2.setLayout(paneP2Layout);
@@ -2040,43 +2035,132 @@ public class Board extends javax.swing.JFrame {
             .addComponent(lblNameP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(paneP2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblIconP2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addGroup(paneP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIconP2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(lblMoneyP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneP2Layout.setVerticalGroup(
             paneP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneP2Layout.createSequentialGroup()
-                .addComponent(lblNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblIconP2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 130, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                    .addComponent(paneControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblMoneyP2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblNameP3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNameP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblMoneyP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout paneP3Layout = new javax.swing.GroupLayout(paneP3);
+        paneP3.setLayout(paneP3Layout);
+        paneP3Layout.setHorizontalGroup(
+            paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneP3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNameP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblMoneyP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIconP3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        paneP3Layout.setVerticalGroup(
+            paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNameP3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(lblIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMoneyP3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblNameP4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNameP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblMoneyP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout paneP4Layout = new javax.swing.GroupLayout(paneP4);
+        paneP4.setLayout(paneP4Layout);
+        paneP4Layout.setHorizontalGroup(
+            paneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIconP4, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(lblMoneyP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNameP4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        paneP4Layout.setVerticalGroup(
+            paneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneP4Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(lblNameP4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIconP4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMoneyP4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout paneBossLayout = new javax.swing.GroupLayout(paneBoss);
+        paneBoss.setLayout(paneBossLayout);
+        paneBossLayout.setHorizontalGroup(
+            paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneBossLayout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
+            .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(paneBossLayout.createSequentialGroup()
+                    .addGap(0, 3, Short.MAX_VALUE)
+                    .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rands, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(paneBossLayout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6)
+                    .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(paneP4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 4, Short.MAX_VALUE)))
+        );
+        paneBossLayout.setVerticalGroup(
+            paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBossLayout.createSequentialGroup()
+                .addContainerGap(721, Short.MAX_VALUE)
+                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+            .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(paneBossLayout.createSequentialGroup()
+                    .addGap(0, 9, Short.MAX_VALUE)
+                    .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(paneBossLayout.createSequentialGroup()
+                            .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(11, 11, 11)
+                            .addComponent(rands, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(paneBossLayout.createSequentialGroup()
+                            .addGap(11, 11, 11)
+                            .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(89, 89, 89)
+                            .addComponent(paneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 101, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(paneBoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 810));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2159,82 +2243,70 @@ public class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
-        roll = Dice.rollDice(theme, di);
-        turn++;
-        totturn++;
-        switch (playerCount) {
-            case 2:
-                if (turn == 3) {
-                    turn = turn - 2;
-                }
-                moveTo(turn, roll);
-                break;
-            case 3:
-                if (turn == 4) {
-                    turn = turn - 3;
-                }
-                moveTo(turn, roll);
-                break;
-            case 4:
-                if (turn == 5) {
-                    turn = turn - 4;
-                }
-                moveTo(turn, roll);
-                break;
-        }
-        
+        rolling();
     }//GEN-LAST:event_btnRollActionPerformed
 
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        // TODO add your handling code here:
-        addPlayers();
-        makePieces();
-        for (int i = 0; i < playerCount; i++){
-            boxes[i][0].setIcon(board[i].piece);
-        }
-        btnStart.setEnabled(false);
-        btnRoll.setEnabled(true);
-    }//GEN-LAST:event_btnStartActionPerformed
+    private void btnRollKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnRollKeyReleased
+    {//GEN-HEADEREND:event_btnRollKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_R)
+          {
+            rolling();
+          }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE)
+          {
+            System.exit(0);
+          }
+    }//GEN-LAST:event_btnRollKeyReleased
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new StartScreenfrm().setVisible(true);
-            }
-        });
-    }
+              }
+          });
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel P1B1;
     private javax.swing.JLabel P1B10;
@@ -2381,7 +2453,6 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JLabel P4B8;
     private javax.swing.JLabel P4B9;
     private javax.swing.JButton btnRoll;
-    private javax.swing.JButton btnStart;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBoard;
     private javax.swing.JLabel lblHoverB1;
@@ -2393,8 +2464,16 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JLabel lblHoverB7;
     private javax.swing.JLabel lblIconP1;
     private javax.swing.JLabel lblIconP2;
+    private javax.swing.JLabel lblIconP3;
+    private javax.swing.JLabel lblIconP4;
+    private javax.swing.JLabel lblMoneyP1;
+    private javax.swing.JLabel lblMoneyP2;
+    private javax.swing.JLabel lblMoneyP3;
+    private javax.swing.JLabel lblMoneyP4;
     private javax.swing.JLabel lblNameP1;
     private javax.swing.JLabel lblNameP2;
+    private javax.swing.JLabel lblNameP3;
+    private javax.swing.JLabel lblNameP4;
     private javax.swing.JPanel paneB1;
     private javax.swing.JPanel paneB10;
     private javax.swing.JPanel paneB11;
@@ -2431,8 +2510,13 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JPanel paneB7;
     private javax.swing.JPanel paneB8;
     private javax.swing.JPanel paneB9;
+    private javax.swing.JPanel paneBoss;
     private javax.swing.JPanel paneControls;
     private javax.swing.JPanel paneP1;
     private javax.swing.JPanel paneP2;
+    private javax.swing.JPanel paneP3;
+    private javax.swing.JPanel paneP4;
+    private javax.swing.JLabel rands;
     // End of variables declaration//GEN-END:variables
-}
+
+  }
