@@ -9,20 +9,17 @@ package monopolyalpha;
  *
  * @author Harsh
  */
-public class Properties_Data
-  {
+public class Properties_Data {
 
-    public static int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
-    public static boolean owned, buyable;
-    public static int owner;
-    public static String thm, desc1, desc2;
+    public int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
+    public boolean owned, buyable;
+    public int owner;
+    public String thm, desc1, desc2, name;
     ThemeSelect ts = new ThemeSelect();
 
-    public Properties_Data()
-      {
-        this.thm = ts.theme;        
-      }
-    public static String name;
+    public Properties_Data() {
+        this.thm = ts.theme;
+    }
     Properties_Data prop[] = new Properties_Data[26];
 
     /*Colour Scheme Codes:
@@ -36,8 +33,7 @@ public class Properties_Data
      8:White
      9:Black
      */
-    public void setProp()
-      { //TEMPLATE
+    public void setProp() { //TEMPLATE
         //Adding property rents
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
@@ -258,90 +254,84 @@ public class Properties_Data
         prop[25].price = 325;
         prop[25].colour = 7;
         //======================================================================
-        for (int i = 0; i < 35; i++)
-          {
+        for (int i = 0; i < 35; i++) {
             prop[i].owner = -1;
             prop[i].owned = false;
             prop[i].buyable = false;
-          }
-      }
+        }
+    }
 
-    public void GetProp()
-      {
+    public void GetProp() {
         this.thm = ts.theme;
-        switch (thm)
-          {
-            case "Canada":
-                  {
-                    Canada_Data can = new Canada_Data();
-                    can.setProp();
-                    for (int i = 0; i < prop.length; i++)
-                      {
-                        prop[i] = new Properties_Data();
-                        prop[i].name = can.property[i].propName;
-                        prop[i].price = can.property[i].price;
-                        prop[i].rent1 = can.property[i].rent1;
-                        prop[i].rent2 = can.property[i].rent2;
-                        prop[i].rent3 = can.property[i].rent3;
-                        prop[i].rent4 = can.property[i].rent4;
-                        prop[i].rentH = can.property[i].rentH;
-                        prop[i].colour = can.property[i].colour;
-                        prop[i].priceHouse = can.property[i].priceHouse;
-                        prop[i].desc1 = can.property[i].desc1;
-                        prop[i].desc2 = can.property[i].desc2;
-                        prop[i].owner = -1;
-                        prop[i].owned = false;
-                        prop[i].buyable = false;
+        switch (thm) {
+            case "Canada": {
+                Canada_Data can = new Canada_Data();
+                can.setProp();
+                for (int i = 0; i < prop.length; i++) {
+                    prop[i] = new Properties_Data();
+                    prop[i].name = can.property[i].propName;
+                    prop[i].price = can.property[i].price;
+                    prop[i].rent1 = can.property[i].rent1;
+                    prop[i].rent2 = can.property[i].rent2;
+                    prop[i].rent3 = can.property[i].rent3;
+                    prop[i].rent4 = can.property[i].rent4;
+                    prop[i].rentH = can.property[i].rentH;
+                    prop[i].colour = can.property[i].colour;
+                    prop[i].priceHouse = can.property[i].priceHouse;
+                    prop[i].desc1 = can.property[i].desc1;
+                    prop[i].desc2 = can.property[i].desc2;
+                    prop[i].owner = -1;
+                    prop[i].owned = false;
+                    prop[i].buyable = false;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-                      }     break;
-                  }
-            case "Generic":
-                  {
-                    Canada_Data can = new Canada_Data();//change to generic
-                    can.setProp();//same as above
-                    for (int i = 0; i < prop.length; i++)
-                      {
-                        prop[i] = new Properties_Data();
-                        prop[i].name = can.property[i].propName;
-                        prop[i].price = can.property[i].price;
-                        prop[i].rent1 = can.property[i].rent1;
-                        prop[i].rent2 = can.property[i].rent2;
-                        prop[i].rent3 = can.property[i].rent3;
-                        prop[i].rent4 = can.property[i].rent4;
-                        prop[i].rentH = can.property[i].rentH;
-                        prop[i].colour = can.property[i].colour;
-                        prop[i].owner = -1;
-                        prop[i].owned = false;
-                        prop[i].buyable = false;
+                }
+                break;
+            }
+            case "Generic": {
+                Canada_Data can = new Canada_Data();//change to generic
+                can.setProp();//same as above
+                for (int i = 0; i < prop.length; i++) {
+                    prop[i] = new Properties_Data();
+                    prop[i].name = can.property[i].propName;
+                    prop[i].price = can.property[i].price;
+                    prop[i].rent1 = can.property[i].rent1;
+                    prop[i].rent2 = can.property[i].rent2;
+                    prop[i].rent3 = can.property[i].rent3;
+                    prop[i].rent4 = can.property[i].rent4;
+                    prop[i].rentH = can.property[i].rentH;
+                    prop[i].colour = can.property[i].colour;
+                    prop[i].owner = -1;
+                    prop[i].owned = false;
+                    prop[i].buyable = false;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-                      }     break;
-                  }
-            case "Super":
-                  {
-                    Canada_Data can = new Canada_Data();//Change to super
-                    can.setProp();//same as above.
-                    for (int i = 0; i < prop.length; i++)
-                      {
-                        prop[i] = new Properties_Data();
-                        prop[i].name = can.property[i].propName;
-                        prop[i].price = can.property[i].price;
-                        prop[i].rent1 = can.property[i].rent1;
-                        prop[i].rent2 = can.property[i].rent2;
-                        prop[i].rent3 = can.property[i].rent3;
-                        prop[i].rent4 = can.property[i].rent4;
-                        prop[i].rentH = can.property[i].rentH;
-                        prop[i].colour = can.property[i].colour;
-                        prop[i].owner = -1;
-                        prop[i].owned = false;
-                        prop[i].buyable = false;
+                }
+                break;
+            }
+            case "Super": {
+                Canada_Data can = new Canada_Data();//Change to super
+                can.setProp();//same as above.
+                for (int i = 0; i < prop.length; i++) {
+                    prop[i] = new Properties_Data();
+                    prop[i].name = can.property[i].propName;
+                    prop[i].price = can.property[i].price;
+                    prop[i].rent1 = can.property[i].rent1;
+                    prop[i].rent2 = can.property[i].rent2;
+                    prop[i].rent3 = can.property[i].rent3;
+                    prop[i].rent4 = can.property[i].rent4;
+                    prop[i].rentH = can.property[i].rentH;
+                    prop[i].colour = can.property[i].colour;
+                    prop[i].owner = -1;
+                    prop[i].owned = false;
+                    prop[i].buyable = false;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-                      }     break;
-                  }
+                }
+                break;
+            }
             default:
                 break;
-          }
-      }
-  }
+        }
+    }
+}
