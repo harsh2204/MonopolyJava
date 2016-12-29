@@ -24,16 +24,16 @@ public final class InitTest extends JFrame
     //Initialize piece name and image variables   
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static String theme;
-    public static int startmoney, dicenum = 1, bonusmoney, jailfee, counter, pCount=0, w, h, i;
+    public static int startmoney, dicenum = 1, bonusmoney, jailfee, counter, pCount = 0, w, h, i;
     public static String piecep1, piecep2, piecep3, piecep4, piecep5, piecep6, piecep7, piecep8;
     public static ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
     public static ArrayList<ImageIcon> images = new ArrayList<>();
     public static String nameo, t1, t2, t3, t4;
     public static NickNames nickName = new NickNames();
     public static Timer ti;
-    public static int[] startm = new int[4], bonusm = new int[4], jailfeem = new int[4];
-    public static ImageIcon[] combo = new ImageIcon[100], icon = new ImageIcon[4];
-    public static String[] combos = new String[100], pieces = new String[100], name = new String[4];
+    public static int[] startm = new int[4], bonusm = new int[4], jailfeem = new int[4],indexes=new int[100];
+    public static ImageIcon[] icon = new ImageIcon[4];
+    public static String[] combo = new String[100], pieces = new String[100], name = new String[4];
     public static String[][] player = new String[4][100];
     public ThemeSelect ts = new ThemeSelect();
     public static JTextField[] plnames = new JTextField[4];
@@ -141,7 +141,6 @@ public final class InitTest extends JFrame
         pieces[8] = piecep8;
       }
 
-
     public void setStartmoney()
       {
         int i = comMoney.getSelectedIndex();
@@ -195,8 +194,9 @@ public final class InitTest extends JFrame
                 break;
           }
       }
-    
-    private void snakeEyeBonus(){
+
+    private void snakeEyeBonus()
+      {
         if (dicenum == 1)
           {
             btnDice.setText("2 Dice");
@@ -211,8 +211,8 @@ public final class InitTest extends JFrame
             lblBonAmt.setEnabled(false);
             comBonAmt.setEnabled(false);
           }
-    }
-    
+      }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -952,32 +952,32 @@ public final class InitTest extends JFrame
     private void comIconP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comIconP1ActionPerformed
         int i = comIconP1.getSelectedIndex();
         lblPiece1.setDisabledIcon(images.get(i));
-        combo[0] = images.get(i);
-        NextCopy(1);
+        indexes[0]=i;
+        pliconduplicate(1);
     }//GEN-LAST:event_comIconP1ActionPerformed
 
     private void comIconP2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP2ActionPerformed
     {//GEN-HEADEREND:event_comIconP2ActionPerformed
         int i = comIconP2.getSelectedIndex();
         lblPiece2.setDisabledIcon(images.get(i));
-        combo[1] = images.get(i);
-        NextCopy(2);
+        indexes[1]=i;
+        pliconduplicate(2);
     }//GEN-LAST:event_comIconP2ActionPerformed
 
     private void comIconP3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP3ActionPerformed
     {//GEN-HEADEREND:event_comIconP3ActionPerformed
         int i = comIconP3.getSelectedIndex();
         lblPiece3.setDisabledIcon(images.get(i));
-        combo[2] = images.get(i);
-        NextCopy(3);
+        indexes[2]=i;
+        pliconduplicate(3);
     }//GEN-LAST:event_comIconP3ActionPerformed
 
     private void comIconP4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comIconP4ActionPerformed
     {//GEN-HEADEREND:event_comIconP4ActionPerformed
         int i = comIconP4.getSelectedIndex();
         lblPiece4.setDisabledIcon(images.get(i));
-        combo[3] = images.get(i);
-        NextCopy(4);
+        indexes[3]=i;
+        pliconduplicate(4);
     }//GEN-LAST:event_comIconP4ActionPerformed
 
     private void btnRand1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_btnRand1MouseClicked
@@ -1055,43 +1055,26 @@ public final class InitTest extends JFrame
           }
         System.out.println("InitTest: Number of pCount: " + pCount);
       }
-  
-    
+
+
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         setplayers();
         new Board(pCount).setVisible(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
-            combos[0] = txtNameP1.getText();
-            playernameduplicate(1);
-          }
     }//GEN-LAST:event_txtNameP1KeyPressed
 
     private void txtNameP2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP2KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
-            combos[1] = txtNameP1.getText();
-            playernameduplicate(2);
-          }
+
     }//GEN-LAST:event_txtNameP2KeyPressed
 
     private void txtNameP3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP3KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
-            combos[2] = txtNameP1.getText();
-            playernameduplicate(3);
-          }
+
     }//GEN-LAST:event_txtNameP3KeyPressed
 
     private void txtNameP4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP4KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-          {
-            combos[3] = txtNameP1.getText();
-            playernameduplicate(4);
-          }
+
     }//GEN-LAST:event_txtNameP4KeyPressed
 
     private void txtNameP1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameP1FocusLost
@@ -1158,14 +1141,9 @@ public final class InitTest extends JFrame
     private void sldPlayerStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_sldPlayerStateChanged
     {//GEN-HEADEREND:event_sldPlayerStateChanged
         pCount = sldPlayer.getValue();
-                checker();
-                reset();
+        checker();
+        reset();
     }//GEN-LAST:event_sldPlayerStateChanged
-
-    public void NextCopy(int plnum)
-      {
-        pliconduplicate(plnum);
-      }
 
     public final void checker()
       {
@@ -1192,52 +1170,42 @@ public final class InitTest extends JFrame
 
     public void pliconduplicate(int plnum)
       {
-        //Get anmes of each player
-        t1 = txtNameP1.getText();
-        t2 = txtNameP2.getText();
-        t3 = txtNameP3.getText();
-        t4 = txtNameP4.getText();
 
         switch (plnum)
           {
-            //If there is 1 player selected
             case 1:
-                //If Player 1 name is same as Player 2 name
 
-                if (combo[0] == combo[1] || combo[0] == combo[2] || combo[0] == combo[3])
+                if (indexes[0] != 0 && (indexes[0] == indexes[1] || indexes[0] == indexes[2] || indexes[0] == indexes[3]))
                   {
-                    //Set piece image to blank
                     lblPiece1.setDisabledIcon(null);
-                    lblPiece1.revalidate();
-                    //Set game piece name to nothing
+//                    lblPiece1.revalidate();
                     comIconP1.setSelectedIndex(0);
-                    //Prompt user to chane game piece
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                   }
                 break;
             case 2:
-                if (combo[1] == combo[0] || combo[1] == combo[2] || combo[1] == combo[3])
+                if (indexes[1] != 0 && (indexes[1] == indexes[0] || indexes[1] == indexes[2] || indexes[1] == indexes[3]))
                   {
                     lblPiece2.setDisabledIcon(null);
-                    lblPiece2.revalidate();
+//                    lblPiece2.revalidate();
                     comIconP2.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                   }
                 break;
             case 3:
-                if (combo[2] == combo[0] || combo[2] == combo[1] || combo[2] == combo[3])
+                if (indexes[2] !=0 && (indexes[2] == indexes[0] || indexes[2] == indexes[1] || indexes[2] == indexes[3]))
                   {
                     lblPiece3.setDisabledIcon(null);
-                    lblPiece3.revalidate();
+//                    lblPiece3.revalidate();
                     comIconP3.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                   }
                 break;
             case 4:
-                if (combo[3] == combo[0] || combo[3] == combo[1] || combo[3] == combo[2])
+                if (indexes[3] != 0 && (indexes[3] == indexes[0] || indexes[3] == indexes[1] || indexes[3] == indexes[2]))
                   {
                     lblPiece4.setDisabledIcon(null);
-                    lblPiece4.revalidate();
+//                    lblPiece4.revalidate();
                     comIconP4.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
                   }
@@ -1249,13 +1217,13 @@ public final class InitTest extends JFrame
       {
         if (pCount == 2)
           {
-            comIconP3.setSelectedIndex(3);
+            comIconP3.setSelectedIndex(0);
             txtNameP3.setText(null);
-            comIconP4.setSelectedIndex(4);
+            comIconP4.setSelectedIndex(0);
             txtNameP4.setText(null);
           } else if (pCount == 3)
           {
-            comIconP4.setSelectedIndex(4);
+            comIconP4.setSelectedIndex(0);
             txtNameP4.setText(null);
           }
 
@@ -1291,7 +1259,7 @@ public final class InitTest extends JFrame
                   {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP1.setText(null);
-                    t1 = null;
+//                    t1 = null;
                   }
                 break;
 
@@ -1300,7 +1268,7 @@ public final class InitTest extends JFrame
                   {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP2.setText(null);
-                    t2 = null;
+//                    t2 = null;
                   }
                 break;
             case 3:
@@ -1308,7 +1276,7 @@ public final class InitTest extends JFrame
                   {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP3.setText(null);
-                    t3 = null;
+//                    t3 = null;
                   }
                 break;
             case 4:
@@ -1316,7 +1284,7 @@ public final class InitTest extends JFrame
                   {
                     JOptionPane.showMessageDialog(null, "Please enter another name! This name already taken!");
                     txtNameP4.setText(null);
-                    t4 = null;
+//                    t4 = null;
                   }
                 break;
 
