@@ -33,7 +33,7 @@ public final class Board extends javax.swing.JFrame
     public Properties_Data pd = new Properties_Data();
     public static ImageIcon piece;
     public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4];
-    public static boolean snake = false, bail = false, propOwned = false;
+    public static boolean snake = false, bail = false, propOwned = false, propBuyable = true;
     public static JLabel[][] boxes = new JLabel[4][37];
     public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4];
     Card c;
@@ -277,7 +277,8 @@ public final class Board extends javax.swing.JFrame
     public void makeCard(Color bg, ImageIcon i, int index)
       {
 
-        c = new Card(bg, i, index, theme);
+        System.out.println("Board- Colour:" + bg + "Index: " + index);
+        c = new Card(bg, i, index);
         c.setVisible(true);
       }
 
@@ -331,32 +332,23 @@ public final class Board extends javax.swing.JFrame
         pd.GetProp();
         propOwned = pd.prop[cpos[turn]].owned;
         System.out.println("Board: " + cpos[turn] + " Turn: " + turn + " Owned: " + propOwned);
+        if (propOwned == false)
+          {
+            propBuyable = pd.prop[cpos[turn]].buyable;
+            System.out.println("Board: " + cpos[turn] + " Turn: " + turn + " Owned: " + propBuyable);
+            if (propBuyable == true)
+              {
+//                buyMenu(cpos[turn],turn);//To be made
+              } else
+              {
+//                checkPropType(cpos[turn],turn);//Check if it is jail or special cards like chance or community chest
+              }
+          } else
+          {
+//            payMenu(cpos[turn],turn);//To be made "buyMenu and payMenu" both are forms to be made
+          }
       }
 
-//    public void checkProp(int turn, int[] cpos)
-//      {
-//        pd.setProp();
-//        this.propOwner = pd.prop[cpos[turn]].owner;
-//        this.propOwned = pd.prop[cpos[turn]].owned;
-////        switch (propOwner)
-////          {
-////            case -1:
-////                buymenu(turn);//To be added
-////                break;
-////            case 0:
-////                paymenu(0);//To be added
-////                break;
-////            case 1:
-////                paymenu(1);//To be added
-////                break;
-////            case 2:
-////                paymenu(2);//To be added
-////                break;
-////            case 3:
-////                paymenu(3);//To be added
-////                break;
-////          }
-//      }
     public void rolling()
       {
         if (turn == players)
