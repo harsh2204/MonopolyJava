@@ -11,7 +11,8 @@ import javax.swing.ImageIcon;
  *
  * @author 850110
  */
-public class Card extends javax.swing.JFrame {
+public class Card extends javax.swing.JFrame
+  {
 
     /**
      * Creates new form Card
@@ -19,20 +20,26 @@ public class Card extends javax.swing.JFrame {
     String title, price, baseRent, rent1, rent2, rent3, rentHotel, mortgage, house, hotel;
     Color background;
     ImageIcon ic;
+    String theme;
+    ThemeSelect ts = new ThemeSelect();
+    Properties_Data p = new Properties_Data();
 
-    public Card(Color bg, ImageIcon icon, int index, String theme) {
+    public Card(Color bg, ImageIcon icon, int index)
+      {
         this.background = bg;
         this.ic = icon;
-        Properties_Data p = new Properties_Data(theme);
+        this.theme = ts.theme;
         p.GetProp();
         title = p.prop[index].name;
         price = "Price $" + p.prop[index].price;
-        if (p.prop[index].rent2 == 0) {
+        System.out.println("Card- Colour:" + bg + "Name: " + p.prop[index].name + "Price:" + price+"Index:"+index);
+        if (p.prop[index].rent2 == 0)
+          {
             rent1 = p.prop[index].desc1;
             rent2 = p.prop[index].desc2;
             mortgage = "Mortgage value $" + p.prop[index].price / 2;
-        }
-        if (p.prop[index].rent2 != 0) {
+          } else if (p.prop[index].rent2 != 0)
+          {
             baseRent = "RENT $" + p.prop[index].rent1;
             rent1 = "With 1 House $" + p.prop[index].rent2;
             rent2 = "With 2 House $" + p.prop[index].rent3;
@@ -41,10 +48,10 @@ public class Card extends javax.swing.JFrame {
             mortgage = "Mortgage value $" + p.prop[index].price / 2;
             house = "Houses cost $" + p.prop[index].priceHouse;
             hotel = "Hotel costs $" + ((p.prop[index].priceHouse * 1.5) + 50);
-        }
+          }
         initComponents();
         this.setLocationRelativeTo(null);
-    }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -207,37 +214,45 @@ public class Card extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(Card.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(Card.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(Card.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(Card.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Card().setVisible(true);
-//            }
-//        });
-    }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new StartScreenfrm().setVisible(true);
+            }
+        });
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

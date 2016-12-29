@@ -2159,68 +2159,68 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseEntered
         // TODO add your handling code here:        
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Bra Image.jpg");
-        makeCard(Color.yellow, i, 0);
+//        ImageIcon i = new ImageIcon("Board Pictures/Canada/Bra Image.jpg");
+//        makeCard(Color.yellow, i, 0);
     }//GEN-LAST:event_lblHoverB1MouseEntered
 
     private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
         // TODO add your handling code here:        
-        breakCard();
+       // breakCard();
     }//GEN-LAST:event_lblHoverB1MouseExited
 
     private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        makeCard(Color.yellow, i, 1);
+        //ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
+        //makeCard(Color.yellow, i, 1);
     }//GEN-LAST:event_lblHoverB2MouseEntered
 
     private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
         // TODO add your handling code here:
-        breakCard();
+       // breakCard();
     }//GEN-LAST:event_lblHoverB2MouseExited
 
     private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        makeCard(Color.gray, i, 20);
+        //ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
+       // makeCard(Color.gray, i, 20);
     }//GEN-LAST:event_lblHoverB3MouseEntered
 
     private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
         // TODO add your handling code here:
-        breakCard();
+       // breakCard();
     }//GEN-LAST:event_lblHoverB3MouseExited
 
     private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
-        makeCard(Color.yellow, i, 2);
+       // ImageIcon i = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
+        //makeCard(Color.yellow, i, 2);
     }//GEN-LAST:event_lblHoverB4MouseEntered
 
     private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
         // TODO add your handling code here:
-        breakCard();
+       // breakCard();
     }//GEN-LAST:event_lblHoverB4MouseExited
 
     private void lblHoverB5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        makeCard(Color.gray, i, 21);
+        //ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
+       // makeCard(Color.gray, i, 21);
     }//GEN-LAST:event_lblHoverB5MouseEntered
 
     private void lblHoverB5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseExited
         // TODO add your handling code here:
-        breakCard();
+        //breakCard();
     }//GEN-LAST:event_lblHoverB5MouseExited
 
     private void lblHoverB6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/WH Image.jpg");
-        makeCard(Color.blue, i, 3);
+        //ImageIcon i = new ImageIcon("Board Pictures/Canada/WH Image.jpg");
+        //makeCard(Color.blue, i, 3);
     }//GEN-LAST:event_lblHoverB6MouseEntered
 
     private void lblHoverB6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseExited
         // TODO add your handling code here:
-        breakCard();
+        //breakCard();
     }//GEN-LAST:event_lblHoverB6MouseExited
 
     private void lblHoverB7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseEntered
@@ -2231,7 +2231,7 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
         // TODO add your handling code here:
-        breakCard();
+       // breakCard();
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed

@@ -31,7 +31,7 @@ public final class InitTest extends JFrame
     public static String nameo, t1, t2, t3, t4;
     public static NickNames nickName = new NickNames();
     public static Timer ti;
-    public static int[] startm = new int[4], bonusm = new int[4], jailfeem = new int[4],indexes=new int[100];
+    public static int[] startm = new int[4], bonusm = new int[4], jailfeem = new int[4], indexes = new int[100];
     public static ImageIcon[] icon = new ImageIcon[4];
     public static String[] combo = new String[100], pieces = new String[100], name = new String[4];
     public static String[][] player = new String[4][100];
@@ -952,7 +952,8 @@ public final class InitTest extends JFrame
     private void comIconP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comIconP1ActionPerformed
         int i = comIconP1.getSelectedIndex();
         lblPiece1.setDisabledIcon(images.get(i));
-        indexes[0]=i;
+        indexes[0] = i;
+        System.out.println("InitTest: Icon 1:"+i);
         pliconduplicate(1);
     }//GEN-LAST:event_comIconP1ActionPerformed
 
@@ -960,7 +961,8 @@ public final class InitTest extends JFrame
     {//GEN-HEADEREND:event_comIconP2ActionPerformed
         int i = comIconP2.getSelectedIndex();
         lblPiece2.setDisabledIcon(images.get(i));
-        indexes[1]=i;
+        indexes[1] = i;
+        System.out.println("InitTest: Icon 2:"+i);
         pliconduplicate(2);
     }//GEN-LAST:event_comIconP2ActionPerformed
 
@@ -968,7 +970,8 @@ public final class InitTest extends JFrame
     {//GEN-HEADEREND:event_comIconP3ActionPerformed
         int i = comIconP3.getSelectedIndex();
         lblPiece3.setDisabledIcon(images.get(i));
-        indexes[2]=i;
+        indexes[2] = i;
+        System.out.println("InitTest: Icon 3:"+i);
         pliconduplicate(3);
     }//GEN-LAST:event_comIconP3ActionPerformed
 
@@ -976,7 +979,8 @@ public final class InitTest extends JFrame
     {//GEN-HEADEREND:event_comIconP4ActionPerformed
         int i = comIconP4.getSelectedIndex();
         lblPiece4.setDisabledIcon(images.get(i));
-        indexes[3]=i;
+        indexes[3] = i;
+        System.out.println("InitTest: Icon 4:"+i);
         pliconduplicate(4);
     }//GEN-LAST:event_comIconP4ActionPerformed
 
@@ -1175,39 +1179,51 @@ public final class InitTest extends JFrame
           {
             case 1:
 
-                if (indexes[0] != 0 && (indexes[0] == indexes[1] || indexes[0] == indexes[2] || indexes[0] == indexes[3]))
+                if (indexes[0] != 0)
                   {
-                    lblPiece1.setDisabledIcon(null);
-//                    lblPiece1.revalidate();
-                    comIconP1.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                    if (indexes[0] == indexes[1] || indexes[0] == indexes[2] || indexes[0] == indexes[3])
+                      {
+                        lblPiece1.setDisabledIcon(null);
+                        lblPiece1.revalidate();
+                        comIconP1.setSelectedIndex(0);
+                        JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                      }
                   }
                 break;
             case 2:
-                if (indexes[1] != 0 && (indexes[1] == indexes[0] || indexes[1] == indexes[2] || indexes[1] == indexes[3]))
+                if (indexes[1] != 0)
                   {
-                    lblPiece2.setDisabledIcon(null);
-//                    lblPiece2.revalidate();
-                    comIconP2.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                    if (indexes[1] == indexes[0] || indexes[1] == indexes[2] || indexes[1] == indexes[3])
+                      {
+                        lblPiece2.setDisabledIcon(null);
+                        lblPiece2.revalidate();
+                        comIconP2.setSelectedIndex(0);
+                        JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                      }
                   }
                 break;
             case 3:
-                if (indexes[2] !=0 && (indexes[2] == indexes[0] || indexes[2] == indexes[1] || indexes[2] == indexes[3]))
+                if (indexes[2] != 0)
                   {
-                    lblPiece3.setDisabledIcon(null);
-//                    lblPiece3.revalidate();
-                    comIconP3.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                    if (indexes[2] == indexes[0] || indexes[2] == indexes[1] || indexes[2] == indexes[3])
+                      {
+                        lblPiece3.setDisabledIcon(null);
+                        lblPiece3.revalidate();
+                        comIconP3.setSelectedIndex(0);
+                        JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                      }
                   }
                 break;
             case 4:
-                if (indexes[3] != 0 && (indexes[3] == indexes[0] || indexes[3] == indexes[1] || indexes[3] == indexes[2]))
+                if (indexes[3] != 0)
                   {
-                    lblPiece4.setDisabledIcon(null);
-//                    lblPiece4.revalidate();
-                    comIconP4.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                    if (indexes[3] == indexes[0] || indexes[3] == indexes[1] || indexes[3] == indexes[2])
+                      {
+                        lblPiece4.setDisabledIcon(null);
+                        lblPiece4.revalidate();
+                        comIconP4.setSelectedIndex(0);
+                        JOptionPane.showMessageDialog(null, "Please select another piece for one of the players!");
+                      }
                   }
                 break;
           }
