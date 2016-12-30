@@ -23,17 +23,18 @@ public final class Board extends javax.swing.JFrame
     /**
      * Creates new form Board
      */
-    public static int players, i, dice, chance, roll, turn = 0, count = 0, propOwner, propMoney, propPrice, propRent;
-    public static String theme, propName;
-    public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4];
-    public static String[] name = new String[4];
+    public static int players, i, dice, chance, roll, turn = 0, count = 0;
+    public static String theme;
+    public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36];
+    public static String[] name = new String[4], propName = new String[36];
     public ThemeSelect ts = new ThemeSelect();
     public InitTest it = new InitTest();
     public Dice di = new Dice();
     public Properties_Data pd = new Properties_Data();
     public static ImageIcon piece;
     public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4];
-    public static boolean snake = false, bail = false, propOwned = false, propBuyable = true;
+    public static boolean snake = false, bail = false;
+    public static boolean[] propOwned = new boolean[36], propBuyable = new boolean[36];
     public static JLabel[][] boxes = new JLabel[4][37];
     public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4];
     Card c;
@@ -47,12 +48,27 @@ public final class Board extends javax.swing.JFrame
         this.setExtendedState(MAXIMIZED_BOTH);
         this.players = playerCount;
         datatransfer();
+        propDataTransfer();
         System.out.println("Board: Number of pCount: " + players);
 //        setPlayernumber();
         setupLabels();
         setupplabels();
         changeimages();
         addpCount();
+      }
+
+    public void propDataTransfer()
+      {
+        pd.GetProp();
+        for (i = 0; i < 36; i++)
+          {
+            propName[i] = pd.prop[i].name;
+            propPrice[i] = pd.prop[i].price;
+            propRent[i] = pd.prop[i].rent1;
+            propOwned[i] = pd.prop[i].owned;
+            propOwner[i] = pd.prop[i].owner;
+            propBuyable[i] = pd.prop[i].buyable;
+          }
       }
 
     public void changeimages()
@@ -329,50 +345,39 @@ public final class Board extends javax.swing.JFrame
 
     public void propcall(int[] cpos, int turn)
       {
-        pd.GetProp();
-        propName = pd.prop[cpos[turn]].name;
-        propRent = pd.prop[cpos[turn]].rent1;
-        propPrice = pd.prop[cpos[turn]].price;
-        propBuyable = pd.prop[cpos[turn]].buyable;
-        System.out.println("Board: " + cpos[turn] + " Turn: " + turn + " Owned: " + propBuyable);
-        if (propBuyable == true)
+        if (propBuyable[cpos[turn]] == true)
           {
-            propOwned = pd.prop[cpos[turn]].owned;
-            System.out.println("Board: " + cpos[turn] + " Turn: " + turn + " Buyable: " + propOwned);
-            if (propOwned == false)
+            if (propOwned[cpos[turn]] == true)
               {
-                money[turn] = money[turn] - propPrice;
-                pd.prop[cpos[turn]].owner = turn;
-                numprop[turn]++;
-                System.out.println("Board: Player: " + turn + " Money: " + money[turn] + "Owner: " + propOwner + " Name: " + propName + " Price: " + propPrice);
-                displayChangeBuy(turn);
-//                buyMenu(cpos[turn],turn);//To be made
-              } else if (propOwned == true)
-              {
-                propOwner = pd.prop[cpos[turn]].owner;
-                if (propOwner != turn)
+                int pOwner = propOwner[cpos[turn]];
+                if (pOwner != turn)
                   {
-                    money[propOwner] = money[propOwner] + propRent;
-                    money[turn] = money[turn] - propRent;
-                    displayChangePay(turn, propOwner);
-//            payMenu(cpos[turn],turn);//To be made "buyMenu and payMenu" both are forms to be made
+                    money[pOwner] += propRent[cpos[turn]];
+                    money[turn] -= propRent[cpos[turn]];
+                    displayChangePay(turn, pOwner);
+                    System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + propRent[cpos[turn]]);
                   }
               } else
               {
-                //Check type of property
+                money[turn] -= propPrice[cpos[turn]];
+                propOwned[cpos[turn]] = true;
+                propOwner[cpos[turn]] = turn;
+                numprop[turn]++;
+                displayChangeBuy(turn);
+                System.out.println("Board:: Name:" + propName[cpos[turn]] + " Price:" + propPrice[cpos[turn]]);
               }
           }
       }
 
     public void displayChangeBuy(int turn)
       {
-        plmoney[turn].setText("$ " + money[turn]);
+        plmoney[turn].setText("$ " + money[turn]+"(-"+propPrice[cpos[turn]]+")");
       }
 
     public void displayChangePay(int turn, int propOwner)
       {
-        plmoney[turn].setText("$ "+money[turn]);
-        plmoney[propOwner].setText("$ "+money[propOwner]);
+        plmoney[turn].setText("$ " + money[turn]+"(-"+propRent[cpos[turn]]+")");
+        plmoney[propOwner].setText("$ " + money[propOwner]+"(+"+propRent[cpos[turn]]+")");
       }
 
     public void rolling()

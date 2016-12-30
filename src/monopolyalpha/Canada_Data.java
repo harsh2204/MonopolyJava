@@ -50,7 +50,7 @@ public class Canada_Data
         property[1].rentH = 250;
         property[1].priceHouse = 50;
         property[1].colour = 1;
-        property[1].buyable=true;
+        property[1].buyable = true;
         //MISSISSAUGA
         property[2].propName = "Mississauga";
         property[2].price = 60;
@@ -61,15 +61,16 @@ public class Canada_Data
         property[2].rentH = 450;
         property[2].priceHouse = 50;
         property[2].colour = 1;
-        property[2].buyable=true;
-        
+        property[2].buyable = true;
+
         //TIM HORTON'S
+        property[3].propName = "Tim Horton's";
         property[3].desc1 = "Rent = 25x roll & +25 ";
         property[3].desc2 = "rent on all properties";
         property[3].price = 325;
         property[3].colour = 7;
-        property[3].buyable=true;
-        
+        property[3].buyable = true;
+
         //YELLOW KNIFE
         property[4].propName = "YellowKnife";
         property[4].price = 80;
@@ -80,13 +81,13 @@ public class Canada_Data
         property[4].rentH = 500;
         property[4].priceHouse = 50;
         property[4].colour = 1;
-        property[4].buyable=true;
-        
-        property[5].propName="Income Tax";
-        property[5].buyable=false;
-        
-        property[6].propName="Chance";
-        property[6].buyable=false;
+        property[4].buyable = true;
+
+        property[5].propName = "Income Tax";
+        property[5].buyable = false;
+
+        property[6].propName = "Chance";
+        property[6].buyable = false;
         //======================================================================
         //BLUE SUITE------------------------------------------------------------
         //WHITEHORSE
@@ -99,7 +100,7 @@ public class Canada_Data
         property[7].rentH = 550;
         property[7].priceHouse = 75;
         property[7].colour = 2;
-        property[7].buyable=true;
+        property[7].buyable = true;
         //IQALUIT
         property[8].propName = "Iqaluit";
         property[8].price = 120;
@@ -110,10 +111,10 @@ public class Canada_Data
         property[8].rentH = 600;
         property[8].priceHouse = 75;
         property[8].colour = 2;
-        property[8].buyable=true;
-        
-        property[9].propName="Jail";
-        property[9].buyable=false;
+        property[8].buyable = true;
+
+        property[9].propName = "Jail";
+        property[9].buyable = false;
         //SASKATOON
         property[10].propName = "Saskatoon";
         property[10].price = 120;
@@ -124,7 +125,7 @@ public class Canada_Data
         property[10].rentH = 580;
         property[10].priceHouse = 75;
         property[10].colour = 2;
-        property[10].buyable=true;
+        property[10].buyable = true;
         //======================================================================
         //PURPLE SUITE----------------------------------------------------------
         //THUNDER BAY
@@ -137,14 +138,15 @@ public class Canada_Data
         property[11].rentH = 700;
         property[11].priceHouse = 100;
         property[11].colour = 3;
-        property[11].buyable=true;
-        
-         //CNR
+        property[11].buyable = true;
+
+        //CNR
+        property[12].propName = "CNR";
         property[12].desc1 = "Rent = 25x roll, 50x roll ";
         property[12].desc2 = "if CN Tower is owned";
         property[12].price = 375;
         property[12].colour = 7;
-        property[12].buyable=true;
+        property[12].buyable = true;
         //WINDSOR
         property[13].propName = "Windsor";
         property[13].price = 150;
@@ -155,7 +157,7 @@ public class Canada_Data
         property[13].rentH = 750;
         property[13].priceHouse = 100;
         property[13].colour = 3;
-        property[13].buyable=true;
+        property[13].buyable = true;
         //FREDRICTION
         property[14].propName = "Fredricton";
         property[14].price = 180;
@@ -166,17 +168,18 @@ public class Canada_Data
         property[14].rentH = 900;
         property[14].priceHouse = 100;
         property[14].colour = 3;
-        property[14].buyable=true;
-        
+        property[14].buyable = true;
+
         //NIAGARA FALLS
+        property[15].propName = "Niagara Falls";
         property[15].desc1 = "Rent = 25x roll, 50x roll ";
         property[15].desc2 = " if Parliament is owned";
         property[15].price = 375;
         property[15].colour = 7;
-        property[15].buyable=true;
-        
-        property[16].buyable=false;
-        
+        property[15].buyable = true;
+
+        property[16].buyable = false;
+
         //======================================================================
         //GREEN SUITE-----------------------------------------------------------
         //REGINA
@@ -189,9 +192,9 @@ public class Canada_Data
         property[17].rentH = 910;
         property[17].priceHouse = 150;
         property[17].colour = 4;
-        property[17].buyable=true;
-        
-        property[18].buyable=false;
+        property[17].buyable = true;
+
+        property[18].buyable = false;
         //ST. JOHN'S
         property[19].propName = "St. John's";
         property[19].price = 220;
@@ -202,7 +205,7 @@ public class Canada_Data
         property[19].rentH = 925;
         property[19].priceHouse = 150;
         property[19].colour = 4;
-        property[19].buyable=true;
+        property[19].buyable = true;
         //QUEBEC CITY
         property[20].propName = "Quebec City";
         property[20].price = 220;
@@ -213,14 +216,14 @@ public class Canada_Data
         property[20].rentH = 925;
         property[20].priceHouse = 150;
         property[20].colour = 4;
-        property[20].buyable=true;
-        
-         //RBC
+        property[20].buyable = true;
+
+        //RBC
         property[21].desc1 = "Rent = 25x roll & tax rebate";
         property[21].price = 325;
         property[21].colour = 7;
-        property[21].buyable=true;
-        
+        property[21].buyable = true;
+
         //HALIFAX
         property[22].propName = "Halifax";
         property[22].price = 250;
@@ -231,12 +234,12 @@ public class Canada_Data
         property[22].rentH = 950;
         property[22].priceHouse = 150;
         property[22].colour = 4;
-        property[22].buyable=true;
-        
-        property[23].propName="Blank";
-        property[23].buyable=false;
-        
-        property[24].buyable=false;
+        property[22].buyable = true;
+
+        property[23].propName = "Blank";
+        property[23].buyable = false;
+
+        property[24].buyable = false;
         //======================================================================
         //RED SUITE-------------------------------------------------------------
         //WINNIPEG
@@ -249,7 +252,7 @@ public class Canada_Data
         property[25].rentH = 1000;
         property[25].priceHouse = 200;
         property[25].colour = 5;
-        property[25].buyable=true;
+        property[25].buyable = true;
         //EDMONTON
         property[26].propName = "Edmonton";
         property[26].price = 290;
@@ -260,10 +263,10 @@ public class Canada_Data
         property[26].rentH = 1100;
         property[26].priceHouse = 200;
         property[26].colour = 5;
-        property[26].buyable=true;
-        
-        property[27].buyable=false;
-        
+        property[26].buyable = true;
+
+        property[27].buyable = false;
+
         //CALGARY
         property[28].propName = "Calgary";
         property[28].price = 290;
@@ -274,7 +277,7 @@ public class Canada_Data
         property[28].rentH = 1100;
         property[28].priceHouse = 200;
         property[28].colour = 5;
-        property[28].buyable=true;
+        property[28].buyable = true;
         //OTTAWA
         property[29].propName = "Ottawa";
         property[29].price = 325;
@@ -285,17 +288,17 @@ public class Canada_Data
         property[29].rentH = 1200;
         property[29].priceHouse = 200;
         property[29].colour = 5;
-        property[29].buyable=true;
+        property[29].buyable = true;
         //======================================================================
-        
+
         //CN TOWER
         property[30].desc1 = "Rent = 25x roll, 50x ";
         property[30].desc2 = "roll if CNR is owned";
         property[30].price = 375;
         property[30].colour = 7;
-        property[30].buyable=true;
-        
-        property[31].buyable=false;
+        property[30].buyable = true;
+
+        property[31].buyable = false;
         //ORANGE SUITE----------------------------------------------------------
         //VANCOUVER
         property[32].propName = "Vancouver";
@@ -307,15 +310,15 @@ public class Canada_Data
         property[32].rentH = 1500;
         property[32].colour = 6;
         property[32].priceHouse = 300;
-        property[32].buyable=true;
-        
+        property[32].buyable = true;
+
         //PARLIAMENT HILL
         property[33].desc1 = "Rent = 25x roll, 50x roll ";
         property[33].desc2 = " if Niagara Falls is owned";
         property[33].price = 375;
         property[33].colour = 7;
-        property[33].buyable=true;
-        
+        property[33].buyable = true;
+
         //MONTREAL
         property[34].propName = "Montreal";
         property[34].price = 400;
@@ -326,7 +329,7 @@ public class Canada_Data
         property[34].rentH = 2000;
         property[34].priceHouse = 300;
         property[34].colour = 6;
-        property[34].buyable=true;
+        property[34].buyable = true;
         //TORONTO
         property[35].propName = "Toronto";
         property[35].price = 500;
@@ -337,10 +340,9 @@ public class Canada_Data
         property[35].rentH = 2100;
         property[35].priceHouse = 300;
         property[35].colour = 6;
-        property[35].buyable=true;
+        property[35].buyable = true;
         //======================================================================
         //GREY SUITE------------------------------------------------------------
-       
 
         return property;
       }
