@@ -11,7 +11,8 @@ import javax.swing.ImageIcon;
  *
  * @author Harsh
  */
-public class Canada_Data {
+public class Canada_Data
+  {
 
     public String p1 = "Hockey Stick";
     public String p2 = "Maple Leaf";
@@ -21,275 +22,331 @@ public class Canada_Data {
     public ImageIcon i2 = new ImageIcon("Icons/Pieces/Canada/2.png");
     public ImageIcon i3 = new ImageIcon("Icons/Pieces/Canada/3.png");
     public ImageIcon i4 = new ImageIcon("Icons/Pieces/Canada/4.png");
-    String propName, desc1, desc2;
-    int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
+    public String propName, desc1, desc2;
+    public int price, priceHouse, rent1, rent2, rent3, rent4, rentH, colour;
     public String chance[] = new String[16];
     public String community[] = new String[16];
-    public Canada_Data property[] = new Canada_Data[26];
+    public Canada_Data property[] = new Canada_Data[36];
+    public boolean buyable;
 
-    public Canada_Data[] setProp() {
+    public Canada_Data[] setProp()
+      {
         //Initializing the object array.
-        for (int i = 0; i < property.length; i++) {
+        for (int i = 0; i < property.length; i++)
+          {
             property[i] = new Canada_Data();
-        }
-        //Adding Property names
-        property[0].propName = "Brampton";//
-        property[1].propName = "Mississauga";//
-        property[2].propName = "YellowKnife";//
-        property[3].propName = "Whitehorse";//
-        property[4].propName = "Iqaluit";//
-        property[5].propName = "Saskatoon";//
-        property[6].propName = "Thunder Bay";//
-        property[7].propName = "Windsor";//
-        property[8].propName = "Fredricton";
-        property[9].propName = "Regina";//
-        property[10].propName = "St. John's";//
-        property[11].propName = "Quebec City";//
-        property[12].propName = "Halifax";//
-        property[13].propName = "Winnipeg";//
-        property[14].propName = "Edmonton";//
-        property[15].propName = "Calgary";//
-        property[16].propName = "Ottawa";//
-        property[17].propName = "Vancouver";//
-        property[18].propName = "Montreal";//
-        property[19].propName = "Toronto";//
-        property[20].propName = "Parliament Hill";
-        property[21].propName = "Niagara Falls";
-        property[22].propName = "Canadian National Tower";
-        property[23].propName = "Canadian National Railway";
-        property[24].propName = "Royal Bank of Canada";
-        property[25].propName = "Tim Horton's";
-
-        //Adding property rents
+          }
+        property[0].propName = "Start";
+        property[0].buyable = false;
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
         //BRAMPTON
-        property[0].price = 60;
-        property[0].rent1 = 10;
-        property[0].rent2 = 30;
-        property[0].rent3 = 90;
-        property[0].rent4 = 160;
-        property[0].rentH = 250;
-        property[0].priceHouse = 50;
-        property[0].colour = 1;
-        //MISSISSAUGA
+        property[1].propName = "Brampton";
         property[1].price = 60;
-        property[1].rent1 = 20;
-        property[1].rent2 = 60;
-        property[1].rent3 = 180;
-        property[1].rent4 = 320;
-        property[1].rentH = 450;
+        property[1].rent1 = 10;
+        property[1].rent2 = 30;
+        property[1].rent3 = 90;
+        property[1].rent4 = 160;
+        property[1].rentH = 250;
         property[1].priceHouse = 50;
         property[1].colour = 1;
-        //YELLOW KNIFE
-        property[2].price = 80;
-        property[2].rent1 = 30;
-        property[2].rent2 = 90;
-        property[2].rent3 = 220;
-        property[2].rent4 = 350;
-        property[2].rentH = 500;
+        property[1].buyable=true;
+        //MISSISSAUGA
+        property[2].propName = "Mississauga";
+        property[2].price = 60;
+        property[2].rent1 = 20;
+        property[2].rent2 = 60;
+        property[2].rent3 = 180;
+        property[2].rent4 = 320;
+        property[2].rentH = 450;
         property[2].priceHouse = 50;
         property[2].colour = 1;
+        property[2].buyable=true;
+        
+        //TIM HORTON'S
+        property[3].desc1 = "Rent = 25x roll & +25 ";
+        property[3].desc2 = "rent on all properties";
+        property[3].price = 325;
+        property[3].colour = 7;
+        property[3].buyable=true;
+        
+        //YELLOW KNIFE
+        property[4].propName = "YellowKnife";
+        property[4].price = 80;
+        property[4].rent1 = 30;
+        property[4].rent2 = 90;
+        property[4].rent3 = 220;
+        property[4].rent4 = 350;
+        property[4].rentH = 500;
+        property[4].priceHouse = 50;
+        property[4].colour = 1;
+        property[4].buyable=true;
+        
+        property[5].propName="Income Tax";
+        property[5].buyable=false;
+        
+        property[6].propName="Chance";
+        property[6].buyable=false;
         //======================================================================
         //BLUE SUITE------------------------------------------------------------
         //WHITEHORSE
-        property[3].price = 100;
-        property[3].rent1 = 30;
-        property[3].rent2 = 90;
-        property[3].rent3 = 270;
-        property[3].rent4 = 400;
-        property[3].rentH = 550;
-        property[3].priceHouse = 75;
-        property[3].colour = 2;
+        property[7].propName = "Whitehorse";
+        property[7].price = 100;
+        property[7].rent1 = 30;
+        property[7].rent2 = 90;
+        property[7].rent3 = 270;
+        property[7].rent4 = 400;
+        property[7].rentH = 550;
+        property[7].priceHouse = 75;
+        property[7].colour = 2;
+        property[7].buyable=true;
         //IQALUIT
-        property[4].price = 120;
-        property[4].rent1 = 40;
-        property[4].rent2 = 100;
-        property[4].rent3 = 300;
-        property[4].rent4 = 450;
-        property[4].rentH = 600;
-        property[4].priceHouse = 75;
-        property[4].colour = 2;
+        property[8].propName = "Iqaluit";
+        property[8].price = 120;
+        property[8].rent1 = 40;
+        property[8].rent2 = 100;
+        property[8].rent3 = 300;
+        property[8].rent4 = 450;
+        property[8].rentH = 600;
+        property[8].priceHouse = 75;
+        property[8].colour = 2;
+        property[8].buyable=true;
+        
+        property[9].propName="Jail";
+        property[9].buyable=false;
         //SASKATOON
-        property[5].price = 120;
-        property[5].rent1 = 40;
-        property[5].rent2 = 100;
-        property[5].rent3 = 260;
-        property[5].rent4 = 420;
-        property[5].rentH = 580;
-        property[5].priceHouse = 75;
-        property[5].colour = 2;
+        property[10].propName = "Saskatoon";
+        property[10].price = 120;
+        property[10].rent1 = 40;
+        property[10].rent2 = 100;
+        property[10].rent3 = 260;
+        property[10].rent4 = 420;
+        property[10].rentH = 580;
+        property[10].priceHouse = 75;
+        property[10].colour = 2;
+        property[10].buyable=true;
         //======================================================================
         //PURPLE SUITE----------------------------------------------------------
         //THUNDER BAY
-        property[6].price = 140;
-        property[6].rent1 = 50;
-        property[6].rent2 = 150;
-        property[6].rent3 = 450;
-        property[6].rent4 = 625;
-        property[6].rentH = 700;
-        property[6].priceHouse = 100;
-        property[6].colour = 3;
+        property[11].propName = "Thunder Bay";
+        property[11].price = 140;
+        property[11].rent1 = 50;
+        property[11].rent2 = 150;
+        property[11].rent3 = 450;
+        property[11].rent4 = 625;
+        property[11].rentH = 700;
+        property[11].priceHouse = 100;
+        property[11].colour = 3;
+        property[11].buyable=true;
+        
+         //CNR
+        property[12].desc1 = "Rent = 25x roll, 50x roll ";
+        property[12].desc2 = "if CN Tower is owned";
+        property[12].price = 375;
+        property[12].colour = 7;
+        property[12].buyable=true;
         //WINDSOR
-        property[7].price = 150;
-        property[7].rent1 = 60;
-        property[7].rent2 = 170;
-        property[7].rent3 = 480;
-        property[7].rent4 = 650;
-        property[7].rentH = 750;
-        property[7].priceHouse = 100;
-        property[7].colour = 3;
+        property[13].propName = "Windsor";
+        property[13].price = 150;
+        property[13].rent1 = 60;
+        property[13].rent2 = 170;
+        property[13].rent3 = 480;
+        property[13].rent4 = 650;
+        property[13].rentH = 750;
+        property[13].priceHouse = 100;
+        property[13].colour = 3;
+        property[13].buyable=true;
         //FREDRICTION
-        property[8].price = 180;
-        property[8].rent1 = 80;
-        property[8].rent2 = 180;
-        property[8].rent3 = 500;
-        property[8].rent4 = 680;
-        property[8].rentH = 900;
-        property[8].priceHouse = 100;
-        property[8].colour = 3;
+        property[14].propName = "Fredricton";
+        property[14].price = 180;
+        property[14].rent1 = 80;
+        property[14].rent2 = 180;
+        property[14].rent3 = 500;
+        property[14].rent4 = 680;
+        property[14].rentH = 900;
+        property[14].priceHouse = 100;
+        property[14].colour = 3;
+        property[14].buyable=true;
+        
+        //NIAGARA FALLS
+        property[15].desc1 = "Rent = 25x roll, 50x roll ";
+        property[15].desc2 = " if Parliament is owned";
+        property[15].price = 375;
+        property[15].colour = 7;
+        property[15].buyable=true;
+        
+        property[16].buyable=false;
+        
         //======================================================================
         //GREEN SUITE-----------------------------------------------------------
         //REGINA
-        property[9].price = 200;
-        property[9].rent1 = 100;
-        property[9].rent2 = 200;
-        property[9].rent3 = 520;
-        property[9].rent4 = 700;
-        property[9].rentH = 910;
-        property[9].priceHouse = 150;
-        property[9].colour = 4;
+        property[17].propName = "Regina";
+        property[17].price = 200;
+        property[17].rent1 = 100;
+        property[17].rent2 = 200;
+        property[17].rent3 = 520;
+        property[17].rent4 = 700;
+        property[17].rentH = 910;
+        property[17].priceHouse = 150;
+        property[17].colour = 4;
+        property[17].buyable=true;
+        
+        property[18].buyable=false;
         //ST. JOHN'S
-        property[10].price = 220;
-        property[10].rent1 = 110;
-        property[10].rent2 = 220;
-        property[10].rent3 = 540;
-        property[10].rent4 = 725;
-        property[10].rentH = 925;
-        property[10].priceHouse = 150;
-        property[10].colour = 4;
+        property[19].propName = "St. John's";
+        property[19].price = 220;
+        property[19].rent1 = 110;
+        property[19].rent2 = 220;
+        property[19].rent3 = 540;
+        property[19].rent4 = 725;
+        property[19].rentH = 925;
+        property[19].priceHouse = 150;
+        property[19].colour = 4;
+        property[19].buyable=true;
         //QUEBEC CITY
-        property[11].price = 220;
-        property[11].rent1 = 110;
-        property[11].rent2 = 220;
-        property[11].rent3 = 540;
-        property[11].rent4 = 725;
-        property[11].rentH = 925;
-        property[11].priceHouse = 150;
-        property[11].colour = 4;
+        property[20].propName = "Quebec City";
+        property[20].price = 220;
+        property[20].rent1 = 110;
+        property[20].rent2 = 220;
+        property[20].rent3 = 540;
+        property[20].rent4 = 725;
+        property[20].rentH = 925;
+        property[20].priceHouse = 150;
+        property[20].colour = 4;
+        property[20].buyable=true;
+        
+         //RBC
+        property[21].desc1 = "Rent = 25x roll & tax rebate";
+        property[21].price = 325;
+        property[21].colour = 7;
+        property[21].buyable=true;
+        
         //HALIFAX
-        property[12].price = 250;
-        property[12].rent1 = 125;
-        property[12].rent2 = 250;
-        property[12].rent3 = 550;
-        property[12].rent4 = 750;
-        property[12].rentH = 950;
-        property[12].priceHouse = 150;
-        property[12].colour = 4;
+        property[22].propName = "Halifax";
+        property[22].price = 250;
+        property[22].rent1 = 125;
+        property[22].rent2 = 250;
+        property[22].rent3 = 550;
+        property[22].rent4 = 750;
+        property[22].rentH = 950;
+        property[22].priceHouse = 150;
+        property[22].colour = 4;
+        property[22].buyable=true;
+        
+        property[23].propName="Blank";
+        property[23].buyable=false;
+        
+        property[24].buyable=false;
         //======================================================================
         //RED SUITE-------------------------------------------------------------
         //WINNIPEG
-        property[13].price = 260;
-        property[13].rent1 = 140;
-        property[13].rent2 = 300;
-        property[13].rent3 = 750;
-        property[13].rent4 = 975;
-        property[13].rentH = 1000;
-        property[13].priceHouse = 200;
-        property[13].colour = 5;
+        property[25].propName = "Winnipeg";
+        property[25].price = 260;
+        property[25].rent1 = 140;
+        property[25].rent2 = 300;
+        property[25].rent3 = 750;
+        property[25].rent4 = 975;
+        property[25].rentH = 1000;
+        property[25].priceHouse = 200;
+        property[25].colour = 5;
+        property[25].buyable=true;
         //EDMONTON
-        property[14].price = 290;
-        property[14].rent1 = 150;
-        property[14].rent2 = 350;
-        property[14].rent3 = 800;
-        property[14].rent4 = 1000;
-        property[14].rentH = 1100;
-        property[14].priceHouse = 200;
-        property[14].colour = 5;
+        property[26].propName = "Edmonton";
+        property[26].price = 290;
+        property[26].rent1 = 150;
+        property[26].rent2 = 350;
+        property[26].rent3 = 800;
+        property[26].rent4 = 1000;
+        property[26].rentH = 1100;
+        property[26].priceHouse = 200;
+        property[26].colour = 5;
+        property[26].buyable=true;
+        
+        property[27].buyable=false;
+        
         //CALGARY
-        property[15].price = 290;
-        property[15].rent1 = 150;
-        property[15].rent2 = 350;
-        property[15].rent3 = 800;
-        property[15].rent4 = 1000;
-        property[15].rentH = 1100;
-        property[15].priceHouse = 200;
-        property[15].colour = 5;
+        property[28].propName = "Calgary";
+        property[28].price = 290;
+        property[28].rent1 = 150;
+        property[28].rent2 = 350;
+        property[28].rent3 = 800;
+        property[28].rent4 = 1000;
+        property[28].rentH = 1100;
+        property[28].priceHouse = 200;
+        property[28].colour = 5;
+        property[28].buyable=true;
         //OTTAWA
-        property[16].price = 325;
-        property[16].rent1 = 170;
-        property[16].rent2 = 400;
-        property[16].rent3 = 850;
-        property[16].rent4 = 1100;
-        property[16].rentH = 1200;
-        property[16].priceHouse = 200;
-        property[16].colour = 5;
+        property[29].propName = "Ottawa";
+        property[29].price = 325;
+        property[29].rent1 = 170;
+        property[29].rent2 = 400;
+        property[29].rent3 = 850;
+        property[29].rent4 = 1100;
+        property[29].rentH = 1200;
+        property[29].priceHouse = 200;
+        property[29].colour = 5;
+        property[29].buyable=true;
         //======================================================================
+        
+        //CN TOWER
+        property[30].desc1 = "Rent = 25x roll, 50x ";
+        property[30].desc2 = "roll if CNR is owned";
+        property[30].price = 375;
+        property[30].colour = 7;
+        property[30].buyable=true;
+        
+        property[31].buyable=false;
         //ORANGE SUITE----------------------------------------------------------
         //VANCOUVER
-        property[17].price = 375;
-        property[17].rent1 = 175;
-        property[17].rent2 = 500;
-        property[17].rent3 = 1100;
-        property[17].rent4 = 1300;
-        property[17].rentH = 1500;
-        property[17].colour = 6;
-        property[17].priceHouse = 300;
+        property[32].propName = "Vancouver";
+        property[32].price = 375;
+        property[32].rent1 = 175;
+        property[32].rent2 = 500;
+        property[32].rent3 = 1100;
+        property[32].rent4 = 1300;
+        property[32].rentH = 1500;
+        property[32].colour = 6;
+        property[32].priceHouse = 300;
+        property[32].buyable=true;
+        
+        //PARLIAMENT HILL
+        property[33].desc1 = "Rent = 25x roll, 50x roll ";
+        property[33].desc2 = " if Niagara Falls is owned";
+        property[33].price = 375;
+        property[33].colour = 7;
+        property[33].buyable=true;
+        
         //MONTREAL
-        property[18].price = 400;
-        property[18].rent1 = 200;
-        property[18].rent2 = 600;
-        property[18].rent3 = 1400;
-        property[18].rent4 = 1700;
-        property[18].rentH = 2000;
-        property[18].priceHouse = 300;
-        property[18].colour = 6;
+        property[34].propName = "Montreal";
+        property[34].price = 400;
+        property[34].rent1 = 200;
+        property[34].rent2 = 600;
+        property[34].rent3 = 1400;
+        property[34].rent4 = 1700;
+        property[34].rentH = 2000;
+        property[34].priceHouse = 300;
+        property[34].colour = 6;
+        property[34].buyable=true;
         //TORONTO
-        property[19].price = 500;
-        property[19].rent1 = 250;
-        property[19].rent2 = 750;
-        property[19].rent3 = 1500;
-        property[19].rent4 = 1850;
-        property[19].rentH = 2100;
-        property[19].priceHouse = 300;
-        property[19].colour = 6;
+        property[35].propName = "Toronto";
+        property[35].price = 500;
+        property[35].rent1 = 250;
+        property[35].rent2 = 750;
+        property[35].rent3 = 1500;
+        property[35].rent4 = 1850;
+        property[35].rentH = 2100;
+        property[35].priceHouse = 300;
+        property[35].colour = 6;
+        property[35].buyable=true;
         //======================================================================
         //GREY SUITE------------------------------------------------------------
-        //PARLIAMENT HILL
-        property[20].desc1 = "Rent = 25x roll, 50x roll ";
-        property[20].desc2 = " if Niagara Falls is owned";
-        property[20].price = 375;
-        property[20].colour = 7;
-        //NIAGARA FALLS
-        property[21].desc1 = "Rent = 25x roll, 50x roll ";
-        property[21].desc2 = " if Parliament is owned";
-        property[21].price = 375;
-        property[21].colour = 7;
-        //CN TOWER
-        property[22].desc1 = "Rent = 25x roll, 50x ";
-        property[22].desc2 = "roll if CNR is owned";
-        property[22].price = 375;
-        property[22].colour = 7;
-        //CNR
-        property[23].desc1 = "Rent = 25x roll, 50x roll ";
-        property[23].desc2 = "if CN Tower is owned";
-        property[23].price = 375;
-        property[23].colour = 7;
-        //RBC
-        property[24].desc1 = "Rent = 25x roll & tax rebate";
-        property[24].price = 325;
-        property[24].colour = 7;
-        //TIM HORTON'S
-        property[25].desc1 = "Rent = 25x roll & +25 ";
-        property[25].desc2 = "rent on all properties";
-        property[25].price = 325;
-        property[25].colour = 7;
-        //======================================================================
+       
 
         return property;
-    }
+      }
 
-    public void getCards() {
+    public void getCards()
+      {
         //SETTING UP THE CARDS
         //CHANCE CHEST
         chance[0] = "Advance to Go (Collect $200) ";
@@ -325,5 +382,5 @@ public class Canada_Data {
         community[13] = "You have been elected chairman of the board – pay each player $50";
         community[14] = "You win a curling tournanment – collect $150";
         community[15] = "You have won a hockey game - collect $100";
-    }
-}
+      }
+  }
