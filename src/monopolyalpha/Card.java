@@ -28,7 +28,7 @@ public class Card extends javax.swing.JFrame {
         p.GetProp();
         title = p.prop[index].name;
         price = "Price $" + p.prop[index].price;
-        System.out.println("Card- Colour:" + bg + "Name: " + p.prop[index].name + "Price:" + price + "Index:" + index);
+        //System.out.println("Card- Colour:" + bg + "Name: " + p.prop[index].name + "Price:" + price + "Index:" + index);
         if (p.prop[index].rent2 == 0) {
             rent1 = p.prop[index].desc1;
             rent2 = p.prop[index].desc2;

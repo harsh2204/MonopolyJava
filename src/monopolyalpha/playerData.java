@@ -24,7 +24,7 @@ public class playerData
 
     public playerData()
       {
-        numplayers = it.Players;
+        numplayers = it.pCount;
         datatransfer();//call this under Game class where we setup the players
         //Player position will be sent by the game class to this when the roll happens
         //playermovement();
