@@ -9,16 +9,22 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
  * @author Harsh Gupta, Karmit Patel
  */
-public final class Board extends javax.swing.JFrame
-  {
+public final class Board extends javax.swing.JFrame {
 
     /**
      * Creates new form Board
@@ -32,6 +38,7 @@ public final class Board extends javax.swing.JFrame
     public Dice di = new Dice();
     public Properties_Data pd = new Properties_Data();
     public static ImageIcon piece;
+    SimpleAttributeSet[] keyWord = new SimpleAttributeSet[5];
     public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4];
     public static boolean snake = false, bail = false;
     public static boolean[] propOwned = new boolean[36], propBuyable = new boolean[36];
@@ -41,8 +48,7 @@ public final class Board extends javax.swing.JFrame
     public static Image image;
     public static Timer moveTimer;
 
-    public Board(int playerCount)
-      {
+    public Board(int playerCount) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -55,34 +61,46 @@ public final class Board extends javax.swing.JFrame
         setupplabels();
         changeimages();
         addpCount();
-      }
+        addWindowListener(new WindowAdapter() {
 
-    public void propDataTransfer()
-      {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                String ObjButtons[] = {"Yes", "No", "Save"};
+                int PromptResult = JOptionPane.showOptionDialog(null,
+                        "Are you sure you want to exit?", "Monopoly Java",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
+                        ObjButtons, ObjButtons[2]);
+                if (PromptResult == 0) {
+                    System.exit(0);
+                }
+                if (PromptResult == 2) {
+                    new Save_Manager().setVisible(true);
+                }
+            }
+        });
+    }
+
+    public void propDataTransfer() {
         pd.GetProp();
-        for (i = 0; i < 36; i++)
-          {
+        for (i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
             propRent[i] = pd.prop[i].rent1;
             propOwned[i] = pd.prop[i].owned;
             propOwner[i] = pd.prop[i].owner;
             propBuyable[i] = pd.prop[i].buyable;
-          }
-      }
+        }
+    }
 
-    public void changeimages()
-      {
-        for (i = 0; i < players; i++)
-          {
+    public void changeimages() {
+        for (i = 0; i < players; i++) {
             image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             icons[i] = new ImageIcon(image);
-          }
+        }
         System.out.println("Board: Image Changed!");
-      }
+    }
 
-    public void setupplabels()
-      {
+    public void setupplabels() {
         plnames[0] = lblNameP1;
         plnames[1] = lblNameP2;
         plicons[0] = lblIconP1;
@@ -96,10 +114,9 @@ public final class Board extends javax.swing.JFrame
         plmoney[2] = lblMoneyP3;
         plmoney[3] = lblMoneyP4;
         System.out.println("Board: Labels setup done!");
-      }
+    }
 
-    public void datatransfer()
-      {
+    public void datatransfer() {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
 //        this.players = it.pCount;  //This is the only errror it takes 2 as default value instead of "pCount" from Init Test Fix it if u can
@@ -109,18 +126,16 @@ public final class Board extends javax.swing.JFrame
         this.bonus = it.bonusm;
         this.jailfee = it.jailfeem;
         this.dice = it.dicenum;
-        for (i = 0; i < players; i++)
-          {
+        for (i = 0; i < players; i++) {
             numprop[i] = 0;
             cpos[i] = 0;
             npos[i] = 0;
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
-          }
+        }
         System.out.println("Board: Data Transfered!");
-      }
+    }
 
-    private void setupLabels()
-      {
+    private void setupLabels() {
         //1
         boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
@@ -274,129 +289,132 @@ public final class Board extends javax.swing.JFrame
 //               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
 //            }
 //        }
-      }
+    }
 
-    public void addpCount()
-      {
-        for (i = 0; i < players; i++)
-          {
+    public void addpCount() {
+        for (i = 0; i < players; i++) {
             plnames[i].setText("" + name[i]);
             plicons[i].setIcon(icon[i]);
             plmoney[i].setText("$" + Integer.toString(money[i]));
             boxes[i][cpos[i]].setIcon(icons[i]);
-          }
+        }
+        for (int i = 0; i < keyWord.length; i++) {
+            keyWord[i] = new SimpleAttributeSet();
+        }
         paneP1.setVisible(true);
         paneP2.setVisible(true);
+        StyleConstants.setForeground(keyWord[0], Color.RED);
+        StyleConstants.setForeground(keyWord[1], Color.GREEN);
+        StyleConstants.setForeground(keyWord[2], Color.BLUE);
+        StyleConstants.setForeground(keyWord[3], Color.YELLOW);
+        StyleConstants.setForeground(keyWord[4], Color.BLACK);
         System.out.println("Board: pCount Added!");
-      }
+    }
 
-    public void makeCard(Color bg, ImageIcon i, int index)
-      {
+    public void makeCard(Color bg, ImageIcon i, int index) {
 
         System.out.println("Board- Colour:" + bg + "Index: " + index);
-        c = new Card(bg, i, index,pd);
+        c = new Card(bg, i, index, pd);
         c.setVisible(true);
-      }
+    }
 
-    public void breakCard()
-      {
+    public void breakCard() {
         c.setVisible(false);
-      }
+    }
 
-    public void move(final int turnn)
-      {
+    public void appendS(String s, int i) {
+        try {
+            StyledDocument doc = txtLog.getStyledDocument();
+            doc.insertString(doc.getLength(), s, keyWord[i]);
+        } catch (BadLocationException exc) {
+            exc.printStackTrace();
+        }
+    }
+
+    public void addLog(String s) {
+        appendS(s + "\n", 4);
+
+    }
+
+    public void move(final int turnn) {
         npos[turnn] = cpos[turnn] + roll;
         System.out.println("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
-        if (npos[turnn] > 35)
-          {
+        if (npos[turnn] > 35) {
             npos[turnn] = npos[turnn] - 35;
-          }
+        }
         rands.setText("Turn:" + turnn + "Roll:" + roll);
         count = 0;
-        moveTimer = new Timer(500, new ActionListener()
-          {
+        moveTimer = new Timer(500, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 btnRoll.setEnabled(false);
                 count++;
                 cpos[turnn]++;
-                if (cpos[turnn] > 35)
-                  {
+                if (cpos[turnn] > 35) {
                     cpos[turnn] = 0;
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][35].setIcon(null);
-                  } else
-                  {
+                } else {
                     System.out.println("Current Position: " + cpos[turnn]);
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][cpos[turnn] - 1].setIcon(null);
-                  }
-                if (count == roll)
-                  {
+                }
+                if (count == roll) {
                     moveTimer.stop();
                     propcall(cpos, turnn);
-                    btnRoll.setEnabled(true);
-                  }
-              }
-          });
+                }
+            }
+        });
         moveTimer.start();
-      }
+    }
 
-    public void propcall(int[] cpos, int turn)
-      {
-        if (propBuyable[cpos[turn]] == true)
-          {
-            if (propOwned[cpos[turn]] == true)
-              {
+    public void propcall(int[] cpos, int turn) {
+        if (propBuyable[cpos[turn]] == true) {
+            if (propOwned[cpos[turn]] == true) {
                 int pOwner = propOwner[cpos[turn]];
-                if (pOwner != turn)
-                  {
+                if (pOwner != turn) {
                     money[pOwner] += propRent[cpos[turn]];
                     money[turn] -= propRent[cpos[turn]];
                     displayChangePay(turn, pOwner);
                     System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + propRent[cpos[turn]]);
-                  }
-              } else
-              {
+                }
+            } else {
                 money[turn] -= propPrice[cpos[turn]];
                 propOwned[cpos[turn]] = true;
                 propOwner[cpos[turn]] = turn;
                 numprop[turn]++;
                 displayChangeBuy(turn);
                 System.out.println("Board:: Name:" + propName[cpos[turn]] + " Price:" + propPrice[cpos[turn]]);
-              }
-          }
-      }
+            }
+        }
+    }
 
-    public void displayChangeBuy(int turn)
-      {
-        plmoney[turn].setText("$ " + money[turn]+"(-"+propPrice[cpos[turn]]+")");
-      }
+    public void displayChangeBuy(int turn) {
+        plmoney[turn].setText("$ " + money[turn] + "(-" + propPrice[cpos[turn]] + ")");
+    }
 
-    public void displayChangePay(int turn, int propOwner)
-      {
-        plmoney[turn].setText("$ " + money[turn]+"(-"+propRent[cpos[turn]]+")");
-        plmoney[propOwner].setText("$ " + money[propOwner]+"(+"+propRent[cpos[turn]]+")");
-      }
+    public void displayChangePay(int turn, int propOwner) {
+        plmoney[turn].setText("$ " + money[turn] + "(-" + propRent[cpos[turn]] + ")");
+        plmoney[propOwner].setText("$ " + money[propOwner] + "(+" + propRent[cpos[turn]] + ")");
+    }
 
-    public void rolling()
-      {
-        if (turn == players)
-          {
+    public void rolling() {
+        if (turn == players) {
             turn = 0;
-          }
-//        roll=di.rollDice();//Temporary Testing Cause
-        if (dice == 2)
-          {
-            roll = (int) (Math.random() * 12 + 1);
-          } else
-          {
-            roll = (int) (Math.random() * 6 + 1);
-          }
+        }
+        roll = Dice.rollDice(dice);
+//      Temporary Testing Cause
+//        if (dice == 2) {
+//            roll = (int) (Math.random() * 12 + 1);
+//        } else {
+//            roll = (int) (Math.random() * 6 + 1);
+//        }
         move(turn);
-        turn++;
-      }
+//        String pName = String.format("<html><font color=\"red\">"+name[turn]+"</font></html>");
+//        System.out.println(pName);
+        appendS(name[turn], turn);
+        addLog(" rolled: " + roll);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -408,8 +426,8 @@ public final class Board extends javax.swing.JFrame
     private void initComponents() {
 
         dlgLog = new javax.swing.JDialog();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtLog = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtLog = new javax.swing.JTextPane();
         btnCD = new javax.swing.JButton();
         paneBoss = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
@@ -604,6 +622,7 @@ public final class Board extends javax.swing.JFrame
         paneControls = new javax.swing.JPanel();
         btnRoll = new javax.swing.JButton();
         btnLog = new javax.swing.JButton();
+        btnEnd = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
         lblIconP1 = new javax.swing.JLabel();
@@ -626,10 +645,7 @@ public final class Board extends javax.swing.JFrame
         dlgLog.setUndecorated(true);
         dlgLog.setResizable(false);
 
-        txtLog.setColumns(20);
-        txtLog.setFont(new java.awt.Font("KabaleMedium", 0, 14)); // NOI18N
-        txtLog.setRows(5);
-        jScrollPane1.setViewportView(txtLog);
+        jScrollPane2.setViewportView(txtLog);
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
@@ -646,18 +662,18 @@ public final class Board extends javax.swing.JFrame
             .addGroup(dlgLogLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dlgLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(dlgLogLayout.createSequentialGroup()
                         .addGap(0, 171, Short.MAX_VALUE)
                         .addComponent(btnCD, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 173, Short.MAX_VALUE)))
+                        .addGap(0, 173, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         dlgLogLayout.setVerticalGroup(
             dlgLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlgLogLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCD, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2029,6 +2045,14 @@ public final class Board extends javax.swing.JFrame
             }
         });
 
+        btnEnd.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnEnd.setText("NEXT");
+        btnEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEndActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneControlsLayout = new javax.swing.GroupLayout(paneControls);
         paneControls.setLayout(paneControlsLayout);
         paneControlsLayout.setHorizontalGroup(
@@ -2038,14 +2062,17 @@ public final class Board extends javax.swing.JFrame
                 .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -2229,7 +2256,7 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
         // TODO add your handling code here:        
-         breakCard();
+        breakCard();
     }//GEN-LAST:event_lblHoverB1MouseExited
 
     private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
@@ -2240,35 +2267,35 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
         // TODO add your handling code here:
-         breakCard();
+        breakCard();
     }//GEN-LAST:event_lblHoverB2MouseExited
 
     private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
         // TODO add your handling code here:
         ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-         makeCard(Color.gray, i, 20);
+        makeCard(Color.gray, i, 20);
     }//GEN-LAST:event_lblHoverB3MouseEntered
 
     private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
         // TODO add your handling code here:
-         breakCard();
+        breakCard();
     }//GEN-LAST:event_lblHoverB3MouseExited
 
     private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
         // TODO add your handling code here:
-         ImageIcon i = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
+        ImageIcon i = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
         makeCard(Color.yellow, i, 2);
     }//GEN-LAST:event_lblHoverB4MouseEntered
 
     private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
         // TODO add your handling code here:
-         breakCard();
+        breakCard();
     }//GEN-LAST:event_lblHoverB4MouseExited
 
     private void lblHoverB5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseEntered
         // TODO add your handling code here:
         ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-         makeCard(Color.gray, i, 21);
+        makeCard(Color.gray, i, 21);
     }//GEN-LAST:event_lblHoverB5MouseEntered
 
     private void lblHoverB5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseExited
@@ -2295,23 +2322,22 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
         // TODO add your handling code here:
-         breakCard();
+        breakCard();
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
         rolling();
+        btnRoll.setEnabled(false);
     }//GEN-LAST:event_btnRollActionPerformed
 
     private void btnRollKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnRollKeyReleased
     {//GEN-HEADEREND:event_btnRollKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_R)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_R) {
             rolling();
-          }
-        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE)
-          {
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
-          }
+        }
     }//GEN-LAST:event_btnRollKeyReleased
 
     private void btnCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCDActionPerformed
@@ -2326,55 +2352,53 @@ public final class Board extends javax.swing.JFrame
         dlgLog.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnLogActionPerformed
 
+    private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
+        // TODO add your handling code here:
+        btnRoll.setEnabled(true);
+        appendS(name[turn]+"'s", turn);
+        addLog(" turn ended.");
+        turn++;
+    }//GEN-LAST:event_btnEndActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new StartScreenfrm().setVisible(true);
-              }
-          });
-      }
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel P1B1;
     private javax.swing.JLabel P1B10;
@@ -2521,11 +2545,12 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JLabel P4B8;
     private javax.swing.JLabel P4B9;
     private javax.swing.JButton btnCD;
+    private javax.swing.JButton btnEnd;
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnRoll;
     private javax.swing.JDialog dlgLog;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBoard;
     private javax.swing.JLabel lblHoverB1;
     private javax.swing.JLabel lblHoverB2;
@@ -2589,7 +2614,7 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JPanel paneP3;
     private javax.swing.JPanel paneP4;
     private javax.swing.JLabel rands;
-    private javax.swing.JTextArea txtLog;
+    private javax.swing.JTextPane txtLog;
     // End of variables declaration//GEN-END:variables
 
-  }
+}

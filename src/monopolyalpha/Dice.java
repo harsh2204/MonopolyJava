@@ -37,10 +37,10 @@ public class Dice {
 //        j.setVisible(false);
 //    }
 
-    public static int rollDice(String theme, int num) {
+    public static int rollDice(int num) {
         int roll = 0;
         String path = null;
-
+        String theme = InitTest.theme;
         switch (theme) {
             case "Generic":
                 path = "Icons/Dice/Generic/Dice ";

@@ -49,6 +49,7 @@ public final class InitTest extends JFrame
         this.setExtendedState(MAXIMIZED_BOTH);
         imagesetting();
         setup();
+        btnNext.setMultiClickThreshhold(2000);
       }
 
     public void setup()

@@ -14,8 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author Harsh
  */
-public class ThemeSelect extends javax.swing.JFrame
-  {
+public class ThemeSelect extends javax.swing.JFrame {
 
     public static String theme, dicePath, piece1, piece2, piece3, piece4, piece5, piece6, piece7, piece8;
     public static ImageIcon i1, i2, i3, i4, i5, i6, i7, i8;
@@ -23,24 +22,24 @@ public class ThemeSelect extends javax.swing.JFrame
     /**
      * Creates new form ThemeSelect
      */
-    public ThemeSelect()
-      {
+    public ThemeSelect() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.red);
-      }
+        this.setExtendedState(MAXIMIZED_BOTH);
+        btnCanada.setMultiClickThreshhold(2000);
+        btnSuper.setMultiClickThreshhold(2000);
+        btnGeneric.setMultiClickThreshhold(2000);
+    }
 
-    public void goNext()
-      {
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+    public void goNext() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new InitTest().setVisible(true);
-              }
-          });
+            }
+        });
 
-      }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -173,17 +172,14 @@ public class ThemeSelect extends javax.swing.JFrame
     private void backActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backActionPerformed
     {//GEN-HEADEREND:event_backActionPerformed
         this.setVisible(false);
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new StartScreenfrm().setVisible(true);
-              }
-          });
+            }
+        });
     }//GEN-LAST:event_backActionPerformed
 
-    public void supth()
-      {
+    public void supth() {
         theme = "SuperHeros";
         SuperHero_Data sup = new SuperHero_Data();
         piece1 = "Dog";
@@ -202,10 +198,9 @@ public class ThemeSelect extends javax.swing.JFrame
         i6 = sup.i2;
         i7 = sup.i3;
         i8 = sup.i4;
-      }
-    
-    public void genth()
-      {
+    }
+
+    public void genth() {
         theme = "Generic";
         piece1 = "Mic";
         piece2 = "Carty";
@@ -223,10 +218,9 @@ public class ThemeSelect extends javax.swing.JFrame
         i6 = new ImageIcon("Icons/Pieces/Generic/6.png");
         i7 = new ImageIcon("Icons/Pieces/Generic/7.png");
         i8 = new ImageIcon("Icons/Pieces/Generic/8.png");
-      }
-    
-    public void canth()
-      {
+    }
+
+    public void canth() {
         theme = "Canada";
         Canada_Data can = new Canada_Data();
         piece1 = "Mic";
@@ -245,52 +239,42 @@ public class ThemeSelect extends javax.swing.JFrame
         i6 = can.i2;
         i7 = can.i3;
         i8 = can.i4;
-      }
+    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ThemeSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new StartScreenfrm().setVisible(true);
-              }
-          });
-      }
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton btnCanada;
