@@ -32,7 +32,7 @@ public final class Board extends javax.swing.JFrame {
     public static int players, i, dice, chance, roll, turn = 0, count = 0;
     public static String theme;
     public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36];
-    public static String[] name = new String[4], propName = new String[36];
+    public static String[] name = new String[4], propName = new String[36],propType=new String[36];
     public ThemeSelect ts = new ThemeSelect();
     public InitTest it = new InitTest();
     public Dice di = new Dice();
@@ -89,6 +89,7 @@ public final class Board extends javax.swing.JFrame {
             propOwned[i] = pd.prop[i].owned;
             propOwner[i] = pd.prop[i].owner;
             propBuyable[i] = pd.prop[i].buyable;
+            propType[i]=pd.prop[i].type;
         }
     }
 
@@ -361,42 +362,138 @@ public final class Board extends javax.swing.JFrame {
                 }
                 if (count == roll) {
                     moveTimer.stop();
-                    propcall(cpos, turnn);
+                    propcall(cpos, turnn,roll);
                 }
             }
         });
         moveTimer.start();
     }
 
-    public void propcall(int[] cpos, int turn) {
-        if (propBuyable[cpos[turn]] == true) {
-            if (propOwned[cpos[turn]] == true) {
+   public void propcall(int[] cpos, int turn, int roll)
+      {
+        if (propBuyable[cpos[turn]] == true)
+          {
+            if (propOwned[cpos[turn]] == true)
+              {
                 int pOwner = propOwner[cpos[turn]];
-                if (pOwner != turn) {
-                    money[pOwner] += propRent[cpos[turn]];
-                    money[turn] -= propRent[cpos[turn]];
-                    displayChangePay(turn, pOwner);
-                    System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + propRent[cpos[turn]]);
-                }
-            } else {
+                if (pOwner != turn)
+                  {
+                    propOwnedCheck(pOwner, turn, cpos, roll);
+                  }
+              } else
+              {
                 money[turn] -= propPrice[cpos[turn]];
                 propOwned[cpos[turn]] = true;
                 propOwner[cpos[turn]] = turn;
                 numprop[turn]++;
                 displayChangeBuy(turn);
                 System.out.println("Board:: Name:" + propName[cpos[turn]] + " Price:" + propPrice[cpos[turn]]);
-            }
-        }
-    }
+              }
+          } else
+          {
+            propNBCheck(turn, cpos, roll);
+          }
+      }
 
-    public void displayChangeBuy(int turn) {
+    public void propOwnedCheck(int pOwner, int turn, int[] cpos, int roll)
+      {
+        String pType = propType[cpos[turn]];
+          System.out.println("Boadr:: Name:"+propName[cpos[turn]]+" Type:"+pType);
+        int pRent;
+        switch (propType[cpos[turn]])
+          {
+            case "STH":
+                pRent = (25 * roll) + (25 * numprop[turn]);
+                break;
+            case "S1230":
+                if (propOwner[12] == propOwner[30])
+                  {
+                    pRent = (50 * roll);
+                  } else
+                  {
+                    pRent = (25 * roll);
+                  }
+                break;
+            case "S1533":
+                if (propOwner[15] == propOwner[33])
+                  {
+                    pRent = (50 * roll);
+                  } else
+                  {
+                    pRent = (25 * roll);
+                  }
+                break;
+            case "SRBC":
+                pRent = (25 * roll);
+                break;
+            default:
+                pRent = propRent[cpos[turn]];
+          }
+        money[pOwner] += pRent;
+        money[turn] -= pRent;
+        displayChangePay(turn, pOwner, pRent);
+
+        System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + pRent);
+      }
+
+    public void propNBCheck(int turn, int[] cpos, int roll)
+      {
+        String pType = propType[cpos[turn]];
+        int pRent=0;
+            switch (propType[cpos[turn]])
+              {
+                case "FP":
+                    pRent = -(10 * numprop[turn]);
+                    break;
+                case "IT":
+                    pRent = (5*numprop[turn]);
+                    break;
+                case "HT":
+                    pRent = (5*numprop[turn]);
+                    break;
+                case "J":
+                    pRent = jailfee[turn];
+                    break;
+                case "CH":
+                    pRent = -50;
+                    break;
+                case "CO":
+                    pRent = -100;
+                    break;
+                case "UK":
+                    pRent = -100;
+                    break;
+                case "ST":
+                    pRent = -200;
+                    break;
+                default:
+                    pRent = 0;
+          }
+                    money[turn] -= pRent;
+                    displayChangeS(turn, pRent);
+      }
+
+    public void displayChangeBuy(int turn)
+      {
         plmoney[turn].setText("$ " + money[turn] + "(-" + propPrice[cpos[turn]] + ")");
-    }
+      }
 
-    public void displayChangePay(int turn, int propOwner) {
-        plmoney[turn].setText("$ " + money[turn] + "(-" + propRent[cpos[turn]] + ")");
-        plmoney[propOwner].setText("$ " + money[propOwner] + "(+" + propRent[cpos[turn]] + ")");
-    }
+    public void displayChangePay(int turn, int propOwner, int pRent)
+      {
+        plmoney[turn].setText("$ " + money[turn] + "(-" + pRent + ")");
+        plmoney[propOwner].setText("$ " + money[propOwner] + "(+" + pRent + ")");
+      }
+
+    public void displayChangeRE()
+      {
+        plmoney[turn].setText("$ " + money[turn] + " (+200)");
+      }
+
+    public void displayChangeS(int turn, int pRent)
+      {
+        plmoney[turn].setText("$ " + money[turn] + " (" + (-1 * pRent) + ")");
+      }
+
 
     public void rolling() {
         if (turn == players) {
