@@ -26,7 +26,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.red);
-        this.setExtendedState(MAXIMIZED_BOTH);
+//        this.setExtendedState(MAXIMIZED_BOTH);
         btnCanada.setMultiClickThreshhold(2000);
         btnSuper.setMultiClickThreshhold(2000);
         btnGeneric.setMultiClickThreshhold(2000);
