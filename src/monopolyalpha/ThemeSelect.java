@@ -6,8 +6,6 @@
 package monopolyalpha;
 
 import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -148,6 +146,8 @@ public class ThemeSelect extends javax.swing.JFrame {
         canth();
         new StartScreenfrm().setVisible(false);
         this.setVisible(false);
+        this.dispose();
+        new StartScreenfrm().dispose();
         new InitTest().setVisible(true);
 //        goNext();
     }//GEN-LAST:event_btnCanadaActionPerformed

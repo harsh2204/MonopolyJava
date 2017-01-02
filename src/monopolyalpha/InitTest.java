@@ -8,10 +8,8 @@ package monopolyalpha;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.Timer;
 
 /**
@@ -973,6 +971,7 @@ public final class InitTest extends JFrame
           {
             jail = true;
           }
+        EGS=comEGS.getSelectedIndex();
         pCount = sldPlayer.getValue();
         for (i = 0; i < pCount; i++)
           {
@@ -1077,8 +1076,7 @@ public final class InitTest extends JFrame
 
     private void comEGSActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_comEGSActionPerformed
     {//GEN-HEADEREND:event_comEGSActionPerformed
-        // TODO add your handling code here:
-        EGS= comEGS.getSelectedIndex();
+         EGS= comEGS.getSelectedIndex();
     }//GEN-LAST:event_comEGSActionPerformed
 
     private void sldPlayerStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_sldPlayerStateChanged
