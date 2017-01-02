@@ -6,6 +6,7 @@
 package monopolyalpha;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Properties_Data
     public int owner;
     public String thm, desc1, desc2, type;
     public Color colour;
+    public ImageIcon cardIcon;
     ThemeSelect ts = new ThemeSelect();
 
     public Properties_Data()
@@ -289,6 +291,7 @@ public class Properties_Data
                     prop[i].owner = -1;
                     prop[i].owned = false;
                     prop[i].buyable = can.property[i].buyable;
+                    prop[i].cardIcon = can.property[i].cardIcon;
                     prop[i].type = can.property[i].type;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER

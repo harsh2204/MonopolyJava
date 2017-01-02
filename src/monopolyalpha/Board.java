@@ -24,8 +24,7 @@ import javax.swing.text.StyledDocument;
  *
  * @author Harsh Gupta, Karmit Patel
  */
-public final class Board extends javax.swing.JFrame
-  {
+public final class Board extends javax.swing.JFrame {
 
     /**
      * Creates new form Board
@@ -38,6 +37,7 @@ public final class Board extends javax.swing.JFrame
     public InitTest it = new InitTest();
     public Dice di = new Dice();
     public Properties_Data pd = new Properties_Data();
+    Color transparent50 = new Color(0, 0, 0, 64);
     public static ImageIcon piece;
     SimpleAttributeSet[] keyWord = new SimpleAttributeSet[5];
     public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4];
@@ -49,8 +49,7 @@ public final class Board extends javax.swing.JFrame
     public static Image image;
     public static Timer moveTimer;
 
-    public Board(int playerCount)
-      {
+    public Board(int playerCount) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -64,37 +63,28 @@ public final class Board extends javax.swing.JFrame
         changeimages();
         addpCount();
         displayChange(turn);
-        addWindowListener(new WindowAdapter()
-          {
+        addWindowListener(new WindowAdapter() {
 
             @Override
-            public void windowClosing(WindowEvent we)
-              {
-                String ObjButtons[] =
-                  {
-                    "Yes", "No", "Save"
-                  };
+            public void windowClosing(WindowEvent we) {
+                String ObjButtons[] = {"Yes", "No", "Save"};
                 int PromptResult = JOptionPane.showOptionDialog(null,
                         "Are you sure you want to exit?", "Monopoly Java",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
                         ObjButtons, ObjButtons[2]);
-                if (PromptResult == 0)
-                  {
+                if (PromptResult == 0) {
                     System.exit(0);
-                  }
-                if (PromptResult == 2)
-                  {
+                }
+                if (PromptResult == 2) {
                     new Save_Manager().setVisible(true);
-                  }
-              }
-          });
-      }
+                }
+            }
+        });
+    }
 
-    public void propDataTransfer()
-      {
+    public void propDataTransfer() {
         pd.GetProp();
-        for (i = 0; i < 36; i++)
-          {
+        for (i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
             propRent[i] = pd.prop[i].rent1;
@@ -102,21 +92,18 @@ public final class Board extends javax.swing.JFrame
             propOwner[i] = pd.prop[i].owner;
             propBuyable[i] = pd.prop[i].buyable;
             propType[i] = pd.prop[i].type;
-          }
-      }
+        }
+    }
 
-    public void changeimages()
-      {
-        for (i = 0; i < players; i++)
-          {
+    public void changeimages() {
+        for (i = 0; i < players; i++) {
             image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             icons[i] = new ImageIcon(image);
-          }
+        }
         System.out.println("Board: Image Changed!");
-      }
+    }
 
-    public void setupplabels()
-      {
+    public void setupplabels() {
         plnames[0] = lblNameP1;
         plnames[1] = lblNameP2;
         plicons[0] = lblIconP1;
@@ -130,10 +117,9 @@ public final class Board extends javax.swing.JFrame
         plmoney[2] = lblMoneyP3;
         plmoney[3] = lblMoneyP4;
         System.out.println("Board: Labels setup done!");
-      }
+    }
 
-    public void datatransfer()
-      {
+    public void datatransfer() {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
 //        this.players = it.pCount;  //This is the only errror it takes 2 as default value instead of "pCount" from Init Test Fix it if u can
@@ -143,18 +129,16 @@ public final class Board extends javax.swing.JFrame
         this.bonus = it.bonusm;
         this.jailfee = it.jailfeem;
         this.dice = it.dicenum;
-        for (i = 0; i < players; i++)
-          {
+        for (i = 0; i < players; i++) {
             numprop[i] = 0;
             cpos[i] = 0;
             npos[i] = 0;
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
-          }
+        }
         System.out.println("Board: Data Transfered!");
-      }
+    }
 
-    private void setupLabels()
-      {
+    private void setupLabels() {
         //1
         boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
@@ -308,21 +292,18 @@ public final class Board extends javax.swing.JFrame
 //               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
 //            }
 //        }
-      }
+    }
 
-    public void addpCount()
-      {
-        for (i = 0; i < players; i++)
-          {
+    public void addpCount() {
+        for (i = 0; i < players; i++) {
             plnames[i].setText("" + name[i]);
             plicons[i].setIcon(icon[i]);
             plmoney[i].setText("$" + Integer.toString(money[i]));
             boxes[i][cpos[i]].setIcon(icons[i]);
-          }
-        for (int i = 0; i < keyWord.length; i++)
-          {
+        }
+        for (int i = 0; i < keyWord.length; i++) {
             keyWord[i] = new SimpleAttributeSet();
-          }
+        }
         paneP1.setVisible(true);
         paneP2.setVisible(true);
         StyleConstants.setForeground(keyWord[0], Color.RED);
@@ -331,152 +312,126 @@ public final class Board extends javax.swing.JFrame
         StyleConstants.setForeground(keyWord[3], Color.YELLOW);
         StyleConstants.setForeground(keyWord[4], Color.BLACK);
         System.out.println("Board: pCount Added!");
-      }
+    }
 
-    public void makeCard(Color bg, ImageIcon i, int index)
-      {
+    public void makeCard(int index) {
 
-        System.out.println("Board- Colour:" + bg + "Index: " + index);
-        c = new Card(bg, i, index, pd);
+        //System.out.println("Board- Colour:" + bg + "Index: " + index);
+        c = new Card(pd.prop[index].colour, pd.prop[index].cardIcon, index, pd);
         c.setVisible(true);
-      }
+    }
 
-    public void breakCard()
-      {
+    public void breakCard() {
         c.setVisible(false);
-      }
+    }
 
-    public void appendS(String s, int i)
-      {
-        try
-          {
+    public void appendS(String s, int i) {
+        try {
             StyledDocument doc = txtLog.getStyledDocument();
             doc.insertString(doc.getLength(), s, keyWord[i]);
-          } catch (BadLocationException exc)
-          {
+        } catch (BadLocationException exc) {
             exc.printStackTrace();
-          }
-      }
+        }
+    }
 
-    public void addLog(String s)
-      {
+    public void addLog(String s) {
         appendS(s + "\n", 4);
 
-      }
+    }
 
-    public void move(final int turnn)
-      {
+    public void move(final int turnn) {
         npos[turnn] = cpos[turnn] + roll;
-        System.out.println("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
-        if (npos[turnn] > 35)
-          {
+        addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
+        if (npos[turnn] > 35) {
             npos[turnn] = npos[turnn] - 35;
-          }
+        }
         rands.setText("Turn:" + turnn + "Roll:" + roll);
         count = 0;
-        moveTimer = new Timer(500, new ActionListener()
-          {
+        moveTimer = new Timer(500, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 btnRoll.setEnabled(false);
                 count++;
                 cpos[turnn]++;
-                if (cpos[turnn] > 35)
-                  {
+                if (cpos[turnn] > 35) {
                     cpos[turnn] = 0;
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][35].setIcon(null);
-                  } else
-                  {
+                } else {
                     System.out.println("Current Position: " + cpos[turnn]);
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][cpos[turnn] - 1].setIcon(null);
-                  }
-                if (count == roll)
-                  {
+                }
+                if (count == roll) {
                     moveTimer.stop();
                     propcall(cpos, turnn, roll);
-                  }
-              }
-          });
+                }
+            }
+        });
         moveTimer.start();
-      }
+    }
 
-    public void propcall(int[] cpos, int turn, int roll)
-      {
-        if (propBuyable[cpos[turn]] == true)
-          {
-            if (propOwned[cpos[turn]] == true)
-              {
+    public void propcall(int[] cpos, int turn, int roll) {
+        if (propBuyable[cpos[turn]] == true) {
+            if (propOwned[cpos[turn]] == true) {
                 int pOwner = propOwner[cpos[turn]];
-                if (pOwner != turn)
-                  {
+                if (pOwner != turn) {
                     propOwnedCheck(pOwner, turn, cpos, roll);
-                  }
-              } else
-              {
+                }
+            } else {
+                new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd)).setVisible(true);
                 money[turn] -= propPrice[cpos[turn]];
                 propOwned[cpos[turn]] = true;
                 propOwner[cpos[turn]] = turn;
                 numprop[turn]++;
                 displayChangeBuy(turn);
-                System.out.println("Board:: Name:" + propName[cpos[turn]] + " Price:" + propPrice[cpos[turn]]);
-              }
-          } else
-          {
+                addLog("Board:: Name:" + propName[cpos[turn]] + " Price:" + propPrice[cpos[turn]]);
+            }
+        } else {
             propNBCheck(turn, cpos, roll);
-          }
+        }
         btnEnd.setEnabled(true);
-      }
+    }
 
-    public void propOwnedCheck(int pOwner, int turn, int[] cpos, int roll)
-      {
+    public void propOwnedCheck(int pOwner, int turn, int[] cpos, int roll) {
         String pType = propType[cpos[turn]];
         System.out.println("Boadr:: Name:" + propName[cpos[turn]] + " Type:" + pType);
         int pRent;
-        switch (propType[cpos[turn]])
-          {
+        switch (propType[cpos[turn]]) {
             case "STH":
                 pRent = (25 * roll) + (25 * numprop[turn]);
                 break;
             case "S1230":
-                if (propOwner[12] == propOwner[30])
-                  {
+                if (propOwner[12] == propOwner[30]) {
                     pRent = (50 * roll);
-                  } else
-                  {
+                } else {
                     pRent = (25 * roll);
-                  }
+                }
                 break;
             case "S1533":
-                if (propOwner[15] == propOwner[33])
-                  {
+                if (propOwner[15] == propOwner[33]) {
                     pRent = (50 * roll);
-                  } else
-                  {
+                } else {
                     pRent = (25 * roll);
-                  }
+                }
                 break;
             case "SRBC":
                 pRent = (25 * roll);
                 break;
             default:
                 pRent = propRent[cpos[turn]];
-          }
+        }
         money[pOwner] += pRent;
         money[turn] -= pRent;
         displayChangePay(turn, pOwner, pRent);
 
         System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + pRent);
-      }
+    }
 
-    public void propNBCheck(int turn, int[] cpos, int roll)
-      {
+    public void propNBCheck(int turn, int[] cpos, int roll) {
         String pType = propType[cpos[turn]];
         int pRent = 0;
-        switch (propType[cpos[turn]])
-          {
+        switch (propType[cpos[turn]]) {
             case "FP":
                 pRent = -(10 * numprop[turn]);
                 break;
@@ -503,38 +458,32 @@ public final class Board extends javax.swing.JFrame
                 break;
             default:
                 pRent = 0;
-          }
+        }
         money[turn] -= pRent;
         displayChangeS(turn, pRent);
-      }
+    }
 
-    public void displayChangeBuy(int turn)
-      {
+    public void displayChangeBuy(int turn) {
         plmoney[turn].setText("$ " + money[turn] + "(-" + propPrice[cpos[turn]] + ")");
-      }
+    }
 
-    public void displayChangePay(int turn, int propOwner, int pRent)
-      {
+    public void displayChangePay(int turn, int propOwner, int pRent) {
         plmoney[turn].setText("$ " + money[turn] + "(-" + pRent + ")");
         plmoney[propOwner].setText("$ " + money[propOwner] + "(+" + pRent + ")");
-      }
+    }
 
-    public void displayChangeRE()
-      {
+    public void displayChangeRE() {
         plmoney[turn].setText("$ " + money[turn] + " (+200)");
-      }
+    }
 
-    public void displayChangeS(int turn, int pRent)
-      {
+    public void displayChangeS(int turn, int pRent) {
         plmoney[turn].setText("$ " + money[turn] + " (" + (-1 * pRent) + ")");
-      }
+    }
 
-    public void rolling()
-      {
-        if (turn == players)
-          {
+    public void rolling() {
+        if (turn == players) {
             turn = 0;
-          }
+        }
         roll = Dice.rollDice(dice);
 //      Temporary Testing Cause
 //        if (dice == 2) {
@@ -547,7 +496,7 @@ public final class Board extends javax.swing.JFrame
 //        System.out.println(pName);
         appendS(name[turn], turn);
         addLog(" rolled: " + roll);
-      }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -556,13 +505,17 @@ public final class Board extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         dlgLog = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtLog = new javax.swing.JTextPane();
         btnCD = new javax.swing.JButton();
+        frmBuy = new javax.swing.JFrame();
+        paneCard = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btnBuy = new javax.swing.JButton();
+        btnPass = new javax.swing.JButton();
         paneBoss = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lblHoverB7 = new javax.swing.JLabel();
@@ -757,7 +710,7 @@ public final class Board extends javax.swing.JFrame
         btnRoll = new javax.swing.JButton();
         btnLog = new javax.swing.JButton();
         btnEnd = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
         lblIconP1 = new javax.swing.JLabel();
@@ -784,10 +737,8 @@ public final class Board extends javax.swing.JFrame
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
-        btnCD.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCDActionPerformed(evt);
             }
         });
@@ -816,102 +767,137 @@ public final class Board extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout paneCardLayout = new javax.swing.GroupLayout(paneCard);
+        paneCard.setLayout(paneCardLayout);
+        paneCardLayout.setHorizontalGroup(
+            paneCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+        paneCardLayout.setVerticalGroup(
+            paneCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 336, Short.MAX_VALUE)
+        );
+
+        btnBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnBuy.setText("BUY");
+
+        btnPass.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        btnPass.setText("PASS");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(btnBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPass, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBuy, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(btnPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout frmBuyLayout = new javax.swing.GroupLayout(frmBuy.getContentPane());
+        frmBuy.getContentPane().setLayout(frmBuyLayout);
+        frmBuyLayout.setHorizontalGroup(
+            frmBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmBuyLayout.createSequentialGroup()
+                .addContainerGap(156, Short.MAX_VALUE)
+                .addComponent(paneCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+            .addGroup(frmBuyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        frmBuyLayout.setVerticalGroup(
+            frmBuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmBuyLayout.createSequentialGroup()
+                .addComponent(paneCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB7);
         lblHoverB7.setBounds(2, 98, 90, 60);
 
-        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB6MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB6MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB6);
         lblHoverB6.setBounds(2, 160, 90, 60);
 
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB5MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB5MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
 
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB4MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB4MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
 
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB3MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB3MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB3);
         lblHoverB3.setBounds(2, 415, 90, 60);
 
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB2MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB2MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
 
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB1MouseExited(evt);
             }
         });
@@ -2184,48 +2170,38 @@ public final class Board extends javax.swing.JFrame
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
-        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyReleased(java.awt.event.KeyEvent evt)
-            {
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnRollKeyReleased(evt);
             }
         });
 
         btnLog.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnLog.setText("LOG");
-        btnLog.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogActionPerformed(evt);
             }
         });
 
         btnEnd.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnEnd.setText("NEXT");
-        btnEnd.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEndActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton1ActionPerformed(evt);
+        btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -2241,7 +2217,7 @@ public final class Board extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addComponent(btnEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2250,7 +2226,7 @@ public final class Board extends javax.swing.JFrame
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         paneP1.setBorder(new javax.swing.border.MatteBorder(null));
@@ -2461,8 +2437,7 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseEntered
         // TODO add your handling code here:        
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Bra Image.jpg");
-        makeCard(Color.yellow, i, 0);
+        makeCard(1);
     }//GEN-LAST:event_lblHoverB1MouseEntered
 
     private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
@@ -2471,9 +2446,8 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB1MouseExited
 
     private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
-        // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        makeCard(Color.yellow, i, 1);
+        // TODO add your handling code here:       
+        makeCard(2);
     }//GEN-LAST:event_lblHoverB2MouseEntered
 
     private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
@@ -2483,8 +2457,7 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        makeCard(Color.gray, i, 20);
+        makeCard(3);
     }//GEN-LAST:event_lblHoverB3MouseEntered
 
     private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
@@ -2494,8 +2467,7 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
-        makeCard(Color.yellow, i, 2);
+        makeCard(4);
     }//GEN-LAST:event_lblHoverB4MouseEntered
 
     private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
@@ -2504,20 +2476,16 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB4MouseExited
 
     private void lblHoverB5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseEntered
-        // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        makeCard(Color.gray, i, 21);
+        // TODO add your handling code here:       
     }//GEN-LAST:event_lblHoverB5MouseEntered
 
     private void lblHoverB5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseExited
-        // TODO add your handling code here:
-        breakCard();
+        // TODO add your handling code here:        
     }//GEN-LAST:event_lblHoverB5MouseExited
 
     private void lblHoverB6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/WH Image.jpg");
-        makeCard(Color.blue, i, 3);
+        makeCard(7);
     }//GEN-LAST:event_lblHoverB6MouseEntered
 
     private void lblHoverB6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseExited
@@ -2527,8 +2495,7 @@ public final class Board extends javax.swing.JFrame
 
     private void lblHoverB7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseEntered
         // TODO add your handling code here:
-        ImageIcon i = new ImageIcon("Board Pictures/Canada/Iqa Image.jpg");
-        makeCard(Color.blue, i, 4);
+        makeCard(8);
     }//GEN-LAST:event_lblHoverB7MouseEntered
 
     private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
@@ -2543,14 +2510,12 @@ public final class Board extends javax.swing.JFrame
 
     private void btnRollKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnRollKeyReleased
     {//GEN-HEADEREND:event_btnRollKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_R)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_R) {
             rolling();
-          }
-        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE)
-          {
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
-          }
+        }
     }//GEN-LAST:event_btnRollKeyReleased
 
     private void btnCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCDActionPerformed
@@ -2570,88 +2535,81 @@ public final class Board extends javax.swing.JFrame
         appendS(name[turn] + "'s", turn);
         addLog(" turn ended.");
         turn++;
-        if(turn==players)
-          {
-            turn=0;
-          }
+        if (turn == players) {
+            turn = 0;
+        }
         btnEnd.setEnabled(false);
         displayChange(turn);
     }//GEN-LAST:event_btnEndActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        String ObjButtons[] = {"Yes", "No", "Save"};
+        int PromptResult = JOptionPane.showOptionDialog(null,
+                "Are you sure you want to exit?", "Monopoly Java",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
+                ObjButtons, ObjButtons[2]);
+        if (PromptResult == 0) {
+            System.exit(0);
+        }
+        if (PromptResult == 2) {
+            new Save_Manager().setVisible(true);
+        }
+    }//GEN-LAST:event_btnExitActionPerformed
 
-    public void displayChange(int turn)
-      {
-        
-       for(i=0;i<players;i++)
-         {
-           if(i==turn)
-             {
-               plnames[i].setEnabled(true);
-               plmoney[i].setEnabled(true);
-               plicons[i].setEnabled(true);
-             }
-           else
-             {
-               plnames[i].setEnabled(false);
-               plmoney[i].setEnabled(false);
-               plicons[i].setEnabled(false);               
-             }
-         }
-      }
-    
+    public void displayChange(int turn) {
+
+        for (i = 0; i < players; i++) {
+            if (i == turn) {
+                plnames[i].setEnabled(true);
+                plmoney[i].setEnabled(true);
+                plicons[i].setEnabled(true);
+            } else {
+                plnames[i].setEnabled(false);
+                plmoney[i].setEnabled(false);
+                plicons[i].setEnabled(false);
+            }
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new StartScreenfrm().setVisible(true);
-              }
-          });
-      }
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel P1B1;
     private javax.swing.JLabel P1B10;
@@ -2797,13 +2755,17 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JLabel P4B7;
     private javax.swing.JLabel P4B8;
     private javax.swing.JLabel P4B9;
+    private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnCD;
     private javax.swing.JButton btnEnd;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLog;
+    private javax.swing.JButton btnPass;
     private javax.swing.JButton btnRoll;
     private javax.swing.JDialog dlgLog;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JFrame frmBuy;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBoard;
     private javax.swing.JLabel lblHoverB1;
@@ -2862,6 +2824,7 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JPanel paneB8;
     private javax.swing.JPanel paneB9;
     private javax.swing.JPanel paneBoss;
+    private javax.swing.JPanel paneCard;
     private javax.swing.JPanel paneControls;
     private javax.swing.JPanel paneP1;
     private javax.swing.JPanel paneP2;
@@ -2871,4 +2834,4 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JTextPane txtLog;
     // End of variables declaration//GEN-END:variables
 
-  }
+}
