@@ -16,12 +16,13 @@ public class BuyScreen extends javax.swing.JFrame {
      *
      * @param card
      */
+    boolean bought = false, clicked =false;    
     public BuyScreen(Card card) {
         initComponents();
         paneCard.add(card.getComponent(0));
         this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,13 +118,19 @@ public class BuyScreen extends javax.swing.JFrame {
 
     private void btnPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassActionPerformed
         // TODO add your handling code here:
+//        clicked = true;
+//        bought = false;
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnPassActionPerformed
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBuyActionPerformed
     {//GEN-HEADEREND:event_btnBuyActionPerformed
-        
+//        clicked = true;
+//        bought = true;        
+        InitTest.board.propBuy(InitTest.board.turn);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnBuyActionPerformed
 
     /**

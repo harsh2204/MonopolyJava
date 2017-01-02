@@ -29,6 +29,7 @@ public final class InitTest extends JFrame
     public static String nameo, t1, t2, t3, t4;
     public static NickNames nickName = new NickNames();
     public static Timer ti;
+    public static Board board;
     public static int[] startm = new int[4], bonusm = new int[4], jailfeem = new int[4], indexes = new int[100];
     public static ImageIcon[] icon = new ImageIcon[4];
     public static String[] combo = new String[100], pieces = new String[100], name = new String[4];
@@ -1000,7 +1001,8 @@ public final class InitTest extends JFrame
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         setplayers();
-        new Board(pCount).setVisible(true);
+        board = new Board(pCount);
+        board.setVisible(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameP1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameP1KeyPressed

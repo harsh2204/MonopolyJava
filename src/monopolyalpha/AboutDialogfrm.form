@@ -64,11 +64,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAbout">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="this.setContentPane(new JLabel(new ImageIcon(&quot;Icons/Miscellaneous/green pattern.png&quot;)));">
           <Font name="Showcard Gothic" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;&lt;html&gt;&lt;center&gt;Monopoly is trademark of Hasbro&lt;br&gt;&quot;&#xa;    + &quot;in which it holds all rights reserved towards all names&lt;br&gt;&quot;&#xa;    + &quot; and convention used in this game.&lt;br&gt;&lt;br&gt;This game was coded&quot;&#xa;    + &quot; for educatoinal purposes by Karsheel Lab inc. consisting of Karmit Patel,&quot;&#xa;    + &quot; Harsh Gupta, Haard Trivedi, and Neel Mistry. We hope you enjoy playing&quot;&#xa;+ &quot; this game.&lt;/html&gt;&quot;" type="code"/>
+          <Connection code="&quot;&lt;html&gt;&lt;center&gt;Monopoly is trademark of Hasbro&lt;br&gt;&quot;&#xa;    + &quot;in which it holds all rights reserved towards all names&lt;br&gt;&quot;&#xa;    + &quot; and convention used in this game.&lt;br&gt;&lt;br&gt;This game was coded&quot;&#xa;    + &quot; for educatoinal purposes by Karsheel Lab inc. consisting of Karmit Patel,&quot;&#xa;    + &quot; Harsh Gupta, Haard Trivedi, and Neel Mistry. We hope you enjoy playing&quot;&#xa;    + &quot; this game.&lt;/html&gt;&quot;" type="code"/>
         </Property>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>

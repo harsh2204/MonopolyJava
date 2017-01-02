@@ -6,7 +6,6 @@ package monopolyalpha;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import static monopolyalpha.InitTest.screenSize;
 
 /**
  *
@@ -48,6 +47,7 @@ public class AboutDialogfrm extends javax.swing.JFrame {
         });
 
         lblAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        this.setContentPane(new JLabel(new ImageIcon("Icons/Miscellaneous/green pattern.png")));
         lblAbout.setText("<html><center>Monopoly is trademark of Hasbro<br>"
             + "in which it holds all rights reserved towards all names<br>"
             + " and convention used in this game.<br><br>This game was coded"
