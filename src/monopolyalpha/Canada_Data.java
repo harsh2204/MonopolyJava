@@ -12,9 +12,9 @@ import javax.swing.ImageIcon;
  *
  * @author Harsh Gupta and Karmit Patel
  */
-public class Canada_Data
-  {
+public class Canada_Data {
 
+    Color purple = new Color(75, 0, 130);
     public String p1 = "Hockey Stick";
     public String p2 = "Maple Leaf";
     public String p3 = "Ski";
@@ -33,16 +33,14 @@ public class Canada_Data
     public ImageIcon cardIcon;
     public String type;
 
-    public Canada_Data[] setProp()
-      {
+    public Canada_Data[] setProp() {
         //Initializing the object array.
-        for (int i = 0; i < property.length; i++)
-          {
+        for (int i = 0; i < property.length; i++) {
             property[i] = new Canada_Data();
-          }
+        }
         property[0].propName = "Start";
         property[0].buyable = false;
-        property[0].type="ST";
+        property[0].type = "ST";
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
         //BRAMPTON
@@ -54,10 +52,10 @@ public class Canada_Data
         property[1].rent4 = 160;
         property[1].rentH = 250;
         property[1].priceHouse = 50;
-        property[1].colour = Color.yellow;
+        property[1].colour = Color.YELLOW;
         property[1].buyable = true;
         property[1].cardIcon = new ImageIcon("Board Pictures/Canada/Bra Image.jpg");
-        property[1].type="N";
+        property[1].type = "N";
         //MISSISSAUGA
         property[2].propName = "Mississauga";
         property[2].price = 60;
@@ -67,19 +65,19 @@ public class Canada_Data
         property[2].rent4 = 320;
         property[2].rentH = 450;
         property[2].priceHouse = 50;
-        property[2].colour = Color.yellow;
+        property[2].colour = Color.YELLOW;
         property[2].buyable = true;
         property[2].cardIcon = new ImageIcon("Board Pictures/Canada/Mis Image.jpg");
-        property[2].type="N";
+        property[2].type = "N";
 
         //TIM HORTON'S
         property[3].propName = "Tim Horton's";
         property[3].desc1 = "Rent = 25x roll & +25 ";
         property[3].desc2 = "rent on all properties";
         property[3].price = 325;
-        property[3].colour = Color.white;
+        property[3].colour = Color.WHITE;
         property[3].buyable = true;
-        property[2].type="STH";
+        property[2].type = "STH";
 
         //YELLOW KNIFE
         property[4].propName = "YellowKnife";
@@ -90,20 +88,20 @@ public class Canada_Data
         property[4].rent4 = 350;
         property[4].rentH = 500;
         property[4].priceHouse = 50;
-        property[4].colour = Color.yellow;
+        property[4].colour = Color.YELLOW;
         property[4].buyable = true;
         property[4].cardIcon = new ImageIcon("Board Pictures/Canada/YK Image.jpg");
-        property[4].type="N";
+        property[4].type = "N";
 
         property[5].propName = "Income Tax";
         property[5].buyable = false;
-        property[5].colour = Color.gray;
-        property[5].type="IT";
+        property[5].colour = Color.GRAY;
+        property[5].type = "IT";
 
         property[6].propName = "Chance";
         property[6].buyable = false;
-        property[6].colour = Color.gray;
-        property[6].type="CH";
+        property[6].colour = Color.GRAY;
+        property[6].type = "CH";
         //======================================================================
         //BLUE SUITE------------------------------------------------------------
         //WHITEHORSE
@@ -115,10 +113,10 @@ public class Canada_Data
         property[7].rent4 = 400;
         property[7].rentH = 550;
         property[7].priceHouse = 75;
-        property[7].colour = Color.blue;
+        property[7].colour = Color.BLUE;
         property[7].buyable = true;
         property[7].cardIcon = new ImageIcon("Board Pictures/Canada/WH Image.jpg");
-        property[7].type="N";
+        property[7].type = "N";
         //IQALUIT
         property[8].propName = "Iqaluit";
         property[8].price = 120;
@@ -128,15 +126,15 @@ public class Canada_Data
         property[8].rent4 = 450;
         property[8].rentH = 600;
         property[8].priceHouse = 75;
-        property[8].colour = Color.blue;
+        property[8].colour = Color.BLUE;
         property[8].buyable = true;
         property[8].cardIcon = new ImageIcon("Board Pictures/Canada/Iqa Image.jpg");
-        property[8].type="N";
+        property[8].type = "N";
 
         property[9].propName = "Jail";
         property[9].buyable = false;
-        property[9].colour = Color.black;
-        property[9].type="J";
+        property[9].colour = Color.BLACK;
+        property[9].type = "J";
         //SASKATOON
         property[10].propName = "Saskatoon";
         property[10].price = 120;
@@ -146,10 +144,10 @@ public class Canada_Data
         property[10].rent4 = 420;
         property[10].rentH = 580;
         property[10].priceHouse = 75;
-        property[10].colour = Color.blue;
+        property[10].colour = Color.BLUE;
         property[10].buyable = true;
         property[10].cardIcon = new ImageIcon("Board Pictures/Canada/Sas Image.jpg");
-        property[10].type="N";
+        property[10].type = "N";
         //======================================================================
         //PURPLE SUITE----------------------------------------------------------
         //THUNDER BAY
@@ -161,19 +159,19 @@ public class Canada_Data
         property[11].rent4 = 625;
         property[11].rentH = 700;
         property[11].priceHouse = 100;
-        property[11].colour = Color.magenta;
+        property[11].colour = purple;
         property[11].buyable = true;
         property[11].cardIcon = new ImageIcon("Board Pictures/Canada/TB Image.jpg");
-        property[11].type="N";
+        property[11].type = "N";
 
         //CNR
         property[12].propName = "CNR";
         property[12].desc1 = "Rent = 25x roll, 50x roll ";
         property[12].desc2 = "if CN Tower is owned";
         property[12].price = 375;
-        property[12].colour = Color.white;
+        property[12].colour = Color.WHITE;
         property[12].buyable = true;
-        property[12].type="S1230";
+        property[12].type = "S1230";
         //WINDSOR
         property[13].propName = "Windsor";
         property[13].price = 150;
@@ -183,10 +181,10 @@ public class Canada_Data
         property[13].rent4 = 650;
         property[13].rentH = 750;
         property[13].priceHouse = 100;
-        property[13].colour = Color.magenta;
+        property[13].colour = purple;
         property[13].buyable = true;
         property[13].cardIcon = new ImageIcon("Board Pictures/Canada/Wind Image.jpg");
-        property[13].type="N";
+        property[13].type = "N";
         //FREDRICTION
         property[14].propName = "Fredricton";
         property[14].price = 180;
@@ -196,23 +194,23 @@ public class Canada_Data
         property[14].rent4 = 680;
         property[14].rentH = 900;
         property[14].priceHouse = 100;
-        property[14].colour = Color.magenta;
+        property[14].colour = purple;
         property[14].buyable = true;
         property[14].cardIcon = new ImageIcon("Board Pictures/Canada/Fre Image.jpg");
-        property[14].type="N";
+        property[14].type = "N";
 
         //NIAGARA FALLS
         property[15].propName = "Niagara Falls";
         property[15].desc1 = "Rent = 25x roll, 50x roll ";
         property[15].desc2 = " if Parliament is owned";
         property[15].price = 375;
-        property[15].colour = Color.white;
+        property[15].colour = Color.WHITE;
         property[15].buyable = true;
-        property[15].type="S1533";
+        property[15].type = "S1533";
 
         property[16].buyable = false;
-        property[16].colour = Color.gray;
-        property[16].type="CO";
+        property[16].colour = Color.GRAY;
+        property[16].type = "CO";
 
         //======================================================================
         //GREEN SUITE-----------------------------------------------------------
@@ -225,14 +223,14 @@ public class Canada_Data
         property[17].rent4 = 700;
         property[17].rentH = 910;
         property[17].priceHouse = 150;
-        property[17].colour = Color.green;
+        property[17].colour = Color.GREEN;
         property[17].buyable = true;
         property[17].cardIcon = new ImageIcon("Board Pictures/Canada/Reg Image.jpg");
-        property[17].type="N";
+        property[17].type = "N";
 
         property[18].buyable = false;
-        property[18].colour = Color.gray;
-        property[18].type="FP";
+        property[18].colour = Color.GRAY;
+        property[18].type = "FP";
         //ST. JOHN'S
         property[19].propName = "St. John's";
         property[19].price = 220;
@@ -242,10 +240,10 @@ public class Canada_Data
         property[19].rent4 = 725;
         property[19].rentH = 925;
         property[19].priceHouse = 150;
-        property[19].colour = Color.green;
+        property[19].colour = Color.GREEN;
         property[19].buyable = true;
         property[19].cardIcon = new ImageIcon("Board Pictures/Canada/STJ Image.jpg");
-        property[19].type="N";
+        property[19].type = "N";
         //QUEBEC CITY
         property[20].propName = "Quebec City";
         property[20].price = 220;
@@ -255,17 +253,17 @@ public class Canada_Data
         property[20].rent4 = 725;
         property[20].rentH = 925;
         property[20].priceHouse = 150;
-        property[20].colour = Color.green;
+        property[20].colour = Color.GREEN;
         property[20].buyable = true;
         property[20].cardIcon = new ImageIcon("Board Pictures/Canada/QBC Image.jpg");
-        property[20].type="N";
+        property[20].type = "N";
 
         //RBC
         property[21].desc1 = "Rent = 25x roll & tax rebate";
         property[21].price = 325;
-        property[21].colour = Color.white;
+        property[21].colour = Color.WHITE;
         property[21].buyable = true;
-        property[21].type="SRBC";
+        property[21].type = "SRBC";
 
         //HALIFAX
         property[22].propName = "Halifax";
@@ -276,19 +274,19 @@ public class Canada_Data
         property[22].rent4 = 750;
         property[22].rentH = 950;
         property[22].priceHouse = 150;
-        property[22].colour = Color.green;
+        property[22].colour = Color.GREEN;
         property[22].buyable = true;
         property[22].cardIcon = new ImageIcon("Board Pictures/Canada/Hal Image.jpg");
-        property[22].type="N";
+        property[22].type = "N";
 
         property[23].propName = "Blank";
         property[23].buyable = false;
-        property[23].colour = Color.white;
-        property[23].type="HT";
+        property[23].colour = Color.WHITE;
+        property[23].type = "HT";
 
         property[24].buyable = false;
-        property[24].colour = Color.gray;
-        property[24].type="CH";
+        property[24].colour = Color.GRAY;
+        property[24].type = "CH";
         //======================================================================
         //RED SUITE-------------------------------------------------------------
         //WINNIPEG
@@ -300,10 +298,10 @@ public class Canada_Data
         property[25].rent4 = 975;
         property[25].rentH = 1000;
         property[25].priceHouse = 200;
-        property[25].colour = Color.red;
+        property[25].colour = Color.RED;
         property[25].buyable = true;
         property[25].cardIcon = new ImageIcon("Board Pictures/Canada/Winn Image.jpg");
-        property[25].type="N";
+        property[25].type = "N";
         //EDMONTON
         property[26].propName = "Edmonton";
         property[26].price = 290;
@@ -313,14 +311,14 @@ public class Canada_Data
         property[26].rent4 = 1000;
         property[26].rentH = 1100;
         property[26].priceHouse = 200;
-        property[26].colour = Color.red;
+        property[26].colour = Color.RED;
         property[26].buyable = true;
         property[26].cardIcon = new ImageIcon("Board Pictures/Canada/Edm Image.jpg");
-        property[26].type="N";
+        property[26].type = "N";
 
         property[27].buyable = false;
-        property[27].colour = Color.gray;
-        property[27].type="UK";
+        property[27].colour = Color.GRAY;
+        property[27].type = "UK";
 
         //CALGARY
         property[28].propName = "Calgary";
@@ -331,10 +329,10 @@ public class Canada_Data
         property[28].rent4 = 1000;
         property[28].rentH = 1100;
         property[28].priceHouse = 200;
-        property[28].colour = Color.red;
+        property[28].colour = Color.RED;
         property[28].buyable = true;
         property[28].cardIcon = new ImageIcon("Board Pictures/Canada/Cal Image.jpg");
-        property[28].type="N";
+        property[28].type = "N";
         //OTTAWA
         property[29].propName = "Ottawa";
         property[29].price = 325;
@@ -344,23 +342,23 @@ public class Canada_Data
         property[29].rent4 = 1100;
         property[29].rentH = 1200;
         property[29].priceHouse = 200;
-        property[29].colour = Color.red;
+        property[29].colour = Color.RED;
         property[29].buyable = true;
         property[29].cardIcon = new ImageIcon("Board Pictures/Canada/Ott Image.jpg");
-        property[29].type="N";
+        property[29].type = "N";
         //======================================================================
 
         //CN TOWER
         property[30].desc1 = "Rent = 25x roll, 50x ";
         property[30].desc2 = "roll if CNR is owned";
         property[30].price = 375;
-        property[30].colour = Color.white;
+        property[30].colour = Color.WHITE;
         property[30].buyable = true;
-        property[30].type="S1230";
+        property[30].type = "S1230";
 
         property[31].buyable = false;
-        property[31].colour = Color.gray;
-        property[31].type="CO";
+        property[31].colour = Color.GRAY;
+        property[31].type = "CO";
         //ORANGE SUITE----------------------------------------------------------
         //VANCOUVER
         property[32].propName = "Vancouver";
@@ -370,19 +368,19 @@ public class Canada_Data
         property[32].rent3 = 1100;
         property[32].rent4 = 1300;
         property[32].rentH = 1500;
-        property[32].colour = Color.orange;
+        property[32].colour = Color.ORANGE;
         property[32].priceHouse = 300;
         property[32].buyable = true;
         property[32].cardIcon = new ImageIcon("Board Pictures/Canada/Van Image.jpg");
-        property[32].type="N";
+        property[32].type = "N";
 
         //PARLIAMENT HILL
         property[33].desc1 = "Rent = 25x roll, 50x roll ";
         property[33].desc2 = " if Niagara Falls is owned";
         property[33].price = 375;
-        property[33].colour = Color.white;
+        property[33].colour = Color.WHITE;
         property[33].buyable = true;
-        property[33].type="S1533";
+        property[33].type = "S1533";
 
         //MONTREAL
         property[34].propName = "Montreal";
@@ -393,10 +391,10 @@ public class Canada_Data
         property[34].rent4 = 1700;
         property[34].rentH = 2000;
         property[34].priceHouse = 300;
-        property[34].colour = Color.orange;
+        property[34].colour = Color.ORANGE;
         property[34].buyable = true;
         property[34].cardIcon = new ImageIcon("Board Pictures/Canada/Mon Image.jpg");
-        property[34].type="N";
+        property[34].type = "N";
         //TORONTO
         property[35].propName = "Toronto";
         property[35].price = 500;
@@ -406,18 +404,17 @@ public class Canada_Data
         property[35].rent4 = 1850;
         property[35].rentH = 2100;
         property[35].priceHouse = 300;
-        property[35].colour = Color.orange;
+        property[35].colour = Color.ORANGE;
         property[35].buyable = true;
         property[35].cardIcon = new ImageIcon("Board Pictures/Canada/Tor Image.jpg");
-        property[35].type="N";
+        property[35].type = "N";
         //======================================================================
         //GREY SUITE------------------------------------------------------------
 
         return property;
-      }
+    }
 
-    public void getCards()
-      {
+    public void getCards() {
         //SETTING UP THE CARDS
         //CHANCE CHEST
         chance[0] = "Advance to Go (Collect $200) ";
@@ -453,5 +450,5 @@ public class Canada_Data
         community[13] = "You have been elected chairman of the board – pay each player $50";
         community[14] = "You win a curling tournanment – collect $150";
         community[15] = "You have won a hockey game - collect $100";
-      }
-  }
+    }
+}
