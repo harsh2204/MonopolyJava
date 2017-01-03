@@ -70,7 +70,7 @@ public class Generic_Data {
         property[3].price = 325;
         property[3].colour = Color.WHITE;
         property[3].buyable = true;
-        property[2].type = "STH";
+        property[3].type = "STH";
 
         //YELLOW KNIFE
         property[4].propName = "Connecticut Ave.";
