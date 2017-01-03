@@ -33,45 +33,45 @@ public class SuperHero_Data {
         }
         //Adding Property names
         //Yellow
-        property[0].propName = "Wonder Woman";//
-        property[1].propName = "Black Widow";//
-        property[2].propName = "Hawkeye";//
+        property[0].propName = "Black Widow";//
+        property[1].propName = "Hawkeye";//
+        property[2].propName = "Black Canary";//
         //Blue
-        property[3].propName = "Robin";//
-        property[4].propName = "Flash";//
-        property[5].propName = "Vision";//
+        property[3].propName = "Green Arrow";//
+        property[4].propName = "Human Torch";//
+        property[5].propName = "Iron Fist";//
         //Purple
-        property[6].propName = "Wolverine";//
-        property[7].propName = "Thor";//
-        property[8].propName = "Antman";
+        property[6].propName = "Cyborg";//
+        property[7].propName = "Wolverine";//
+        property[8].propName = "Michaelangelo";
         //Green
         property[9].propName = "Hulk";//
-        property[10].propName = "Captain America";//
-        property[11].propName = "Spiderman";//
-        property[12].propName = "Green Lantern";//
+        property[10].propName = "Green Lantern";//
+        property[11].propName = "Ironman";//
+        property[12].propName = "Thor";//
         //Red
-        property[13].propName = "Dr.Doom";//
-        property[14].propName = "Loki";//
-        property[15].propName = "Ultron";//
-        property[16].propName = "Joker";//
+        property[13].propName = "Spiderman";//
+        property[14].propName = "Captain America";//
+        property[15].propName = "Batman";//
+        property[16].propName = "Flash";//
         //Orange
-        property[17].propName = "Batman";//
-        property[18].propName = "Superman";//
-        property[19].propName = "Iron Man";//
+        property[17].propName = "Wonder Woman";//
+        property[18].propName = "Vision";//
+        property[19].propName = "Superman";//
         
        //Special Cards
         property[20].propName = "S.H.I.E.L.D. Headquarters";
-        property[21].propName = "Wayne Enterprises";
-        property[22].propName = "Stark Tower";
+        property[21].propName = "Hall of Justice";
+        property[22].propName = "Avengers Base";
         property[23].propName = "Asgard's Nexus Portal";
-        property[24].propName = "The Collector's Hideout";
+        property[24].propName = "The WatchTower";
         property[25].propName = "Arkham Asylum";
         
         
         //Adding property rents
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
-        //WONDER WOMAN
+        //BLACK WIDOW
         property[0].price = 60;
         property[0].rent1 = 10;
         property[0].rent2 = 30;
@@ -80,7 +80,7 @@ public class SuperHero_Data {
         property[0].rentH = 250;
         property[0].priceHouse=50;
         property[0].colour = 1;
-        //BLACK WIDOW
+        //HAWKEYE
         property[1].price = 60;
         property[1].rent1 = 20;
         property[1].rent2 = 60;
@@ -89,7 +89,7 @@ public class SuperHero_Data {
         property[1].rentH = 450;
         property[1].priceHouse=50;
         property[1].colour = 1;
-        //HAWKEYE
+        //BLACK CANARY
         property[2].price = 80;
         property[2].rent1 = 30;
         property[2].rent2 = 90;
@@ -100,7 +100,7 @@ public class SuperHero_Data {
         property[2].colour = 1;
         //======================================================================
         //BLUE SUITE------------------------------------------------------------
-        //ROBIN
+        //GREEN ARROW
         property[3].price = 100;
         property[3].rent1 = 30;
         property[3].rent2 = 90;
@@ -109,7 +109,7 @@ public class SuperHero_Data {
         property[3].rentH = 550;
         property[3].priceHouse = 75;
         property[3].colour = 2;
-        //FLASH
+        //HUMAN TORCH
         property[4].price = 120;
         property[4].rent1 = 40;
         property[4].rent2 = 100;
@@ -118,7 +118,7 @@ public class SuperHero_Data {
         property[4].rentH = 600;
         property[4].priceHouse = 75;
         property[4].colour = 2;
-        //VISION
+        //IRON FIST
         property[5].price = 120;
         property[5].rent1 = 40;
         property[5].rent2 = 100;
@@ -129,7 +129,7 @@ public class SuperHero_Data {
         property[5].colour = 2;
         //======================================================================
         //PURPLE SUITE----------------------------------------------------------
-        //WOLVERINE
+        //CYBORG
         property[6].price = 140;
         property[6].rent1 = 50;
         property[6].rent2 = 150;
@@ -138,7 +138,7 @@ public class SuperHero_Data {
         property[6].rentH = 700;
         property[6].priceHouse = 100;
         property[6].colour = 3;
-        //THOR
+        //WOLVERINE
         property[7].price = 150;
         property[7].rent1 = 60;
         property[7].rent2 = 170;
@@ -147,7 +147,7 @@ public class SuperHero_Data {
         property[7].rentH = 750;
         property[7].priceHouse = 100;
         property[7].colour = 3;
-        //ANTMAN
+        //MICHAELANGELO
         property[8].price = 180;
         property[8].rent1 = 80;
         property[8].rent2 = 180;
@@ -167,7 +167,7 @@ public class SuperHero_Data {
         property[9].rentH = 910;
         property[9].priceHouse = 150;
         property[9].colour = 4;
-        //CAPTAIN AMERICA
+        //GREEN LANTERN
         property[10].price = 220;
         property[10].rent1 = 110;
         property[10].rent2 = 220;
@@ -176,7 +176,7 @@ public class SuperHero_Data {
         property[10].rentH = 925;
         property[10].priceHouse = 150;
         property[10].colour = 4;
-        //SPIDERMAN
+        //IRONMAN
         property[11].price = 220;
         property[11].rent1 = 110;
         property[11].rent2 = 220;
@@ -185,7 +185,7 @@ public class SuperHero_Data {
         property[11].rentH = 925;
         property[11].priceHouse = 150;
         property[11].colour = 4;
-        //GREEN LANTERN
+        //THOR
         property[12].price = 250;
         property[12].rent1 = 125;
         property[12].rent2 = 250;
@@ -196,7 +196,7 @@ public class SuperHero_Data {
         property[12].colour = 4;
         //======================================================================
         //RED SUITE-------------------------------------------------------------
-        //DR.DOOM
+        //SPIDERMAN
         property[13].price = 260;
         property[13].rent1 = 140;
         property[13].rent2 = 300;
@@ -205,7 +205,7 @@ public class SuperHero_Data {
         property[13].rentH = 1000;
         property[13].priceHouse = 200;
         property[13].colour = 5;
-        //LOKI
+        //CAPTAIN AMERICA
         property[14].price = 290;
         property[14].rent1 = 150;
         property[14].rent2 = 350;
@@ -214,7 +214,7 @@ public class SuperHero_Data {
         property[14].rentH = 1100;
         property[14].priceHouse = 200;
         property[14].colour = 5;
-        //ULTRON
+        //BATMAN
         property[15].price = 290;
         property[15].rent1 = 150;
         property[15].rent2 = 350;
@@ -223,7 +223,7 @@ public class SuperHero_Data {
         property[15].rentH = 1100;
         property[15].priceHouse = 200;
         property[15].colour = 5;
-        //JOKER
+        //FLASH
         property[16].price = 325;
         property[16].rent1 = 170;
         property[16].rent2 = 400;
@@ -234,7 +234,7 @@ public class SuperHero_Data {
         property[16].colour = 5;
         //======================================================================
         //ORANGE SUITE----------------------------------------------------------
-        //BATMAN
+        //WONDERWOMAN
         property[17].price = 375;
         property[17].rent1 = 175;
         property[17].rent2 = 500;
@@ -243,7 +243,7 @@ public class SuperHero_Data {
         property[17].rentH = 1500;
         property[17].colour = 6;
         property[17].priceHouse=300;        
-        //SUPERMAN
+        //VISION
         property[18].price = 400;
         property[18].rent1 = 200;
         property[18].rent2 = 600;
@@ -252,7 +252,7 @@ public class SuperHero_Data {
         property[18].rentH = 2000;
         property[18].priceHouse=300;
         property[18].colour = 6;
-        //IRON MAN
+        //SUPERMAN
         property[19].price = 500;
         property[19].rent1 = 250;
         property[19].rent2 = 750;
@@ -267,11 +267,11 @@ public class SuperHero_Data {
         //Rent = 25x roll, 50x roll if owned
         property[20].price = 375;
         property[20].colour = 7;
-        //WAYNE ENTERPRISES
+        //HALL OF JUSTICE
         //Rent = 25x roll, 50x roll if owned
         property[21].price = 375;
         property[21].colour = 7;
-        //STARK TOWER
+        //AVENGERS BASE
         //Rent = 25x roll, 50x roll if owned
         property[22].price = 375;
         property[22].colour = 7;
@@ -279,7 +279,7 @@ public class SuperHero_Data {
         //Rent = 25x roll, 50x roll if owned
         property[23].price = 375;
         property[23].colour = 7;
-        //THE COLLECTOR'S HIDEOUT
+        //THE WATCHTOWER
         //Rent = 25x roll & tax rebate
         property[24].price = 325;
         property[24].colour = 7;
