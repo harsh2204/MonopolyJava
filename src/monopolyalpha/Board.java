@@ -4,7 +4,11 @@
  */
 package monopolyalpha;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +17,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -363,10 +369,10 @@ public final class Board extends javax.swing.JFrame {
         c.setVisible(false);
     }
 
-    public void appendS(String s, int i) {
+    public void appendS(String s, int playerID) {
         try {
             StyledDocument doc = txtLog.getStyledDocument();
-            doc.insertString(doc.getLength(), s, keyWord[i]);
+            doc.insertString(doc.getLength(), s, keyWord[playerID]);
         } catch (BadLocationException exc) {
             exc.printStackTrace();
         }
@@ -379,7 +385,7 @@ public final class Board extends javax.swing.JFrame {
 
     public void move(final int turnn) {
         npos[turnn] = cpos[turnn] + roll;
-        addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
+        //addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
         if (npos[turnn] > 35) {
             npos[turnn] = npos[turnn] - 35;
         }
@@ -392,9 +398,15 @@ public final class Board extends javax.swing.JFrame {
                 count++;
                 cpos[turnn]++;
                 if (cpos[turnn] > 35) {
+                    if (cpos[turnn] != 1) {
+                        money[turnn] += 200;
+                        appendS(name[turnn], turnn);
+                        addLog(" just collected $200 for passing Go");
+                    }
                     cpos[turnn] = 0;
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][35].setIcon(null);
+
                 } else {
                     System.out.println("Current Position: " + cpos[turnn]);
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
@@ -402,19 +414,57 @@ public final class Board extends javax.swing.JFrame {
                 }
                 if (count == roll) {
                     moveTimer.stop();
-                    propcall(cpos, turnn, roll);
+                    propcall(cpos, turnn);
                 }
             }
         });
         moveTimer.start();
     }
 
-    public void propcall(int[] cpos, int turn, int roll) {
+    public void moveTo(final int turnn, final int position) {
+        npos[turnn] = position;
+        //addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
+        if (npos[turnn] > 35) {
+            npos[turnn] = npos[turnn] - 35;
+        }
+        //rands.setText("Turn:" + turnn + "Roll:" + roll);
+        count = 0;
+        moveTimer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //btnRoll.setEnabled(false);
+                count++;
+                cpos[turnn]++;
+                if (cpos[turnn] > 35) {
+                    if (cpos[turnn] != 1) {
+                        money[turnn] += 200;
+                        appendS(name[turnn], turnn);
+                        addLog(" just collected $200 for passing Go");
+                    }
+                    cpos[turnn] = 0;
+                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
+                    boxes[turnn][35].setIcon(null);
+
+                } else {
+                    System.out.println("Current Position: " + cpos[turnn]);
+                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
+                    boxes[turnn][cpos[turnn] - 1].setIcon(null);
+                }
+                if (count == position) {
+                    moveTimer.stop();
+                    propcall(cpos, turnn);
+                }
+            }
+        });
+        moveTimer.start();
+    }
+
+    public void propcall(int[] cpos, int turn) {
         if (propBuyable[cpos[turn]] == true) {
             if (propOwned[cpos[turn]] == true) {
                 int pOwner = propOwner[cpos[turn]];
                 if (pOwner != turn) {
-                    propOwnedCheck(pOwner, turn, cpos, roll);
+                    propOwnedCheck(pOwner, turn, cpos);
                 }
             } else {
                 BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
@@ -466,7 +516,7 @@ public final class Board extends javax.swing.JFrame {
         addLog("just bought " + propName[cpos[turn]] + " for " + propPrice[cpos[turn]] + " $");
     }
 
-    public void propOwnedCheck(int pOwner, int turn, int[] cpos, int roll) {
+    public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
         String pType = propType[cpos[turn]];
         System.out.println("Boadr:: Name:" + propName[cpos[turn]] + " Type:" + pType);
         int pRent;
@@ -527,6 +577,8 @@ public final class Board extends javax.swing.JFrame {
                 pRent = -100;
                 break;
             case "ST":
+                appendS(name[turn], turn);
+                addLog(" just collected $200 for landing on Go");
                 pRent = -200;
                 break;
             default:
@@ -553,20 +605,61 @@ public final class Board extends javax.swing.JFrame {
         plmoney[turn].setText("$ " + money[turn] + " (" + (-1 * pRent) + ")");
     }
 
+    public static void sleep(int amt) {
+        long a = System.currentTimeMillis();
+        long b = System.currentTimeMillis();
+        while ((b - a) <= amt) {
+            b = System.currentTimeMillis();
+        }
+    }
+
+    public void chanceCard() {
+        Random rand = new Random();
+        int ind = rand.nextInt(15);
+        JDialog card = new JDialog();
+        Container pane = card.getContentPane();
+        String desc = pd.chance[ind];
+        card.setPreferredSize(new Dimension(800, 300));
+        JLabel type = new JLabel("Chance", JLabel.CENTER);
+        type.setFont(new Font("Serif", Font.BOLD, 48));
+        type.setPreferredSize(new Dimension(600, 60));
+        pane.add(type, BorderLayout.PAGE_START);
+        JLabel description = new JLabel(desc, JLabel.CENTER);
+        description.setFont(new Font("Serif", Font.BOLD, 24));
+        pane.add(description, BorderLayout.CENTER);
+        pane.setBackground(Color.yellow);
+        card.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        card.setUndecorated(true);
+        card.pack();
+        card.setLocationRelativeTo(null);
+        card.setVisible(true);
+        card.setAlwaysOnTop(true);
+        //sleep for 2000ms
+        card.setVisible(false);
+        card.dispose();
+//        switch(pd.chanceActs[ind]){
+//            case "move":
+////                roll = pd.chanceVals[ind]-cpos[turn];
+//                moveTo(turn, pd.chanceVals[ind]);
+//        }
+    }
+
+    public void communityCard(int index) {
+
+    }
+
     public void rolling() {
         if (turn == players) {
             turn = 0;
         }
-        roll = Dice.rollDice(dice);
+//        roll = Dice.rollDice(dice);
 //      Temporary Testing Cause
-//        if (dice == 2) {
-//            roll = (int) (Math.random() * 12 + 1);
-//        } else {
-//            roll = (int) (Math.random() * 6 + 1);
-//        }
+        if (dice == 2) {
+            roll = (int) (Math.random() * 12 + 1);
+        } else {
+            roll = (int) (Math.random() * 6 + 1);
+        }
         move(turn);
-//        String pName = String.format("<html><font color=\"red\">"+name[turn]+"</font></html>");
-//        System.out.println(pName);
         appendS(name[turn], turn);
         addLog(" rolled: " + roll);
     }
@@ -2577,7 +2670,11 @@ public final class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
-        rolling();
+//        rolling();
+//                int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
+//        roll = m;
+//        move(turn);
+        chanceCard();
         btnRoll.setEnabled(false);
     }//GEN-LAST:event_btnRollActionPerformed
 

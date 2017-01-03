@@ -26,7 +26,11 @@ public class Canada_Data {
     public String propName, desc1, desc2;
     public int price, priceHouse, rent1, rent2, rent3, rent4, rentH;
     public String chance[] = new String[16];
+    public String chanceActs[] = new String[16];
+    public int chanceVals[] = new int[16];
     public String community[] = new String[16];
+    public String communityActs[] = new String[16];
+    public int communityVals[] = new int[16];
     public Canada_Data property[] = new Canada_Data[36];
     public boolean buyable;
     public Color colour;
@@ -225,7 +229,7 @@ public class Canada_Data {
         property[17].priceHouse = 150;
         property[17].colour = Color.GREEN;
         property[17].buyable = true;
-        property[17].cardIcon = new ImageIcon("Board Pictures/Canada/Reg Image.jpg");
+        property[17].cardIcon = new ImageIcon("Board Pictures/Canada/Reg Image.png");
         property[17].type = "N";
 
         property[18].buyable = false;
@@ -259,6 +263,7 @@ public class Canada_Data {
         property[20].type = "N";
 
         //RBC
+        property[21].propName = "RBC";
         property[21].desc1 = "Rent = 25x roll & tax rebate";
         property[21].price = 325;
         property[21].colour = Color.WHITE;
@@ -349,6 +354,7 @@ public class Canada_Data {
         //======================================================================
 
         //CN TOWER
+        property[30].propName = "CN Tower";
         property[30].desc1 = "Rent = 25x roll, 50x ";
         property[30].desc2 = "roll if CNR is owned";
         property[30].price = 375;
@@ -375,6 +381,7 @@ public class Canada_Data {
         property[32].type = "N";
 
         //PARLIAMENT HILL
+        property[33].propName = "Pariliament Hill";
         property[33].desc1 = "Rent = 25x roll, 50x roll ";
         property[33].desc2 = " if Niagara Falls is owned";
         property[33].price = 375;
@@ -418,37 +425,101 @@ public class Canada_Data {
         //SETTING UP THE CARDS
         //CHANCE CHEST
         chance[0] = "Advance to Go (Collect $200) ";
+        chanceActs[0] = "move";
+        chanceVals[0] = 1;
         chance[1] = "Bank error in your favor – collect $75 ";
-        chance[2] = "Insurance fees – Pay $50 ";
+        chanceActs[1] = "money";
+        chanceVals[1] = 75;
+        chance[2] = "Insurance fees – Pay $150 ";
+        chanceActs[2] = "money";
+        chanceVals[2] = -150;
         chance[3] = "Get out of jail free – this card may be kept until needed, or sold ";
-        chance[4] = "Holiday Fund matures - Receive $100";
-        chance[5] = "It is your birthday Collect $10 from each player ";
+        chanceActs[3] = "jail";
+        chanceVals[3] = 0;//0- free jail;
+        chance[4] = "Holiday Fund matures - Receive $400";
+        chanceActs[4] = "money";
+        chanceVals[4] = 400;
+        chance[5] = "It is your birthday Collect $60 from each player ";
+        chanceActs[5] = "get";
+        chanceVals[5] = 60;
         chance[6] = "Blue Jays opening night – collect $50 from every player for opening night seats ";
-        chance[7] = "Income Tax refund – collect $20 ";
-        chance[8] = "Life Insurance Matures – collect $100 ";
-        chance[9] = "Pay Hospital Room Fees of $100 ";
-        chance[10] = "Pay University Fees of $50 ";
-        chance[11] = "Receive $25 Consultancy Fee ";
-        chance[12] = "You are assessed for street winter damage – $40 per house, $115 per hotel ";
-        chance[13] = "You have won second prize in a poutine eating contest– collect $10 ";
+        chanceActs[6] = "get";
+        chanceVals[6] = 50;
+        chance[7] = "Income Tax refund – collect $200 ";
+        chanceActs[7] = "money";
+        chanceVals[7] = 200;
+        chance[8] = "Life Insurance Matures – collect $150 ";
+        chanceActs[8] = "money";
+        chanceVals[8] = 150;
+        chance[9] = "Pay Hospital Room Fees of $250 ";
+        chanceActs[9] = "money";
+        chanceVals[9] = -250;
+        chance[10] = "Pay University Fees of $100 ";
+        chanceActs[10] = "money";
+        chanceVals[10] = 100;
+        chance[11] = "Receive $75 Consultancy Fee ";
+        chanceActs[11] = "money";
+        chanceVals[11] = 75;
+        chance[12] = "You are assessed for street winter damage – $40 per house, $160 per hotel ";
+        chanceActs[12] = "house";
+        chanceVals[12] = -40;
+        chance[13] = "You have won second prize in a poutine eating contest– collect $25 ";
+        chanceActs[13] = "money";
+        chanceVals[13] = 25;
         chance[14] = "You inherit $100";
+        chanceActs[14] = "money";
+        chanceVals[14] = 100;
         chance[15] = "From sale of stock you get $50 ";
-        //COMMUNITY CHEST
+        chanceActs[15] = "money";
+        chanceVals[15] = 50;
+//COMMUNITY CHEST
         community[0] = "Advance to Go (Collect $200)";
+        communityActs[0] = "move";
+        communityVals[0] = 0;
         community[1] = "Advance to Windsor";
+        communityActs[1] = "move";
+        communityVals[1] = 13;
         community[2] = "Advance token to CN Tower";
+        communityActs[2] = "move";
+        communityVals[2] = 30;
         community[3] = "Advance token to CNR";
+        communityActs[3] = "move";
+        communityVals[3] = 12;
         community[4] = "Advance to St. John's – if you pass Go, collect $200";
+        communityActs[4] = "move";
+        communityVals[4] = 19;
         community[5] = "Bank pays you dividend of $50";
+        communityActs[5] = "money";
+        communityVals[5] = 50;
         community[6] = "Get out of Jail free – this card may be kept until needed, or traded/sold";
+        communityActs[6] = "jail";
+        communityVals[6] = 0;
         community[7] = "Go back 3 spaces";
+        communityActs[7] = "goto";
+        communityVals[7] = -3;
         community[8] = "Go directly to Jail – do not pass Go, do not collect $200";
+        communityActs[8] = "move";
+        communityVals[8] = 9;
         community[9] = "Make shingle repairs on all your property – for each house pay $25 – for each hotel $100";
+        communityActs[9] = "house";
+        communityVals[9] = -25;
         community[10] = "Pay poor tax of $15";
+        communityActs[10] = "money";
+        communityVals[10] = -15;
         community[11] = "Take a trip to Timmies – if you pass Go collect $200";
+        communityActs[11] = "move";
+        communityVals[11] = 3;
         community[12] = "Take a walk on the Niagara Falls – advance token to Niagara Falls";
+        communityActs[12] = "move";
+        communityVals[12] = 15;
         community[13] = "You have been elected chairman of the board – pay each player $50";
+        communityActs[13] = "get";
+        communityVals[13] = -50;
         community[14] = "You win a curling tournanment – collect $150";
+        communityActs[14] = "money";
+        communityVals[14] = 150;
         community[15] = "You have won a hockey game - collect $100";
+        communityActs[15] = "money";
+        communityVals[15] = 100;
     }
 }

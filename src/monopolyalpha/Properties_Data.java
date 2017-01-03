@@ -23,6 +23,14 @@ public class Properties_Data
     public ImageIcon cardIcon;
     ThemeSelect ts = new ThemeSelect();
 
+    
+    //Chance and community stuff
+    public String chance[] = new String[16];
+    public String chanceActs[] = new String[16];
+    public int chanceVals[] = new int[16];
+    public String community[] = new String[16];
+    public String communityActs[] = new String[16];
+    public int communityVals[] = new int[16];
     public Properties_Data()
       {
         this.thm = ts.theme;
@@ -274,6 +282,15 @@ public class Properties_Data
               {
                 Canada_Data can = new Canada_Data();
                 can.setProp();
+                can.getCards();
+                    //Chance and community stuff                   
+                chance = can.chance.clone();
+                chanceActs = can.chanceActs.clone();
+                chanceVals = can.chanceVals.clone();
+                chance = can.chance.clone();
+                community = can.community.clone();
+                communityActs = can.communityActs.clone();
+                communityVals = can.communityVals.clone();
                 for (int i = 0; i < prop.length; i++)
                   {
                     prop[i] = new Properties_Data();
