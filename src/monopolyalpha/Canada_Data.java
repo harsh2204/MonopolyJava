@@ -491,9 +491,9 @@ public class Canada_Data {
         community[5] = "Bank pays you dividend of $50";
         communityActs[5] = "money";
         communityVals[5] = 50;
-        community[6] = "Get out of Jail free – this card may be kept until needed, or traded/sold";
-        communityActs[6] = "jail";
-        communityVals[6] = 0;
+        community[6] = "Car accident- Fine 50$";
+        communityActs[6] = "money";
+        communityVals[6] = -50;
         community[7] = "Go back 3 spaces";
         communityActs[7] = "goto";
         communityVals[7] = -3;
