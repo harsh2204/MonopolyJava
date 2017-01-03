@@ -19,7 +19,7 @@ public class Generic_Data {
     int price,priceHouse, rent1, rent2, rent3, rent4, rentH;
     public String chance[]= new String[16];
     public String community[]= new String[16];
-    public Generic_Data property[] = new Generic_Data[26];
+    public Generic_Data property[] = new Generic_Data[36];
     public boolean buyable;
     public Color colour;
     public ImageIcon cardIcon;
