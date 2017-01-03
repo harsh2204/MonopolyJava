@@ -235,7 +235,7 @@ public class SuperHero_Data
         property[18].colour = Color.GRAY;
         property[18].type = "FP";
         //ST. JOHN'S
-        property[19].propName = "Green Lantern";
+        property[19].propName = "Ironman";
         property[19].price = 220;
         property[19].rent1 = 110;
         property[19].rent2 = 220;
@@ -248,7 +248,7 @@ public class SuperHero_Data
         property[19].cardIcon = new ImageIcon("Board Pictures/Canada/STJ Image.jpg");
         property[19].type = "N";
         //QUEBEC CITY
-        property[20].propName = "Thor";
+        property[20].propName = "Green Lantern";
         property[20].price = 220;
         property[20].rent1 = 110;
         property[20].rent2 = 220;
@@ -270,7 +270,7 @@ public class SuperHero_Data
         property[21].type = "SRBC";
 
         //HALIFAX
-        property[22].propName = "Captain America";
+        property[22].propName = "Thor";
         property[22].price = 250;
         property[22].rent1 = 125;
         property[22].rent2 = 250;
@@ -307,7 +307,7 @@ public class SuperHero_Data
         property[25].cardIcon = new ImageIcon("Board Pictures/Canada/Winn Image.jpg");
         property[25].type = "N";
         //EDMONTON
-        property[26].propName = "Flash";
+        property[26].propName = "Captain America";
         property[26].price = 290;
         property[26].rent1 = 150;
         property[26].rent2 = 350;
@@ -325,7 +325,7 @@ public class SuperHero_Data
         property[27].type = "JK";
 
         //CALGARY
-        property[28].propName = "Wonder Woman";
+        property[28].propName = "Batman";
         property[28].price = 290;
         property[28].rent1 = 150;
         property[28].rent2 = 350;
@@ -338,7 +338,7 @@ public class SuperHero_Data
         property[28].cardIcon = new ImageIcon("Board Pictures/Canada/Cal Image.jpg");
         property[28].type = "N";
         //OTTAWA
-        property[29].propName = "Vision";
+        property[29].propName = "Flash";
         property[29].price = 325;
         property[29].rent1 = 170;
         property[29].rent2 = 400;
@@ -365,7 +365,7 @@ public class SuperHero_Data
         property[31].type = "CO";
         //ORANGE SUITE----------------------------------------------------------
         //VANCOUVER
-        property[32].propName = "Superman";
+        property[32].propName = "Wonderwoman";
         property[32].price = 375;
         property[32].rent1 = 175;
         property[32].rent2 = 500;
@@ -388,7 +388,7 @@ public class SuperHero_Data
         property[33].type = "S1533";
 
         //MONTREAL
-        property[34].propName = "Batman";
+        property[34].propName = "Vision";
         property[34].price = 400;
         property[34].rent1 = 200;
         property[34].rent2 = 600;
@@ -401,7 +401,7 @@ public class SuperHero_Data
         property[34].cardIcon = new ImageIcon("Board Pictures/Canada/Mon Image.jpg");
         property[34].type = "N";
         //TORONTO
-        property[35].propName = "Ironman";
+        property[35].propName = "Superman";
         property[35].price = 500;
         property[35].rent1 = 250;
         property[35].rent2 = 750;
@@ -414,7 +414,6 @@ public class SuperHero_Data
         property[35].cardIcon = new ImageIcon("Board Pictures/Canada/Tor Image.jpg");
         property[35].type = "N";
         //======================================================================
-        //GREY SUITE------------------------------------------------------------
         
         return property;
       }
