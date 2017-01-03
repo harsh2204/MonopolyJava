@@ -647,8 +647,8 @@ public final class Board extends javax.swing.JFrame {
 
     public void displayChangeS(int turn, int pRent) {
         if (pRent < 0) {
-            String sign = "-";
-            plmoney[turn].setText("$ " + money[turn] + " (" + sign + pRent + ")");
+//            String sign = "-";
+            plmoney[turn].setText("$ " + money[turn] + " (" + pRent + ")");
         } else if (pRent > 0) {
             String sign = "+";
             plmoney[turn].setText("$ " + money[turn] + " (" + sign + pRent + ")");
