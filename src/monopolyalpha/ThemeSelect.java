@@ -180,7 +180,7 @@ public class ThemeSelect extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     public void supth() {
-        theme = "SuperHeros";
+        theme = "Super";
         SuperHero_Data sup = new SuperHero_Data();
         piece1 = "Dog";
         piece2 = "Ship";
