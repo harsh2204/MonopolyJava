@@ -707,8 +707,8 @@ public final class Board extends javax.swing.JFrame
     public void chanceCard(int roll)
       {
         Random rand = new Random();
-//        int ind = rand.nextInt(15);
-        int ind = 0;
+        int ind = rand.nextInt(15);
+//        int ind = 0;
         JDialog card = new JDialog();
         Container pane = card.getContentPane();
         String desc = pd.chance[ind];
@@ -801,8 +801,8 @@ public final class Board extends javax.swing.JFrame
     public void communityCard()
       {
         Random rand = new Random();
-//        int ind = rand.nextInt(15);  
-        int ind = 0;
+        int ind = rand.nextInt(15);  
+//        int ind = 0;
         JDialog card = new JDialog();
         Container pane = card.getContentPane();
         String desc = pd.comm[ind];
