@@ -27,7 +27,7 @@ public class TradeForm extends javax.swing.JFrame {
 
     public TradeForm() {
         initComponents();
-//        jPanel1.setPreferredSize(new Dimension(200, jPanel1.getHeight()));
+        paneCur.setPreferredSize(new Dimension(paneCur.getWidth(), paneOthers.getHeight()));
         paneCur.setLayout(new BoxLayout(paneCur, BoxLayout.Y_AXIS));
         checkboxes1 = new Checkbox[36];
         checkboxes2 = new Checkbox[36];
@@ -37,6 +37,7 @@ public class TradeForm extends javax.swing.JFrame {
                 others[i] = new JPanel();
                 others[i].setLayout(new BoxLayout(others[i], BoxLayout.Y_AXIS));
                 others[i].setBorder(new LineBorder(board.colorPalette[i], 3));
+                others[i].setBackground(board.colorPalette[i].brighter());
                 others[i].setSize(paneOthers.getSize());
                 for (int j = 0; j < board.propName.length; j++) {
                     if (board.propOwner[j] == i) {
@@ -75,6 +76,7 @@ public class TradeForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         paneCur = new javax.swing.JPanel();
         paneOthers = new javax.swing.JTabbedPane();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,6 +97,9 @@ public class TradeForm extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        jButton1.setText("TRADE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,22 +109,30 @@ public class TradeForm extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(16, 16, 16)
                 .addComponent(paneCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
-                .addComponent(paneOthers, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(paneOthers, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneCur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneOthers, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paneCur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(paneOthers))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
         );
 
         pack();
@@ -161,6 +174,7 @@ public class TradeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel paneCur;
     private javax.swing.JTabbedPane paneOthers;
