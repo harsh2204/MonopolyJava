@@ -748,10 +748,10 @@ public final class Board extends javax.swing.JFrame {
         Random rand = new Random();
         final int ind = rand.nextInt(15);
 //        int ind = 0;
-        final JFrame card = new JFrame();
-        Container pane = card.getContentPane();
+        final JFrame comCard = new JFrame();
+        Container pane = comCard.getContentPane();
         String desc = pd.comm[ind];
-        card.setPreferredSize(new Dimension(800, 300));
+        comCard.setPreferredSize(new Dimension(800, 300));
         JLabel type = new JLabel("Community", JLabel.CENTER);
         type.setFont(new Font("Serif", Font.BOLD, 48));
         type.setPreferredSize(new Dimension(600, 60));
@@ -759,21 +759,21 @@ public final class Board extends javax.swing.JFrame {
         JLabel description = new JLabel(desc, JLabel.CENTER);
         description.setFont(new Font("Serif", Font.BOLD, 24));
         pane.add(description, BorderLayout.CENTER);
-        pane.setBackground(Color.yellow);
-        card.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        card.setUndecorated(true);
-        card.pack();
-        card.setLocationRelativeTo(null);
-        card.setVisible(true);
-        card.setAlwaysOnTop(true);
+        pane.setBackground(Color.orange);
+        comCard.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        comCard.setUndecorated(true);
+        comCard.pack();
+        comCard.setLocationRelativeTo(null);
+        comCard.setVisible(true);
+        comCard.setAlwaysOnTop(true);
         System.out.println("CommCard:: Index:" + ind);
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 counter++;
                 if (counter == 5) {
-                    card.setVisible(false);
-                    card.dispose();
+                    comCard.setVisible(false);
+                    comCard.dispose();
                     commCheck(ind, roll);
                     timer.stop();
                 }
@@ -2557,6 +2557,11 @@ public final class Board extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         jButton1.setText("Trade");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnReBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnReBuy.setText("BUY");
@@ -2937,6 +2942,11 @@ public final class Board extends javax.swing.JFrame {
         BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
         buy.setVisible(true);
     }//GEN-LAST:event_btnReBuyActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new TradeForm().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void displayChange(int turn) {
 

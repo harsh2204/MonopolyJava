@@ -30,8 +30,7 @@ public class BuyScreen extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         paneCard = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -39,6 +38,7 @@ public class BuyScreen extends javax.swing.JFrame {
         btnPass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setAlwaysOnTop(true);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(571, 407));
 
@@ -55,20 +55,16 @@ public class BuyScreen extends javax.swing.JFrame {
 
         btnBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnBuy.setText("BUY");
-        btnBuy.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuyActionPerformed(evt);
             }
         });
 
         btnPass.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         btnPass.setText("PASS");
-        btnPass.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPassActionPerformed(evt);
             }
         });
