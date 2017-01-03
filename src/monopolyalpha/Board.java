@@ -499,13 +499,16 @@ public final class Board extends javax.swing.JFrame {
                     propOwnedCheck(pOwner, turn, cpos);
                 }
             } else {
+                btnReBuy.setEnabled(true);
                 BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
                 buy.setVisible(true);
             }
         } else {
+            btnReBuy.setEnabled(false);
             System.out.println("Board:: Turn:" + turn + " CPos:" + cpos[turn] + " Buyable:" + propBuyable[cpos[turn]]);
             propNBCheck(turn, cpos, roll);
         }
+        btnNext.setEnabled(false);
         btnNext.setEnabled(true);
         plChancesLeft[turn]--;
         plChances[turn]--;
@@ -545,6 +548,7 @@ public final class Board extends javax.swing.JFrame {
         displayChangeBuy(turn);
         appendS(name[turn] + " ", turn);
         addLog("just bought " + propName[cpos[turn]] + " for " + propPrice[cpos[turn]] + " $");
+        btnReBuy.setEnabled(false);
     }
 
     public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
@@ -848,8 +852,7 @@ public final class Board extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         dlgLog = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1055,6 +1058,8 @@ public final class Board extends javax.swing.JFrame {
         btnLog = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnReBuy = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
         lblIconP1 = new javax.swing.JLabel();
@@ -1081,10 +1086,8 @@ public final class Board extends javax.swing.JFrame {
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
-        btnCD.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCDActionPerformed(evt);
             }
         });
@@ -1173,98 +1176,77 @@ public final class Board extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB7);
         lblHoverB7.setBounds(2, 98, 90, 60);
 
-        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB6MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB6MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB6);
         lblHoverB6.setBounds(2, 160, 90, 60);
 
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB5MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB5MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
 
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB4MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB4MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
 
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB3MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB3MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB3);
         lblHoverB3.setBounds(2, 415, 90, 60);
 
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB2MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB2MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
 
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB1MouseExited(evt);
             }
         });
@@ -2537,48 +2519,51 @@ public final class Board extends javax.swing.JFrame {
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
-        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyReleased(java.awt.event.KeyEvent evt)
-            {
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnRollKeyReleased(evt);
             }
         });
 
         btnLog.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnLog.setText("LOG");
-        btnLog.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogActionPerformed(evt);
             }
         });
 
         btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnNext.setText("NEXT");
-        btnNext.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnNext.setEnabled(false);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        jButton1.setText("Trade");
+
+        btnReBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnReBuy.setText("BUY");
+        btnReBuy.setEnabled(false);
+        btnReBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReBuyActionPerformed(evt);
             }
         });
 
@@ -2593,7 +2578,11 @@ public final class Board extends javax.swing.JFrame {
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneControlsLayout.setVerticalGroup(
@@ -2601,9 +2590,11 @@ public final class Board extends javax.swing.JFrame {
             .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(btnLog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNext, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnNext, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -2763,7 +2754,7 @@ public final class Board extends javax.swing.JFrame {
             .addGroup(paneBossLayout.createSequentialGroup()
                 .addGap(198, 198, 198)
                 .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
             .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(paneBossLayout.createSequentialGroup()
                     .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2940,6 +2931,12 @@ public final class Board extends javax.swing.JFrame {
             new Save_Manager().setVisible(true);
         }
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnReBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReBuyActionPerformed
+        // TODO add your handling code here:
+        BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
+        buy.setVisible(true);
+    }//GEN-LAST:event_btnReBuyActionPerformed
 
     public void displayChange(int turn) {
 
@@ -3149,9 +3146,11 @@ public final class Board extends javax.swing.JFrame {
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPass;
+    private javax.swing.JButton btnReBuy;
     private javax.swing.JButton btnRoll;
     private javax.swing.JDialog dlgLog;
     private javax.swing.JFrame frmBuy;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
