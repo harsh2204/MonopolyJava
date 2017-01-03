@@ -323,7 +323,7 @@ public class Canada_Data {
 
         property[27].buyable = false;
         property[27].colour = Color.GRAY;
-        property[27].type = "UK";
+        property[27].type = "JK";
 
         //CALGARY
         property[28].propName = "Calgary";
