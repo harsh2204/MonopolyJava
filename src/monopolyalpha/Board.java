@@ -31,15 +31,16 @@ import javax.swing.text.StyledDocument;
  *
  * @author Harsh Gupta, Karmit Patel
  */
-public final class Board extends javax.swing.JFrame {
+public final class Board extends javax.swing.JFrame
+  {
 
     /**
      * Creates new form Board
      */
-    public static int players, i, dice, chance, roll, turn = 0, count = 0, EGS;
+    public static int players, i, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0;
     public static String theme;
     public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4];
-    public static String[] name = new String[4], propName = new String[36], propType = new String[36];
+    public String[] name = new String[4], propName = new String[36], propType = new String[36];
     public ThemeSelect ts = new ThemeSelect();
     public InitTest it = new InitTest();
     public Dice di = new Dice();
@@ -55,9 +56,13 @@ public final class Board extends javax.swing.JFrame {
     public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4];
     Card c;
     public static Image image;
-    public static Timer moveTimer;
+    public static Timer moveTimer, timer;
+    Canada_Data cd = new Canada_Data();
+    SuperHero_Data sd = new SuperHero_Data();
+    Generic_Data gd = new Generic_Data();
 
-    public Board(int playerCount) {
+    public Board(int playerCount)
+      {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -71,31 +76,38 @@ public final class Board extends javax.swing.JFrame {
         changeimages();
         addpCount();
         displayChange(turn);
-        addWindowListener(new WindowAdapter() {
+        addWindowListener(new WindowAdapter()
+          {
 
             @Override
-            public void windowClosing(WindowEvent we) {
+            public void windowClosing(WindowEvent we)
+              {
                 String ObjButtons[]
-                        = {
+                        =
+                          {
                             "Yes", "No", "Save"
-                        };
+                          };
                 int PromptResult = JOptionPane.showOptionDialog(null,
                         "Are you sure you want to exit?", "Monopoly Java",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
                         ObjButtons, ObjButtons[2]);
-                if (PromptResult == 0) {
+                if (PromptResult == 0)
+                  {
                     System.exit(0);
-                }
-                if (PromptResult == 2) {
+                  }
+                if (PromptResult == 2)
+                  {
                     new Save_Manager().setVisible(true);
-                }
-            }
-        });
-    }
+                  }
+              }
+          });
+      }
 
-    public void propDataTransfer() {
+    public void propDataTransfer()
+      {
         pd.GetProp();
-        for (i = 0; i < 36; i++) {
+        for (i = 0; i < 36; i++)
+          {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
             propRent[i] = pd.prop[i].rent1;
@@ -103,12 +115,14 @@ public final class Board extends javax.swing.JFrame {
             propOwner[i] = pd.prop[i].owner;
             propBuyable[i] = pd.prop[i].buyable;
             propType[i] = pd.prop[i].type;
-        }
-    }
+          }
+      }
 
-    public void changeimages() {
+    public void changeimages()
+      {
         //Seting up colors for user names        
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++)
+          {
             Random random = new Random();
             float hue = random.nextFloat(); // Saturation between 0.1 and 0.3 
             float saturation = (random.nextInt(4000) + 2000) / 10000f;
@@ -116,17 +130,19 @@ public final class Board extends javax.swing.JFrame {
             Color color = Color.getHSBColor(hue, saturation, luminance);
             colorPalette[i] = color;
             System.out.println(color);
-        }
-        for (i = 0; i < players; i++) {
+          }
+        for (i = 0; i < players; i++)
+          {
             image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             icons[i] = new ImageIcon(image);
             plnames[i].setOpaque(true);
             plnames[i].setBackground(colorPalette[i]);
-        }
+          }
         System.out.println("Board: Image Changed!");
-    }
+      }
 
-    public void setupplabels() {
+    public void setupplabels()
+      {
         plnames[0] = lblNameP1;
         plnames[1] = lblNameP2;
         plicons[0] = lblIconP1;
@@ -140,9 +156,10 @@ public final class Board extends javax.swing.JFrame {
         plmoney[2] = lblMoneyP3;
         plmoney[3] = lblMoneyP4;
         System.out.println("Board: Labels setup done!");
-    }
+      }
 
-    public void datatransfer() {
+    public void datatransfer()
+      {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
 //        this.players = it.pCount;  //This is the only errror it takes 2 as default value instead of "pCount" from Init Test Fix it if u can
@@ -154,7 +171,8 @@ public final class Board extends javax.swing.JFrame {
         this.dice = it.dicenum;
         this.EGS = it.EGS;
         int chances = 0;
-        switch (EGS) {
+        switch (EGS)
+          {
             case 0:
                 chances = 36345;
                 break;
@@ -167,8 +185,9 @@ public final class Board extends javax.swing.JFrame {
             case 3:
                 chances = 75;
                 break;
-        }
-        for (i = 0; i < players; i++) {
+          }
+        for (i = 0; i < players; i++)
+          {
             propMoney[i] = 0;
             totMoney[i] = 0;
             Game[i] = true;
@@ -178,11 +197,12 @@ public final class Board extends javax.swing.JFrame {
             cpos[i] = 0;
             npos[i] = 0;
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
-        }
+          }
         System.out.println("Board: Data Transfered!");
-    }
+      }
 
-    private void setupLabels() {
+    private void setupLabels()
+      {
         //1
         boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
@@ -336,18 +356,21 @@ public final class Board extends javax.swing.JFrame {
 //               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
 //            }
 //        }
-    }
+      }
 
-    public void addpCount() {
-        for (i = 0; i < players; i++) {
+    public void addpCount()
+      {
+        for (i = 0; i < players; i++)
+          {
             plnames[i].setText("" + name[i]);
             plicons[i].setIcon(icon[i]);
             plmoney[i].setText("$" + Integer.toString(money[i]));
             boxes[i][cpos[i]].setIcon(icons[i]);
-        }
-        for (int i = 0; i < keyWord.length; i++) {
+          }
+        for (int i = 0; i < keyWord.length; i++)
+          {
             keyWord[i] = new SimpleAttributeSet();
-        }
+          }
         paneP1.setVisible(true);
         paneP2.setVisible(true);
         StyleConstants.setForeground(keyWord[0], colorPalette[0].darker());
@@ -356,151 +379,194 @@ public final class Board extends javax.swing.JFrame {
         StyleConstants.setForeground(keyWord[3], colorPalette[3].darker());
         StyleConstants.setForeground(keyWord[4], Color.BLACK);
         System.out.println("Board: pCount Added!");
-    }
+      }
 
-    public void makeCard(int index) {
+    public void makeCard(int index)
+      {
 
         //System.out.println("Board- Colour:" + bg + "Index: " + index);
         c = new Card(pd.prop[index].colour, pd.prop[index].cardIcon, index, pd);
         c.setVisible(true);
-    }
+      }
 
-    public void breakCard() {
+    public void breakCard()
+      {
         c.setVisible(false);
-    }
+      }
 
-    public void appendS(String s, int playerID) {
-        try {
+    public void appendS(String s, int playerID)
+      {
+        try
+          {
             StyledDocument doc = txtLog.getStyledDocument();
             doc.insertString(doc.getLength(), s, keyWord[playerID]);
-        } catch (BadLocationException exc) {
+          } catch (BadLocationException exc)
+          {
             exc.printStackTrace();
-        }
-    }
+          }
+      }
 
-    public void addLog(String s) {
+    public void addLog(String s)
+      {
         appendS(s + "\n", 4);
 
-    }
+      }
 
-    public void move(final int turnn) {
+    public void move(final int turnn)
+      {
         npos[turnn] = cpos[turnn] + roll;
+        System.out.println("Board:: Roll:" + roll + " Turn:" + turn + " CPos:" + cpos[turnn]);
         //addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
-        if (npos[turnn] > 35) {
+        if (npos[turnn] > 35)
+          {
             npos[turnn] = npos[turnn] - 35;
-        }
+          }
         rands.setText("Turn:" + turnn + "Roll:" + roll);
         count = 0;
-        moveTimer = new Timer(500, new ActionListener() {
+        moveTimer = new Timer(500, new ActionListener()
+          {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+              {
                 btnRoll.setEnabled(false);
                 count++;
                 cpos[turnn]++;
-                if (cpos[turnn] > 35) {
-                    if (cpos[turnn] != 1) {
-                        money[turnn] += 200;
-                        appendS(name[turnn], turnn);
-                        addLog(" just collected $200 for passing Go");
-                    }
+                if (cpos[turnn] > 35)
+                  {
+                    money[turnn] += 200;
+                    appendS(name[turnn], turnn);
+                    addLog(" just collected $200 for passing Go");
                     cpos[turnn] = 0;
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][35].setIcon(null);
 
-                } else {
+                  } else
+                  {
                     System.out.println("Current Position: " + cpos[turnn]);
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][cpos[turnn] - 1].setIcon(null);
-                }
-                if (count == roll) {
+                  }
+                if (count == roll)
+                  {
                     moveTimer.stop();
-                    propcall(cpos, turnn);
-                }
-            }
-        });
+                    propcall(cpos, turnn, roll);
+                  }
+              }
+          });
         moveTimer.start();
-    }
+      }
 
-    public void moveTo(final int turnn, final int position) {
-        npos[turnn] = position;
-        //addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
-        if (npos[turnn] > 35) {
-            npos[turnn] = npos[turnn] - 35;
-        }
-        //rands.setText("Turn:" + turnn + "Roll:" + roll);
-        count = 0;
-        moveTimer = new Timer(500, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //btnRoll.setEnabled(false);
-                count++;
-                cpos[turnn]++;
-                if (cpos[turnn] > 35) {
-                    if (cpos[turnn] != 1) {
-                        money[turnn] += 200;
-                        appendS(name[turnn], turnn);
-                        addLog(" just collected $200 for passing Go");
-                    }
-                    cpos[turnn] = 0;
-                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
-                    boxes[turnn][35].setIcon(null);
+//    public void moveTo(final int turnn, final int position)
+//      {
+//        npos[turnn] = position;
+//        //addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
+//        if (npos[turnn] > 35)
+//          {
+//            npos[turnn] = npos[turnn] - 35;
+//          }
+//        //rands.setText("Turn:" + turnn + "Roll:" + roll);
+//        count = 0;
+//        moveTimer = new Timer(500, new ActionListener()
+//          {
+//            @Override
+//            public void actionPerformed(ActionEvent e)
+//              {
+//                //btnRoll.setEnabled(false);
+//                count++;
+//                cpos[turnn]++;
+//                if (cpos[turnn] > 35)
+//                  {
+//                    if (cpos[turnn] != 1)
+//                      {
+//                        money[turnn] += 200;
+//                        appendS(name[turnn], turnn);
+//                        addLog(" just collected $200 for passing Go");
+//                      }
+//                    cpos[turnn] = 0;
+//                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
+//                    boxes[turnn][35].setIcon(null);
+//
+//                  } else
+//                  {
+//                    System.out.println("Current Position: " + cpos[turnn]);
+//                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
+//                    boxes[turnn][cpos[turnn] - 1].setIcon(null);
+//                  }
+//                if (count == position)
+//                  {
+//                    moveTimer.stop();
+//                    propcall(cpos, turnn);
+//                  }
+//              }
+//          });
+//        moveTimer.start();
+//      }
+    public void Goto(int npos, int[] cpos, int turn, int roll)
+      {
+        if (npos == 36)
+          {
+            npos = 0;
+          }
+        boxes[turn][cpos[turn]].setIcon(null);
+        boxes[turn][npos].setIcon(icons[turn]);
+        cpos[turn] = npos;
+        propcall(cpos, turn, roll);
+      }
 
-                } else {
-                    System.out.println("Current Position: " + cpos[turnn]);
-                    boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
-                    boxes[turnn][cpos[turnn] - 1].setIcon(null);
-                }
-                if (count == position) {
-                    moveTimer.stop();
-                    propcall(cpos, turnn);
-                }
-            }
-        });
-        moveTimer.start();
-    }
-
-    public void propcall(int[] cpos, int turn) {
-        if (propBuyable[cpos[turn]] == true) {
-            if (propOwned[cpos[turn]] == true) {
+    public void propcall(int[] cpos, int turn, int roll)
+      {
+        if (propBuyable[cpos[turn]] == true)
+          {
+            if (propOwned[cpos[turn]] == true)
+              {
                 int pOwner = propOwner[cpos[turn]];
-                if (pOwner != turn) {
+                if (pOwner != turn)
+                  {
                     propOwnedCheck(pOwner, turn, cpos);
-                }
-            } else {
+                  }
+              } else
+              {
                 BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
                 buy.setVisible(true);
-                //propBuy(turn);                
-                //This doesn't work right now but I'll figure out a way. Cool.                
-            }
-        } else {
+              }
+          } else
+          {
+            System.out.println("Board:: Turn:" + turn + " CPos:" + cpos[turn] + " Buyable:" + propBuyable[cpos[turn]]);
             propNBCheck(turn, cpos, roll);
-        }
-        btnEnd.setEnabled(true);
+          }
+        btnNext.setEnabled(true);
         plChancesLeft[turn]--;
         plChances[turn]--;
-        if (plChancesLeft[turn] <= 0) {
+        if (plChancesLeft[turn] <= 0)
+          {
             gameOver(turn);
-        }
-        if (money[turn] >= 0) {
+          }
+        if (money[turn] >= 0)
+          {
 //            sellShit(turn);//A method or fram to be made to sell properties if money on hand is 0 or less than 0
-        }
-        if (totMoney[turn] == 0) {
+          }
+        if (totMoney[turn] == 0)
+          {
             gameOver(turn);
-        }
-    }
+          }
+      }
 
-    public void gameOver(int turn) {
-        for (i = 0; i < 36; i++) {
-            if (propOwner[i] == turn) {
+    public void gameOver(int turn)
+      {
+        for (i = 0; i < 36; i++)
+          {
+            if (propOwner[i] == turn)
+              {
                 propOwner[i] = -1;
                 propOwned[i] = false;
-            }
-        }
+              }
+          }
 
         //Other stuff to be added and thought
-    }
+      }
 
-    public void propBuy(int turn) {
+    public void propBuy(int turn)
+      {
         //Colours stuff
         boxes[turn][cpos[turn]].setOpaque(true);
         boxes[turn][cpos[turn]].setBackground(colorPalette[turn]);
@@ -514,108 +580,135 @@ public final class Board extends javax.swing.JFrame {
         displayChangeBuy(turn);
         appendS(name[turn] + " ", turn);
         addLog("just bought " + propName[cpos[turn]] + " for " + propPrice[cpos[turn]] + " $");
-    }
+      }
 
-    public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
+    public void propOwnedCheck(int pOwner, int turn, int[] cpos)
+      {
         String pType = propType[cpos[turn]];
         System.out.println("Boadr:: Name:" + propName[cpos[turn]] + " Type:" + pType);
         int pRent;
-        switch (propType[cpos[turn]]) {
+        switch (pType)
+          {
             case "STH":
                 pRent = (25 * roll) + (25 * numprop[turn]);
                 break;
             case "S1230":
-                if (propOwner[12] == propOwner[30]) {
+                if (propOwner[12] == propOwner[30])
+                  {
                     pRent = (50 * roll);
-                } else {
+                  } else
+                  {
                     pRent = (25 * roll);
-                }
+                  }
                 break;
             case "S1533":
-                if (propOwner[15] == propOwner[33]) {
+                if (propOwner[15] == propOwner[33])
+                  {
                     pRent = (50 * roll);
-                } else {
+                  } else
+                  {
                     pRent = (25 * roll);
-                }
+                  }
                 break;
             case "SRBC":
                 pRent = (25 * roll);
                 break;
             default:
                 pRent = propRent[cpos[turn]];
-        }
+          }
         money[pOwner] += pRent;
         money[turn] -= pRent;
         displayChangePay(turn, pOwner, pRent);
 
         System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + pRent);
-    }
+      }
 
-    public void propNBCheck(int turn, int[] cpos, int roll) {
+    public void propNBCheck(int turn, int[] cpos, int roll)
+      {
         String pType = propType[cpos[turn]];
         int pRent = 0;
-        switch (propType[cpos[turn]]) {
+        System.out.println("Board:: NB Type:" + propType[cpos[turn]]);
+        switch (propType[cpos[turn]])
+          {
             case "FP":
                 pRent = -(10 * numprop[turn]);
+                money[turn] -= pRent;
+                displayChangeS(turn, pRent);
                 break;
             case "IT":
                 pRent = (5 * numprop[turn]);
+                money[turn] -= pRent;
+                displayChangeS(turn, pRent);
                 break;
             case "HT":
                 pRent = (2 * plChances[turn]);
+                money[turn] -= pRent;
+                displayChangeS(turn, pRent);
                 break;
             case "J":
                 pRent = jailfee[turn];
+                money[turn] -= pRent;
+                displayChangeS(turn, pRent);
                 break;
             case "CH":
-                pRent = -50;
+                chanceCard(roll);
                 break;
             case "CO":
                 pRent = -100;
+                money[turn] -= pRent;
+                displayChangeS(turn, pRent);
                 break;
             case "UK":
                 pRent = -100;
+                money[turn] -= pRent;
+                displayChangeS(turn, pRent);
                 break;
             case "ST":
-                appendS(name[turn], turn);
-                addLog(" just collected $200 for landing on Go");
-                pRent = -200;
-                break;
-            default:
+//                appendS(name[turn], turn);
+//                addLog(" just collected $200 for landing on Go");
                 pRent = 0;
-        }
-        money[turn] -= pRent;
-        displayChangeS(turn, pRent);
-    }
+                break;
+          }
+      }
 
-    public void displayChangeBuy(int turn) {
+    public void displayChangeBuy(int turn)
+      {
         plmoney[turn].setText("$ " + money[turn] + "(-" + propPrice[cpos[turn]] + ")");
-    }
+      }
 
-    public void displayChangePay(int turn, int propOwner, int pRent) {
+    public void displayChangePay(int turn, int propOwner, int pRent)
+      {
         plmoney[turn].setText("$ " + money[turn] + "(-" + pRent + ")");
         plmoney[propOwner].setText("$ " + money[propOwner] + "(+" + pRent + ")");
-    }
+      }
 
-    public void displayChangeRE() {
+    public void displayChangeRE()
+      {
         plmoney[turn].setText("$ " + money[turn] + " (+200)");
-    }
+      }
 
-    public void displayChangeS(int turn, int pRent) {
-        plmoney[turn].setText("$ " + money[turn] + " (" + (-1 * pRent) + ")");
-    }
+    public void displayChangeS(int turn, int pRent)
+      {
+        if (pRent < 0)
+          {
+            String sign = "-";
+            plmoney[turn].setText("$ " + money[turn] + " (" + sign + pRent + ")");
+          } else if (pRent > 0)
+          {
+            String sign = "+";
+            plmoney[turn].setText("$ " + money[turn] + " (" + sign + pRent + ")");
+          }
+          else{
+              
+        plmoney[turn].setText("$ " + money[turn] + " (" +  pRent + ")");
+          }
+      }
 
-    public static void sleep(int amt) {
-        long a = System.currentTimeMillis();
-        long b = System.currentTimeMillis();
-        while ((b - a) <= amt) {
-            b = System.currentTimeMillis();
-        }
-    }
-
-    public void chanceCard() {
+    public void chanceCard(int roll)
+      {
         Random rand = new Random();
-        int ind = rand.nextInt(15);
+//        int ind = rand.nextInt(15);
+        int ind = 0;
         JDialog card = new JDialog();
         Container pane = card.getContentPane();
         String desc = pd.chance[ind];
@@ -634,35 +727,189 @@ public final class Board extends javax.swing.JFrame {
         card.setLocationRelativeTo(null);
         card.setVisible(true);
         card.setAlwaysOnTop(true);
-        //sleep for 2000ms
+        System.out.println("ChanceCard:: Index:" + ind);
+        counter = 0;
+        timer = new Timer(1000, new ActionListener()
+          {
+            @Override
+            public void actionPerformed(ActionEvent e)
+              {
+                counter++;
+                if (counter == 5)
+                  {
+                    System.out.println("Counter:" + counter);
+                    timer.stop();
+                  }
+              }
+          });
+        timer.start();
         card.setVisible(false);
         card.dispose();
-//        switch(pd.chanceActs[ind]){
-//            case "move":
-////                roll = pd.chanceVals[ind]-cpos[turn];
-//                moveTo(turn, pd.chanceVals[ind]);
-//        }
-    }
+        checkChance(ind, roll);
 
-    public void communityCard(int index) {
+      }
 
-    }
+    public void checkChance(int ind, int roll)
+      {
+        pd.GetProp();
+        switch (pd.chanceActs[ind])
+          {
+            case "$":
+                money[turn] += pd.chanceVals[ind];
+                displayChangeS(turn, pd.chanceVals[ind]);
+                break;
+            case "M":
+                Goto(pd.chancePos[ind], cpos, turn, roll);
+                break;
+            case "MM":
+                Goto(pd.chancePos[ind], cpos, turn, roll);
+                money[turn] += pd.chanceVals[ind];
+                displayChangeS(turn, pd.chanceVals[ind]);
+                break;
+            case "P$":
+                for (i = 0; i < players; i++)
+                  {
+                    money[i] -= pd.chanceVals[ind];
+                    displayChangeS(i, pd.chanceVals[ind]);
+                  }
+                money[turn] += (pd.chanceVals[ind] * (players + 1));
+                displayChangeS(turn, pd.chanceVals[ind]);
+                break;
+            case "H":
+                money[turn] += pd.chanceVals[ind];
+                displayChangeS(turn, pd.chanceVals[ind]);
+                break;
+            case "MSS":
+                Goto(pd.chancePos[ind], cpos, turn, roll);
+                money[turn] += pd.chanceVals[ind];
+                displayChangeS(turn, pd.chanceVals[ind]);
+                break;
+            case "MMS":
+                if (cpos[turn] <= pd.chancePos[ind])
+                  {
+                    Goto(pd.chancePos[ind], cpos, turn, roll);
+                  } else
+                  {
+                    Goto(pd.chancePos[ind], cpos, turn, roll);
+                    money[turn] += pd.chanceVals[ind];
+                    displayChangeS(turn, pd.chanceVals[ind]);
+                  }
+                break;
+          }
+      }
 
-    public void rolling() {
-        if (turn == players) {
+    public void communityCard()
+      {
+        Random rand = new Random();
+//        int ind = rand.nextInt(15);  
+        int ind = 0;
+        JDialog card = new JDialog();
+        Container pane = card.getContentPane();
+        String desc = pd.comm[ind];
+        card.setPreferredSize(new Dimension(800, 300));
+        JLabel type = new JLabel("Community", JLabel.CENTER);
+        type.setFont(new Font("Serif", Font.BOLD, 48));
+        type.setPreferredSize(new Dimension(600, 60));
+        pane.add(type, BorderLayout.PAGE_START);
+        JLabel description = new JLabel(desc, JLabel.CENTER);
+        description.setFont(new Font("Serif", Font.BOLD, 24));
+        pane.add(description, BorderLayout.CENTER);
+        pane.setBackground(Color.yellow);
+        card.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        card.setUndecorated(true);
+        card.pack();
+        card.setLocationRelativeTo(null);
+        card.setVisible(true);
+        card.setAlwaysOnTop(true);
+        System.out.println("CommCard:: Index:" + ind);
+        timer = new Timer(1000, new ActionListener()
+          {
+            @Override
+            public void actionPerformed(ActionEvent e)
+              {
+                counter++;
+                if (counter == 5)
+                  {
+                    timer.stop();
+                  }
+              }
+          });
+        timer.start();
+        card.setVisible(false);
+        card.dispose();
+        commCheck(ind, roll);
+      }
+
+    public void commCheck(int ind, int roll)
+      {
+        pd.GetProp();
+        switch (pd.commActs[ind])
+          {
+            case "$":
+                money[turn] += pd.commVals[ind];
+                displayChangeS(turn, pd.commVals[ind]);
+                break;
+            case "M":
+                Goto(pd.commPos[ind], cpos, turn, roll);
+                break;
+            case "MM":
+                Goto(pd.commPos[ind], cpos, turn, roll);
+                money[turn] += pd.commVals[ind];
+                displayChangeS(turn, pd.commVals[ind]);
+                break;
+            case "P$":
+                for (i = 0; i < players; i++)
+                  {
+                    money[i] -= pd.commVals[ind];
+                    displayChangeS(i, pd.commVals[ind]);
+                  }
+                money[turn] += (pd.commVals[ind] * (players + 1));
+                displayChangeS(turn, pd.commVals[ind]);
+                break;
+            case "H":
+                money[turn] += pd.commVals[ind];
+                displayChangeS(turn, pd.commVals[ind]);
+                break;
+            case "MSS":
+                Goto(pd.commPos[ind], cpos, turn, roll);
+                money[turn] += pd.commVals[ind];
+                displayChangeS(turn, pd.commVals[ind]);
+                break;
+            case "MMS":
+                if (cpos[turn] <= pd.commPos[ind])
+                  {
+                    Goto(pd.commPos[ind], cpos, turn, roll);
+                  } else
+                  {
+                    Goto(pd.commPos[ind], cpos, turn, roll);
+                    money[turn] += pd.commVals[ind];
+                    displayChangeS(turn, pd.commVals[ind]);
+                  }
+                break;
+            case "MB":
+                Goto(cpos[turn] + pd.commPos[ind], cpos, turn, roll);
+          }
+      }
+
+    public void rolling()
+      {
+        if (turn == players)
+          {
             turn = 0;
-        }
+          }
 //        roll = Dice.rollDice(dice);
 //      Temporary Testing Cause
-        if (dice == 2) {
+        if (dice == 2)
+          {
             roll = (int) (Math.random() * 12 + 1);
-        } else {
+          } else
+          {
             roll = (int) (Math.random() * 6 + 1);
-        }
+          }
         move(turn);
         appendS(name[turn], turn);
         addLog(" rolled: " + roll);
-    }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -671,7 +918,8 @@ public final class Board extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         dlgLog = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -875,7 +1123,7 @@ public final class Board extends javax.swing.JFrame {
         paneControls = new javax.swing.JPanel();
         btnRoll = new javax.swing.JButton();
         btnLog = new javax.swing.JButton();
-        btnEnd = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
@@ -903,8 +1151,10 @@ public final class Board extends javax.swing.JFrame {
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
-        btnCD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCD.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCDActionPerformed(evt);
             }
         });
@@ -993,77 +1243,98 @@ public final class Board extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB7MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB7);
         lblHoverB7.setBounds(2, 98, 90, 60);
 
-        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB6MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB6MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB6);
         lblHoverB6.setBounds(2, 160, 90, 60);
 
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB5MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB5MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
 
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB4MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB4MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
 
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB3MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB3MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB3);
         lblHoverB3.setBounds(2, 415, 90, 60);
 
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB2MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB2MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
 
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB1MouseExited(evt);
             }
         });
@@ -2336,37 +2607,47 @@ public final class Board extends javax.swing.JFrame {
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRollActionPerformed(evt);
             }
         });
-        btnRoll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
                 btnRollKeyReleased(evt);
             }
         });
 
         btnLog.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnLog.setText("LOG");
-        btnLog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLog.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLogActionPerformed(evt);
             }
         });
 
-        btnEnd.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        btnEnd.setText("NEXT");
-        btnEnd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEndActionPerformed(evt);
+        btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnNext.setText("NEXT");
+        btnNext.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnNextActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExitActionPerformed(evt);
             }
         });
@@ -2378,27 +2659,28 @@ public final class Board extends javax.swing.JFrame {
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
             .addGroup(paneControlsLayout.createSequentialGroup()
-                .addComponent(btnRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(btnLog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         paneP1.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNameP1.setBackground(new java.awt.Color(255, 0, 0));
-        lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblIconP1.setBackground(new java.awt.Color(255, 0, 0));
@@ -2436,7 +2718,7 @@ public final class Board extends javax.swing.JFrame {
         paneP2.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNameP2.setBackground(new java.awt.Color(0, 255, 0));
-        lblNameP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNameP2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblIconP2.setBackground(new java.awt.Color(0, 255, 0));
@@ -2472,7 +2754,7 @@ public final class Board extends javax.swing.JFrame {
         paneP3.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNameP3.setBackground(new java.awt.Color(0, 0, 255));
-        lblNameP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNameP3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblIconP3.setBackground(new java.awt.Color(0, 0, 255));
@@ -2508,7 +2790,7 @@ public final class Board extends javax.swing.JFrame {
         paneP4.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNameP4.setBackground(new java.awt.Color(255, 255, 0));
-        lblNameP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNameP4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblIconP4.setBackground(new java.awt.Color(255, 255, 0));
@@ -2575,9 +2857,9 @@ public final class Board extends javax.swing.JFrame {
         paneBossLayout.setVerticalGroup(
             paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBossLayout.createSequentialGroup()
-                .addContainerGap(707, Short.MAX_VALUE)
+                .addContainerGap(726, Short.MAX_VALUE)
                 .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(paneBossLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -2670,22 +2952,24 @@ public final class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
-//        rolling();
-//                int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
+        rolling();
+//        int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
 //        roll = m;
 //        move(turn);
-        chanceCard();
+//        chanceCard(int roll);
         btnRoll.setEnabled(false);
     }//GEN-LAST:event_btnRollActionPerformed
 
     private void btnRollKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnRollKeyReleased
     {//GEN-HEADEREND:event_btnRollKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_R) {
+        if (evt.getKeyCode() == KeyEvent.VK_R)
+          {
             rolling();
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+          }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE)
+          {
             System.exit(0);
-        }
+          }
     }//GEN-LAST:event_btnRollKeyReleased
 
     private void btnCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCDActionPerformed
@@ -2700,89 +2984,110 @@ public final class Board extends javax.swing.JFrame {
         dlgLog.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnLogActionPerformed
 
-    private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         btnRoll.setEnabled(true);
         appendS(name[turn] + "'s", turn);
         addLog(" turn ended.");
         turn++;
-        if (turn == players) {
+        if (turn == players)
+          {
             turn = 0;
-        }
-        btnEnd.setEnabled(false);
+          }
+        btnNext.setEnabled(false);
         displayChange(turn);
-    }//GEN-LAST:event_btnEndActionPerformed
+    }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         String ObjButtons[]
-                = {
+                =
+                  {
                     "Yes", "No", "Save"
-                };
+                  };
         int PromptResult = JOptionPane.showOptionDialog(null,
                 "Are you sure you want to exit?", "Monopoly Java",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
                 ObjButtons, ObjButtons[2]);
-        if (PromptResult == 0) {
+        if (PromptResult == 0)
+          {
             System.exit(0);
-        }
-        if (PromptResult == 2) {
+          }
+        if (PromptResult == 2)
+          {
             new Save_Manager().setVisible(true);
-        }
+          }
     }//GEN-LAST:event_btnExitActionPerformed
 
-    public void displayChange(int turn) {
+    public void displayChange(int turn)
+      {
 
-        for (i = 0; i < players; i++) {
-            if (i == turn) {
+        for (i = 0; i < players; i++)
+          {
+            if (i == turn)
+              {
                 plnames[i].setEnabled(true);
                 plmoney[i].setEnabled(true);
                 plicons[i].setEnabled(true);
-            } else {
+              } else
+              {
                 plnames[i].setEnabled(false);
                 plmoney[i].setEnabled(false);
                 plicons[i].setEnabled(false);
-            }
-        }
-    }
+              }
+          }
+      }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new StartScreenfrm().setVisible(true);
-            }
-        });
-    }
+              }
+          });
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel P1B1;
     private javax.swing.JLabel P1B10;
@@ -2930,9 +3235,9 @@ public final class Board extends javax.swing.JFrame {
     private javax.swing.JLabel P4B9;
     private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnCD;
-    private javax.swing.JButton btnEnd;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLog;
+    private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPass;
     private javax.swing.JButton btnRoll;
     private javax.swing.JDialog dlgLog;
@@ -3007,4 +3312,4 @@ public final class Board extends javax.swing.JFrame {
     private javax.swing.JTextPane txtLog;
     // End of variables declaration//GEN-END:variables
 
-}
+  }

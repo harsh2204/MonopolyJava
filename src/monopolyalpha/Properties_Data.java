@@ -23,14 +23,14 @@ public class Properties_Data
     public ImageIcon cardIcon;
     ThemeSelect ts = new ThemeSelect();
 
-    
     //Chance and community stuff
     public String chance[] = new String[16];
     public String chanceActs[] = new String[16];
-    public int chanceVals[] = new int[16];
-    public String community[] = new String[16];
-    public String communityActs[] = new String[16];
-    public int communityVals[] = new int[16];
+    public int chanceVals[] = new int[16], chancePos[] = new int[16];
+    public String comm[] = new String[16];
+    public String commActs[] = new String[16];
+    public int commVals[] = new int[16], commPos[] = new int[16];
+
     public Properties_Data()
       {
         this.thm = ts.theme;
@@ -283,15 +283,16 @@ public class Properties_Data
                 Canada_Data can = new Canada_Data();
                 can.setProp();
                 can.getCards();
-                    //Chance and community stuff                   
+                //Chance and community stuff                   
                 chance = can.chance.clone();
                 chanceActs = can.chanceActs.clone();
                 chanceVals = can.chanceVals.clone();
-                chance = can.chance.clone();
-                community = can.community.clone();
-                communityActs = can.communityActs.clone();
-                communityVals = can.communityVals.clone();
-                for (int i = 0; i < prop.length; i++)
+                chancePos = can.chancePos.clone();
+                comm = can.comm.clone();
+                commActs = can.commActs.clone();
+                commVals = can.commVals.clone();
+                commPos = can.commPos.clone();
+                for (int i = 0; i < 36; i++)
                   {
                     prop[i] = new Properties_Data();
                     prop[i].name = can.property[i].propName;
@@ -335,10 +336,6 @@ public class Properties_Data
                     prop[i].type = can.property[i].type;
 //                System.out.println("TEST PROPERTY NAME: " + prop[i].name);//REMOVE AFTER
 //                System.out.println(prop[i].price + " " + prop[i].rent1 + " " + prop[i].rent2 + " " + prop[i].rent3 + " " + prop[i].rent4 + " " + prop[i].rentH + " " + prop[i].colour);//REMOVE AFTER
-                  }
-                for (int i = 0; i < 20; i++)
-                  {
-                    prop[i].buyable = true;
                   }
                 break;
               }
