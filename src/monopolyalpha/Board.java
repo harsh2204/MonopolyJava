@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -154,33 +155,33 @@ public final class Board extends javax.swing.JFrame {
             houses[i] = new JLabel();
             if (propBuyable[i]) {
                 if (i >0 && i < 10) {
-                    houses[i].setOpaque(true);
+                    houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
-                    houses[i].setBackground(Color.BLACK);
+//                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x + boxPanes[i].getWidth() + 7, boxPanes[i].getLocation().y));
                     paneBoard.add(houses[i]);
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png"));
                 }
                 if (i > 9 && i < 19) {
-                    houses[i].setOpaque(true);
+                    houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
-                    houses[i].setBackground(Color.BLACK);
+//                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y+boxPanes[i].getHeight()+14));
                     paneBoard.add(houses[i]);          
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png"));
                 }
                 if (i > 18 && i < 28) {
-                    houses[i].setOpaque(true);
+                    houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
-                    houses[i].setBackground(Color.BLACK);
+//                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x-25, boxPanes[i].getLocation().y));
                     paneBoard.add(houses[i]);     
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png"));
                 }
                 if (i > 27 && i <=35) {
-                    houses[i].setOpaque(true);
+                    houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
-                    houses[i].setBackground(Color.BLACK);
+//                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y-35));
                     paneBoard.add(houses[i]); 
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png"));
@@ -3033,12 +3034,8 @@ public final class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReBuyActionPerformed
 
     private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
-        // TODO add your handling code here:
-//        int x = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter x value"));
-        
-
-//        test.setLocation(new Point(paneB3.getLocationOnScreen().x,paneB3.getLocation().y));
-//        new TradeForm().setVisible(true);
+        // TODO add your handling code here:       
+        new TradeForm().setVisible(true);
     }//GEN-LAST:event_btnTradeActionPerformed
 
     public void displayChange(int turn) {
