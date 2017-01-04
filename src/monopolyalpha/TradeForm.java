@@ -5,10 +5,11 @@
  */
 package monopolyalpha;
 
-import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -21,16 +22,18 @@ public class TradeForm extends javax.swing.JFrame {
     /**
      * Creates new form TradeForm
      */
-    Checkbox[] checkboxes1, checkboxes2;
+    public JCheckBox[] checkboxes1, checkboxes2;
     Board board = InitTest.board;
     JPanel[] others;
+    ArrayList<Integer> from = new ArrayList();
+    ArrayList<Integer> to = new ArrayList();
 
     public TradeForm() {
         initComponents();
         paneCur.setPreferredSize(new Dimension(paneCur.getWidth(), paneOthers.getHeight()));
         paneCur.setLayout(new BoxLayout(paneCur, BoxLayout.Y_AXIS));
-        checkboxes1 = new Checkbox[36];
-        checkboxes2 = new Checkbox[36];
+        checkboxes1 = new JCheckBox[36];
+        checkboxes2 = new JCheckBox[36];
         others = new JPanel[board.players];
         for (int i = 0; i < others.length; i++) {
             if (i != board.turn) {
@@ -41,8 +44,8 @@ public class TradeForm extends javax.swing.JFrame {
                 others[i].setSize(paneOthers.getSize());
                 for (int j = 0; j < board.propName.length; j++) {
                     if (board.propOwner[j] == i) {
-                        checkboxes2[j] = new Checkbox(board.propName[j]);
-                        checkboxes2[j].setFont(new Font("Showcard Gothic", 0, 18));
+                        this.checkboxes2[j] = new JCheckBox(board.propName[j]);
+                        this.checkboxes2[j].setFont(new Font("Showcard Gothic", 0, 18));
                         others[i].add(checkboxes2[j]);
                         paneOthers.addTab(board.name[i], others[i]);
                         paneCur.validate();
@@ -55,8 +58,8 @@ public class TradeForm extends javax.swing.JFrame {
         for (int i = 0; i < board.propName.length; i++) {
             if (board.propOwner[i] == board.turn) {
                 System.out.println(board.propName[i] + " added");
-                checkboxes1[i] = new Checkbox(board.propName[i]);
-                checkboxes1[i].setFont(new Font("Showcard Gothic", 0, 18));
+                this.checkboxes1[i] = new JCheckBox(board.propName[i]);
+                this.checkboxes1[i].setFont(new Font("Showcard Gothic", 0, 18));
                 paneCur.add(checkboxes1[i]);
                 paneCur.validate();
                 paneCur.repaint();
@@ -76,7 +79,7 @@ public class TradeForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         paneCur = new javax.swing.JPanel();
         paneOthers = new javax.swing.JTabbedPane();
-        jButton1 = new javax.swing.JButton();
+        btnTrd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,8 +100,13 @@ public class TradeForm extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        jButton1.setText("TRADE");
+        btnTrd.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnTrd.setText("TRADE");
+        btnTrd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +120,7 @@ public class TradeForm extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(paneCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTrd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(paneOthers, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11))
@@ -131,12 +139,52 @@ public class TradeForm extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTrd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrdActionPerformed
+        // TODO add your handling code here:
+        int tradeFrom = board.turn;
+        int tradeToInd = paneOthers.getSelectedIndex();
+        int tradeTo = -1;
+        for (int i = 0; i < others.length; i++) {
+            if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
+                System.out.println("other player found");
+                tradeTo = i;
+            }
+        }
+        for (int i = 0; i < checkboxes1.length; i++) {
+            if (checkboxes1[i] != null) {
+                System.out.println("From prop: " + checkboxes1[i].getText());
+                if (checkboxes1[i].isSelected()) {
+                    from.add(i);
+                }
+            }
+        }
+        for (int i = 0; i < checkboxes2.length; i++) {
+            if (checkboxes2[i] != null) {
+                System.out.println("To prop: " + checkboxes2[i].getText());
+                if (checkboxes2[i].isSelected()) {
+                    to.add(i);
+                }
+            }
+        }
+        for (int i = 0; i < from.size(); i++) {
+            System.out.println("from: " + from.get(i));
+            board.propOwner[from.get(i)] = tradeTo;
+            board.updateColors(tradeTo, from.get(i));
+        }
+        for (int i = 0; i < to.size(); i++) {
+            System.out.println("to: " + to.get(i));
+            board.propOwner[to.get(i)] = tradeFrom;
+            board.updateColors(tradeFrom, to.get(i));
+        }
+
+    }//GEN-LAST:event_btnTrdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,7 +222,7 @@ public class TradeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTrd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel paneCur;
     private javax.swing.JTabbedPane paneOthers;

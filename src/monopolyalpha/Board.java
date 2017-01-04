@@ -534,11 +534,20 @@ public final class Board extends javax.swing.JFrame {
         //Other stuff to be added and thought
     }
 
-    public void propBuy(int turn) {
-        //Colours stuff
-        boxes[turn][cpos[turn]].setOpaque(true);
-        boxes[turn][cpos[turn]].setBackground(colorPalette[turn]);
+    public void updateColors(int player, int pos) {
+
+        for (int i = 0; i < 4; i++) {
+            boxes[i][pos].setOpaque(false);
+            boxes[i][pos].setBackground(new Color(0, 0, 0, 0));
+        }
+//Colours stuff
+        boxes[player][pos].setOpaque(true);
+        boxes[player][pos].setBackground(colorPalette[player]);
         //--------------------------------
+    }
+
+    public void propBuy(int turn) {
+        updateColors(turn, cpos[turn]);
         money[turn] -= propPrice[cpos[turn]];
         propMoney[turn] += propPrice[cpos[turn]];
         totMoney[turn] = propMoney[turn] + money[turn];
