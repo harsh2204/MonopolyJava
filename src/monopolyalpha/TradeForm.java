@@ -46,6 +46,7 @@ public class TradeForm extends javax.swing.JFrame {
                     if (board.propOwner[j] == i) {
                         this.checkboxes2[j] = new JCheckBox(board.propName[j]);
                         this.checkboxes2[j].setFont(new Font("Showcard Gothic", 0, 18));
+                        this.checkboxes2[j].setOpaque(false);
                         others[i].add(checkboxes2[j]);
                         paneOthers.addTab(board.name[i], others[i]);
                         paneCur.validate();
@@ -60,6 +61,7 @@ public class TradeForm extends javax.swing.JFrame {
                 System.out.println(board.propName[i] + " added");
                 this.checkboxes1[i] = new JCheckBox(board.propName[i]);
                 this.checkboxes1[i].setFont(new Font("Showcard Gothic", 0, 18));
+                this.checkboxes1[i].setOpaque(false);
                 paneCur.add(checkboxes1[i]);
                 paneCur.validate();
                 paneCur.repaint();
