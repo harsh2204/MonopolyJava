@@ -439,7 +439,6 @@ public final class Board extends javax.swing.JFrame
           {
             npos[turnn] = npos[turnn] - 35;
           }
-        rands.setText("Turn:" + turnn + "Roll:" + roll);
         count = 0;
         moveTimer = new Timer(500, new ActionListener()
           {
@@ -968,7 +967,8 @@ public final class Board extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         dlgLog = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1168,7 +1168,6 @@ public final class Board extends javax.swing.JFrame
         P2B36 = new javax.swing.JLabel();
         P3B36 = new javax.swing.JLabel();
         P4B36 = new javax.swing.JLabel();
-        lblBoard = new javax.swing.JLabel();
         paneControls = new javax.swing.JPanel();
         btnRoll = new javax.swing.JButton();
         btnLog = new javax.swing.JButton();
@@ -1192,7 +1191,7 @@ public final class Board extends javax.swing.JFrame
         lblNameP4 = new javax.swing.JLabel();
         lblIconP4 = new javax.swing.JLabel();
         lblMoneyP4 = new javax.swing.JLabel();
-        rands = new javax.swing.JLabel();
+        lblBoard = new javax.swing.JLabel();
 
         dlgLog.setAlwaysOnTop(true);
         dlgLog.setUndecorated(true);
@@ -1202,8 +1201,10 @@ public final class Board extends javax.swing.JFrame
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
-        btnCD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCD.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCDActionPerformed(evt);
             }
         });
@@ -1290,79 +1291,101 @@ public final class Board extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        paneBoss.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB7MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB7);
         lblHoverB7.setBounds(2, 98, 90, 60);
 
-        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB6MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB6MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB6);
         lblHoverB6.setBounds(2, 160, 90, 60);
 
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB5MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB5MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
 
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB4MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB4MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
 
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB3MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB3MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB3);
         lblHoverB3.setBounds(2, 415, 90, 60);
 
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB2MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB2MouseExited(evt);
             }
         });
         jLayeredPane1.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
 
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
                 lblHoverB1MouseExited(evt);
             }
         });
@@ -2629,27 +2652,31 @@ public final class Board extends javax.swing.JFrame
         jLayeredPane1.add(paneB36);
         paneB36.setBounds(95, 640, 58, 51);
 
-        lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
-        jLayeredPane1.add(lblBoard);
-        lblBoard.setBounds(0, 0, 700, 700);
+        paneBoss.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 700, 700));
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnRoll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnRollActionPerformed(evt);
             }
         });
-        btnRoll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
                 btnRollKeyReleased(evt);
             }
         });
 
         btnLog.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnLog.setText("LOG");
-        btnLog.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLog.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLogActionPerformed(evt);
             }
         });
@@ -2657,24 +2684,30 @@ public final class Board extends javax.swing.JFrame
         btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnNext.setText("NEXT");
         btnNext.setEnabled(false);
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnNext.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnNextActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExitActionPerformed(evt);
             }
         });
 
         jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         jButton1.setText("Trade");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -2682,8 +2715,10 @@ public final class Board extends javax.swing.JFrame
         btnReBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnReBuy.setText("BUY");
         btnReBuy.setEnabled(false);
-        btnReBuy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnReBuy.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnReBuyActionPerformed(evt);
             }
         });
@@ -2703,12 +2738,12 @@ public final class Board extends javax.swing.JFrame
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2718,6 +2753,8 @@ public final class Board extends javax.swing.JFrame
                     .addComponent(btnReBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        paneBoss.add(paneControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 727, 710, -1));
 
         paneP1.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -2752,10 +2789,12 @@ public final class Board extends javax.swing.JFrame
                 .addComponent(lblIconP1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMoneyP1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         lblNameP1.getAccessibleContext().setAccessibleDescription("");
+
+        paneBoss.add(paneP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         paneP2.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -2793,6 +2832,8 @@ public final class Board extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        paneBoss.add(paneP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, -1));
+
         paneP3.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNameP3.setBackground(new java.awt.Color(0, 0, 255));
@@ -2826,8 +2867,10 @@ public final class Board extends javax.swing.JFrame
                 .addComponent(lblIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMoneyP3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        paneBoss.add(paneP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, 310));
 
         paneP4.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -2849,11 +2892,8 @@ public final class Board extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(paneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMoneyP4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addGroup(paneP4Layout.createSequentialGroup()
-                        .addGroup(paneP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblIconP4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(lblNameP4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(lblIconP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNameP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneP4Layout.setVerticalGroup(
@@ -2868,59 +2908,26 @@ public final class Board extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout paneBossLayout = new javax.swing.GroupLayout(paneBoss);
-        paneBoss.setLayout(paneBossLayout);
-        paneBossLayout.setHorizontalGroup(
-            paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBossLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
-            .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(paneBossLayout.createSequentialGroup()
-                    .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(paneBossLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(rands, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(4, 4, 4))
-                        .addGroup(paneBossLayout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(6, 6, 6)
-                    .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(paneP4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 14, Short.MAX_VALUE)))
-        );
-        paneBossLayout.setVerticalGroup(
-            paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBossLayout.createSequentialGroup()
-                .addContainerGap(726, Short.MAX_VALUE)
-                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(paneBossLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(paneBossLayout.createSequentialGroup()
-                            .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(100, 100, 100)
-                            .addComponent(paneP4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBossLayout.createSequentialGroup()
-                            .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(11, 11, 11)
-                            .addComponent(rands, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(paneP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 72, Short.MAX_VALUE)))
-        );
+        paneBoss.add(paneP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, -1, 298));
 
-        getContentPane().add(paneBoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 810));
+        lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
+        paneBoss.add(lblBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(paneBoss, javax.swing.GroupLayout.PREFERRED_SIZE, 1115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(paneBoss, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3363,7 +3370,6 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JPanel paneP2;
     private javax.swing.JPanel paneP3;
     private javax.swing.JPanel paneP4;
-    private javax.swing.JLabel rands;
     private javax.swing.JTextPane txtLog;
     // End of variables declaration//GEN-END:variables
 
