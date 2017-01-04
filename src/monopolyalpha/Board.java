@@ -159,33 +159,40 @@ public final class Board extends javax.swing.JFrame {
                     houses[i].setBackground(Color.BLACK);
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x + boxPanes[i].getWidth() + 7, boxPanes[i].getLocation().y));
                     paneBoard.add(houses[i]);
+                    houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png"));
                 }
                 if (i > 9 && i < 19) {
                     houses[i].setOpaque(true);
                     houses[i].setSize(20, 20);
                     houses[i].setBackground(Color.BLACK);
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y+boxPanes[i].getHeight()+14));
-                    paneBoard.add(houses[i]);                    
+                    paneBoard.add(houses[i]);          
+                    houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png"));
                 }
                 if (i > 18 && i < 28) {
                     houses[i].setOpaque(true);
                     houses[i].setSize(20, 20);
                     houses[i].setBackground(Color.BLACK);
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x-25, boxPanes[i].getLocation().y));
-                    paneBoard.add(houses[i]);                    
+                    paneBoard.add(houses[i]);     
+                    houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png"));
                 }
                 if (i > 27 && i <=35) {
                     houses[i].setOpaque(true);
                     houses[i].setSize(20, 20);
                     houses[i].setBackground(Color.BLACK);
                     houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y-35));
-                    paneBoard.add(houses[i]);                    
+                    paneBoard.add(houses[i]); 
+                    houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png"));
                 }
 
             }
             paneBoard.validate();
             paneBoard.repaint();
         }
+//        for (int x = 0; x < houses.length; x++){
+//            houses[x].setVisible(false);
+//        }
     }
     public void datatransfer() {
 //        it.setplayers();
