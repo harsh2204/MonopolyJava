@@ -10,6 +10,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,10 +18,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.text.BadLocationException;
@@ -53,7 +54,8 @@ public final class Board extends javax.swing.JFrame {
     public static boolean snake = false, bail = false;
     public static boolean[] propOwned = new boolean[36], propBuyable = new boolean[36], Game = new boolean[4];
     public static JLabel[][] boxes = new JLabel[4][37];
-    public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4];
+    public JPanel[] boxPanes = new JPanel[36];
+    public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4], houses = new JLabel[36];
     Card c;
     public static Image image;
     public static Timer moveTimer, timer;
@@ -75,6 +77,7 @@ public final class Board extends javax.swing.JFrame {
         changeimages();
         addpCount();
         displayChange(turn);
+        setupHouses();
         addWindowListener(new WindowAdapter() {
 
             @Override
@@ -145,7 +148,45 @@ public final class Board extends javax.swing.JFrame {
         plmoney[3] = lblMoneyP4;
         System.out.println("Board: Labels setup done!");
     }
+    
+    public void setupHouses(){
+        for (int i = 0; i < boxPanes.length; i++) {
+            houses[i] = new JLabel();
+            if (propBuyable[i]) {
+                if (i >0 && i < 10) {
+                    houses[i].setOpaque(true);
+                    houses[i].setSize(20, 20);
+                    houses[i].setBackground(Color.BLACK);
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x + boxPanes[i].getWidth() + 7, boxPanes[i].getLocation().y));
+                    paneBoard.add(houses[i]);
+                }
+                if (i > 9 && i < 19) {
+                    houses[i].setOpaque(true);
+                    houses[i].setSize(20, 20);
+                    houses[i].setBackground(Color.BLACK);
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y+boxPanes[i].getHeight()+14));
+                    paneBoard.add(houses[i]);                    
+                }
+                if (i > 18 && i < 28) {
+                    houses[i].setOpaque(true);
+                    houses[i].setSize(20, 20);
+                    houses[i].setBackground(Color.BLACK);
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x-25, boxPanes[i].getLocation().y));
+                    paneBoard.add(houses[i]);                    
+                }
+                if (i > 27 && i <=35) {
+                    houses[i].setOpaque(true);
+                    houses[i].setSize(20, 20);
+                    houses[i].setBackground(Color.BLACK);
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y-35));
+                    paneBoard.add(houses[i]);                    
+                }
 
+            }
+            paneBoard.validate();
+            paneBoard.repaint();
+        }
+    }
     public void datatransfer() {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
@@ -338,6 +379,44 @@ public final class Board extends javax.swing.JFrame {
         boxes[3][33] = P4B34;
         boxes[3][34] = P4B35;
         boxes[3][35] = P4B36;
+
+        //Jpanels now
+        boxPanes[0] = paneB1;
+        boxPanes[1] = paneB2;
+        boxPanes[2] = paneB3;
+        boxPanes[3] = paneB4;
+        boxPanes[4] = paneB5;
+        boxPanes[5] = paneB6;
+        boxPanes[6] = paneB7;
+        boxPanes[7] = paneB8;
+        boxPanes[8] = paneB9;
+        boxPanes[9] = paneB10;
+        boxPanes[10] = paneB11;
+        boxPanes[11] = paneB12;
+        boxPanes[12] = paneB13;
+        boxPanes[13] = paneB14;
+        boxPanes[14] = paneB15;
+        boxPanes[15] = paneB16;
+        boxPanes[16] = paneB17;
+        boxPanes[17] = paneB18;
+        boxPanes[18] = paneB19;
+        boxPanes[19] = paneB20;
+        boxPanes[20] = paneB21;
+        boxPanes[21] = paneB22;
+        boxPanes[22] = paneB23;
+        boxPanes[23] = paneB24;
+        boxPanes[24] = paneB25;
+        boxPanes[25] = paneB26;
+        boxPanes[26] = paneB27;
+        boxPanes[27] = paneB28;
+        boxPanes[28] = paneB29;
+        boxPanes[29] = paneB30;
+        boxPanes[30] = paneB31;
+        boxPanes[31] = paneB32;
+        boxPanes[32] = paneB33;
+        boxPanes[33] = paneB34;
+        boxPanes[34] = paneB35;
+        boxPanes[35] = paneB36;
 //        for (int i = 0; i < 4; i++) {
 //            for (int k = 0; k < 36; k++) {
 //               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
@@ -492,9 +571,11 @@ public final class Board extends javax.swing.JFrame {
         cpos[turn] = npos;
         propcall(cpos, turn, roll);
     }
-    public void enableNext(){
+
+    public void enableNext() {
         btnNext.setEnabled(true);
     }
+
     public void propcall(int[] cpos, int turn, int roll) {
         if (propBuyable[cpos[turn]] == true) {
             if (propOwned[cpos[turn]] == true) {
@@ -505,7 +586,7 @@ public final class Board extends javax.swing.JFrame {
             } else {
                 btnReBuy.setEnabled(true);
                 BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
-                buy.setVisible(true);                
+                buy.setVisible(true);
             }
         } else {
             btnReBuy.setEnabled(false);
@@ -883,8 +964,7 @@ public final class Board extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         dlgLog = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -896,7 +976,7 @@ public final class Board extends javax.swing.JFrame {
         btnBuy = new javax.swing.JButton();
         btnPass = new javax.swing.JButton();
         paneBoss = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        paneBoard = new javax.swing.JLayeredPane();
         lblHoverB7 = new javax.swing.JLabel();
         lblHoverB6 = new javax.swing.JLabel();
         lblHoverB5 = new javax.swing.JLabel();
@@ -1089,7 +1169,7 @@ public final class Board extends javax.swing.JFrame {
         btnLog = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnTrade = new javax.swing.JButton();
         btnReBuy = new javax.swing.JButton();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
@@ -1117,10 +1197,8 @@ public final class Board extends javax.swing.JFrame {
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
-        btnCD.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCDActionPerformed(evt);
             }
         });
@@ -1210,102 +1288,81 @@ public final class Board extends javax.swing.JFrame {
 
         paneBoss.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB7);
+        paneBoard.add(lblHoverB7);
         lblHoverB7.setBounds(2, 98, 90, 60);
 
-        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB6MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB6MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB6);
+        paneBoard.add(lblHoverB6);
         lblHoverB6.setBounds(2, 160, 90, 60);
 
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB5MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB5MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB5);
+        paneBoard.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
 
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB4MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB4MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB4);
+        paneBoard.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
 
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB3MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB3MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB3);
+        paneBoard.add(lblHoverB3);
         lblHoverB3.setBounds(2, 415, 90, 60);
 
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB2MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB2MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB2);
+        paneBoard.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
 
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB1MouseExited(evt);
             }
         });
-        jLayeredPane1.add(lblHoverB1);
+        paneBoard.add(lblHoverB1);
         lblHoverB1.setBounds(2, 545, 90, 60);
 
         paneB1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1340,7 +1397,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB1);
+        paneBoard.add(paneB1);
         paneB1.setBounds(20, 620, 60, 60);
 
         paneB2.setBackground(new java.awt.Color(255, 255, 255));
@@ -1375,7 +1432,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB2);
+        paneBoard.add(paneB2);
         paneB2.setBounds(10, 550, 58, 50);
 
         paneB3.setBackground(new java.awt.Color(255, 255, 255));
@@ -1410,7 +1467,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB3);
+        paneBoard.add(paneB3);
         paneB3.setBounds(10, 485, 58, 51);
 
         paneB4.setBackground(new java.awt.Color(255, 255, 255));
@@ -1445,7 +1502,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB4);
+        paneBoard.add(paneB4);
         paneB4.setBounds(10, 420, 58, 51);
 
         paneB5.setBackground(new java.awt.Color(255, 255, 255));
@@ -1480,7 +1537,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB5);
+        paneBoard.add(paneB5);
         paneB5.setBounds(10, 355, 58, 51);
 
         paneB6.setBackground(new java.awt.Color(255, 255, 255));
@@ -1515,7 +1572,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB6);
+        paneBoard.add(paneB6);
         paneB6.setBounds(10, 295, 58, 51);
 
         paneB7.setBackground(new java.awt.Color(255, 255, 255));
@@ -1550,7 +1607,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB7);
+        paneBoard.add(paneB7);
         paneB7.setBounds(10, 230, 58, 51);
 
         paneB8.setBackground(new java.awt.Color(255, 255, 255));
@@ -1585,7 +1642,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB8);
+        paneBoard.add(paneB8);
         paneB8.setBounds(10, 165, 58, 51);
 
         paneB9.setBackground(new java.awt.Color(255, 255, 255));
@@ -1620,7 +1677,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB9);
+        paneBoard.add(paneB9);
         paneB9.setBounds(10, 100, 58, 51);
 
         paneB10.setBackground(new java.awt.Color(255, 255, 255));
@@ -1655,7 +1712,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB10);
+        paneBoard.add(paneB10);
         paneB10.setBounds(5, 10, 58, 51);
 
         paneB11.setBackground(new java.awt.Color(255, 255, 255));
@@ -1690,7 +1747,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB11);
+        paneBoard.add(paneB11);
         paneB11.setBounds(98, 10, 58, 51);
 
         paneB12.setBackground(new java.awt.Color(255, 255, 255));
@@ -1725,7 +1782,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB12);
+        paneBoard.add(paneB12);
         paneB12.setBounds(160, 10, 58, 51);
 
         paneB13.setBackground(new java.awt.Color(255, 255, 255));
@@ -1760,7 +1817,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB13);
+        paneBoard.add(paneB13);
         paneB13.setBounds(225, 10, 58, 51);
 
         paneB14.setBackground(new java.awt.Color(255, 255, 255));
@@ -1795,7 +1852,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB14);
+        paneBoard.add(paneB14);
         paneB14.setBounds(290, 10, 58, 51);
 
         paneB15.setBackground(new java.awt.Color(255, 255, 255));
@@ -1830,7 +1887,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB15);
+        paneBoard.add(paneB15);
         paneB15.setBounds(355, 10, 58, 51);
 
         paneB16.setBackground(new java.awt.Color(255, 255, 255));
@@ -1865,7 +1922,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB16);
+        paneBoard.add(paneB16);
         paneB16.setBounds(415, 10, 58, 51);
 
         paneB17.setBackground(new java.awt.Color(255, 255, 255));
@@ -1900,7 +1957,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB17);
+        paneBoard.add(paneB17);
         paneB17.setBounds(480, 10, 58, 51);
 
         paneB18.setBackground(new java.awt.Color(255, 255, 255));
@@ -1935,7 +1992,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB18);
+        paneBoard.add(paneB18);
         paneB18.setBounds(545, 10, 58, 51);
 
         paneB19.setBackground(new java.awt.Color(255, 255, 255));
@@ -1970,7 +2027,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB19);
+        paneBoard.add(paneB19);
         paneB19.setBounds(630, 10, 58, 51);
 
         paneB20.setBackground(new java.awt.Color(255, 255, 255));
@@ -2005,7 +2062,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB20);
+        paneBoard.add(paneB20);
         paneB20.setBounds(630, 100, 58, 51);
 
         paneB21.setBackground(new java.awt.Color(255, 255, 255));
@@ -2040,7 +2097,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB21);
+        paneBoard.add(paneB21);
         paneB21.setBounds(630, 165, 58, 51);
 
         paneB22.setBackground(new java.awt.Color(255, 255, 255));
@@ -2075,7 +2132,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB22);
+        paneBoard.add(paneB22);
         paneB22.setBounds(630, 230, 58, 51);
 
         paneB23.setBackground(new java.awt.Color(255, 255, 255));
@@ -2110,7 +2167,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB23);
+        paneBoard.add(paneB23);
         paneB23.setBounds(630, 295, 58, 51);
 
         paneB24.setBackground(new java.awt.Color(255, 255, 255));
@@ -2145,7 +2202,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB24);
+        paneBoard.add(paneB24);
         paneB24.setBounds(630, 355, 58, 51);
 
         paneB25.setBackground(new java.awt.Color(255, 255, 255));
@@ -2180,7 +2237,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB25);
+        paneBoard.add(paneB25);
         paneB25.setBounds(630, 420, 58, 51);
 
         paneB26.setBackground(new java.awt.Color(255, 255, 255));
@@ -2215,7 +2272,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB26);
+        paneBoard.add(paneB26);
         paneB26.setBounds(630, 485, 58, 51);
 
         paneB27.setBackground(new java.awt.Color(255, 255, 255));
@@ -2250,7 +2307,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB27);
+        paneBoard.add(paneB27);
         paneB27.setBounds(630, 545, 58, 51);
 
         paneB28.setBackground(new java.awt.Color(255, 255, 255));
@@ -2285,7 +2342,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB28);
+        paneBoard.add(paneB28);
         paneB28.setBounds(630, 640, 58, 51);
 
         paneB29.setBackground(new java.awt.Color(255, 255, 255));
@@ -2320,7 +2377,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB29);
+        paneBoard.add(paneB29);
         paneB29.setBounds(545, 640, 58, 51);
 
         paneB30.setBackground(new java.awt.Color(255, 255, 255));
@@ -2355,7 +2412,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB30);
+        paneBoard.add(paneB30);
         paneB30.setBounds(480, 640, 58, 51);
 
         paneB31.setBackground(new java.awt.Color(255, 255, 255));
@@ -2390,7 +2447,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB31);
+        paneBoard.add(paneB31);
         paneB31.setBounds(415, 640, 58, 51);
 
         paneB32.setBackground(new java.awt.Color(255, 255, 255));
@@ -2425,7 +2482,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB32);
+        paneBoard.add(paneB32);
         paneB32.setBounds(352, 640, 58, 51);
 
         paneB33.setBackground(new java.awt.Color(255, 255, 255));
@@ -2460,7 +2517,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB33);
+        paneBoard.add(paneB33);
         paneB33.setBounds(290, 640, 58, 51);
 
         paneB34.setBackground(new java.awt.Color(255, 255, 255));
@@ -2495,7 +2552,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB34);
+        paneBoard.add(paneB34);
         paneB34.setBounds(225, 640, 58, 51);
 
         paneB35.setBackground(new java.awt.Color(255, 255, 255));
@@ -2530,7 +2587,7 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB35);
+        paneBoard.add(paneB35);
         paneB35.setBounds(160, 640, 58, 51);
 
         paneB36.setBackground(new java.awt.Color(255, 255, 255));
@@ -2565,34 +2622,28 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(paneB36);
+        paneBoard.add(paneB36);
         paneB36.setBounds(95, 640, 58, 51);
 
-        paneBoss.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 700, 700));
+        paneBoss.add(paneBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 700, 700));
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
-        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyReleased(java.awt.event.KeyEvent evt)
-            {
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnRollKeyReleased(evt);
             }
         });
 
         btnLog.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnLog.setText("LOG");
-        btnLog.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogActionPerformed(evt);
             }
         });
@@ -2600,41 +2651,33 @@ public final class Board extends javax.swing.JFrame {
         btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnNext.setText("NEXT");
         btnNext.setEnabled(false);
-        btnNext.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        jButton1.setText("Trade");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton1ActionPerformed(evt);
+        btnTrade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnTrade.setText("Trade");
+        btnTrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTradeActionPerformed(evt);
             }
         });
 
         btnReBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnReBuy.setText("BUY");
         btnReBuy.setEnabled(false);
-        btnReBuy.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnReBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReBuyActionPerformed(evt);
             }
         });
@@ -2651,7 +2694,7 @@ public final class Board extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTrade, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
@@ -2662,7 +2705,7 @@ public final class Board extends javax.swing.JFrame {
             .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(btnLog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNext, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2982,10 +3025,14 @@ public final class Board extends javax.swing.JFrame {
         buy.setVisible(true);
     }//GEN-LAST:event_btnReBuyActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
         // TODO add your handling code here:
-        new TradeForm().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+//        int x = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter x value"));
+        
+
+//        test.setLocation(new Point(paneB3.getLocationOnScreen().x,paneB3.getLocation().y));
+//        new TradeForm().setVisible(true);
+    }//GEN-LAST:event_btnTradeActionPerformed
 
     public void displayChange(int turn) {
 
@@ -3197,10 +3244,9 @@ public final class Board extends javax.swing.JFrame {
     private javax.swing.JButton btnPass;
     private javax.swing.JButton btnReBuy;
     private javax.swing.JButton btnRoll;
+    private javax.swing.JButton btnTrade;
     private javax.swing.JDialog dlgLog;
     private javax.swing.JFrame frmBuy;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBoard;
@@ -3259,6 +3305,7 @@ public final class Board extends javax.swing.JFrame {
     private javax.swing.JPanel paneB7;
     private javax.swing.JPanel paneB8;
     private javax.swing.JPanel paneB9;
+    private javax.swing.JLayeredPane paneBoard;
     private javax.swing.JPanel paneBoss;
     private javax.swing.JPanel paneCard;
     private javax.swing.JPanel paneControls;

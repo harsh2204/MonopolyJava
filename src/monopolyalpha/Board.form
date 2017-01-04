@@ -196,7 +196,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
+        <Container class="javax.swing.JLayeredPane" name="paneBoard">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="210" y="0" width="700" height="700"/>
@@ -2500,7 +2500,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnLog" min="-2" pref="105" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="btnTrade" min="-2" pref="105" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnReBuy" min="-2" pref="105" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -2513,7 +2513,7 @@
                   <Component id="btnExit" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
+                          <Component id="btnTrade" max="32767" attributes="0"/>
                           <Component id="btnRoll" alignment="0" pref="45" max="32767" attributes="0"/>
                           <Component id="btnLog" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnNext" alignment="0" max="32767" attributes="0"/>
@@ -2571,7 +2571,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnTrade">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Showcard Gothic" size="18" style="0"/>
@@ -2579,7 +2579,7 @@
                 <Property name="text" type="java.lang.String" value="Trade"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTradeActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnReBuy">
