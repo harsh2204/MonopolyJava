@@ -69,10 +69,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="chkMon1" min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="txtMon1" min="-2" pref="21" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="txtMon1" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="txtMon2" min="-2" pref="21" max="-2" attributes="0"/>

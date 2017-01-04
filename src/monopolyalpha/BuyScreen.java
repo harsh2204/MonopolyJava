@@ -112,12 +112,16 @@ public class BuyScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Dispose(){
+        InitTest.board.enableNext();
+        this.dispose();
+    }
     private void btnPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassActionPerformed
         // TODO add your handling code here:
 //        clicked = true;
 //        bought = false;
         this.setVisible(false);
-        this.dispose();
+        Dispose();
     }//GEN-LAST:event_btnPassActionPerformed
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBuyActionPerformed
@@ -126,7 +130,7 @@ public class BuyScreen extends javax.swing.JFrame {
 //        bought = true;        
         InitTest.board.propBuy(InitTest.board.turn);
         this.setVisible(false);
-        this.dispose();
+        Dispose();
     }//GEN-LAST:event_btnBuyActionPerformed
 
     /**

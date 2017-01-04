@@ -47,7 +47,8 @@ public class TradeForm extends javax.swing.JFrame {
                     if (board.propOwner[j] == i) {
                         this.checkboxes2[j] = new JCheckBox(board.propName[j]);
                         this.checkboxes2[j].setFont(new Font("Showcard Gothic", 0, 18));
-                        this.checkboxes2[j].setOpaque(false);
+                        this.checkboxes2[j].setOpaque(true);
+                        this.checkboxes2[j].setBackground(board.pd.prop[j].colour);
                         others[i].add(checkboxes2[j]);
                         paneOthers.addTab(board.name[i], others[i]);
                         paneCur.validate();
@@ -62,7 +63,8 @@ public class TradeForm extends javax.swing.JFrame {
                 System.out.println(board.propName[i] + " added");
                 this.checkboxes1[i] = new JCheckBox(board.propName[i]);
                 this.checkboxes1[i].setFont(new Font("Showcard Gothic", 0, 18));
-                this.checkboxes1[i].setOpaque(false);
+                this.checkboxes1[i].setOpaque(true);
+                this.checkboxes1[i].setBackground(board.pd.prop[i].colour);
                 paneCur.add(checkboxes1[i]);
                 paneCur.validate();
                 paneCur.repaint();
@@ -231,40 +233,41 @@ public class TradeForm extends javax.swing.JFrame {
             board.propOwner[to.get(i)] = tradeFrom;
             board.updateColors(tradeFrom, to.get(i));
         }
-        if(chkMon1.isSelected()){
-            try{
-            board.money[tradeFrom] -= Integer.parseInt(txtMon1.getText());
-            board.money[tradeTo] += Integer.parseInt(txtMon1.getText());
-            }catch(Exception e){
+        if (chkMon1.isSelected()) {
+            try {
+                board.money[tradeFrom] -= Integer.parseInt(txtMon1.getText());
+                board.money[tradeTo] += Integer.parseInt(txtMon1.getText());
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
                 txtMon1.setText("");
             }
         }
-        if(chkMon2.isSelected()){
-            try{
-            board.money[tradeTo] -= Integer.parseInt(txtMon2.getText());
-            board.money[tradeFrom] += Integer.parseInt(txtMon2.getText());
-            }catch(Exception e){
+        if (chkMon2.isSelected()) {
+            try {
+                board.money[tradeTo] -= Integer.parseInt(txtMon2.getText());
+                board.money[tradeFrom] += Integer.parseInt(txtMon2.getText());
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
                 txtMon2.setText("");
             }
         }
+        this.dispose();
     }//GEN-LAST:event_btnTrdActionPerformed
 
     private void chkMon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon1ActionPerformed
         // TODO add your handling code here:
-        if(chkMon1.isSelected()){
+        if (chkMon1.isSelected()) {
             txtMon1.setEnabled(true);
-        }else{
+        } else {
             txtMon1.setEnabled(false);
         }
     }//GEN-LAST:event_chkMon1ActionPerformed
 
     private void chkMon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon2ActionPerformed
         // TODO add your handling code here:
-        if(chkMon2.isSelected()){
+        if (chkMon2.isSelected()) {
             txtMon2.setEnabled(true);
-        }else{
+        } else {
             txtMon2.setEnabled(false);
         }
     }//GEN-LAST:event_chkMon2ActionPerformed
