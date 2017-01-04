@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -82,6 +83,10 @@ public class TradeForm extends javax.swing.JFrame {
         paneCur = new javax.swing.JPanel();
         paneOthers = new javax.swing.JTabbedPane();
         btnTrd = new javax.swing.JButton();
+        chkMon1 = new javax.swing.JCheckBox();
+        chkMon2 = new javax.swing.JCheckBox();
+        txtMon1 = new javax.swing.JTextField();
+        txtMon2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -110,6 +115,28 @@ public class TradeForm extends javax.swing.JFrame {
             }
         });
 
+        chkMon1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        chkMon1.setText("Money");
+        chkMon1.setOpaque(false);
+        chkMon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMon1ActionPerformed(evt);
+            }
+        });
+
+        chkMon2.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        chkMon2.setText("Money");
+        chkMon2.setOpaque(false);
+        chkMon2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMon2ActionPerformed(evt);
+            }
+        });
+
+        txtMon1.setEnabled(false);
+
+        txtMon2.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,11 +147,21 @@ public class TradeForm extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(paneCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chkMon1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMon1))
+                    .addComponent(paneCur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnTrd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(paneOthers, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneOthers, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chkMon2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMon2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
@@ -132,17 +169,26 @@ public class TradeForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(paneCur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(paneOthers))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
-                        .addComponent(btnTrd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
+                            .addComponent(paneOthers, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(chkMon1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtMon1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, 0)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtMon2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chkMon2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnTrd, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
@@ -185,8 +231,43 @@ public class TradeForm extends javax.swing.JFrame {
             board.propOwner[to.get(i)] = tradeFrom;
             board.updateColors(tradeFrom, to.get(i));
         }
-
+        if(chkMon1.isSelected()){
+            try{
+            board.money[tradeFrom] -= Integer.parseInt(txtMon1.getText());
+            board.money[tradeTo] += Integer.parseInt(txtMon1.getText());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
+                txtMon1.setText("");
+            }
+        }
+        if(chkMon2.isSelected()){
+            try{
+            board.money[tradeTo] -= Integer.parseInt(txtMon2.getText());
+            board.money[tradeFrom] += Integer.parseInt(txtMon2.getText());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
+                txtMon2.setText("");
+            }
+        }
     }//GEN-LAST:event_btnTrdActionPerformed
+
+    private void chkMon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon1ActionPerformed
+        // TODO add your handling code here:
+        if(chkMon1.isSelected()){
+            txtMon1.setEnabled(true);
+        }else{
+            txtMon1.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkMon1ActionPerformed
+
+    private void chkMon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon2ActionPerformed
+        // TODO add your handling code here:
+        if(chkMon2.isSelected()){
+            txtMon2.setEnabled(true);
+        }else{
+            txtMon2.setEnabled(false);
+        }
+    }//GEN-LAST:event_chkMon2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,8 +306,12 @@ public class TradeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTrd;
+    private javax.swing.JCheckBox chkMon1;
+    private javax.swing.JCheckBox chkMon2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel paneCur;
     private javax.swing.JTabbedPane paneOthers;
+    private javax.swing.JTextField txtMon1;
+    private javax.swing.JTextField txtMon2;
     // End of variables declaration//GEN-END:variables
 }
