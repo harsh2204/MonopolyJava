@@ -25,7 +25,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
-import javax.swing.border.LineBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -54,13 +53,13 @@ public final class Board extends javax.swing.JFrame
     public static ImageIcon piece;
     SimpleAttributeSet[] keyWord = new SimpleAttributeSet[5];
     public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4], houseImg = new ImageIcon[5];
-    public static boolean snake = false, bail = false,hover=true;
-    public static boolean[] propOwned = new boolean[36], propBuyable = new boolean[36], Game = new boolean[4], housable = new boolean[14],propH=new boolean[36];
+    public static boolean snake = false, bail = false, hover = true;
+    public static boolean[] propOwned = new boolean[36], propBuyable = new boolean[36], Game = new boolean[4], housable = new boolean[14], propH = new boolean[36];
     public static JLabel[][] boxes = new JLabel[4][37];
     public JPanel[] boxPanes = new JPanel[36];
     public static JLabel[] plnames = new JLabel[4], plicons = new JLabel[4], plmoney = new JLabel[4], houses = new JLabel[36];
     Card c;
-    public JButton[] plHouse=new JButton[4];
+    public JButton[] plHouse = new JButton[4];
     public static Image image;
     public static Timer moveTimer, timer;
     Canada_Data cd = new Canada_Data();
@@ -249,12 +248,12 @@ public final class Board extends javax.swing.JFrame
             case 3:
                 chances = 75;
                 break;
-          }        
-        
-        plHouse[0]= btnHouseP1;
-        plHouse[1]= btnHouseP2;
-        plHouse[2]= btnHouseP3;
-        plHouse[3]= btnHouseP4;
+          }
+
+        plHouse[0] = btnHouseP1;
+        plHouse[1] = btnHouseP2;
+        plHouse[2] = btnHouseP3;
+        plHouse[3] = btnHouseP4;
         plHouse[0].setVisible(false);
         plHouse[1].setVisible(false);
         plHouse[2].setVisible(false);
@@ -268,9 +267,9 @@ public final class Board extends javax.swing.JFrame
                 @Override
                 public void actionPerformed(ActionEvent e)
                   {
-                    new HouseFrm(propOwner, propH, turn,propHouse).setVisible(true);
+                    new HouseFrm(propOwner, propH, turn, propHouse).setVisible(true);
                   }
-            });
+              });
             propMoney[i] = 0;
             totMoney[i] = 0;
             Game[i] = true;
@@ -285,7 +284,7 @@ public final class Board extends javax.swing.JFrame
         for (i = 0; i < 36; i++)
           {
             propHouse[i] = 0;
-            propH[i]=false;
+            propH[i] = false;
           }
 
         for (i = 0; i < 14; i++)
@@ -298,7 +297,7 @@ public final class Board extends javax.swing.JFrame
         houseImg[2] = new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png");
         houseImg[3] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
         houseImg[4] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
-        
+
       }
 
     public void datatransfer()
@@ -665,9 +664,9 @@ public final class Board extends javax.swing.JFrame
         enableNext();
         plChancesLeft[turn]--;
         plChances[turn]--;
-        houseCheck(cpos, turn);        
+        houseCheck(cpos, turn);
         plHouseCheck(turn);
-        hover=true;
+        hover = true;
         if (plChancesLeft[turn] <= 0)
           {
             gameOver(turn);
@@ -689,9 +688,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[1] == propOwner[2] && propOwner[2] == propOwner[4])
               {
                 housable[0] = true;
-                propH[1]=true;
-                propH[2]=true;
-                propH[4]=true;
+                propH[1] = true;
+                propH[2] = true;
+                propH[4] = true;
               }
           }
         if (propOwned[7] == true && propOwned[8] == true && propOwned[10] == true)
@@ -699,9 +698,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[7] == propOwner[8] && propOwner[8] == propOwner[10])
               {
                 housable[1] = true;
-                propH[7]=true;
-                propH[8]=true;
-                propH[10]=true;
+                propH[7] = true;
+                propH[8] = true;
+                propH[10] = true;
               }
           }
         if (propOwned[11] == true && propOwned[13] == true && propOwned[14] == true)
@@ -709,9 +708,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[11] == propOwner[13] && propOwner[13] == propOwner[14])
               {
                 housable[2] = true;
-                propH[11]=true;
-                propH[13]=true;
-                propH[14]=true;
+                propH[11] = true;
+                propH[13] = true;
+                propH[14] = true;
               }
           }
         if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true)
@@ -719,9 +718,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20])
               {
                 housable[3] = true;
-                propH[17]=true;
-                propH[19]=true;
-                propH[20]=true;
+                propH[17] = true;
+                propH[19] = true;
+                propH[20] = true;
               }
           }
         if (propOwned[17] == true && propOwned[19] == true && propOwned[22] == true)
@@ -729,9 +728,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[22])
               {
                 housable[4] = true;
-                propH[17]=true;
-                propH[19]=true;
-                propH[22]=true;
+                propH[17] = true;
+                propH[19] = true;
+                propH[22] = true;
               }
           }
         if (propOwned[17] == true && propOwned[20] == true && propOwned[22] == true)
@@ -739,9 +738,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[17] == propOwner[2] && propOwner[20] == propOwner[22])
               {
                 housable[5] = true;
-                propH[17]=true;
-                propH[20]=true;
-                propH[22]=true;
+                propH[17] = true;
+                propH[20] = true;
+                propH[22] = true;
               }
           }
         if (propOwned[19] == true && propOwned[20] == true && propOwned[22] == true)
@@ -749,9 +748,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[19] == propOwner[20] && propOwner[20] == propOwner[22])
               {
                 housable[6] = true;
-                propH[19]=true;
-                propH[20]=true;
-                propH[22]=true;
+                propH[19] = true;
+                propH[20] = true;
+                propH[22] = true;
               }
           }
         if (propOwned[25] == true && propOwned[26] == true && propOwned[28] == true)
@@ -759,9 +758,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[25] == propOwner[26] && propOwner[26] == propOwner[28])
               {
                 housable[7] = true;
-                propH[25]=true;
-                propH[26]=true;
-                propH[28]=true;
+                propH[25] = true;
+                propH[26] = true;
+                propH[28] = true;
               }
           }
         if (propOwned[25] == true && propOwned[26] == true && propOwned[29] == true)
@@ -769,9 +768,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[25] == propOwner[26] && propOwner[26] == propOwner[29])
               {
                 housable[8] = true;
-                propH[25]=true;
-                propH[26]=true;
-                propH[29]=true;
+                propH[25] = true;
+                propH[26] = true;
+                propH[29] = true;
               }
           }
         if (propOwned[25] == true && propOwned[28] == true && propOwned[29] == true)
@@ -779,9 +778,9 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[25] == propOwner[28] && propOwner[28] == propOwner[29])
               {
                 housable[9] = true;
-                propH[25]=true;
-                propH[28]=true;
-                propH[29]=true;
+                propH[25] = true;
+                propH[28] = true;
+                propH[29] = true;
               }
           }
         if (propOwned[26] == true && propOwned[28] == true && propOwned[29] == true)
@@ -789,53 +788,53 @@ public final class Board extends javax.swing.JFrame
             if (propOwner[26] == propOwner[28] && propOwner[28] == propOwner[29])
               {
                 housable[10] = true;
-                propH[26]=true;
-                propH[28]=true;
-                propH[29]=true;
+                propH[26] = true;
+                propH[28] = true;
+                propH[29] = true;
               }
           }
-        if (propOwned[26] == true && propOwned[25] == true && propOwned[28] == true&&propOwned[29]==true)
+        if (propOwned[26] == true && propOwned[25] == true && propOwned[28] == true && propOwned[29] == true)
           {
-            if (propOwner[26] == propOwner[25] && propOwner[25] == propOwner[28]&&propOwner[28]==propOwner[29])
+            if (propOwner[26] == propOwner[25] && propOwner[25] == propOwner[28] && propOwner[28] == propOwner[29])
               {
                 housable[12] = true;
-                propH[26]=true;
-                propH[25]=true;
-                propH[28]=true;
-                propH[29]=true;
+                propH[26] = true;
+                propH[25] = true;
+                propH[28] = true;
+                propH[29] = true;
               }
           }
-         if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true&&propOwned[22]==true)
+        if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true && propOwned[22] == true)
           {
-            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20]&&propOwner[20]==propOwner[22])
+            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20] && propOwner[20] == propOwner[22])
               {
                 housable[13] = true;
-                propH[17]=true;
-                propH[19]=true;
-                propH[20]=true;
-                propH[22]=true;
+                propH[17] = true;
+                propH[19] = true;
+                propH[20] = true;
+                propH[22] = true;
               }
           }
-          if (propOwned[32] == true && propOwned[34] == true && propOwned[35] == true)
+        if (propOwned[32] == true && propOwned[34] == true && propOwned[35] == true)
           {
             if (propOwner[32] == propOwner[34] && propOwner[34] == propOwner[35])
               {
                 housable[11] = true;
-                propH[32]=true;
-                propH[34]=true;
-                propH[35]=true;
+                propH[32] = true;
+                propH[34] = true;
+                propH[35] = true;
               }
           }
       }
-    
+
     public void setHouses()
       {
-        setupHouses();
-//        for(i=0;i<36;i++)
-//          {
+//        setupHouses();
+        for (i = 0; i < 36; i++)
+          {
 //            houses[i].setIcon(houseImg[0]);
-//            houses[i].setIcon(houseImg[propHouse[i]]);
-//          }
+            houses[i].setIcon(houseImg[propHouse[i]]);
+          }
       }
 
     public void gameOver(int turn)
@@ -992,17 +991,22 @@ public final class Board extends javax.swing.JFrame
 
     public void displayChangeBuy(int turn)
       {
+        plmoney[turn].setForeground(Color.red);
         plmoney[turn].setText("$ " + money[turn] + "(-" + propPrice[cpos[turn]] + ")");
       }
 
     public void displayChangePay(int turn, int propOwner, int pRent)
       {
+        plmoney[turn].setForeground(Color.red);
         plmoney[turn].setText("$ " + money[turn] + "(-" + pRent + ")");
+
+        plmoney[propOwner].setForeground(Color.red);
         plmoney[propOwner].setText("$ " + money[propOwner] + "(+" + pRent + ")");
       }
 
     public void displayChangeRE()
       {
+        plmoney[turn].setForeground(Color.green);
         plmoney[turn].setText("$ " + money[turn] + " (+200)");
       }
 
@@ -1011,13 +1015,16 @@ public final class Board extends javax.swing.JFrame
         if (pRent < 0)
           {
 //            String sign = "-";
+            plmoney[turn].setForeground(Color.red);
             plmoney[turn].setText("$ " + money[turn] + " (" + pRent + ")");
           } else if (pRent > 0)
           {
             String sign = "+";
+            plmoney[turn].setForeground(Color.green);
             plmoney[turn].setText("$ " + money[turn] + " (" + sign + pRent + ")");
           } else
           {
+            plmoney[turn].setForeground(Color.black);
             plmoney[turn].setText("$ " + money[turn] + " (" + pRent + ")");
           }
       }
@@ -1093,7 +1100,7 @@ public final class Board extends javax.swing.JFrame
                     displayChangeS(i, pd.chanceVals[ind]);
                   }
                 money[turn] -= (pd.chanceVals[ind] * (players));
-                displayChangeS(turn, -1*(pd.chanceVals[ind]));
+                displayChangeS(turn, -1 * (pd.chanceVals[ind]));
                 break;
             case "H":
                 money[turn] += pd.chanceVals[ind];
@@ -1247,13 +1254,13 @@ public final class Board extends javax.swing.JFrame
 
     public void plHouseCheck(int turn)
       {
-        for(i=0;i<36;i++)
+        for (i = 0; i < 36; i++)
           {
-            if("N".equals(propType[i]))
+            if ("N".equals(propType[i]))
               {
-                if(propOwner[i]==turn)
+                if (propOwner[i] == turn)
                   {
-                    if(propH[i]==true)
+                    if (propH[i] == true)
                       {
                         plHouse[turn].setEnabled(true);
                       }
@@ -1261,7 +1268,7 @@ public final class Board extends javax.swing.JFrame
               }
           }
       }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -3268,10 +3275,10 @@ public final class Board extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblHoverB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseEntered
-       if(hover=true)
-         {
-           makeCard(1);
-         }
+        if (hover = true)
+          {
+            makeCard(1);
+          }
     }//GEN-LAST:event_lblHoverB1MouseEntered
 
     private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
@@ -3280,10 +3287,10 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB1MouseExited
 
     private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
-        if(hover=true)
-         {
-           makeCard(2);
-         }
+        if (hover = true)
+          {
+            makeCard(2);
+          }
     }//GEN-LAST:event_lblHoverB2MouseEntered
 
     private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
@@ -3292,10 +3299,10 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB2MouseExited
 
     private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
-        if(hover=true)
-         {
-           makeCard(3);
-         }
+        if (hover = true)
+          {
+            makeCard(3);
+          }
     }//GEN-LAST:event_lblHoverB3MouseEntered
 
     private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
@@ -3304,10 +3311,10 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB3MouseExited
 
     private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
-       if(hover=true)
-         {
-           makeCard(4);
-         }
+        if (hover = true)
+          {
+            makeCard(4);
+          }
     }//GEN-LAST:event_lblHoverB4MouseEntered
 
     private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
@@ -3324,10 +3331,10 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB5MouseExited
 
     private void lblHoverB6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseEntered
-        if(hover=true)
-         {
-           makeCard(7);
-         }
+        if (hover = true)
+          {
+            makeCard(7);
+          }
     }//GEN-LAST:event_lblHoverB6MouseEntered
 
     private void lblHoverB6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB6MouseExited
@@ -3336,10 +3343,10 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB6MouseExited
 
     private void lblHoverB7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseEntered
-        if(hover=true)
-         {
-           makeCard(8);
-         }
+        if (hover = true)
+          {
+            makeCard(8);
+          }
     }//GEN-LAST:event_lblHoverB7MouseEntered
 
     private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
@@ -3348,10 +3355,10 @@ public final class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
-       
+
         btnRoll.setEnabled(false);
         rolling();
-        hover=false;
+        hover = false;
 //        int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
 //        roll = m;
 //        move(turn);

@@ -210,7 +210,7 @@ public class HouseFrm extends javax.swing.JFrame
     private void btnUpgActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnUpgActionPerformed
     {//GEN-HEADEREND:event_btnUpgActionPerformed
         bd.money[turn] -= money;
-        bd.displayChangeBuy(this.turn);
+        bd.displayChangeS(this.turn,-(this.money));
         for (int i = 0; i <= j; i++)
           {
             if (props[i].isSelected())
@@ -218,6 +218,7 @@ public class HouseFrm extends javax.swing.JFrame
                 bd.propHouse[nums[i]]++;
                 props[i].setSelected(false);
                 updateMoney();
+                bd.houses[nums[i]].setIcon(bd.houseImg[bd.propHouse[nums[i]]]);
                 bd.setupHouses();
               }
           }
