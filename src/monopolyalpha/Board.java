@@ -183,42 +183,42 @@ public final class Board extends javax.swing.JFrame
                   {
                     if (i > 0 && i < 10)
                       {
-                        houses[i].setOpaque(false);
+//                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                         houses[i].setLocation(new Point(boxPanes[i].getLocation().x + boxPanes[i].getWidth() + 7, boxPanes[i].getLocation().y));
                         paneBoard.add(houses[i]);
-                        houses[i].setIcon(houseImg[0]);
+                        houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png"));
                       }
                     if (i > 9 && i < 19)
                       {
-                        houses[i].setOpaque(false);
+//                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                         houses[i].setLocation(new Point(boxPanes[i].getLocation().x + 2, boxPanes[i].getLocation().y + boxPanes[i].getHeight() + 14));
                         paneBoard.add(houses[i]);
-                        houses[i].setIcon(houseImg[0]);
+                        houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png"));
                       }
                     if (i > 18 && i < 28)
                       {
-                        houses[i].setOpaque(false);
+//                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                         houses[i].setLocation(new Point(boxPanes[i].getLocation().x - 25, boxPanes[i].getLocation().y));
                         paneBoard.add(houses[i]);
-                        houses[i].setIcon(houseImg[0]);
+                        houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png"));
                       }
                     if (i > 27 && i <= 35)
                       {
-                        houses[i].setOpaque(false);
+//                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
                         houses[i].setLocation(new Point(boxPanes[i].getLocation().x + 2, boxPanes[i].getLocation().y - 35));
                         paneBoard.add(houses[i]);
-                        houses[i].setIcon(houseImg[0]);
+                        houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png"));
                       }
                   }
@@ -263,7 +263,7 @@ public final class Board extends javax.swing.JFrame
                 @Override
                 public void actionPerformed(ActionEvent e)
                   {
-                    new HouseFrm(propOwner, propH, turn).setVisible(true);
+                    new HouseFrm(propOwner, propH, turn,propHouse).setVisible(true);
                   }
             });
             propMoney[i] = 0;
@@ -818,6 +818,15 @@ public final class Board extends javax.swing.JFrame
                 propH[34]=true;
                 propH[35]=true;
               }
+          }
+      }
+    
+    public void setHouses()
+      {
+        for(i=0;i<36;i++)
+          {
+            houses[i].setIcon(houseImg[0]);
+            houses[i].setIcon(houseImg[propHouse[i]]);
           }
       }
 

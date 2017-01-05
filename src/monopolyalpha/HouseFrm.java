@@ -16,21 +16,23 @@ import javax.swing.JCheckBox;
 public class HouseFrm extends javax.swing.JFrame
   {
 
-    int pl, turn, j = -1, money = 0, x=0,y=0;
+    int pl, turn, j = -1, money = 0, x = 0, y = 0;
     InitTest it = new InitTest();
     Board bd = InitTest.board;
     Properties_Data pd = new Properties_Data();
-    public int[] propOwner = new int[36], nums = new int[36], sel = new int[36];
+    public int[] propOwner = new int[36], nums = new int[36], sel = new int[36], propHouse = new int[36];
     public boolean[] propH = new boolean[36];
     public JCheckBox[] props = new JCheckBox[100];
 
-    public HouseFrm(int[] propOwner, boolean[] propH, int turn)
+    public HouseFrm(int[] propOwner, boolean[] propH, int turn, int[] propHouse)
       {
         pl = it.pCount;
+        this.turn = turn;
         initComponents();
         this.setLocationRelativeTo(null);
         this.propOwner = propOwner;
         this.propH = propH;
+        this.propHouse = propHouse;
         addProps(turn);
       }
 
@@ -46,7 +48,11 @@ public class HouseFrm extends javax.swing.JFrame
                     this.paneprops.add(props[y]);
                     j++;
                     nums[j] = i;
-                    System.out.println("House:: Number:" + j + " Name:" + bd.propName[i]);
+                    System.out.println("House:: Number:" + j + " Name:" + bd.propName[i] + "   " + nums[j]);
+                    if (propHouse[i] > 4)
+                      {
+                        props[y].setEnabled(false);
+                      }
                     this.props[y].addActionListener(new ActionListener()
                       {
                         @Override
@@ -54,7 +60,7 @@ public class HouseFrm extends javax.swing.JFrame
                           {
                             updateMoney();
                           }
-                      });                    
+                      });
                     y++;
                   }
               }
@@ -63,15 +69,17 @@ public class HouseFrm extends javax.swing.JFrame
 
     public void updateMoney()
       {
+        pd.GetProp();
         money = 0;
         for (int i = 0; i <= j; i++)
           {
             if (props[i].isSelected())
               {
-//                System.out.println("House:: Selected:" + i+" Number:"+nums[i]+" MOney:"+pd.prop[nums[i]].priceHouse);
+                System.out.println("House:: Selected:" + i + " Number:" + nums[i] + " MOney:" + pd.prop[nums[i]].priceHouse);
                 sel[x] = i;
                 x++;
                 money += pd.prop[nums[i]].priceHouse;
+
               }
           }
         lblMoney.setText("$ " + money);
@@ -201,7 +209,18 @@ public class HouseFrm extends javax.swing.JFrame
 
     private void btnUpgActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnUpgActionPerformed
     {//GEN-HEADEREND:event_btnUpgActionPerformed
-
+        bd.money[turn] -= money;
+        bd.displayChangeBuy(this.turn);
+        for (int i = 0; i <= j; i++)
+          {
+            if (props[i].isSelected())
+              {
+                bd.propHouse[nums[i]]++;
+                props[i].setSelected(false);
+                updateMoney();
+                bd.setupHouses();
+              }
+          }
     }//GEN-LAST:event_btnUpgActionPerformed
     private void Dispose()
       {
@@ -247,6 +266,7 @@ public class HouseFrm extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
           {
+            @Override
             public void run()
               {
                 new StartScreenfrm().setVisible(true);
