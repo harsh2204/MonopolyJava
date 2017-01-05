@@ -149,12 +149,12 @@ public final class Board extends javax.swing.JFrame {
         plmoney[3] = lblMoneyP4;
         System.out.println("Board: Labels setup done!");
     }
-    
-    public void setupHouses(){
+
+    public void setupHouses() {
         for (int i = 0; i < boxPanes.length; i++) {
             houses[i] = new JLabel();
             if (propBuyable[i]) {
-                if (i >0 && i < 10) {
+                if (i > 0 && i < 10) {
                     houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
@@ -166,24 +166,24 @@ public final class Board extends javax.swing.JFrame {
                     houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
-                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y+boxPanes[i].getHeight()+14));
-                    paneBoard.add(houses[i]);          
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x + 2, boxPanes[i].getLocation().y + boxPanes[i].getHeight() + 14));
+                    paneBoard.add(houses[i]);
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png"));
                 }
                 if (i > 18 && i < 28) {
                     houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
-                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x-25, boxPanes[i].getLocation().y));
-                    paneBoard.add(houses[i]);     
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x - 25, boxPanes[i].getLocation().y));
+                    paneBoard.add(houses[i]);
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png"));
                 }
-                if (i > 27 && i <=35) {
+                if (i > 27 && i <= 35) {
                     houses[i].setOpaque(false);
                     houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
-                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x+2, boxPanes[i].getLocation().y-35));
-                    paneBoard.add(houses[i]); 
+                    houses[i].setLocation(new Point(boxPanes[i].getLocation().x + 2, boxPanes[i].getLocation().y - 35));
+                    paneBoard.add(houses[i]);
                     houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png"));
                 }
 
@@ -195,6 +195,7 @@ public final class Board extends javax.swing.JFrame {
 //            houses[x].setVisible(false);
 //        }
     }
+
     public void datatransfer() {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
@@ -950,19 +951,27 @@ public final class Board extends javax.swing.JFrame {
     }
 
     public void rolling() {
-        if (turn == players) {
-            turn = 0;
-        }
+        if (snake) {
+            roll = Dice.rollDice(dice);
+            if (Dice.randomNumber1 == Dice.randomNumber2) {
+                money[turn] += bonus[turn];
+            }
+        } else {
+            if (turn == players) {
+                turn = 0;
+            }
 //        roll = Dice.rollDice(dice);
 //      Temporary Testing Cause
-        if (dice == 2) {
-            roll = (int) (Math.random() * 12 + 1);
-        } else {
-            roll = (int) (Math.random() * 6 + 1);
+            if (dice == 2) {
+                roll = (int) (Math.random() * 12 + 1);
+            } else {
+                roll = (int) (Math.random() * 6 + 1);
+            }
         }
         move(turn);
         appendS(name[turn], turn);
         addLog(" rolled: " + roll);
+
     }
 
     /**

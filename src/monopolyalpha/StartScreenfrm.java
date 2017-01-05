@@ -22,7 +22,7 @@ public class StartScreenfrm extends javax.swing.JFrame
      * Creates new form StartScreenfrm
      */
     public int w, h;
-    public ImageIcon ic = new ImageIcon("src/monopolyalpha/bklap.png");
+    public ImageIcon ic = new ImageIcon("Icons/Miscellaneous/buttons/BG.png");
     public Image ig;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -66,8 +66,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         bkpanel.setOpaque(false);
 
         btnNewGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnNewGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 1npr.png"));
-        btnNewGame.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 1.png"));
+        btnNewGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/button 1.png"));
         btnNewGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewGameActionPerformed(evt);
@@ -75,8 +74,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         });
 
         btnLoadGame.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnLoadGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 2npr.png"));
-        btnLoadGame.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 2.png"));
+        btnLoadGame.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/button 2.png"));
         btnLoadGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadGameActionPerformed(evt);
@@ -84,8 +82,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         });
 
         btnHelp.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnHelp.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 3npr.png"));
-        btnHelp.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 3.png"));
+        btnHelp.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/button 3.png"));
         btnHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHelpActionPerformed(evt);
@@ -93,8 +90,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         });
 
         btnAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnAbout.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 4npr.png"));
-        btnAbout.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 4.png"));
+        btnAbout.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/button 4.png"));
         btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAboutActionPerformed(evt);
@@ -102,8 +98,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        btnExit.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 5npr.png"));
-        btnExit.setPressedIcon(new ImageIcon("Icons/Miscellaneous/buttons/green/green 5.png"));
+        btnExit.setIcon(new ImageIcon("Icons/Miscellaneous/buttons/button 5.png"));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
