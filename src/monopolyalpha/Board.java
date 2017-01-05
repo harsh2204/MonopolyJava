@@ -124,12 +124,12 @@ public final class Board extends javax.swing.JFrame
             propBuyable[i] = pd.prop[i].buyable;
             propType[i] = pd.prop[i].type;
           }
-        propOwned[1]=true;
-        propOwned[2]=true;
-        propOwned[4]=true;
-        propOwner[1]=2;
-        propOwner[2]=2;
-        propOwner[4]=2;
+//        propOwned[1]=true;
+//        propOwned[2]=true;
+//        propOwned[4]=true;
+//        propOwner[1]=2;
+//        propOwner[2]=2;
+//        propOwner[4]=2;
       }
 
     public void changeimages()
@@ -255,8 +255,13 @@ public final class Board extends javax.swing.JFrame
         plHouse[1]= btnHouseP2;
         plHouse[2]= btnHouseP3;
         plHouse[3]= btnHouseP4;
+        plHouse[0].setVisible(false);
+        plHouse[1].setVisible(false);
+        plHouse[2].setVisible(false);
+        plHouse[3].setVisible(false);
         for (i = 0; i < players; i++)
           {
+            plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
             plHouse[i].addActionListener(new ActionListener()
               {
@@ -291,8 +296,8 @@ public final class Board extends javax.swing.JFrame
         houseImg[0] = null;
         houseImg[1] = new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png");
         houseImg[2] = new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png");
-        houseImg[2] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
-        houseImg[2] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
+        houseImg[3] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
+        houseImg[4] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
         
       }
 
@@ -594,6 +599,7 @@ public final class Board extends javax.swing.JFrame
                 if (cpos[turnn] > 35)
                   {
                     money[turnn] += 200;
+                    displayChangeRE();
                     appendS(name[turnn], turnn);
                     addLog(" just collected $200 for passing Go");
                     cpos[turnn] = 0;
@@ -659,7 +665,8 @@ public final class Board extends javax.swing.JFrame
         enableNext();
         plChancesLeft[turn]--;
         plChances[turn]--;
-        houseCheck(cpos, turn);
+        houseCheck(cpos, turn);        
+        plHouseCheck(turn);
         hover=true;
         if (plChancesLeft[turn] <= 0)
           {
@@ -823,11 +830,12 @@ public final class Board extends javax.swing.JFrame
     
     public void setHouses()
       {
-        for(i=0;i<36;i++)
-          {
-            houses[i].setIcon(houseImg[0]);
-            houses[i].setIcon(houseImg[propHouse[i]]);
-          }
+        setupHouses();
+//        for(i=0;i<36;i++)
+//          {
+//            houses[i].setIcon(houseImg[0]);
+//            houses[i].setIcon(houseImg[propHouse[i]]);
+//          }
       }
 
     public void gameOver(int turn)
@@ -940,22 +948,22 @@ public final class Board extends javax.swing.JFrame
           {
             case "FP":
                 pRent = -(10 * numprop[turn]);
-                money[turn] -= pRent;
+                money[turn] += pRent;
                 displayChangeS(turn, pRent);
                 break;
             case "IT":
-                pRent = (5 * numprop[turn]);
-                money[turn] -= pRent;
+                pRent = -(5 * numprop[turn]);
+                money[turn] += pRent;
                 displayChangeS(turn, pRent);
                 break;
             case "HT":
-                pRent = (2 * plChances[turn]);
-                money[turn] -= pRent;
+                pRent = -(2 * plChances[turn]);
+                money[turn] += pRent;
                 displayChangeS(turn, pRent);
                 break;
             case "J":
-                pRent = jailfee[turn];
-                money[turn] -= pRent;
+                pRent = -(jailfee[turn]);
+                money[turn] += pRent;
                 displayChangeS(turn, pRent);
                 break;
             case "CH":
@@ -1081,11 +1089,11 @@ public final class Board extends javax.swing.JFrame
             case "P$":
                 for (i = 0; i < players; i++)
                   {
-                    money[i] -= pd.chanceVals[ind];
+                    money[i] += pd.chanceVals[ind];
                     displayChangeS(i, pd.chanceVals[ind]);
                   }
-                money[turn] += (pd.chanceVals[ind] * (players));
-                displayChangeS(turn, pd.chanceVals[ind]);
+                money[turn] -= (pd.chanceVals[ind] * (players));
+                displayChangeS(turn, -1*(pd.chanceVals[ind]));
                 break;
             case "H":
                 money[turn] += pd.chanceVals[ind];
@@ -2950,7 +2958,7 @@ public final class Board extends javax.swing.JFrame
         paneBoard.add(paneB36);
         paneB36.setBounds(95, 640, 58, 51);
 
-        paneBoss.add(paneBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 700, 700));
+        paneBoss.add(paneBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 700, 700));
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
@@ -3063,7 +3071,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP1.setBackground(new java.awt.Color(255, 0, 0));
 
         lblMoneyP1.setBackground(new java.awt.Color(255, 0, 0));
-        lblMoneyP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblMoneyP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP1.setText("jButton1");
@@ -3078,7 +3086,7 @@ public final class Board extends javax.swing.JFrame
                     .addComponent(lblNameP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblIconP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneP1Layout.createSequentialGroup()
-                        .addComponent(lblMoneyP1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMoneyP1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHouseP1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -3099,7 +3107,7 @@ public final class Board extends javax.swing.JFrame
 
         lblNameP1.getAccessibleContext().setAccessibleDescription("");
 
-        paneBoss.add(paneP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        paneBoss.add(paneP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 230, -1));
 
         paneP2.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -3110,7 +3118,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP2.setBackground(new java.awt.Color(0, 255, 0));
 
         lblMoneyP2.setBackground(new java.awt.Color(0, 255, 0));
-        lblMoneyP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblMoneyP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP2.setText("jButton1");
@@ -3125,7 +3133,7 @@ public final class Board extends javax.swing.JFrame
                     .addComponent(lblNameP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblIconP2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneP2Layout.createSequentialGroup()
-                        .addComponent(lblMoneyP2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMoneyP2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHouseP2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -3144,7 +3152,7 @@ public final class Board extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, -1));
+        paneBoss.add(paneP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, -1));
 
         paneP3.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -3155,7 +3163,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP3.setBackground(new java.awt.Color(0, 0, 255));
 
         lblMoneyP3.setBackground(new java.awt.Color(0, 0, 255));
-        lblMoneyP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblMoneyP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP3.setText("jButton1");
@@ -3170,7 +3178,7 @@ public final class Board extends javax.swing.JFrame
                     .addComponent(lblNameP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblIconP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneP3Layout.createSequentialGroup()
-                        .addComponent(lblMoneyP3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMoneyP3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHouseP3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -3201,7 +3209,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP4.setBackground(new java.awt.Color(255, 255, 0));
 
         lblMoneyP4.setBackground(new java.awt.Color(255, 255, 0));
-        lblMoneyP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblMoneyP4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblMoneyP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP4.setText("jButton1");
@@ -3216,7 +3224,7 @@ public final class Board extends javax.swing.JFrame
                     .addComponent(lblIconP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNameP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(paneP4Layout.createSequentialGroup()
-                        .addComponent(lblMoneyP4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMoneyP4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHouseP4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -3235,10 +3243,10 @@ public final class Board extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, -1, 298));
+        paneBoss.add(paneP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 400, -1, 298));
 
         lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
-        paneBoss.add(lblBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, -1));
+        paneBoss.add(lblBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -3246,8 +3254,8 @@ public final class Board extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(paneBoss, javax.swing.GroupLayout.PREFERRED_SIZE, 1129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(paneBoss, javax.swing.GroupLayout.PREFERRED_SIZE, 1176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3431,6 +3439,7 @@ public final class Board extends javax.swing.JFrame
                 plicons[i].setEnabled(true);
               } else
               {
+                plHouse[i].setEnabled(false);
                 plnames[i].setEnabled(false);
                 plmoney[i].setEnabled(false);
                 plicons[i].setEnabled(false);

@@ -175,8 +175,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="paneBoss" min="-2" pref="1129" max="-2" attributes="0"/>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <Component id="paneBoss" min="-2" pref="1176" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -199,7 +199,7 @@
         <Container class="javax.swing.JLayeredPane" name="paneBoard">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="0" width="700" height="700"/>
+              <AbsoluteConstraints x="240" y="0" width="700" height="700"/>
             </Constraint>
           </Constraints>
 
@@ -2606,7 +2606,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="0" width="-1" height="-1"/>
+              <AbsoluteConstraints x="6" y="0" width="230" height="-1"/>
             </Constraint>
           </Constraints>
 
@@ -2619,7 +2619,7 @@
                           <Component id="lblNameP1" max="32767" attributes="0"/>
                           <Component id="lblIconP1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblMoneyP1" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="lblMoneyP1" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnHouseP1" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
@@ -2673,7 +2673,7 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="24" style="1"/>
+                  <Font name="Tahoma" size="20" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
@@ -2695,7 +2695,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="920" y="0" width="-1" height="-1"/>
+              <AbsoluteConstraints x="940" y="0" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
 
@@ -2708,7 +2708,7 @@
                           <Component id="lblNameP2" max="32767" attributes="0"/>
                           <Component id="lblIconP2" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblMoneyP2" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="lblMoneyP2" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnHouseP2" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
@@ -2759,7 +2759,7 @@
                   <Color blue="0" green="ff" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="24" style="1"/>
+                  <Font name="Tahoma" size="20" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
@@ -2794,7 +2794,7 @@
                           <Component id="lblNameP3" alignment="1" max="32767" attributes="0"/>
                           <Component id="lblIconP3" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblMoneyP3" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="lblMoneyP3" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnHouseP3" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2846,7 +2846,7 @@
                   <Color blue="ff" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="24" style="1"/>
+                  <Font name="Tahoma" size="20" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
@@ -2868,7 +2868,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="920" y="400" width="-1" height="298"/>
+              <AbsoluteConstraints x="940" y="400" width="-1" height="298"/>
             </Constraint>
           </Constraints>
 
@@ -2881,7 +2881,7 @@
                           <Component id="lblIconP4" max="32767" attributes="0"/>
                           <Component id="lblNameP4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblMoneyP4" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="lblMoneyP4" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnHouseP4" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
@@ -2932,7 +2932,7 @@
                   <Color blue="0" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="24" style="1"/>
+                  <Font name="Tahoma" size="20" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
@@ -2952,7 +2952,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="0" width="-1" height="-1"/>
+              <AbsoluteConstraints x="240" y="0" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
