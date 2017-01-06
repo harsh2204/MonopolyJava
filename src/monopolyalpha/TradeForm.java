@@ -28,6 +28,8 @@ public class TradeForm extends javax.swing.JFrame {
     JPanel[] others;
     ArrayList<Integer> from = new ArrayList();
     ArrayList<Integer> to = new ArrayList();
+    public int tradeToInd;
+    public int tradeTo = -1;
 
     public TradeForm() {
         initComponents();
@@ -87,7 +89,107 @@ public class TradeForm extends javax.swing.JFrame {
                 (float) fxColor.getOpacity());
         return endFinal;
     }
+    
+    public void tradeLog() {
+        board.appendS(board.name[board.turn], board.turn);
+        board.appendS(" traded ", 4);
+        if (from.size() == 1) {
+            for (int i = 0; i < checkboxes1.length; i++) {
+                if (checkboxes1[i] != null) {
+                    board.appendS(checkboxes1[i].getText(), board.turn);
+                }
+            }
+        }else if (from.size() == 1 && chkMon1.isSelected() == true) {
+            for (int i = 0; i < checkboxes1.length; i++) {
+                if (checkboxes1[i] != null) {
+                    board.appendS(checkboxes1[i].getText(), board.turn);
+                }
+            }
+            board.appendS(" and $", 4);
+            board.appendS(txtMon1.getText(), board.turn);
+        }else if (chkMon1.isSelected() == true) {
+            board.appendS("$", tradeTo);
+            board.appendS(txtMon1.getText(), board.turn);
+        }else if(from.size() > 1 && chkMon1.isSelected() == true) {
+            for (int x = 0; x < checkboxes1.length; x++) {
+                if(checkboxes1[x] != null) {
+                    board.appendS(checkboxes1[x].getText(), board.turn);
+                    board.appendS(" and ", 4);
+                }
+                if (checkboxes1[x] != null && x == from.size()) {
+                    board.appendS(checkboxes1[x].getText(), board.turn);
+                }
+            }
+            board.appendS(" and $", board.turn);
+            board.appendS(txtMon1.getText(), board.turn);
+        }else if (from.size()>1){
+            for (int x = 0; x < checkboxes1.length; x++) {
+                if(checkboxes1[x] != null) {
+                    board.appendS(checkboxes1[x].getText(), board.turn);
+                    board.appendS(" ", 4);
+                }
+                if (x == from.size() && checkboxes1[x] != null) {
+                    board.appendS(checkboxes1[x].getText(), board.turn);
+                }if(checkboxes1[x] != null) {
+                    board.appendS(checkboxes1[x].getText(), board.turn);
+                    board.appendS(" ", 4);
+                }
 
+            }
+        }
+
+        
+        board.appendS(" to ", 4);
+        for (int i = 0; i < others.length; i++) {
+            if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
+                board.appendS(board.name[i], tradeTo);
+            }
+        }
+        board.appendS(" for ", 4);
+        if (from.size() == 1) {
+            for (int i = 0; i < checkboxes2.length; i++) {
+                if (checkboxes2[i] != null) {
+                    board.appendS(checkboxes2[i].getText(), tradeTo);
+                }
+            }
+        } else if (to.size() == 1 && chkMon2.isSelected() == true) {
+            for (int i = 0; i < checkboxes2.length; i++) {
+                if (checkboxes2[i] != null) {
+                    board.appendS(checkboxes2[i].getText(), tradeTo);
+                }
+            }
+            board.appendS(" and $", 4);
+            board.appendS(txtMon2.getText(), tradeTo);
+        }else if (chkMon2.isSelected() == true) {
+            board.appendS("$", tradeTo);
+            board.appendS(txtMon2.getText(), tradeTo);
+        }else if (to.size() > 1 && chkMon2.isSelected() == true) {
+            for (int x = 0; x < checkboxes2.length; x++) {
+                if(checkboxes2[x] != null) {
+                    board.appendS(checkboxes2[x].getText(), tradeTo);
+                    board.appendS(" and ", 4);
+                }
+                if (x == to.size() && checkboxes2[x] != null) {
+                    board.appendS(checkboxes2[x].getText(), tradeTo);
+                } 
+            }
+            board.appendS("$", tradeTo);
+            board.appendS(txtMon2.getText(), tradeTo);
+        }else if (to.size() > 1){
+            for (int x = 0; x < checkboxes2.length; x++) {
+                if (checkboxes2[x] != null){
+                    board.appendS(checkboxes2[x].getText(), tradeTo);
+                    board.appendS(" and ", 4);
+                }
+                if (x == to.size() && checkboxes2[x] != null) {
+                    board.appendS(checkboxes2[x].getText(), tradeTo);
+                }
+
+            }
+        }
+        board.addLog(" ");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,8 +317,8 @@ public class TradeForm extends javax.swing.JFrame {
     private void btnTrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrdActionPerformed
         // TODO add your handling code here:
         int tradeFrom = board.turn;
-        int tradeToInd = paneOthers.getSelectedIndex();
-        int tradeTo = -1;
+        tradeToInd = paneOthers.getSelectedIndex();
+        
 
         for (int i = 0; i < others.length; i++) {
             if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
@@ -240,8 +342,8 @@ public class TradeForm extends javax.swing.JFrame {
                 }
             }
         }
-        if (from.isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property");
+        if (from.isEmpty() && txtMon1.getText().isEmpty() == true) {
+            JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property or money");
         } else {
             for (int i = 0; i < from.size(); i++) {
                 System.out.println("from: " + from.get(i));
@@ -249,8 +351,8 @@ public class TradeForm extends javax.swing.JFrame {
                 board.updateColors(tradeTo, from.get(i));
             }
         }
-        if (to.isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property");
+        if (to.isEmpty() && txtMon2.getText().isEmpty() == true) {
+            JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property or money");
         } else {
             for (int i = 0; i < to.size(); i++) {
                 System.out.println("to: " + to.get(i));
