@@ -615,18 +615,12 @@ public final class Board extends javax.swing.JFrame
         AudioInputStream audioIn = null;
         try
           {
-            File f = new File("./" + soundFile);
+            File f = new File(soundFile);
             audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
             clip.start();
-          } catch (UnsupportedAudioFileException ex)
-          {
-            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
-          } catch (IOException ex)
-          {
-            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
-          } catch (LineUnavailableException ex)
+          } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex)
           {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
           } finally
