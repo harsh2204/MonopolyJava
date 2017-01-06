@@ -146,7 +146,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         canth();
         new StartScreenfrm().setVisible(false);
         this.setVisible(false);
-        this.dispose();
+        dispose();
         new StartScreenfrm().dispose();
         new InitTest().setVisible(true);
 //        goNext();

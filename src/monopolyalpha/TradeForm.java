@@ -18,7 +18,8 @@ import javax.swing.border.LineBorder;
  *
  * @author Harsh
  */
-public class TradeForm extends javax.swing.JFrame {
+public class TradeForm extends javax.swing.JFrame
+  {
 
     /**
      * Creates new form TradeForm
@@ -29,37 +30,44 @@ public class TradeForm extends javax.swing.JFrame {
     ArrayList<Integer> from = new ArrayList();
     ArrayList<Integer> to = new ArrayList();
 
-    public TradeForm() {
+    public TradeForm()
+      {
         initComponents();
         paneCur.setPreferredSize(new Dimension(paneCur.getWidth(), paneOthers.getHeight()));
         paneCur.setLayout(new BoxLayout(paneCur, BoxLayout.Y_AXIS));
         checkboxes1 = new JCheckBox[36];
         checkboxes2 = new JCheckBox[36];
         others = new JPanel[board.players];
-        for (int i = 0; i < others.length; i++) {
-            if (i != board.turn) {
+        for (int i = 0; i < others.length; i++)
+          {
+            if (i != board.turn)
+              {
                 others[i] = new JPanel();
                 others[i].setLayout(new BoxLayout(others[i], BoxLayout.Y_AXIS));
                 others[i].setBorder(new LineBorder(board.colorPalette[i], 3));
                 others[i].setBackground(board.colorPalette[i].brighter());
                 others[i].setSize(paneOthers.getSize());
-                for (int j = 0; j < board.propName.length; j++) {
-                    if (board.propOwner[j] == i) {
+                for (int j = 0; j < board.propName.length; j++)
+                  {
+                    if (board.propOwner[j] == i)
+                      {
                         this.checkboxes2[j] = new JCheckBox(board.propName[j]);
                         this.checkboxes2[j].setFont(new Font("Showcard Gothic", 0, 18));
                         this.checkboxes2[j].setOpaque(true);
                         this.checkboxes2[j].setBackground(lessSat(board.pd.prop[j].colour));
                         others[i].add(checkboxes2[j]);
-                    }
+                      }
                     paneOthers.addTab(board.name[i], others[i]);
                     paneCur.validate();
                     paneCur.repaint();
-                }
-            }
+                  }
+              }
 
-        }
-        for (int i = 0; i < board.propName.length; i++) {
-            if (board.propOwner[i] == board.turn) {
+          }
+        for (int i = 0; i < board.propName.length; i++)
+          {
+            if (board.propOwner[i] == board.turn)
+              {
                 System.out.println(board.propName[i] + " added");
                 this.checkboxes1[i] = new JCheckBox(board.propName[i]);
                 this.checkboxes1[i].setFont(new Font("Showcard Gothic", 0, 18));
@@ -68,11 +76,12 @@ public class TradeForm extends javax.swing.JFrame {
                 paneCur.add(checkboxes1[i]);
                 paneCur.validate();
                 paneCur.repaint();
-            }
-        }
-    }
+              }
+          }
+      }
 
-    public java.awt.Color lessSat(java.awt.Color c) {
+    public java.awt.Color lessSat(java.awt.Color c)
+      {
 
         int r = c.getRed();
         int g = c.getGreen();
@@ -86,7 +95,7 @@ public class TradeForm extends javax.swing.JFrame {
                 (float) fxColor.getBlue(),
                 (float) fxColor.getOpacity());
         return endFinal;
-    }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,126 +226,160 @@ public class TradeForm extends javax.swing.JFrame {
         int tradeFrom = board.turn;
         int tradeToInd = paneOthers.getSelectedIndex();
         int tradeTo = -1;
-        if (tradeTo != -1) {
-            for (int i = 0; i < others.length; i++) {
-                if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
+        if (tradeTo != -1)
+          {
+            for (int i = 0; i < others.length; i++)
+              {
+                if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i]))
+                  {
                     System.out.println("other player found");
                     tradeTo = i;
-                }
-            }
-        }
-        for (int i = 0; i < checkboxes1.length; i++) {
-            if (checkboxes1[i] != null) {
+                  }
+              }
+          }
+        for (int i = 0; i < checkboxes1.length; i++)
+          {
+            if (checkboxes1[i] != null)
+              {
                 System.out.println("From prop: " + checkboxes1[i].getText());
-                if (checkboxes1[i].isSelected()) {
+                if (checkboxes1[i].isSelected())
+                  {
                     from.add(i);
-                }
-            }
-        }
-        for (int i = 0; i < checkboxes2.length; i++) {
-            if (checkboxes2[i] != null) {
+                  }
+              }
+          }
+        for (int i = 0; i < checkboxes2.length; i++)
+          {
+            if (checkboxes2[i] != null)
+              {
                 System.out.println("To prop: " + checkboxes2[i].getText());
-                if (checkboxes2[i].isSelected()) {
+                if (checkboxes2[i].isSelected())
+                  {
                     to.add(i);
-                }
-            }
-        }
-        if (from.size() == 0) {
+                  }
+              }
+          }
+        if (from.isEmpty())
+          {
             JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property");
-        } else {
-            for (int i = 0; i < from.size(); i++) {
+          } else
+          {
+            for (int i = 0; i < from.size(); i++)
+              {
                 System.out.println("from: " + from.get(i));
                 board.propOwner[from.get(i)] = tradeTo;
                 board.updateColors(tradeTo, from.get(i));
-            }
-        }
-        if (to.size() == 0) {
+              }
+          }
+        if (to.isEmpty())
+          {
             JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property");
-        } else {
-            for (int i = 0; i < to.size(); i++) {
+          } else
+          {
+            for (int i = 0; i < to.size(); i++)
+              {
                 System.out.println("to: " + to.get(i));
                 board.propOwner[to.get(i)] = tradeFrom;
                 board.updateColors(tradeFrom, to.get(i));
-            }
-        }
-        if (chkMon1.isSelected()) {
+              }
+          }
+        if (chkMon1.isSelected())
+          {
             System.out.println("Money!");
-            try {
+            try
+              {
                 board.money[tradeFrom] -= Integer.parseInt(txtMon1.getText());
                 board.money[tradeTo] += Integer.parseInt(txtMon1.getText());
-            } catch (Exception e) {
+              } catch (Exception e)
+              {
                 JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
                 txtMon1.setText("");
-            }
-        }
-        if (chkMon2.isSelected()) {
+              }
+          }
+        if (chkMon2.isSelected())
+          {
             System.out.println("Money!2");
-            try {
+            try
+              {
                 board.money[tradeTo] -= Integer.parseInt(txtMon2.getText());
                 board.money[tradeFrom] += Integer.parseInt(txtMon2.getText());
-            } catch (Exception e) {
+              } catch (Exception e)
+              {
                 JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
                 txtMon2.setText("");
-            }
-        }
-        for (int i = 0; i < board.players; i++) {
-            board.displayChange(i);
-        }
+              }
+          }
+
+        board.displayChangePay(tradeFrom, tradeTo, Integer.parseInt(txtMon2.getText()));
         this.dispose();
     }//GEN-LAST:event_btnTrdActionPerformed
 
     private void chkMon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon1ActionPerformed
         // TODO add your handling code here:
-        if (chkMon1.isSelected()) {
+        if (chkMon1.isSelected())
+          {
             txtMon1.setEnabled(true);
-        } else {
+          } else
+          {
             txtMon1.setEnabled(false);
-        }
+          }
     }//GEN-LAST:event_chkMon1ActionPerformed
 
     private void chkMon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon2ActionPerformed
         // TODO add your handling code here:
-        if (chkMon2.isSelected()) {
+        if (chkMon2.isSelected())
+          {
             txtMon2.setEnabled(true);
-        } else {
+          } else
+          {
             txtMon2.setEnabled(false);
-        }
+          }
     }//GEN-LAST:event_chkMon2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+      {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+          {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+              {
+                if ("Nimbus".equals(info.getName()))
+                  {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
+                  }
+              }
+          } catch (ClassNotFoundException ex)
+          {
             java.util.logging.Logger.getLogger(TradeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+          } catch (InstantiationException ex)
+          {
             java.util.logging.Logger.getLogger(TradeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+          } catch (IllegalAccessException ex)
+          {
             java.util.logging.Logger.getLogger(TradeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+          } catch (javax.swing.UnsupportedLookAndFeelException ex)
+          {
             java.util.logging.Logger.getLogger(TradeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+          }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+          {
+            public void run()
+              {
                 new TradeForm().setVisible(true);
-            }
-        });
-    }
+              }
+          });
+      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTrd;
