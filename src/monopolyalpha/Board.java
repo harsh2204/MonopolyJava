@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -65,6 +67,7 @@ public final class Board extends javax.swing.JFrame
     Canada_Data cd = new Canada_Data();
     SuperHero_Data sd = new SuperHero_Data();
     Generic_Data gd = new Generic_Data();
+    public ArrayList mess = new ArrayList();
 
     public Board(int playerCount)
       {
@@ -359,6 +362,14 @@ public final class Board extends javax.swing.JFrame
             cpos[i] = 0;
             npos[i] = 0;
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
+
+            mess.add("Awesome!");
+            mess.add("Great!");
+            mess.add("Good Job!");
+            mess.add("Jordar!");
+            mess.add("MC BC!");
+            mess.add("Chodu Banayo!");
+            mess.add("OMG!");
           }
         System.out.println("Board: Data Transfered!");
         for (i = 0; i < 36; i++)
@@ -1075,6 +1086,9 @@ public final class Board extends javax.swing.JFrame
 
     public void displayChangeBuy(final int turn)
       {
+        Collections.shuffle(mess);
+        lblMessage.setText("" + mess.get(0));
+        lblBought.setText("" + name[turn] + " bought " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]]);
         yy[turn] = oy[turn];
         plMC[turn].setForeground(Color.red);
         moneyTimer = new Timer(50, new ActionListener()
@@ -1082,12 +1096,16 @@ public final class Board extends javax.swing.JFrame
             @Override
             public void actionPerformed(ActionEvent e)
               {
+                lblMessage.setVisible(true);
+                lblBought.setVisible(true);
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
                 plMC[turn].setText("(-$ " + propPrice[cpos[turn]] + ")");
                 yy[turn]++;
                 if (yy[turn] == ny[turn])
                   {
+                    lblMessage.setVisible(false);
+                    lblBought.setVisible(false);
                     moneyTimer.stop();
                     plMC[turn].setVisible(false);
                     plMC[turn].setText(null);
@@ -1101,7 +1119,7 @@ public final class Board extends javax.swing.JFrame
     public void displayChangePay(final int turn, final int propOwner, final int pRent)
       {
 //        plmoney[turn].setForeground(Color.red);
-        plmoney[turn].setText("$ " + money[turn] );
+        plmoney[turn].setText("$ " + money[turn]);
 
 //        plmoney[propOwner].setForeground(Color.red);
         plmoney[propOwner].setText("$ " + money[propOwner]);
@@ -1308,8 +1326,10 @@ public final class Board extends javax.swing.JFrame
                 for (i = 0; i < players; i++)
                   {
                     money[i] += pd.chanceVals[ind];
-                    if(i!=turn)
-                    displayChangeS(i, pd.chanceVals[ind]);
+                    if (i != turn)
+                      {
+                        displayChangeS(i, pd.chanceVals[ind]);
+                      }
                   }
                 money[turn] -= (pd.chanceVals[ind] * (players));
                 displayChangeS(turn, -1 * (pd.chanceVals[ind]));
@@ -1501,6 +1521,8 @@ public final class Board extends javax.swing.JFrame
         btnPass = new javax.swing.JButton();
         paneBoss = new javax.swing.JPanel();
         paneBoard = new javax.swing.JLayeredPane();
+        lblMessage = new javax.swing.JLabel();
+        lblBought = new javax.swing.JLabel();
         lblHoverB7 = new javax.swing.JLabel();
         lblHoverB6 = new javax.swing.JLabel();
         lblHoverB5 = new javax.swing.JLabel();
@@ -1821,6 +1843,18 @@ public final class Board extends javax.swing.JFrame
         setUndecorated(true);
 
         paneBoss.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMessage.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblMessage.setForeground(new java.awt.Color(255, 255, 0));
+        lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paneBoard.add(lblMessage);
+        lblMessage.setBounds(100, 250, 500, 60);
+
+        lblBought.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblBought.setForeground(new java.awt.Color(0, 0, 153));
+        lblBought.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paneBoard.add(lblBought);
+        lblBought.setBounds(100, 320, 500, 60);
 
         lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -3903,6 +3937,7 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBoard;
+    private javax.swing.JLabel lblBought;
     private javax.swing.JLabel lblHoverB1;
     private javax.swing.JLabel lblHoverB2;
     private javax.swing.JLabel lblHoverB3;
@@ -3914,6 +3949,7 @@ public final class Board extends javax.swing.JFrame
     private javax.swing.JLabel lblIconP2;
     private javax.swing.JLabel lblIconP3;
     private javax.swing.JLabel lblIconP4;
+    private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblMoneyP1;
     private javax.swing.JLabel lblMoneyP2;
     private javax.swing.JLabel lblMoneyP3;
