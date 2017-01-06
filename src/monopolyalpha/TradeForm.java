@@ -48,12 +48,12 @@ public class TradeForm extends javax.swing.JFrame {
                         this.checkboxes2[j] = new JCheckBox(board.propName[j]);
                         this.checkboxes2[j].setFont(new Font("Showcard Gothic", 0, 18));
                         this.checkboxes2[j].setOpaque(true);
-                        this.checkboxes2[j].setBackground(board.pd.prop[j].colour);
+                        this.checkboxes2[j].setBackground(lessSat(board.pd.prop[j].colour));
                         others[i].add(checkboxes2[j]);
-                        paneOthers.addTab(board.name[i], others[i]);
-                        paneCur.validate();
-                        paneCur.repaint();
                     }
+                    paneOthers.addTab(board.name[i], others[i]);
+                    paneCur.validate();
+                    paneCur.repaint();
                 }
             }
 
@@ -64,12 +64,28 @@ public class TradeForm extends javax.swing.JFrame {
                 this.checkboxes1[i] = new JCheckBox(board.propName[i]);
                 this.checkboxes1[i].setFont(new Font("Showcard Gothic", 0, 18));
                 this.checkboxes1[i].setOpaque(true);
-                this.checkboxes1[i].setBackground(board.pd.prop[i].colour);
+                this.checkboxes1[i].setBackground(lessSat(board.pd.prop[i].colour));
                 paneCur.add(checkboxes1[i]);
                 paneCur.validate();
                 paneCur.repaint();
             }
         }
+    }
+
+    public java.awt.Color lessSat(java.awt.Color c) {
+
+        int r = c.getRed();
+        int g = c.getGreen();
+        int b = c.getBlue();
+        int a = c.getAlpha();
+        double opacity = a / 255.0;
+        javafx.scene.paint.Color fxColor = javafx.scene.paint.Color.rgb(r, g, b, opacity);
+        fxColor = fxColor.desaturate();
+        java.awt.Color endFinal = new java.awt.Color((float) fxColor.getRed(),
+                (float) fxColor.getGreen(),
+                (float) fxColor.getBlue(),
+                (float) fxColor.getOpacity());
+        return endFinal;
     }
 
     /**
@@ -201,10 +217,12 @@ public class TradeForm extends javax.swing.JFrame {
         int tradeFrom = board.turn;
         int tradeToInd = paneOthers.getSelectedIndex();
         int tradeTo = -1;
-        for (int i = 0; i < others.length; i++) {
-            if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
-                System.out.println("other player found");
-                tradeTo = i;
+        if (tradeTo != -1) {
+            for (int i = 0; i < others.length; i++) {
+                if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
+                    System.out.println("other player found");
+                    tradeTo = i;
+                }
             }
         }
         for (int i = 0; i < checkboxes1.length; i++) {
@@ -223,17 +241,26 @@ public class TradeForm extends javax.swing.JFrame {
                 }
             }
         }
-        for (int i = 0; i < from.size(); i++) {
-            System.out.println("from: " + from.get(i));
-            board.propOwner[from.get(i)] = tradeTo;
-            board.updateColors(tradeTo, from.get(i));
+        if (from.size() == 0) {
+            JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property");
+        } else {
+            for (int i = 0; i < from.size(); i++) {
+                System.out.println("from: " + from.get(i));
+                board.propOwner[from.get(i)] = tradeTo;
+                board.updateColors(tradeTo, from.get(i));
+            }
         }
-        for (int i = 0; i < to.size(); i++) {
-            System.out.println("to: " + to.get(i));
-            board.propOwner[to.get(i)] = tradeFrom;
-            board.updateColors(tradeFrom, to.get(i));
+        if (to.size() == 0) {
+            JOptionPane.showConfirmDialog(null, "Caution! You are trading to/for no property");
+        } else {
+            for (int i = 0; i < to.size(); i++) {
+                System.out.println("to: " + to.get(i));
+                board.propOwner[to.get(i)] = tradeFrom;
+                board.updateColors(tradeFrom, to.get(i));
+            }
         }
         if (chkMon1.isSelected()) {
+            System.out.println("Money!");
             try {
                 board.money[tradeFrom] -= Integer.parseInt(txtMon1.getText());
                 board.money[tradeTo] += Integer.parseInt(txtMon1.getText());
@@ -243,6 +270,7 @@ public class TradeForm extends javax.swing.JFrame {
             }
         }
         if (chkMon2.isSelected()) {
+            System.out.println("Money!2");
             try {
                 board.money[tradeTo] -= Integer.parseInt(txtMon2.getText());
                 board.money[tradeFrom] += Integer.parseInt(txtMon2.getText());
@@ -250,6 +278,9 @@ public class TradeForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Please enter the correct amount of money");
                 txtMon2.setText("");
             }
+        }
+        for (int i = 0; i < board.players; i++) {
+            board.displayChange(i);
         }
         this.dispose();
     }//GEN-LAST:event_btnTrdActionPerformed

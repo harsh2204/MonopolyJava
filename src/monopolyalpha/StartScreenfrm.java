@@ -40,7 +40,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         System.out.println(w + "" + h);
         bk.setIcon(ic);
       }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -163,7 +163,7 @@ public class StartScreenfrm extends javax.swing.JFrame
 //            Logger.getLogger(StartScreenfrm.class.getName()).log(Level.SEVERE, null, ex);
 //          }
         new ThemeSelect().setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_btnNewGameActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed

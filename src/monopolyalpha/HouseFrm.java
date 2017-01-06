@@ -92,8 +92,7 @@ public class HouseFrm extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jToolBar1 = new javax.swing.JToolBar();
@@ -119,7 +118,7 @@ public class HouseFrm extends javax.swing.JFrame
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -137,20 +136,16 @@ public class HouseFrm extends javax.swing.JFrame
 
         btnUpg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnUpg.setText("Upgrade");
-        btnUpg.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnUpg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpgActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
@@ -204,7 +199,7 @@ public class HouseFrm extends javax.swing.JFrame
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExitActionPerformed
     {//GEN-HEADEREND:event_btnExitActionPerformed
         this.setVisible(false);
-        Dispose();
+        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnUpgActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnUpgActionPerformed
@@ -219,15 +214,13 @@ public class HouseFrm extends javax.swing.JFrame
                 props[i].setSelected(false);
                 updateMoney();
                 bd.houses[nums[i]].setIcon(bd.houseImg[bd.propHouse[nums[i]]]);
-                bd.setupHouses();
+                bd.houses[nums[i]].validate();
+                bd.houses[nums[i]].repaint();
               }
           }
+        btnUpg.setEnabled(false);
     }//GEN-LAST:event_btnUpgActionPerformed
-    private void Dispose()
-      {
-        InitTest.board.enableNext();
-        this.dispose();
-      }
+
 
     /**
      * @param args the command line arguments
