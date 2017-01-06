@@ -59,7 +59,7 @@ public class StartScreenfrm extends javax.swing.JFrame
         btnExit = new javax.swing.JButton();
         bk = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);

@@ -442,10 +442,10 @@ public class Canada_Data {
         chanceVals[4] = 400;
         chance[5] = "It is your birthday Collect $60 from each player ";
         chanceActs[5] = "P$";
-        chanceVals[5] = 60;
+        chanceVals[5] = -60;
         chance[6] = "Blue Jays opening night – collect $50 from every player for opening night seats ";
         chanceActs[6] = "P$";
-        chanceVals[6] = 50;
+        chanceVals[6] = -50;
         chance[7] = "Income Tax refund – collect $200 ";
         chanceActs[7] = "$";
         chanceVals[7] = 200;

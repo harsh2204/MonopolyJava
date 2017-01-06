@@ -55,7 +55,7 @@ public class ThemeSelect extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         back = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         btnCanada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/themeCanadanpr.png"))); // NOI18N

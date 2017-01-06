@@ -1100,10 +1100,10 @@ public final class Board extends javax.swing.JFrame
 
     public void displayChangePay(final int turn, final int propOwner, final int pRent)
       {
-        plmoney[turn].setForeground(Color.red);
+//        plmoney[turn].setForeground(Color.red);
         plmoney[turn].setText("$ " + money[turn] );
 
-        plmoney[propOwner].setForeground(Color.red);
+//        plmoney[propOwner].setForeground(Color.red);
         plmoney[propOwner].setText("$ " + money[propOwner]);
 
         yy[turn] = oy[turn];
@@ -1118,7 +1118,7 @@ public final class Board extends javax.swing.JFrame
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
                 plMC[turn].setText("(-$ " + pRent + ")");
-                plMC[propOwner].setLocation(plMC[turn].getX(), yy[propOwner]);
+                plMC[propOwner].setLocation(plMC[propOwner].getX(), yy[propOwner]);
                 plMC[propOwner].setVisible(true);
                 plMC[propOwner].setText("(+$ " + pRent + ")");
                 yy[propOwner]--;
@@ -1140,7 +1140,7 @@ public final class Board extends javax.swing.JFrame
       {
         plMC[turn].setForeground(Color.green);
         yy[turn] = oy[turn];
-        plMC[turn].setForeground(Color.red);
+//        plMC[turn].setForeground(Color.red);
         moneyTimer = new Timer(50, new ActionListener()
           {
             @Override
@@ -1214,7 +1214,7 @@ public final class Board extends javax.swing.JFrame
           } else
           {
             yy[turn] = oy[turn];
-            plMC[turn].setForeground(Color.red);
+            plMC[turn].setForeground(Color.gray);
             moneyTimer = new Timer(50, new ActionListener()
               {
                 @Override
@@ -1308,6 +1308,7 @@ public final class Board extends javax.swing.JFrame
                 for (i = 0; i < players; i++)
                   {
                     money[i] += pd.chanceVals[ind];
+                    if(i!=turn)
                     displayChangeS(i, pd.chanceVals[ind]);
                   }
                 money[turn] -= (pd.chanceVals[ind] * (players));
@@ -1694,6 +1695,10 @@ public final class Board extends javax.swing.JFrame
         btnExit = new javax.swing.JButton();
         btnTrade = new javax.swing.JButton();
         btnReBuy = new javax.swing.JButton();
+        PMCP1 = new javax.swing.JLabel();
+        PMCP2 = new javax.swing.JLabel();
+        PMCP3 = new javax.swing.JLabel();
+        PMCP4 = new javax.swing.JLabel();
         paneP1 = new javax.swing.JPanel();
         lblNameP1 = new javax.swing.JLabel();
         lblIconP1 = new javax.swing.JLabel();
@@ -1715,10 +1720,6 @@ public final class Board extends javax.swing.JFrame
         lblMoneyP4 = new javax.swing.JLabel();
         btnHouseP4 = new javax.swing.JButton();
         lblBoard = new javax.swing.JLabel();
-        PMCP1 = new javax.swing.JLabel();
-        PMCP2 = new javax.swing.JLabel();
-        PMCP3 = new javax.swing.JLabel();
-        PMCP4 = new javax.swing.JLabel();
 
         dlgLog.setAlwaysOnTop(true);
         dlgLog.setUndecorated(true);
@@ -3281,7 +3282,23 @@ public final class Board extends javax.swing.JFrame
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 727, 710, -1));
+        paneBoss.add(paneControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 710, 710, -1));
+
+        PMCP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        PMCP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paneBoss.add(PMCP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 60));
+
+        PMCP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        PMCP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paneBoss.add(PMCP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 150, 60));
+
+        PMCP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        PMCP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paneBoss.add(PMCP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 150, 60));
+
+        PMCP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        PMCP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        paneBoss.add(PMCP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 670, 150, 60));
 
         paneP1.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -3292,7 +3309,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP1.setBackground(new java.awt.Color(255, 0, 0));
 
         lblMoneyP1.setBackground(new java.awt.Color(255, 0, 0));
-        lblMoneyP1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblMoneyP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblMoneyP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP1.setText("jButton1");
@@ -3339,7 +3356,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP2.setBackground(new java.awt.Color(0, 255, 0));
 
         lblMoneyP2.setBackground(new java.awt.Color(0, 255, 0));
-        lblMoneyP2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblMoneyP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblMoneyP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP2.setText("jButton1");
@@ -3384,7 +3401,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP3.setBackground(new java.awt.Color(0, 0, 255));
 
         lblMoneyP3.setBackground(new java.awt.Color(0, 0, 255));
-        lblMoneyP3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblMoneyP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblMoneyP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP3.setText("jButton1");
@@ -3430,7 +3447,7 @@ public final class Board extends javax.swing.JFrame
         lblIconP4.setBackground(new java.awt.Color(255, 255, 0));
 
         lblMoneyP4.setBackground(new java.awt.Color(255, 255, 0));
-        lblMoneyP4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblMoneyP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblMoneyP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnHouseP4.setText("jButton1");
@@ -3468,22 +3485,6 @@ public final class Board extends javax.swing.JFrame
 
         lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
         paneBoss.add(lblBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
-
-        PMCP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        PMCP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 60));
-
-        PMCP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        PMCP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 150, 60));
-
-        PMCP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        PMCP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 150, 60));
-
-        PMCP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        PMCP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 670, 150, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
