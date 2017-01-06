@@ -16,9 +16,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,7 +52,7 @@ public final class Board extends javax.swing.JFrame
      * Creates new form Board
      */
     public static int players, i, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0;
-    public static String theme;
+    public static String theme, soundFile;
     public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
     public String[] name = new String[4], propName = new String[36], propType = new String[36];
     public ThemeSelect ts = new ThemeSelect();
@@ -601,6 +610,37 @@ public final class Board extends javax.swing.JFrame
 //        }
       }
 
+    public void playSound(String soundFile)
+      {
+        AudioInputStream audioIn = null;
+        try
+          {
+            File f = new File("./" + soundFile);
+            audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+          } catch (UnsupportedAudioFileException ex)
+          {
+            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (IOException ex)
+          {
+            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (LineUnavailableException ex)
+          {
+            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
+          } finally
+          {
+            try
+              {
+                audioIn.close();
+              } catch (IOException ex)
+              {
+                Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
+              }
+          }
+      }
+
     public java.awt.Color moreSat(java.awt.Color c)
       {
         int r = c.getRed();
@@ -1086,11 +1126,13 @@ public final class Board extends javax.swing.JFrame
 
     public void displayChangeBuy(final int turn)
       {
+        soundFile = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav";
         Collections.shuffle(mess);
         lblMessage.setText("" + mess.get(0));
         lblBought.setText("" + name[turn] + " bought " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]]);
         yy[turn] = oy[turn];
         plMC[turn].setForeground(Color.red);
+        playSound(soundFile);
         moneyTimer = new Timer(50, new ActionListener()
           {
             @Override
@@ -1123,11 +1165,13 @@ public final class Board extends javax.swing.JFrame
 
 //        plmoney[propOwner].setForeground(Color.red);
         plmoney[propOwner].setText("$ " + money[propOwner]);
-
+        soundFile = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav";
         yy[turn] = oy[turn];
         yy[propOwner] = ny[propOwner];
         plMC[turn].setForeground(Color.red);
         plMC[propOwner].setForeground(Color.green);
+
+        playSound(soundFile);
         moneyTimer = new Timer(50, new ActionListener()
           {
             @Override
@@ -1156,9 +1200,11 @@ public final class Board extends javax.swing.JFrame
 
     public void displayChangeRE()
       {
+        soundFile = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav";
         plMC[turn].setForeground(Color.green);
         yy[turn] = oy[turn];
 //        plMC[turn].setForeground(Color.red);
+        playSound(soundFile);
         moneyTimer = new Timer(50, new ActionListener()
           {
             @Override
@@ -1182,10 +1228,12 @@ public final class Board extends javax.swing.JFrame
 
     public void displayChangeS(final int turn, final int pRent)
       {
+        soundFile = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav";
         if (pRent < 0)
           {
             yy[turn] = oy[turn];
             plMC[turn].setForeground(Color.red);
+            playSound(soundFile);
             moneyTimer = new Timer(50, new ActionListener()
               {
                 @Override
@@ -1210,6 +1258,7 @@ public final class Board extends javax.swing.JFrame
             final String sign = "+";
             yy[turn] = ny[turn];
             plMC[turn].setForeground(Color.green);
+            playSound(soundFile);
             moneyTimer = new Timer(50, new ActionListener()
               {
                 @Override
