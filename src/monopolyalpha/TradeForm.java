@@ -103,7 +103,7 @@ public class TradeForm extends javax.swing.JFrame {
             board.appendS(txtMon1.getText(), board.turn);
         } else if (from.size() > 1 && chkMon1.isSelected() == true) {
             for (int x = 0; x < from.size(); x++) {
-                if (x == from.size() - 1) {
+                if (x == from.size()) {
                     board.ProptertyText(from.get(x));
                 } else {
                     board.ProptertyText(from.get(x));
@@ -115,17 +115,15 @@ public class TradeForm extends javax.swing.JFrame {
 
         } else if (from.size() == 1) {
             for (int i = 0; i < from.size(); i++) {
-                if (checkboxes1[from.get(i)] != null) {
 //                    board.appendS(checkboxes1[from.get(i)].getText(), board.turn);
-                    board.ProptertyText(from.get(i));
-                }
+                board.ProptertyText(from.get(i));
             }
         } else if (chkMon1.isSelected() == true) {
             board.appendS("$", 4);
             board.appendS(txtMon1.getText(), board.turn);
         } else if (from.size() > 1) {
             for (int x = 0; x < from.size(); x++) {
-                if (x == from.size()) {
+                if (x == from.size() - 1) {
                     board.ProptertyText(from.get(x));
                 } else {
                     board.ProptertyText(from.get(x));
@@ -157,7 +155,7 @@ public class TradeForm extends javax.swing.JFrame {
             }
         } else if (to.size() > 1 && chkMon2.isSelected() == true) {
             for (int x = 0; x < to.size(); x++) {
-                if (x == to.size() - 1) {
+                if (x == to.size()) {
                     board.ProptertyText(to.get(x));
                 } else {
 //                    board.appendS(checkboxes2[x].getText(), tradeTo);
@@ -171,8 +169,8 @@ public class TradeForm extends javax.swing.JFrame {
             board.appendS("$", tradeTo);
             board.appendS(txtMon2.getText(), tradeTo);
         } else if (to.size() > 1) {
-            for (int x = 0; x < checkboxes2.length; x++) {
-                if (x == to.size() && checkboxes2[x] != null) {
+            for (int x = 0; x < to.size(); x++) {
+                if (x == to.size()) {
                     board.ProptertyText(to.get(x));
                 } else {
                     board.ProptertyText(to.get(x));
