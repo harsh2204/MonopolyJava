@@ -259,7 +259,7 @@ public class Canada_Data {
         property[20].priceHouse = 150;
         property[20].colour = Color.GREEN;
         property[20].buyable = true;
-        property[20].cardIcon = new ImageIcon("Board Pictures/Canada/QBC Image.jpg");
+        property[20].cardIcon = new ImageIcon("Board Pictures/Canada/QBC.jpg");
         property[20].type = "N";
 
         //RBC

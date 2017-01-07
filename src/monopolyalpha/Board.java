@@ -658,21 +658,21 @@ public final class Board extends javax.swing.JFrame {
             exc.printStackTrace();
         }
     }
-    public void ProptertyText(int propertyIndex)
-      {
-        try
-          {
+
+    public void ProptertyText(int propertyIndex) {
+        try {
             StyledDocument doc = txtLog.getStyledDocument();
             doc.insertString(doc.getLength(), propName[propertyIndex], getPropText(new SimpleAttributeSet(), propertyIndex));
-          } catch (BadLocationException exc)
-          {
+        } catch (BadLocationException exc) {
             exc.printStackTrace();
-          }
-      }
-    public SimpleAttributeSet getPropText(SimpleAttributeSet att, int prop){
+        }
+    }
+
+    public SimpleAttributeSet getPropText(SimpleAttributeSet att, int prop) {
         StyleConstants.setForeground(att, moreSat(pd.prop[prop].colour));
         return att;
     }
+
     public void addLog(String s) {
         appendS(s + "\n", 4);
 
@@ -735,10 +735,16 @@ public final class Board extends javax.swing.JFrame {
                 int pOwner = propOwner[cpos[turn]];
                 if (pOwner != turn) {
                     propOwnedCheck(pOwner, turn, cpos);
+                } else {
+                    btnReBuy.setText("Sell");
+                    btnReBuy.setEnabled(true);
+                    BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell");
+                    buy.setVisible(true);
                 }
             } else {
+                btnReBuy.setText("Buy");
                 btnReBuy.setEnabled(true);
-                BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
+                BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy");
                 buy.setVisible(true);
             }
         } else {
@@ -917,6 +923,18 @@ public final class Board extends javax.swing.JFrame {
         btnReBuy.setEnabled(false);
     }
 
+    public void propSell(int turn) {
+        buyStatus[cpos[turn]].setBackground(Color.darkGray);
+        money[turn] += propPrice[cpos[turn]] / 2;
+        propMoney[turn] -= propPrice[cpos[turn]];
+        totMoney[turn] =money[turn]- propMoney[turn];
+        propOwned[cpos[turn]] = false;
+        propOwner[cpos[turn]] = -1;
+        numprop[turn]--;
+        displayChangeSell(turn);
+        btnReBuy.setEnabled(false);
+    }
+
     public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
         String pType = propType[cpos[turn]];
         System.out.println("Boadr:: Name:" + propName[cpos[turn]] + " Type:" + pType);
@@ -1043,7 +1061,34 @@ public final class Board extends javax.swing.JFrame {
         moneyTimer.start();
         plmoney[turn].setText("$ " + money[turn]);
     }
-
+    public void displayChangeSell(final int turn) {
+        Collections.shuffle(mess);
+        lblMessage.setText("" + mess.get(0));
+        lblBought.setText("" + name[turn] + " sold " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]]/2);
+        yy[turn] = oy[turn];
+        plMC[turn].setForeground(Color.green);
+        playSound(ching);
+        moneyTimer = new Timer(50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblMessage.setVisible(true);
+                lblBought.setVisible(true);
+                plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
+                plMC[turn].setVisible(true);
+                plMC[turn].setText("(+$ " + propPrice[cpos[turn]]/2 + ")");
+                yy[turn]++;
+                if (yy[turn] == ny[turn]) {
+                    lblMessage.setVisible(false);
+                    lblBought.setVisible(false);
+                    moneyTimer.stop();
+                    plMC[turn].setVisible(false);
+                    plMC[turn].setText(null);
+                }
+            }
+        });
+        moneyTimer.start();
+        plmoney[turn].setText("$ " + money[turn]);
+    }
     public void displayChangePay(final int turn, final int propOwner, final int pRent) {
 //        plmoney[turn].setForeground(Color.red);
         plmoney[turn].setText("$ " + money[turn]);
@@ -1286,6 +1331,7 @@ public final class Board extends javax.swing.JFrame {
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                btnNext.setEnabled(false);
                 counter++;
                 if (counter == 5) {
                     comCard.setVisible(false);
@@ -1740,8 +1786,6 @@ public final class Board extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
-
-        paneBoss.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMessage.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblMessage.setForeground(new java.awt.Color(255, 255, 0));
@@ -3327,8 +3371,6 @@ public final class Board extends javax.swing.JFrame {
         paneBoard.add(lblHoverB35);
         lblHoverB35.setBounds(97, 608, 60, 90);
 
-        paneBoss.add(paneBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 700, 700));
-
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
         btnRoll.addActionListener(new java.awt.event.ActionListener() {
@@ -3415,23 +3457,17 @@ public final class Board extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 710, 710, -1));
-
         PMCP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         PMCP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 60));
 
         PMCP2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         PMCP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 150, 60));
 
         PMCP3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         PMCP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 150, 60));
 
         PMCP4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         PMCP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        paneBoss.add(PMCP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 670, 150, 60));
 
         paneP1.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -3458,7 +3494,7 @@ public final class Board extends javax.swing.JFrame {
                     .addComponent(lblIconP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneP1Layout.createSequentialGroup()
                         .addComponent(lblMoneyP1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(btnHouseP1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -3471,14 +3507,12 @@ public final class Board extends javax.swing.JFrame {
                 .addComponent(lblIconP1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(paneP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblMoneyP1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                    .addComponent(btnHouseP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblMoneyP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHouseP1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         lblNameP1.getAccessibleContext().setAccessibleDescription("");
-
-        paneBoss.add(paneP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 230, -1));
 
         paneP2.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -3523,8 +3557,6 @@ public final class Board extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, -1));
-
         paneP3.setBorder(new javax.swing.border.MatteBorder(null));
 
         lblNameP3.setBackground(new java.awt.Color(0, 0, 255));
@@ -3564,12 +3596,10 @@ public final class Board extends javax.swing.JFrame {
                 .addComponent(lblIconP3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paneP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblMoneyP3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                    .addComponent(btnHouseP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblMoneyP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHouseP3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        paneBoss.add(paneP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 220, -1));
 
         paneP4.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -3614,10 +3644,75 @@ public final class Board extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 400, -1, 298));
-
         lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
-        paneBoss.add(lblBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
+
+        javax.swing.GroupLayout paneBossLayout = new javax.swing.GroupLayout(paneBoss);
+        paneBoss.setLayout(paneBossLayout);
+        paneBossLayout.setHorizontalGroup(
+            paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneBossLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(paneBossLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(PMCP1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneBossLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(4, 4, 4)
+                        .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paneBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblBoard)))
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(PMCP3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paneP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PMCP2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PMCP4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        );
+        paneBossLayout.setVerticalGroup(
+            paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneBossLayout.createSequentialGroup()
+                .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paneP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(paneBossLayout.createSequentialGroup()
+                                .addGap(280, 280, 280)
+                                .addComponent(PMCP1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(60, 60, 60)
+                        .addComponent(paneP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paneBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBoard))
+                .addGap(10, 10, 10)
+                .addComponent(paneControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(paneBossLayout.createSequentialGroup()
+                .addGap(660, 660, 660)
+                .addComponent(PMCP3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(paneBossLayout.createSequentialGroup()
+                .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(PMCP2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paneP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(paneBossLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneP4, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(paneBossLayout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(PMCP4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -3625,7 +3720,7 @@ public final class Board extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(paneBoss, javax.swing.GroupLayout.PREFERRED_SIZE, 1176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(paneBoss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -3707,10 +3802,11 @@ public final class Board extends javax.swing.JFrame {
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
 
         btnRoll.setEnabled(false);
-        rolling();
+//        rolling();
         hover = false;
-//        int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
-//        roll = m;
+        int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
+        roll = m;
+        move(turn);
 //        chanceCard(roll);
     }//GEN-LAST:event_btnRollActionPerformed
 
@@ -3768,8 +3864,14 @@ public final class Board extends javax.swing.JFrame {
 
     private void btnReBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReBuyActionPerformed
         // TODO add your handling code here:
-        BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd));
-        buy.setVisible(true);
+        if(btnReBuy.getText().equals("Buy")){
+        BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy");
+        buy.setVisible(true);    
+        }if(btnReBuy.getText().equals("Sell")){
+        BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell");
+        buy.setVisible(true);    
+        }
+        
     }//GEN-LAST:event_btnReBuyActionPerformed
 
     private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
@@ -3978,7 +4080,7 @@ public final class Board extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHoverB30MouseEntered
 
     private void lblHoverB30MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB30MouseExited
-       breakCard();
+        breakCard();
     }//GEN-LAST:event_lblHoverB30MouseExited
 
     private void lblHoverB32MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB32MouseEntered

@@ -11,8 +11,7 @@ import java.awt.Color;
  *
  * @author Harsh
  */
-public class BuyScreen extends javax.swing.JFrame
-  {
+public class BuyScreen extends javax.swing.JFrame {
 
     /**
      * Creates new form BuyScreen
@@ -21,14 +20,19 @@ public class BuyScreen extends javax.swing.JFrame
      */
     boolean bought = false, clicked = false;
 
-    public BuyScreen(Card card)
-      {
+    public BuyScreen(Card card, String button) {
         initComponents();
         paneCard.add(card.getComponent(0));
         this.setLocationRelativeTo(null);
-        this.setBackground(new Color(0,0,0,0));
-        this.getContentPane().setBackground(new Color(0,0,0,0));
-      }
+        this.setBackground(new Color(0, 0, 0, 0));
+        this.getContentPane().setBackground(new Color(0, 0, 0, 0));
+        if (button.equals("sell")) {
+            btnBuy.setText("Sell");
+        }
+        if (button.equals("buy")) {
+            btnBuy.setText("Buy");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,11 +116,10 @@ public class BuyScreen extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Dispose()
-      {
+    private void Dispose() {
         InitTest.board.enableNext();
         this.dispose();
-      }
+    }
     private void btnPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassActionPerformed
         // TODO add your handling code here:
 //        clicked = true;
@@ -128,45 +131,43 @@ public class BuyScreen extends javax.swing.JFrame
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBuyActionPerformed
     {//GEN-HEADEREND:event_btnBuyActionPerformed
 //        clicked = true;
-//        bought = true;        
-        InitTest.board.propBuy(InitTest.board.turn);
-        this.setVisible(false);
-        Dispose();
+//        bought = true;
+        if (btnBuy.getText().equals("Buy")) {
+            InitTest.board.propBuy(InitTest.board.turn);
+            this.setVisible(false);
+            Dispose();
+        } else if (btnBuy.getText().equals("Sell")) {
+            InitTest.board.propSell(InitTest.board.turn);
+            this.setVisible(false);
+            Dispose();
+        }
     }//GEN-LAST:event_btnBuyActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(BuyScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(BuyScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(BuyScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BuyScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
@@ -175,7 +176,7 @@ public class BuyScreen extends javax.swing.JFrame
 //                new BuyScreen().setVisible(true);
 //            }
 //        });
-      }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuy;
