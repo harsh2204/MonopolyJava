@@ -658,7 +658,21 @@ public final class Board extends javax.swing.JFrame {
             exc.printStackTrace();
         }
     }
-
+    public void ProptertyText(int propertyIndex)
+      {
+        try
+          {
+            StyledDocument doc = txtLog.getStyledDocument();
+            doc.insertString(doc.getLength(), propName[propertyIndex], getPropText(new SimpleAttributeSet(), propertyIndex));
+          } catch (BadLocationException exc)
+          {
+            exc.printStackTrace();
+          }
+      }
+    public SimpleAttributeSet getPropText(SimpleAttributeSet att, int prop){
+        StyleConstants.setForeground(att, moreSat(pd.prop[prop].colour));
+        return att;
+    }
     public void addLog(String s) {
         appendS(s + "\n", 4);
 
