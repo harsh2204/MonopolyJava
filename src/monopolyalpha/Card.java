@@ -16,6 +16,7 @@ public class Card extends javax.swing.JFrame {
     /**
      * Creates new form Card
      */
+    //Initialize variables for display on card
     String title, price, baseRent, rent1, rent2, rent3, rentHotel, mortgage, house, hotel;
     Color background;
     ImageIcon ic;
@@ -30,10 +31,13 @@ public class Card extends javax.swing.JFrame {
         price = "Price $" + p.prop[index].price;
         //System.out.println("Card- Colour:" + bg + "Name: " + p.prop[index].name + "Price:" + price + "Index:" + index);
         if (p.prop[index].rent2 == 0) {
+            //Get rent for house
             rent1 = p.prop[index].desc1;
             rent2 = p.prop[index].desc2;
+            //House mortgage value
             mortgage = "Mortgage value $" + p.prop[index].price / 2;
         } else if (p.prop[index].rent2 != 0) {
+            //Get and display values from Properties_Data                                                                  
             baseRent = "RENT $" + p.prop[index].rent1;
             rent1 = "With 1 House $" + p.prop[index].rent2;
             rent2 = "With 2 House $" + p.prop[index].rent3;

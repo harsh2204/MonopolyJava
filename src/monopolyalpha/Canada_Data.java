@@ -13,8 +13,9 @@ import javax.swing.ImageIcon;
  * @author Harsh Gupta and Karmit Patel
  */
 public class Canada_Data {
-
+    //Initialize variables
     Color purple = new Color(75, 0, 130);
+    //Add player pieces
     public String p1 = "Hockey Stick";
     public String p2 = "Maple Leaf";
     public String p3 = "Ski";
@@ -24,7 +25,9 @@ public class Canada_Data {
     public ImageIcon i3 = new ImageIcon("Icons/Pieces/Canada/3.png");
     public ImageIcon i4 = new ImageIcon("Icons/Pieces/Canada/4.png");
     public String propName, desc1, desc2;
+    //Property values
     public int price, priceHouse, rent1, rent2, rent3, rent4, rentH;
+    //Arrays for chance, comm chest and properties
     public String chance[] = new String[16];
     public String chanceActs[] = new String[16];
     public int chanceVals[] = new int[16],chancePos[]=new int[16];
@@ -45,6 +48,7 @@ public class Canada_Data {
         property[0].propName = "Start";
         property[0].buyable = false;
         property[0].type = "ST";
+        //Adding property info
         //======================================================================
         //YELLOW SUITE----------------------------------------------------------
         //BRAMPTON
