@@ -39,10 +39,11 @@ public class Dice {
 //        j.setVisible(false);
 //    }
 
-    public static int rollDice(int num) {
+    public static int rollDice(int num) {        
         int roll = 0;
         String path = null;
         String theme = InitTest.theme;
+        //Use dice depending on theme
         switch (theme) {
             case "Generic":
                 path = "Icons/Dice/Generic/Dice ";
@@ -54,6 +55,7 @@ public class Dice {
                 path = "Icons/Dice/Superhero/Dice ";
                 break;
         }
+        // If 1 dice is selected
         if (num == 1) {
             final JDialog dice = new JDialog();
             dice.setAlwaysOnTop(true);
@@ -89,6 +91,7 @@ public class Dice {
             sleep(3000);
             dice.setVisible(false);
         }
+        //If 2 dice are selected
         if (num == 2) {
             final JDialog dice = new JDialog();
             dice.setAlwaysOnTop(true);
