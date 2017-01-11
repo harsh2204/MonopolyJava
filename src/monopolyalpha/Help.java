@@ -16,6 +16,7 @@ public class Help extends javax.swing.JFrame {
      */
     public Help() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -44,16 +45,15 @@ public class Help extends javax.swing.JFrame {
         btnHotel = new javax.swing.JButton();
         btnTrade = new javax.swing.JButton();
         btnMortgage = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        setUndecorated(true);
 
         lblTitle.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Help");
         lblTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        getContentPane().add(lblTitle);
-        lblTitle.setBounds(0, 0, 477, 76);
 
         btnObject.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnObject.setText("oBJECT");
@@ -62,8 +62,6 @@ public class Help extends javax.swing.JFrame {
                 btnObjectActionPerformed(evt);
             }
         });
-        getContentPane().add(btnObject);
-        btnObject.setBounds(26, 82, 207, 25);
 
         btnPrep.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnPrep.setText("Preparation");
@@ -72,8 +70,6 @@ public class Help extends javax.swing.JFrame {
                 btnPrepActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPrep);
-        btnPrep.setBounds(26, 118, 207, 25);
 
         btnBank.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnBank.setText("The Bank");
@@ -82,8 +78,6 @@ public class Help extends javax.swing.JFrame {
                 btnBankActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBank);
-        btnBank.setBounds(26, 154, 207, 25);
 
         btnGo.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnGo.setText("Go");
@@ -92,8 +86,6 @@ public class Help extends javax.swing.JFrame {
                 btnGoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGo);
-        btnGo.setBounds(26, 190, 207, 25);
 
         btnRent.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnRent.setText("Paying Rent");
@@ -102,8 +94,6 @@ public class Help extends javax.swing.JFrame {
                 btnRentActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRent);
-        btnRent.setBounds(26, 226, 207, 25);
 
         btnPlay.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnPlay.setText("Equipment");
@@ -112,8 +102,6 @@ public class Help extends javax.swing.JFrame {
                 btnPlayActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPlay);
-        btnPlay.setBounds(26, 262, 207, 25);
 
         btnBuyProp.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnBuyProp.setText("Buying Property");
@@ -122,8 +110,6 @@ public class Help extends javax.swing.JFrame {
                 btnBuyPropActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuyProp);
-        btnBuyProp.setBounds(26, 295, 207, 25);
 
         btnChaComm.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnChaComm.setText("Chance and Community Chest");
@@ -132,8 +118,6 @@ public class Help extends javax.swing.JFrame {
                 btnChaCommActionPerformed(evt);
             }
         });
-        getContentPane().add(btnChaComm);
-        btnChaComm.setBounds(26, 331, 207, 25);
 
         btnTax.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnTax.setText("Tax");
@@ -142,8 +126,6 @@ public class Help extends javax.swing.JFrame {
                 btnTaxActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTax);
-        btnTax.setBounds(251, 82, 210, 25);
 
         btnEGS.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnEGS.setText("End Game Scenario");
@@ -153,8 +135,6 @@ public class Help extends javax.swing.JFrame {
                 btnEGSActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEGS);
-        btnEGS.setBounds(251, 331, 210, 25);
 
         btnCar.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnCar.setText("Car insurance");
@@ -163,8 +143,6 @@ public class Help extends javax.swing.JFrame {
                 btnCarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCar);
-        btnCar.setBounds(251, 118, 210, 25);
 
         btnJail.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnJail.setText("Jail & Go to Jail");
@@ -173,8 +151,6 @@ public class Help extends javax.swing.JFrame {
                 btnJailActionPerformed(evt);
             }
         });
-        getContentPane().add(btnJail);
-        btnJail.setBounds(251, 154, 210, 25);
 
         btnHouse.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnHouse.setText("House");
@@ -183,8 +159,6 @@ public class Help extends javax.swing.JFrame {
                 btnHouseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHouse);
-        btnHouse.setBounds(251, 190, 210, 25);
 
         btnHotel.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnHotel.setText("Hotel");
@@ -193,8 +167,6 @@ public class Help extends javax.swing.JFrame {
                 btnHotelActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHotel);
-        btnHotel.setBounds(251, 226, 210, 25);
 
         btnTrade.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnTrade.setText("Trading");
@@ -203,8 +175,6 @@ public class Help extends javax.swing.JFrame {
                 btnTradeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTrade);
-        btnTrade.setBounds(251, 262, 210, 25);
 
         btnMortgage.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         btnMortgage.setText("Mortgage");
@@ -213,8 +183,100 @@ public class Help extends javax.swing.JFrame {
                 btnMortgageActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMortgage);
-        btnMortgage.setBounds(251, 295, 210, 25);
+
+        btnBack.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnObject, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTax, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPrep, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBank, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnJail, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTrade, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuyProp, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMortgage, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnChaComm)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(208, 208, 208))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnObject)
+                    .addComponent(btnTax))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPrep)
+                    .addComponent(btnCar))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBank)
+                    .addComponent(btnJail))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGo)
+                    .addComponent(btnHouse))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRent)
+                    .addComponent(btnHotel))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPlay)
+                    .addComponent(btnTrade))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuyProp)
+                    .addComponent(btnMortgage))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnChaComm)
+                    .addComponent(btnEGS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBack)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -281,7 +343,12 @@ public class Help extends javax.swing.JFrame {
 
     private void btnMortgageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageActionPerformed
         // TODO add your handling code here:
+     
     }//GEN-LAST:event_btnMortgageActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,6 +386,7 @@ public class Help extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBank;
     private javax.swing.JButton btnBuyProp;
     private javax.swing.JButton btnCar;

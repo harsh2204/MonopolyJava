@@ -15,8 +15,7 @@ import javax.swing.ImageIcon;
  *
  * @author 714449
  */
-public class StartScreenfrm extends javax.swing.JFrame
-  {
+public class StartScreenfrm extends javax.swing.JFrame {
 
     /**
      * Creates new form StartScreenfrm
@@ -26,8 +25,7 @@ public class StartScreenfrm extends javax.swing.JFrame
     public Image ig;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-    public StartScreenfrm()
-      {
+    public StartScreenfrm() {
         initComponents();
 
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -39,8 +37,8 @@ public class StartScreenfrm extends javax.swing.JFrame
         ic = new ImageIcon(ig);
         System.out.println(w + "" + h);
         bk.setIcon(ic);
-      }
-    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,8 +146,6 @@ public class StartScreenfrm extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadGameActionPerformed
-       
-
         new Save_Manager().setVisible(true);
 
     }//GEN-LAST:event_btnLoadGameActionPerformed
@@ -162,8 +158,8 @@ public class StartScreenfrm extends javax.swing.JFrame
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
 
-         new Help().setVisible(true);
-         this.dispose();  
+        new Help().setVisible(true);
+       
     }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -174,54 +170,43 @@ public class StartScreenfrm extends javax.swing.JFrame
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
 
         new AboutDialogfrm().setVisible(true);
-        this.dispose();       
-
+        
     }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartScreenfrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new StartScreenfrm().setVisible(true);
-              }
-          });
-      }
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bk;
     private javax.swing.JPanel bkpanel;
