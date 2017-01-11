@@ -27,204 +27,261 @@ public class Help extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        btnObject = new javax.swing.JButton();
+        btnPrep = new javax.swing.JButton();
+        btnBank = new javax.swing.JButton();
+        btnGo = new javax.swing.JButton();
+        btnRent = new javax.swing.JButton();
+        btnPlay = new javax.swing.JButton();
+        btnBuyProp = new javax.swing.JButton();
+        btnChaComm = new javax.swing.JButton();
+        btnTax = new javax.swing.JButton();
+        btnEGS = new javax.swing.JButton();
+        btnCar = new javax.swing.JButton();
+        btnJail = new javax.swing.JButton();
+        btnHouse = new javax.swing.JButton();
+        btnHotel = new javax.swing.JButton();
+        btnTrade = new javax.swing.JButton();
+        btnMortgage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Help");
+        lblTitle.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Help");
+        lblTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(0, 0, 477, 76);
 
-        jButton1.setText("Object");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnObject.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnObject.setText("oBJECT");
+        btnObject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnObjectActionPerformed(evt);
             }
         });
+        getContentPane().add(btnObject);
+        btnObject.setBounds(26, 82, 207, 25);
 
-        jButton2.setText("Preparation");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPrep.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnPrep.setText("Preparation");
+        btnPrep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPrepActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPrep);
+        btnPrep.setBounds(26, 118, 207, 25);
 
-        jButton3.setText("The Bank");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBank.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnBank.setText("The Bank");
+        btnBank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnBankActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBank);
+        btnBank.setBounds(26, 154, 207, 25);
 
-        jButton4.setText("Go");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnGo.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnGo.setText("Go");
+        btnGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnGoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGo);
+        btnGo.setBounds(26, 190, 207, 25);
 
-        jButton5.setText("Paying Rent");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnRent.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnRent.setText("Paying Rent");
+        btnRent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnRentActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRent);
+        btnRent.setBounds(26, 226, 207, 25);
 
-        jButton6.setText("Equipment");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnPlay.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnPlay.setText("Equipment");
+        btnPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnPlayActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPlay);
+        btnPlay.setBounds(26, 262, 207, 25);
 
-        jButton7.setText("Banker");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnBuyProp.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnBuyProp.setText("Buying Property");
+        btnBuyProp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnBuyPropActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBuyProp);
+        btnBuyProp.setBounds(26, 295, 207, 25);
 
-        jButton8.setText("Buying Property");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnChaComm.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnChaComm.setText("Chance and Community Chest");
+        btnChaComm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnChaCommActionPerformed(evt);
             }
         });
+        getContentPane().add(btnChaComm);
+        btnChaComm.setBounds(26, 331, 207, 25);
 
-        jButton9.setText("Play");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnTax.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnTax.setText("Tax");
+        btnTax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnTaxActionPerformed(evt);
             }
         });
+        getContentPane().add(btnTax);
+        btnTax.setBounds(251, 82, 210, 25);
 
-        jButton11.setText("Chance and Community Chest");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnEGS.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnEGS.setText("End Game Scenario");
+        btnEGS.setToolTipText("");
+        btnEGS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnEGSActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEGS);
+        btnEGS.setBounds(251, 331, 210, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 157, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton9))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton3)
-                                    .addComponent(jButton4))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton6)
-                                        .addGap(97, 97, 97)))))))
-                .addGap(98, 98, 98))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(33, 33, 33))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addGap(8, 8, 8)
-                        .addComponent(jButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)
-                        .addGap(1, 1, 1)))
-                .addComponent(jButton8)
-                .addGap(46, 46, 46)
-                .addComponent(jButton11)
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
+        btnCar.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnCar.setText("Car insurance");
+        btnCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCar);
+        btnCar.setBounds(251, 118, 210, 25);
+
+        btnJail.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnJail.setText("Jail & Go to Jail");
+        btnJail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnJail);
+        btnJail.setBounds(251, 154, 210, 25);
+
+        btnHouse.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnHouse.setText("House");
+        btnHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHouseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHouse);
+        btnHouse.setBounds(251, 190, 210, 25);
+
+        btnHotel.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnHotel.setText("Hotel");
+        btnHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHotelActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHotel);
+        btnHotel.setBounds(251, 226, 210, 25);
+
+        btnTrade.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnTrade.setText("Trading");
+        btnTrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTradeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnTrade);
+        btnTrade.setBounds(251, 262, 210, 25);
+
+        btnMortgage.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnMortgage.setText("Mortgage");
+        btnMortgage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMortgageActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMortgage);
+        btnMortgage.setBounds(251, 295, 210, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnObjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnObjectActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnPrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrepActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPrepActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnBankActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnGoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnRentActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnPlayActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnBuyPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyPropActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnBuyPropActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnChaCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChaCommActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnChaCommActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btnTaxActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void btnEGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEGSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_btnEGSActionPerformed
+
+    private void btnCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCarActionPerformed
+
+    private void btnJailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnJailActionPerformed
+
+    private void btnHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHouseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHouseActionPerformed
+
+    private void btnHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHotelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHotelActionPerformed
+
+    private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTradeActionPerformed
+
+    private void btnMortgageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMortgageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,16 +319,22 @@ public class Help extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnBank;
+    private javax.swing.JButton btnBuyProp;
+    private javax.swing.JButton btnCar;
+    private javax.swing.JButton btnChaComm;
+    private javax.swing.JButton btnEGS;
+    private javax.swing.JButton btnGo;
+    private javax.swing.JButton btnHotel;
+    private javax.swing.JButton btnHouse;
+    private javax.swing.JButton btnJail;
+    private javax.swing.JButton btnMortgage;
+    private javax.swing.JButton btnObject;
+    private javax.swing.JButton btnPlay;
+    private javax.swing.JButton btnPrep;
+    private javax.swing.JButton btnRent;
+    private javax.swing.JButton btnTax;
+    private javax.swing.JButton btnTrade;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
