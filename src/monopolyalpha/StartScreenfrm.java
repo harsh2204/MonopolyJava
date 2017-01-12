@@ -146,31 +146,24 @@ public class StartScreenfrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadGameActionPerformed
-        new Save_Manager().setVisible(true);
-
+        new Save_Manager().setVisible(true);        
     }//GEN-LAST:event_btnLoadGameActionPerformed
 
     private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
-
         new ThemeSelect().setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_btnNewGameActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-
-        new Help().setVisible(true);
-       
+        new Help().setVisible(true);       
     }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-
         new AboutDialogfrm().setVisible(true);
-        
     }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
