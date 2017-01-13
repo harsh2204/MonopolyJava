@@ -906,10 +906,6 @@ public class Board extends javax.swing.JFrame
           }
       }
 
-    public void breakCard()
-      {
-        c.setVisible(false);
-      }
 
     public void appendS(String s, int playerID)
       {
@@ -4188,7 +4184,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
         // TODO add your handling code here:        
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB1MouseExited
 
     private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
@@ -4197,7 +4193,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB2MouseExited
 
     private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
@@ -4206,7 +4202,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB3MouseExited
 
     private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
@@ -4215,7 +4211,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB4MouseExited
 
     private void lblHoverB5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseEntered
@@ -4224,7 +4220,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseExited
         // TODO add your handling code here:   
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB5MouseExited
 
     private void lblHoverB10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB10MouseEntered
@@ -4233,7 +4229,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB10MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB10MouseExited
 
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
@@ -4332,7 +4328,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void P1B9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P1B9MouseEntered
@@ -4345,7 +4341,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB8MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB8MouseExited
 
     private void lblHoverB11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB11MouseEntered
@@ -4354,7 +4350,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB11MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB11MouseExited
 
     private void lblHoverB12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB12MouseEntered
@@ -4363,7 +4359,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB12MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB12MouseExited
 
     private void lblHoverB13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB13MouseEntered
@@ -4372,7 +4368,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB13MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB13MouseExited
 
     private void lblHoverB14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB14MouseEntered
@@ -4381,7 +4377,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB14MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB14MouseExited
 
     private void lblHoverB15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB15MouseEntered
@@ -4390,7 +4386,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB15MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB15MouseExited
 
     private void lblHoverB17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB17MouseEntered
@@ -4399,7 +4395,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB17MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB17MouseExited
 
     private void lblHoverB19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB19MouseEntered
@@ -4408,7 +4404,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB19MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB19MouseExited
 
     private void lblHoverB20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB20MouseEntered
@@ -4417,7 +4413,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB20MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB20MouseExited
 
     private void lblHoverB21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB21MouseEntered
@@ -4426,7 +4422,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB21MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB21MouseExited
 
     private void lblHoverB22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB22MouseEntered
@@ -4435,7 +4431,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB22MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB22MouseExited
 
     private void lblHoverB23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB23MouseEntered
@@ -4444,7 +4440,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB23MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB23MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB23MouseExited
 
     private void lblHoverB25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB25MouseEntered
@@ -4453,7 +4449,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB25MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB25MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB25MouseExited
 
     private void lblHoverB26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB26MouseEntered
@@ -4462,7 +4458,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB26MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB26MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB26MouseExited
 
     private void lblHoverB28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB28MouseEntered
@@ -4471,7 +4467,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB28MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB28MouseExited
 
     private void lblHoverB29MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB29MouseEntered
@@ -4480,7 +4476,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB29MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB29MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB29MouseExited
 
     private void lblHoverB30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB30MouseEntered
@@ -4488,7 +4484,7 @@ public class Board extends javax.swing.JFrame
     }//GEN-LAST:event_lblHoverB30MouseEntered
 
     private void lblHoverB30MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB30MouseExited
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB30MouseExited
 
     private void lblHoverB32MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB32MouseEntered
@@ -4497,7 +4493,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB32MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB32MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB32MouseExited
 
     private void lblHoverB33MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB33MouseEntered
@@ -4506,7 +4502,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB33MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB33MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB33MouseExited
 
     private void lblHoverB34MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB34MouseEntered
@@ -4515,7 +4511,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB34MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB34MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB34MouseExited
 
     private void lblHoverB35MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB35MouseEntered
@@ -4524,7 +4520,7 @@ public class Board extends javax.swing.JFrame
 
     private void lblHoverB35MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB35MouseExited
         // TODO add your handling code here:
-        breakCard();
+        
     }//GEN-LAST:event_lblHoverB35MouseExited
 
     public void displayChange(int turn)
