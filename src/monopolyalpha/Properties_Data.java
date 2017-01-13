@@ -20,7 +20,6 @@ public class Properties_Data {
     public String thm, desc1, desc2, type;
     public Color colour;
     public ImageIcon cardIcon;
-    ThemeSelect ts = new ThemeSelect();
 
     //Chance and community stuff
     public String chance[] = new String[16];
@@ -31,7 +30,7 @@ public class Properties_Data {
     public int commVals[] = new int[16], commPos[] = new int[16];
 
     public Properties_Data() {
-        this.thm = ts.theme;
+        this.thm = Board.theme;
     }
     public String name;
     Properties_Data prop[] = new Properties_Data[36];
@@ -271,8 +270,8 @@ public class Properties_Data {
 //        //======================================================================
 //  
 //      }
-    public void GetProp() {
-        this.thm = ts.theme;
+    public void GetProp(String thm) {   
+        System.out.println(thm);
         switch (thm) {
             case "Canada": {
                 Canada_Data can = new Canada_Data();

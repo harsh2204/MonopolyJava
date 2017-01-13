@@ -40,6 +40,7 @@ public class Save_Data {
             Game = new boolean[4], housable = new boolean[14], propH = new boolean[36];
 
     public Save_Data() {
+        
         this.theme = Board.theme;
         this.players = Board.players;
         this.dice = Board.dice;

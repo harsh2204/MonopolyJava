@@ -19,13 +19,17 @@ import javax.swing.ImageIcon;
 
 public class Savetest {
     public static void Save(String filename){
+         File f = new File("Saves");
+        if (!f.exists()) {
+            f.mkdir();
+        }
         Save_Data save = new Save_Data();
         XStream xstream = new XStream(new DomDriver());
         String xml = xstream.toXML(save);
 //        System.out.println(xml);
         FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream("Saves".concat(filename.concat(".xml")));
+            fos = new FileOutputStream("Saves/".concat(filename.concat(".xml")));
             fos.write("<?xml version=\"1.0\"?>".getBytes("UTF-8")); //write XML header, as XStream doesn't do that for us
             byte[] bytes = xml.getBytes("UTF-8");
             fos.write(bytes);

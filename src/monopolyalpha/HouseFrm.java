@@ -69,7 +69,7 @@ public class HouseFrm extends javax.swing.JFrame
 
     public void updateMoney()
       {
-        pd.GetProp();
+        pd.GetProp(bd.theme);
         money = 0;
         for (int i = 0; i <= j; i++)
           {

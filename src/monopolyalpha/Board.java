@@ -93,11 +93,15 @@ public class Board extends javax.swing.JFrame {
             InitTest it = new InitTest();
             datatransfer(it);
             setupData();
+            this.theme = ts.theme;
+            propDataTransfer();
             System.out.println("Board: Number of pCount: " + players);
 //        setPlayernumber();
 
+        }else{
+            propDataTransfer();
         }
-        propDataTransfer();
+        System.out.println("theme " + theme);               
         setupLabels();
         setupplabels();
         changeimages();
@@ -127,7 +131,7 @@ public class Board extends javax.swing.JFrame {
     }
 
     public void propDataTransfer() {
-        pd.GetProp();
+        pd.GetProp(theme);
         for (int i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
@@ -1267,7 +1271,6 @@ public class Board extends javax.swing.JFrame {
     }
 
     public void checkChance(int ind, int roll) {
-        pd.GetProp();
         switch (pd.chanceActs[ind]) {
             case "$":
                 money[turn] += pd.chanceVals[ind];
@@ -1356,7 +1359,6 @@ public class Board extends javax.swing.JFrame {
     }
 
     public void commCheck(int ind, int roll) {
-        pd.GetProp();
         switch (pd.commActs[ind]) {
             case "$":
                 money[turn] += pd.commVals[ind];

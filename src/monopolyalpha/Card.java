@@ -26,7 +26,7 @@ public class Card extends javax.swing.JFrame {
         this.background = bg;
         this.ic = icon;
         this.theme = ts.theme;
-        p.GetProp();
+        p.GetProp(theme);
         title = p.prop[index].name;
         price = "Price $" + p.prop[index].price;
         //System.out.println("Card- Colour:" + bg + "Name: " + p.prop[index].name + "Price:" + price + "Index:" + index);
