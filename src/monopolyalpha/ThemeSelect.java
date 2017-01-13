@@ -36,7 +36,7 @@ public class ThemeSelect extends javax.swing.JFrame {
                 new InitTest().setVisible(true);
             }
         });
-
+        this.dispose();
     }
 
     /**

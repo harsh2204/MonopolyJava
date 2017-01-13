@@ -57,6 +57,7 @@ public class Board extends javax.swing.JFrame {
     public static int[] numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
     public static int[] money = new int[4];
     public static String[] name = new String[4];
+    public static StyledDocument log;
     public static ImageIcon[] icon = new ImageIcon[4];
     public String[] propName = new String[36], propType = new String[36];
     public Dice di = new Dice();
@@ -91,22 +92,29 @@ public class Board extends javax.swing.JFrame {
         if (!load) {
             ThemeSelect ts = new ThemeSelect();
             InitTest it = new InitTest();
-            datatransfer(it);
+            datatransfer(it);//no need to load when load game
             setupData();
             this.theme = ts.theme;
-            propDataTransfer();
+            propDataTransfer(theme);
             System.out.println("Board: Number of pCount: " + players);
 //        setPlayernumber();
 
-        }else{
-            propDataTransfer();
+        }else{            
+            propDataTransferLoad(theme);
+            setupDataLoad();
         }
         System.out.println("theme " + theme);               
         setupLabels();
         setupplabels();
-        changeimages();
+        if(load){
+            changeimagesLoad();
+            txtLog.setStyledDocument(log);
+        }else{
+        changeimages();            
+        }
         addpCount();
         setupBuyStatus();
+        repaintBuyLabels();
         setupHouses();
         addWindowListener(new WindowAdapter() {
 
@@ -130,8 +138,8 @@ public class Board extends javax.swing.JFrame {
         });
     }
 
-    public void propDataTransfer() {
-        pd.GetProp(theme);
+    public void propDataTransfer(String thm) {
+        pd.GetProp(thm);
         for (int i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
@@ -148,7 +156,28 @@ public class Board extends javax.swing.JFrame {
 //        propOwner[2]=2;
 //        propOwner[4]=2;
     }
-
+public void propDataTransferLoad(String thm) {
+        pd.GetProp(thm);
+        for (int i = 0; i < 36; i++) {
+            propName[i] = pd.prop[i].name;
+            propPrice[i] = pd.prop[i].price;
+            propRent[i] = pd.prop[i].rent1;
+            if(propOwner[i]!=-1){
+                propOwned[i]=true;
+            }
+            propBuyable[i] = pd.prop[i].buyable;
+            propType[i] = pd.prop[i].type;
+        }
+//        propOwned[1]=true;
+//        propOwned[2]=true;
+//        propOwned[4]=true;
+//        propOwner[1]=2;
+//        propOwner[2]=2;
+//        propOwner[4]=2;
+    }
+    public void getLog(){
+        log= txtLog.getStyledDocument();
+    }
     public void changeimages() {
         //Seting up colors for user names        
         for (int i = 0; i < 4; i++) {
@@ -168,7 +197,15 @@ public class Board extends javax.swing.JFrame {
         }
         System.out.println("Board: Image Changed!");
     }
-
+    public void changeimagesLoad() {         
+        for (int i = 0; i < players; i++) {
+            image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            icons[i] = new ImageIcon(image);
+            plnames[i].setOpaque(true);
+            plnames[i].setBackground(colorPalette[i]);
+        }
+        System.out.println("Board: Image Changed!");
+    }
     public void setupplabels() {
         plnames[0] = lblNameP1;
         plnames[1] = lblNameP2;
@@ -240,7 +277,13 @@ public class Board extends javax.swing.JFrame {
 //            house.setVisible(false);
 //          }
     }
-
+    public void repaintBuyLabels(){
+        for (int i = 0; i < buyStatus.length; i++) {
+            if(propOwner[i]!=-1){
+                updateColors(propOwner[i], i);
+            }
+        }
+    }
     public void setupHouses() {
         for (int i = 0; i < boxPanes.length; i++) {
             houses[i] = new JLabel();
@@ -376,6 +419,57 @@ public class Board extends javax.swing.JFrame {
         houseImg[3] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
         houseImg[4] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
 
+    }
+    public void setupDataLoad() {      
+        plHouse[0] = btnHouseP1;
+        plHouse[1] = btnHouseP2;
+        plHouse[2] = btnHouseP3;
+        plHouse[3] = btnHouseP4;
+        plHouse[0].setVisible(false);
+        plHouse[1].setVisible(false);
+        plHouse[2].setVisible(false);
+        plHouse[3].setVisible(false);
+
+        plMC[0] = PMCP1;
+        plMC[1] = PMCP2;
+        plMC[2] = PMCP3;
+        plMC[3] = PMCP4;
+        plMC[0].setVisible(true);
+        plMC[1].setVisible(true);
+        plMC[2].setVisible(true);
+        plMC[3].setVisible(true);
+
+        for (int i = 0; i < 4; i++) {
+            oy[i] = plMC[i].getY();
+            ny[i] = oy[i] + 20;
+        }
+
+        for (int i = 0; i < players; i++) {
+            plHouse[i].setVisible(true);
+            plHouse[i].setEnabled(false);
+            plHouse[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new HouseFrm(propOwner, propH, turn, propHouse).setVisible(true);
+                }
+            });
+           
+            System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
+
+            mess.add("Awesome!");
+            mess.add("Great!");
+            mess.add("Good Job!");
+            mess.add("Jordar!");
+            mess.add("MC BC!");
+            mess.add("Chodu Banayo!");
+            mess.add("OMG!");
+        }
+        System.out.println("Board: Data Transfered!");                
+        houseImg[0] = null;
+        houseImg[1] = new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png");
+        houseImg[2] = new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png");
+        houseImg[3] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
+        houseImg[4] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
     }
 
     public void datatransfer(InitTest it) {
@@ -749,13 +843,13 @@ public class Board extends javax.swing.JFrame {
                 } else {
                     btnReBuy.setText("Sell");
                     btnReBuy.setEnabled(true);
-                    BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell");
+                    BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell", this);
                     buy.setVisible(true);
                 }
             } else {
                 btnReBuy.setText("Buy");
                 btnReBuy.setEnabled(true);
-                BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy");
+                BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy", this);
                 buy.setVisible(true);
             }
         } else {
@@ -920,7 +1014,7 @@ public class Board extends javax.swing.JFrame {
         buyStatus[pos].setBackground(moreSat(colorPalette[player]));
     }
 
-    public void propBuy(int turn) {
+    public  void propBuy(int turn) {
         updateColors(turn, cpos[turn]);
         money[turn] -= propPrice[cpos[turn]];
         propMoney[turn] += propPrice[cpos[turn]];
@@ -3865,6 +3959,7 @@ public class Board extends javax.swing.JFrame {
                 "Are you sure you want to exit?", "Monopoly Java",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
                 ObjButtons, ObjButtons[2]);
+        getLog();
         if (PromptResult == 0) {
             System.exit(0);
         }
@@ -3876,11 +3971,11 @@ public class Board extends javax.swing.JFrame {
     private void btnReBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReBuyActionPerformed
         // TODO add your handling code here:
         if (btnReBuy.getText().equals("Buy")) {
-            BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy");
+            BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy", this);
             buy.setVisible(true);
         }
         if (btnReBuy.getText().equals("Sell")) {
-            BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell");
+            BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell", this);
             buy.setVisible(true);
         }
 
@@ -3888,7 +3983,7 @@ public class Board extends javax.swing.JFrame {
 
     private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
         // TODO add your handling code here:       
-        new TradeForm().setVisible(true);
+        new TradeForm(this).setVisible(true);
     }//GEN-LAST:event_btnTradeActionPerformed
 
     private void lblHoverB7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseEntered

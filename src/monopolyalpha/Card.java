@@ -20,12 +20,11 @@ public class Card extends javax.swing.JFrame {
     String title, price, baseRent, rent1, rent2, rent3, rentHotel, mortgage, house, hotel;
     Color background;
     ImageIcon ic;
-    String theme;
-    ThemeSelect ts = new ThemeSelect();
+    String theme;    
     public Card(Color bg, ImageIcon icon, int index, Properties_Data p) {
         this.background = bg;
         this.ic = icon;
-        this.theme = ts.theme;
+        this.theme = Board.theme;
         p.GetProp(theme);
         title = p.prop[index].name;
         price = "Price $" + p.prop[index].price;

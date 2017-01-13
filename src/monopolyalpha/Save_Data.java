@@ -6,17 +6,7 @@
 package monopolyalpha;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.io.File;
-import java.util.ArrayList;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.Clip;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.Document;
 
 /**
  *
@@ -38,9 +28,8 @@ public class Save_Data {
     public boolean snake = false, bail = false;
     public boolean[] propOwned = new boolean[36], propBuyable = new boolean[36],
             Game = new boolean[4], housable = new boolean[14], propH = new boolean[36];
-
-    public Save_Data() {
-        
+    public Document log;
+    public Save_Data() {      
         this.theme = Board.theme;
         this.players = Board.players;
         this.dice = Board.dice;
@@ -67,6 +56,7 @@ public class Save_Data {
                 this.iconpaths[i] = Board.icon[i].toString();
             }
         }
+        this.log = Board.log;
         this.colorPalette = Board.colorPalette;
         this.snake = Board.snake;
         this.bail = Board.bail;
@@ -76,5 +66,4 @@ public class Save_Data {
         this.housable = Board.housable;
         this.propH = Board.propH;
     }
-
 }

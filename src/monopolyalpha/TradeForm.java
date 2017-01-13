@@ -24,14 +24,15 @@ public class TradeForm extends javax.swing.JFrame {
      * Creates new form TradeForm
      */
     public JCheckBox[] checkboxes1, checkboxes2;
-    Board board = InitTest.board;
+    Board board;
     JPanel[] others;
     ArrayList<Integer> from = new ArrayList();
     ArrayList<Integer> to = new ArrayList();
     public int tradeToInd;
     public int tradeTo = -1;
 
-    public TradeForm() {
+    public TradeForm(Board bd) {
+        this.board = bd;
         initComponents();
         paneCur.setPreferredSize(new Dimension(paneCur.getWidth(), paneOthers.getHeight()));
         paneCur.setLayout(new BoxLayout(paneCur, BoxLayout.Y_AXIS));
@@ -475,11 +476,11 @@ public class TradeForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TradeForm().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TradeForm().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

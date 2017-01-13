@@ -121,15 +121,18 @@ public class Save_Manager extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     public void SaveCheck() {
+        jList1.clearSelection();
         File folder = new File("Saves");
         File[] listOfFiles = folder.listFiles();
         jList1.addSelectionInterval(0, listOfFiles.length);
         jList1.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        for(int i = 0; i<listOfFiles.length;i++){
+        for (int i = 0; i < listOfFiles.length; i++) {
             model.addElement(listOfFiles[i]);
+            jList1.repaint();
         }
-        
+
     }
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -139,7 +142,7 @@ public class Save_Manager extends javax.swing.JFrame {
             f.mkdir();
         }
 //        Save_Data data = new Save_Data();
-            Savetest.Save(txtSaveNAme.getText());
+        Savetest.Save(txtSaveNAme.getText());
 //        data.player1= txt1.getText();
 //        data.player2= txt2.getText();
 //        data.player3= txt3.getText();
@@ -156,13 +159,14 @@ public class Save_Manager extends javax.swing.JFrame {
 //        if(!txt4.getText().equals("")){
 //        data.playerCount++;
 //        }
-        if(!txtSaveNAme.getText().equals("")){
-        try {
+        if (!txtSaveNAme.getText().equals("")) {
+            try {
 //            ResourceManager.save(data, "Saves/".concat(txtSaveNAme.getText()).concat(".dat"));
-            lbl1.setText("Game Saved!");
-        } catch (Exception e) {
-            System.out.println("Couldn't save: " + e.getMessage());
-        }}
+                lbl1.setText("Game Saved!");
+            } catch (Exception e) {
+                System.out.println("Couldn't save: " + e.getMessage());
+            }
+        }
         SaveCheck();
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -170,12 +174,12 @@ public class Save_Manager extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        try {
 //            Save_Data data = (Save_Data) ResourceManager.load("Saves/savgame.dat");
-                Savetest.Load(jList1.getSelectedValue().toString());
+        Savetest.Load(jList1.getSelectedValue().toString());
 //             txt1.setText(data.player1);
 //             txt2.setText(data.player2);
 //             txt3.setText(data.player3);
 //             txt4.setText(data.player4);
-            lbl1.setText("Game Loaded!");
+        lbl1.setText("Game Loaded!");
 //            lbl1.setText("Player count: " + String.valueOf(data.playerCount));
 //        } catch (Exception e) {
 //            System.out.println("Couldn't load save data: " + e.getMessage());
@@ -224,7 +228,6 @@ public class Save_Manager extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnLoad;

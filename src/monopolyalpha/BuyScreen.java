@@ -20,11 +20,13 @@ public class BuyScreen extends javax.swing.JFrame {
      */
     //Initialize variables
     boolean bought = false, clicked = false;
+    Board board;
 
-    public BuyScreen(Card card, String button) {
+    public BuyScreen(Card card, String button, Board bd) {
         initComponents();
         //Add componenets into frame and set visuals
         paneCard.add(card.getComponent(0));
+        this.board = bd;
         this.setLocationRelativeTo(null);
         this.setBackground(new Color(0, 0, 0, 0));
         this.getContentPane().setBackground(new Color(0, 0, 0, 0));
@@ -120,7 +122,7 @@ public class BuyScreen extends javax.swing.JFrame {
 
     private void Dispose() {
         //Enable next button and close this screen
-        InitTest.board.enableNext();
+       board.enableNext();
         this.dispose();
     }
     private void btnPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassActionPerformed
@@ -138,12 +140,12 @@ public class BuyScreen extends javax.swing.JFrame {
 //        bought = true;
         //If buy is clicked property is bought by person who's turn it is
         if (btnBuy.getText().equals("Buy")) {
-            InitTest.board.propBuy(InitTest.board.turn);
+            board.propBuy(board.turn);
             this.setVisible(false);
             Dispose();
         }//If button says sell then property is listed for selling
         else if (btnBuy.getText().equals("Sell")) {
-            InitTest.board.propSell(InitTest.board.turn);
+            board.propSell(board.turn);
             this.setVisible(false);
             Dispose();
         }
