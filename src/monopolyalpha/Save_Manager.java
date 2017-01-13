@@ -21,6 +21,7 @@ public class Save_Manager extends javax.swing.JFrame {
      */
     public Save_Manager() {
         initComponents();
+        SaveCheck();
     }
     boolean doClose = false;
     int money1, money2, money3, money4;
@@ -137,12 +138,8 @@ public class Save_Manager extends javax.swing.JFrame {
         if (!f.exists()) {
             f.mkdir();
         }
-        Save_Data data = new Save_Data();
-        data.cash1 = money1;
-        data.cash2 = money2;
-        data.cash3 = money3;
-        data.cash4 = money4;
-        data.playerCount = 0;
+//        Save_Data data = new Save_Data();
+            Savetest.Save(txtSaveNAme.getText());
 //        data.player1= txt1.getText();
 //        data.player2= txt2.getText();
 //        data.player3= txt3.getText();
@@ -161,7 +158,7 @@ public class Save_Manager extends javax.swing.JFrame {
 //        }
         if(!txtSaveNAme.getText().equals("")){
         try {
-            ResourceManager.save(data, "Saves/".concat(txtSaveNAme.getText()).concat(".dat"));
+//            ResourceManager.save(data, "Saves/".concat(txtSaveNAme.getText()).concat(".dat"));
             lbl1.setText("Game Saved!");
         } catch (Exception e) {
             System.out.println("Couldn't save: " + e.getMessage());
@@ -171,17 +168,18 @@ public class Save_Manager extends javax.swing.JFrame {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
-        try {
-            Save_Data data = (Save_Data) ResourceManager.load("Saves/savgame.dat");
+//        try {
+//            Save_Data data = (Save_Data) ResourceManager.load("Saves/savgame.dat");
+                Savetest.Load(jList1.getSelectedValue().toString());
 //             txt1.setText(data.player1);
 //             txt2.setText(data.player2);
 //             txt3.setText(data.player3);
 //             txt4.setText(data.player4);
             lbl1.setText("Game Loaded!");
-            lbl1.setText("Player count: " + String.valueOf(data.playerCount));
-        } catch (Exception e) {
-            System.out.println("Couldn't load save data: " + e.getMessage());
-        }
+//            lbl1.setText("Player count: " + String.valueOf(data.playerCount));
+//        } catch (Exception e) {
+//            System.out.println("Couldn't load save data: " + e.getMessage());
+//        }
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

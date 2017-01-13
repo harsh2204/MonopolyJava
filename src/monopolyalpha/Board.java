@@ -40,29 +40,32 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Harsh Gupta, Karmit Patel
  */
-public final class Board extends javax.swing.JFrame {
+public class Board extends javax.swing.JFrame {
 
     /**
      * Creates new form Board
      */
-    public static int players, i, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0;
+    public static int players, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0;
     public static String theme, ching = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav";
-    public static int[] money = new int[4], numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
-    public String[] name = new String[4], propName = new String[36], propType = new String[36];
-    public ThemeSelect ts = new ThemeSelect();
-    public InitTest it = new InitTest();
+    public static int[] numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
+    public static int[] money = new int[4];
+    public static String[] name = new String[4];
+    public static ImageIcon[] icon = new ImageIcon[4];
+    public String[] propName = new String[36], propType = new String[36];
     public Dice di = new Dice();
     public Properties_Data pd = new Properties_Data();
-    Color transparent50 = new Color(0, 0, 0, 64);
-    Color[] colorPalette = new Color[4];
+//    Color transparent50 = new Color(0, 0, 0, 64);
+    public static Color[] colorPalette = new Color[4];
     public static ImageIcon piece;
     SimpleAttributeSet[] keyWord = new SimpleAttributeSet[5];
-    public static ImageIcon[] icons = new ImageIcon[100], icon = new ImageIcon[4], houseImg = new ImageIcon[5];
+    public static ImageIcon[] icons = new ImageIcon[100], houseImg = new ImageIcon[5];
     public static boolean snake = false, bail = false, hover = true;
     public static boolean[] propOwned = new boolean[36], propBuyable = new boolean[36], Game = new boolean[4], housable = new boolean[14], propH = new boolean[36];
     public static JLabel[][] boxes = new JLabel[4][37];
@@ -80,21 +83,25 @@ public final class Board extends javax.swing.JFrame {
     public AudioInputStream audioIn = null;
     public Clip clip;
 
-    public Board(int playerCount) {
+    public Board(int playerCount, boolean load) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.players = playerCount;
-        datatransfer();
-        propDataTransfer();
-        setupData();
-        System.out.println("Board: Number of pCount: " + players);
+        if (!load) {
+            ThemeSelect ts = new ThemeSelect();
+            InitTest it = new InitTest();
+            datatransfer(it);
+            setupData();
+            System.out.println("Board: Number of pCount: " + players);
 //        setPlayernumber();
+
+        }
+        propDataTransfer();
         setupLabels();
         setupplabels();
         changeimages();
         addpCount();
-        displayChange(turn);
         setupBuyStatus();
         setupHouses();
         addWindowListener(new WindowAdapter() {
@@ -121,7 +128,7 @@ public final class Board extends javax.swing.JFrame {
 
     public void propDataTransfer() {
         pd.GetProp();
-        for (i = 0; i < 36; i++) {
+        for (int i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
             propRent[i] = pd.prop[i].rent1;
@@ -149,7 +156,7 @@ public final class Board extends javax.swing.JFrame {
             colorPalette[i] = color;
             System.out.println(color);
         }
-        for (i = 0; i < players; i++) {
+        for (int i = 0; i < players; i++) {
             image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             icons[i] = new ImageIcon(image);
             plnames[i].setOpaque(true);
@@ -176,7 +183,7 @@ public final class Board extends javax.swing.JFrame {
 
     public void setupBuyStatus() {
         Dimension labelSize = new Dimension(10, 10);
-        for (i = 0; i < buyStatus.length; i++) {
+        for (int i = 0; i < buyStatus.length; i++) {
             buyStatus[i] = new JLabel();
             if (propBuyable[i]) {
 
@@ -231,7 +238,7 @@ public final class Board extends javax.swing.JFrame {
     }
 
     public void setupHouses() {
-        for (i = 0; i < boxPanes.length; i++) {
+        for (int i = 0; i < boxPanes.length; i++) {
             houses[i] = new JLabel();
             if (propBuyable[i]) {
                 if ("N".equals(propType[i])) {
@@ -317,12 +324,12 @@ public final class Board extends javax.swing.JFrame {
         plMC[2].setVisible(true);
         plMC[3].setVisible(true);
 
-        for (i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             oy[i] = plMC[i].getY();
             ny[i] = oy[i] + 20;
         }
 
-        for (i = 0; i < players; i++) {
+        for (int i = 0; i < players; i++) {
             plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
             plHouse[i].addActionListener(new ActionListener() {
@@ -350,12 +357,12 @@ public final class Board extends javax.swing.JFrame {
             mess.add("OMG!");
         }
         System.out.println("Board: Data Transfered!");
-        for (i = 0; i < 36; i++) {
+        for (int i = 0; i < 36; i++) {
             propHouse[i] = 0;
             propH[i] = false;
         }
 
-        for (i = 0; i < 14; i++) {
+        for (int i = 0; i < 14; i++) {
             housable[i] = false;
         }
 
@@ -367,7 +374,7 @@ public final class Board extends javax.swing.JFrame {
 
     }
 
-    public void datatransfer() {
+    public void datatransfer(InitTest it) {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
 //        this.players = it.pCount;  //This is the only errror it takes 2 as default value instead of "pCount" from Init Test Fix it if u can
@@ -620,7 +627,7 @@ public final class Board extends javax.swing.JFrame {
 //    }
 
     public void addpCount() {
-        for (i = 0; i < players; i++) {
+        for (int i = 0; i < players; i++) {
             plnames[i].setText("" + name[i]);
             plicons[i].setIcon(icon[i]);
             plmoney[i].setText("$" + Integer.toString(money[i]));
@@ -888,14 +895,14 @@ public final class Board extends javax.swing.JFrame {
 
     public void setHouses() {
 //        setupHouses();
-        for (i = 0; i < 36; i++) {
+        for (int i = 0; i < 36; i++) {
 //            houses[i].setIcon(houseImg[0]);
             houses[i].setIcon(houseImg[propHouse[i]]);
         }
     }
 
     public void gameOver(int turn) {
-        for (i = 0; i < 36; i++) {
+        for (int i = 0; i < 36; i++) {
             if (propOwner[i] == turn) {
                 propOwner[i] = -1;
                 propOwned[i] = false;
@@ -927,7 +934,7 @@ public final class Board extends javax.swing.JFrame {
         buyStatus[cpos[turn]].setBackground(Color.darkGray);
         money[turn] += propPrice[cpos[turn]] / 2;
         propMoney[turn] -= propPrice[cpos[turn]];
-        totMoney[turn] =money[turn]- propMoney[turn];
+        totMoney[turn] = money[turn] - propMoney[turn];
         propOwned[cpos[turn]] = false;
         propOwner[cpos[turn]] = -1;
         numprop[turn]--;
@@ -1061,10 +1068,11 @@ public final class Board extends javax.swing.JFrame {
         moneyTimer.start();
         plmoney[turn].setText("$ " + money[turn]);
     }
+
     public void displayChangeSell(final int turn) {
         Collections.shuffle(mess);
         lblMessage.setText("" + mess.get(0));
-        lblBought.setText("" + name[turn] + " sold " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]]/2);
+        lblBought.setText("" + name[turn] + " sold " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]] / 2);
         yy[turn] = oy[turn];
         plMC[turn].setForeground(Color.green);
         playSound(ching);
@@ -1075,7 +1083,7 @@ public final class Board extends javax.swing.JFrame {
                 lblBought.setVisible(true);
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
-                plMC[turn].setText("(+$ " + propPrice[cpos[turn]]/2 + ")");
+                plMC[turn].setText("(+$ " + propPrice[cpos[turn]] / 2 + ")");
                 yy[turn]++;
                 if (yy[turn] == ny[turn]) {
                     lblMessage.setVisible(false);
@@ -1089,6 +1097,7 @@ public final class Board extends javax.swing.JFrame {
         moneyTimer.start();
         plmoney[turn].setText("$ " + money[turn]);
     }
+
     public void displayChangePay(final int turn, final int propOwner, final int pRent) {
 //        plmoney[turn].setForeground(Color.red);
         plmoney[turn].setText("$ " + money[turn]);
@@ -1273,7 +1282,7 @@ public final class Board extends javax.swing.JFrame {
                 displayChangeS(turn, pd.chanceVals[ind]);
                 break;
             case "P$":
-                for (i = 0; i < players; i++) {
+                for (int i = 0; i < players; i++) {
                     money[i] += pd.chanceVals[ind];
                     if (i != turn) {
                         displayChangeS(i, pd.chanceVals[ind]);
@@ -1362,7 +1371,7 @@ public final class Board extends javax.swing.JFrame {
                 displayChangeS(turn, pd.commVals[ind]);
                 break;
             case "P$":
-                for (i = 0; i < players; i++) {
+                for (int i = 0; i < players; i++) {
                     money[i] -= pd.commVals[ind];
                     displayChangeS(i, pd.commVals[ind]);
                 }
@@ -1416,7 +1425,7 @@ public final class Board extends javax.swing.JFrame {
     }
 
     public void plHouseCheck(int turn) {
-        for (i = 0; i < 36; i++) {
+        for (int i = 0; i < 36; i++) {
             if ("N".equals(propType[i])) {
                 if (propOwner[i] == turn) {
                     if (propH[i] == true) {
@@ -3864,14 +3873,15 @@ public final class Board extends javax.swing.JFrame {
 
     private void btnReBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReBuyActionPerformed
         // TODO add your handling code here:
-        if(btnReBuy.getText().equals("Buy")){
-        BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy");
-        buy.setVisible(true);    
-        }if(btnReBuy.getText().equals("Sell")){
-        BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell");
-        buy.setVisible(true);    
+        if (btnReBuy.getText().equals("Buy")) {
+            BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy");
+            buy.setVisible(true);
         }
-        
+        if (btnReBuy.getText().equals("Sell")) {
+            BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell");
+            buy.setVisible(true);
+        }
+
     }//GEN-LAST:event_btnReBuyActionPerformed
 
     private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
@@ -4129,7 +4139,7 @@ public final class Board extends javax.swing.JFrame {
 
     public void displayChange(int turn) {
 
-        for (i = 0; i < players; i++) {
+        for (int i = 0; i < players; i++) {
             if (i == turn) {
                 plnames[i].setEnabled(true);
                 plmoney[i].setEnabled(true);

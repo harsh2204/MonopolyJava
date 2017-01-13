@@ -1063,7 +1063,7 @@ public final class InitTest extends JFrame
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         setplayers();
-        board = new Board(pCount);
+        board = new Board(pCount, false);
         board.setVisible(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
