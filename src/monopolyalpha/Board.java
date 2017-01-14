@@ -42,8 +42,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -55,10 +53,10 @@ public class Board extends javax.swing.JFrame
     /**
      * Creates new form Board
      */
-    public static int players, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0, i;
-    public static String theme, ching = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav";
+    public static int players, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0, i, ops;
+    public static String theme, ching = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav", boo="Sounds/Crowd Boo 6-SoundBible.com-928081827.wav";
     public static int[] numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
-    public static int[] money = new int[4];
+    public static int[] money = new int[4], jailTerm = new int[4];
     public static String[] name = new String[4];
     public static StyledDocument log;
     public static ImageIcon[] icon = new ImageIcon[4];
@@ -78,7 +76,7 @@ public class Board extends javax.swing.JFrame
     Card c;
     public JButton[] plHouse = new JButton[4];
     public static Image image;
-    public static Timer moveTimer, timer, moneyTimer, timerC;
+    public static Timer moveTimer, timer, moneyTimer, timerC, messDisplay;
     Canada_Data cd = new Canada_Data();
     SuperHero_Data sd = new SuperHero_Data();
     Generic_Data gd = new Generic_Data();
@@ -254,7 +252,7 @@ public class Board extends javax.swing.JFrame
                           {
                             if (cardInfo[j] == label)
                               {
-                                  System.out.println("Index: Sent"+j);
+                                System.out.println("Index: Sent" + j);
                                 makeCard(j);
                               }
                           }
@@ -513,6 +511,7 @@ public class Board extends javax.swing.JFrame
             numprop[i] = 0;
             cpos[i] = 0;
             npos[i] = 0;
+            jailTerm[i] = 0;
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
 
             mess.add("Awesome!");
@@ -905,7 +904,6 @@ public class Board extends javax.swing.JFrame
             timerC.start();
           }
       }
-
 
     public void appendS(String s, int playerID)
       {
@@ -1338,9 +1336,15 @@ public class Board extends javax.swing.JFrame
                 displayChangeS(turn, pRent);
                 break;
             case "J":
-                pRent = -(jailfee[turn]);
-                money[turn] += pRent;
-                displayChangeS(turn, pRent);
+                if (jailfee[turn] != 0)
+                  {
+                    pRent = -(jailfee[turn]);
+                    money[turn] += pRent;
+                    displayChangeS(turn, pRent);
+                  } else if (jailTerm[turn] == 0)
+                  {
+                    jailTerm[turn] = 1;
+                  }
                 break;
             case "CH":
                 chanceCard(roll);
@@ -2194,88 +2198,16 @@ public class Board extends javax.swing.JFrame
         lblBought.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         paneBoard.add(lblBought);
         lblBought.setBounds(100, 320, 500, 60);
-
-        lblHoverB10.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB10MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB10MouseExited(evt);
-            }
-        });
         paneBoard.add(lblHoverB10);
         lblHoverB10.setBounds(96, 4, 60, 90);
-
-        lblHoverB5.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB5MouseExited(evt);
-            }
-        });
         paneBoard.add(lblHoverB5);
         lblHoverB5.setBounds(2, 288, 90, 60);
-
-        lblHoverB4.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB4MouseExited(evt);
-            }
-        });
         paneBoard.add(lblHoverB4);
         lblHoverB4.setBounds(2, 352, 90, 60);
-
-        lblHoverB3.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB3MouseExited(evt);
-            }
-        });
         paneBoard.add(lblHoverB3);
         lblHoverB3.setBounds(2, 416, 90, 60);
-
-        lblHoverB2.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB2MouseExited(evt);
-            }
-        });
         paneBoard.add(lblHoverB2);
         lblHoverB2.setBounds(2, 480, 90, 60);
-
-        lblHoverB1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                lblHoverB1MouseExited(evt);
-            }
-        });
         paneBoard.add(lblHoverB1);
         lblHoverB1.setBounds(2, 544, 90, 60);
 
@@ -4178,60 +4110,6 @@ public class Board extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblHoverB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseEntered
-
-    }//GEN-LAST:event_lblHoverB1MouseEntered
-
-    private void lblHoverB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB1MouseExited
-        // TODO add your handling code here:        
-        
-    }//GEN-LAST:event_lblHoverB1MouseExited
-
-    private void lblHoverB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseEntered
-       
-    }//GEN-LAST:event_lblHoverB2MouseEntered
-
-    private void lblHoverB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB2MouseExited
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_lblHoverB2MouseExited
-
-    private void lblHoverB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseEntered
-        
-    }//GEN-LAST:event_lblHoverB3MouseEntered
-
-    private void lblHoverB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB3MouseExited
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_lblHoverB3MouseExited
-
-    private void lblHoverB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseEntered
-       
-    }//GEN-LAST:event_lblHoverB4MouseEntered
-
-    private void lblHoverB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB4MouseExited
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_lblHoverB4MouseExited
-
-    private void lblHoverB5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseEntered
-       
-    }//GEN-LAST:event_lblHoverB5MouseEntered
-
-    private void lblHoverB5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB5MouseExited
-        // TODO add your handling code here:   
-        
-    }//GEN-LAST:event_lblHoverB5MouseExited
-
-    private void lblHoverB10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB10MouseEntered
-       
-    }//GEN-LAST:event_lblHoverB10MouseEntered
-
-    private void lblHoverB10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB10MouseExited
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_lblHoverB10MouseExited
-
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
 
         btnRoll.setEnabled(false);
@@ -4268,7 +4146,12 @@ public class Board extends javax.swing.JFrame
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        btnRoll.setEnabled(true);
+        nextStuff();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    public void nextStuff()
+      {
+        enableNext();
         appendS(name[turn] + "'s", turn);
         addLog(" turn ended.");
         turn++;
@@ -4276,10 +4159,50 @@ public class Board extends javax.swing.JFrame
           {
             turn = 0;
           }
-        plHouseCheck(turn);
-        btnNext.setEnabled(false);
-        displayChange(turn);
-    }//GEN-LAST:event_btnNextActionPerformed
+        if (jailTerm[turn] == 1)
+          {
+            btnNext.setEnabled(false);
+              playSound(boo);
+            ops=200;
+            jailTerm[turn] = 0;
+            count = 0;
+            ops = 255;
+            lblMessage.setForeground(new Color(255, 215, 0, ops));
+            lblBought.setForeground(new Color(255, 215, 0, ops));
+            lblMessage.setText("OOPS!");
+            lblBought.setText("You have to wait one more turn in JAIL!");
+            lblMessage.setVisible(true);
+            lblBought.setVisible(true);
+            messDisplay = new Timer(10, new ActionListener()
+              {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                  {
+                    count++;
+                    if (count >= 200)
+                      {
+                        ops -= 2;
+                        lblMessage.setForeground(new Color(255, 215, 0, ops));
+                        lblBought.setForeground(new Color(255, 215, 0, ops));
+                      }
+                    if(count>=300)
+                      {
+                        messDisplay.stop();
+                        lblMessage.setVisible(false);
+                        lblBought.setVisible(false);
+                        nextStuff();
+                      }
+                  }
+              });
+            messDisplay.start();
+          } else
+          {
+            btnRoll.setEnabled(true);
+            displayChange(turn);
+            btnNext.setEnabled(false);
+            plHouseCheck(turn);
+          }
+      }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         String ObjButtons[]
@@ -4323,12 +4246,12 @@ public class Board extends javax.swing.JFrame
     }//GEN-LAST:event_btnTradeActionPerformed
 
     private void lblHoverB7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB7MouseEntered
 
     private void lblHoverB7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB7MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB7MouseExited
 
     private void P1B9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_P1B9MouseEntered
@@ -4336,191 +4259,191 @@ public class Board extends javax.swing.JFrame
     }//GEN-LAST:event_P1B9MouseEntered
 
     private void lblHoverB8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB8MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB8MouseEntered
 
     private void lblHoverB8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB8MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB8MouseExited
 
     private void lblHoverB11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB11MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB11MouseEntered
 
     private void lblHoverB11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB11MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB11MouseExited
 
     private void lblHoverB12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB12MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB12MouseEntered
 
     private void lblHoverB12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB12MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB12MouseExited
 
     private void lblHoverB13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB13MouseEntered
-      
+
     }//GEN-LAST:event_lblHoverB13MouseEntered
 
     private void lblHoverB13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB13MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB13MouseExited
 
     private void lblHoverB14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB14MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB14MouseEntered
 
     private void lblHoverB14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB14MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB14MouseExited
 
     private void lblHoverB15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB15MouseEntered
-     
+
     }//GEN-LAST:event_lblHoverB15MouseEntered
 
     private void lblHoverB15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB15MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB15MouseExited
 
     private void lblHoverB17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB17MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB17MouseEntered
 
     private void lblHoverB17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB17MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB17MouseExited
 
     private void lblHoverB19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB19MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB19MouseEntered
 
     private void lblHoverB19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB19MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB19MouseExited
 
     private void lblHoverB20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB20MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB20MouseEntered
 
     private void lblHoverB20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB20MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB20MouseExited
 
     private void lblHoverB21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB21MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB21MouseEntered
 
     private void lblHoverB21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB21MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB21MouseExited
 
     private void lblHoverB22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB22MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB22MouseEntered
 
     private void lblHoverB22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB22MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB22MouseExited
 
     private void lblHoverB23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB23MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB23MouseEntered
 
     private void lblHoverB23MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB23MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB23MouseExited
 
     private void lblHoverB25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB25MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB25MouseEntered
 
     private void lblHoverB25MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB25MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB25MouseExited
 
     private void lblHoverB26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB26MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB26MouseEntered
 
     private void lblHoverB26MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB26MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB26MouseExited
 
     private void lblHoverB28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB28MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB28MouseEntered
 
     private void lblHoverB28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB28MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB28MouseExited
 
     private void lblHoverB29MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB29MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB29MouseEntered
 
     private void lblHoverB29MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB29MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB29MouseExited
 
     private void lblHoverB30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB30MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB30MouseEntered
 
     private void lblHoverB30MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB30MouseExited
-        
+
     }//GEN-LAST:event_lblHoverB30MouseExited
 
     private void lblHoverB32MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB32MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB32MouseEntered
 
     private void lblHoverB32MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB32MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB32MouseExited
 
     private void lblHoverB33MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB33MouseEntered
-       
+
     }//GEN-LAST:event_lblHoverB33MouseEntered
 
     private void lblHoverB33MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB33MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB33MouseExited
 
     private void lblHoverB34MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB34MouseEntered
-        
+
     }//GEN-LAST:event_lblHoverB34MouseEntered
 
     private void lblHoverB34MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB34MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB34MouseExited
 
     private void lblHoverB35MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB35MouseEntered
-      
+
     }//GEN-LAST:event_lblHoverB35MouseEntered
 
     private void lblHoverB35MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoverB35MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblHoverB35MouseExited
 
     public void displayChange(int turn)
