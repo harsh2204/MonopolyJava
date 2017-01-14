@@ -54,7 +54,7 @@ public class Board extends javax.swing.JFrame
      * Creates new form Board
      */
     public static int players, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0, i, ops;
-    public static String theme, ching = "Sounds/Cash Register Cha Ching-SoundBible.com-184076484.wav", boo="Sounds/Crowd Boo 6-SoundBible.com-928081827.wav";
+    public static String theme, ching = "Sounds/Ching.wav", boo="Sounds/Boo.wav";
     public static int[] numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
     public static int[] money = new int[4], jailTerm = new int[4];
     public static String[] name = new String[4];
