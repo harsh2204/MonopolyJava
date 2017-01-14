@@ -20,7 +20,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Random;
 import java.util.logging.Level;
@@ -58,7 +60,7 @@ public class Board extends javax.swing.JFrame
     public static int[] numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
     public static int[] money = new int[4], jailTerm = new int[4];
     public static String[] name = new String[4];
-    public static StyledDocument log;
+    public static String log;
     public static ImageIcon[] icon = new ImageIcon[4];
     public String[] propName = new String[36], propType = new String[36];
     public Dice di = new Dice();
@@ -113,7 +115,9 @@ public class Board extends javax.swing.JFrame
         if (load)
           {
             changeimagesLoad();
-            txtLog.setStyledDocument(log);
+            txtLog.setText(log);
+           String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+              addLog("------------------------------Game Loaded ("+timeStamp+")------------------------------");
           } else
           {
             changeimages();
@@ -196,7 +200,7 @@ public class Board extends javax.swing.JFrame
 
     public void getLog()
       {
-        log = txtLog.getStyledDocument();
+        log = txtLog.getText();
       }
 
     public void setupCards()

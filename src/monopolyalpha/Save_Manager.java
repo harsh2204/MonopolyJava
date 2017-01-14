@@ -174,6 +174,7 @@ public class Save_Manager extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        try {
 //            Save_Data data = (Save_Data) ResourceManager.load("Saves/savgame.dat");
+        System.out.println("Loading "+jList1.getSelectedValue().toString());
         Savetest.Load(jList1.getSelectedValue().toString());
 //             txt1.setText(data.player1);
 //             txt2.setText(data.player2);

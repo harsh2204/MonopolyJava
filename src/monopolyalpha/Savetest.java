@@ -84,6 +84,7 @@ public class Savetest {
         Board.Game = save.Game;
         Board.housable = save.housable;
         Board.propH = save.propH;
+        Board.log = save.log;
         board = new Board(save.players, true);
         board.setVisible(true);
     }

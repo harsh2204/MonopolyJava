@@ -6,7 +6,7 @@
 package monopolyalpha;
 
 import java.awt.Color;
-import javax.swing.text.Document;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -28,7 +28,7 @@ public class Save_Data {
     public boolean snake = false, bail = false;
     public boolean[] propOwned = new boolean[36], propBuyable = new boolean[36],
             Game = new boolean[4], housable = new boolean[14], propH = new boolean[36];
-    public Document log;
+    public String log;
     public Save_Data() {      
         this.theme = Board.theme;
         this.players = Board.players;

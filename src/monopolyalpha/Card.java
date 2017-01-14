@@ -47,6 +47,11 @@ public class Card extends javax.swing.JFrame {
             hotel = "Hotel costs $" + ((p.prop[index].priceHouse * 1.5) + 50);
         }
         initComponents();
+        if(Board.propOwned[index]){
+            lblColor.setBackground(Board.colorPalette[Board.propOwner[index]]);
+        }else{
+            lblColor.setBackground(Color.darkGray);
+        }
         this.setLocationRelativeTo(null);
     }
 
@@ -66,6 +71,7 @@ public class Card extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        lblColor = new javax.swing.JLabel();
         lblRent = new javax.swing.JLabel();
         lblRent1 = new javax.swing.JLabel(price);
         lblRent2 = new javax.swing.JLabel();
@@ -90,6 +96,11 @@ public class Card extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
+
+        lblColor.setBackground(java.awt.Color.darkGray);
+        lblColor.setOpaque(true);
+        jPanel2.add(lblColor);
+        lblColor.setBounds(210, 70, 20, 20);
 
         lblRent.setFont(new java.awt.Font("KabaleMedium", 0, 14)); // NOI18N
         lblRent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -167,14 +178,14 @@ public class Card extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 62, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 5, Short.MAX_VALUE)
                     .addComponent(lblDeed)
                     .addGap(5, 5, 5)
                     .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 6, Short.MAX_VALUE)))
         );
 
         jPanel2.add(jPanel3);
@@ -251,6 +262,7 @@ public class Card extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblDeed;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblRent;
