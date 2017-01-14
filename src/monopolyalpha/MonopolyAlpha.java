@@ -18,6 +18,7 @@ public class MonopolyAlpha {
         
         Splash_Screen splash = new Splash_Screen();
        splash.makeSplash();
+       MusicPlayer.play();        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartScreenfrm().setVisible(true);
