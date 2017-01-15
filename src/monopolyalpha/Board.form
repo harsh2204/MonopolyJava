@@ -3237,8 +3237,8 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lblBoard">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/monopolyalpha/Canada Green Board.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new ImageIcon(&quot;Board Pictures/Canada/Canada Green Board.png&quot;)" type="code"/>
             </Property>
           </Properties>
           <Constraints>

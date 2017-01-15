@@ -1833,8 +1833,7 @@ public class Board extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         dlgLog = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -2098,10 +2097,8 @@ public class Board extends javax.swing.JFrame
 
         btnCD.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnCD.setText("CLOSE");
-        btnCD.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCDActionPerformed(evt);
             }
         });
@@ -2496,10 +2493,8 @@ public class Board extends javax.swing.JFrame
         paneB9.setBackground(new java.awt.Color(255, 255, 255));
         paneB9.setOpaque(false);
 
-        P1B9.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        P1B9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 P1B9MouseEntered(evt);
             }
         });
@@ -3481,308 +3476,242 @@ public class Board extends javax.swing.JFrame
         paneBoard.add(paneB36);
         paneB36.setBounds(95, 640, 58, 51);
 
-        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB7MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB7);
         lblHoverB7.setBounds(2, 160, 90, 60);
 
-        lblHoverB8.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB8MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB8MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB8);
         lblHoverB8.setBounds(2, 96, 90, 60);
 
-        lblHoverB11.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB11MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB11MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB11);
         lblHoverB11.setBounds(160, 4, 60, 90);
 
-        lblHoverB12.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB12MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB12MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB12);
         lblHoverB12.setBounds(224, 4, 60, 90);
 
-        lblHoverB13.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB13MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB13MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB13);
         lblHoverB13.setBounds(288, 4, 60, 90);
 
-        lblHoverB14.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB14MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB14MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB14);
         lblHoverB14.setBounds(352, 4, 60, 90);
 
-        lblHoverB15.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB15MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB15MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB15);
         lblHoverB15.setBounds(416, 4, 60, 90);
 
-        lblHoverB17.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB17MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB17MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB17);
         lblHoverB17.setBounds(544, 4, 60, 90);
 
-        lblHoverB19.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB19MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB19MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB19);
         lblHoverB19.setBounds(609, 96, 90, 60);
 
-        lblHoverB20.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB20MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB20MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB20);
         lblHoverB20.setBounds(609, 160, 90, 60);
 
-        lblHoverB21.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB21MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB21MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB21);
         lblHoverB21.setBounds(609, 224, 90, 60);
 
-        lblHoverB22.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB22MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB22MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB22);
         lblHoverB22.setBounds(609, 288, 90, 60);
 
-        lblHoverB23.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB23MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB23MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB23);
         lblHoverB23.setBounds(609, 352, 90, 60);
 
-        lblHoverB25.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB25MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB25MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB25);
         lblHoverB25.setBounds(609, 480, 90, 60);
 
-        lblHoverB26.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB26MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB26MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB26);
         lblHoverB26.setBounds(609, 544, 90, 60);
 
-        lblHoverB28.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB28MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB28MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB28);
         lblHoverB28.setBounds(545, 608, 60, 90);
 
-        lblHoverB29.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB29MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB29MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB29);
         lblHoverB29.setBounds(481, 608, 60, 90);
 
-        lblHoverB30.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB30MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB30MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB30);
         lblHoverB30.setBounds(417, 608, 60, 90);
 
-        lblHoverB32.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB32MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB32MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB32);
         lblHoverB32.setBounds(289, 608, 60, 90);
 
-        lblHoverB33.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB33MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB33MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB33);
         lblHoverB33.setBounds(225, 608, 60, 90);
 
-        lblHoverB34.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB34MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB34MouseExited(evt);
             }
         });
         paneBoard.add(lblHoverB34);
         lblHoverB34.setBounds(161, 608, 60, 90);
 
-        lblHoverB35.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
+        lblHoverB35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblHoverB35MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblHoverB35MouseExited(evt);
             }
         });
@@ -3793,27 +3722,21 @@ public class Board extends javax.swing.JFrame
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnRoll.setText("Roll!");
-        btnRoll.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
             }
         });
-        btnRoll.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyReleased(java.awt.event.KeyEvent evt)
-            {
+        btnRoll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnRollKeyReleased(evt);
             }
         });
 
         btnLog.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnLog.setText("LOG");
-        btnLog.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogActionPerformed(evt);
             }
         });
@@ -3821,30 +3744,24 @@ public class Board extends javax.swing.JFrame
         btnNext.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnNext.setText("NEXT");
         btnNext.setEnabled(false);
-        btnNext.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
         btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
 
         btnTrade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnTrade.setText("Trade");
-        btnTrade.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnTrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTradeActionPerformed(evt);
             }
         });
@@ -3852,10 +3769,8 @@ public class Board extends javax.swing.JFrame
         btnReBuy.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         btnReBuy.setText("BUY");
         btnReBuy.setEnabled(false);
-        btnReBuy.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnReBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReBuyActionPerformed(evt);
             }
         });
@@ -4092,7 +4007,7 @@ public class Board extends javax.swing.JFrame
 
         paneBoss.add(paneP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 400, -1, 298));
 
-        lblBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monopolyalpha/Canada Green Board.png"))); // NOI18N
+        lblBoard.setIcon(new ImageIcon("Board Pictures/Canada/Canada Green Board.png"));
         paneBoss.add(lblBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
