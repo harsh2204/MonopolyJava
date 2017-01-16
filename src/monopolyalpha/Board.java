@@ -49,14 +49,13 @@ import javax.swing.text.StyledDocument;
  *
  * @author Harsh Gupta, Karmit Patel
  */
-public class Board extends javax.swing.JFrame
-  {
+public class Board extends javax.swing.JFrame {
 
     /**
      * Creates new form Board
      */
     public static int players, dice, chance, roll, turn = 0, count = 0, EGS, counter = 0, i, ops;
-    public static String theme, ching = "Sounds/Ching.wav", boo="Sounds/Boo.wav";
+    public static String theme, ching = "Sounds/Ching.wav", boo = "Sounds/Boo.wav";
     public static int[] numprop = new int[4], cpos = new int[4], npos = new int[4], bonus = new int[4], jailfee = new int[4], propOwner = new int[36], propPrice = new int[36], propRent = new int[36], plChances = new int[4], plChancesLeft = new int[4], propMoney = new int[4], totMoney = new int[4], propHouse = new int[36], ny = new int[4], oy = new int[4], yy = new int[4];
     public static int[] money = new int[4], jailTerm = new int[4];
     public static String[] name = new String[4];
@@ -87,14 +86,12 @@ public class Board extends javax.swing.JFrame
     public AudioInputStream audioIn = null;
     public Clip clip;
 
-    public Board(int playerCount, boolean load)
-      {
+    public Board(int playerCount, boolean load) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.players = playerCount;
-        if (!load)
-          {
+        if (!load) {
             ThemeSelect ts = new ThemeSelect();
             InitTest it = new InitTest();
             datatransfer(it);//no need to load when load game
@@ -104,62 +101,52 @@ public class Board extends javax.swing.JFrame
             System.out.println("Board: Number of pCount: " + players);
 //        setPlayernumber();
 
-          } else
-          {
+        } else {
             propDataTransferLoad(theme);
             setupDataLoad();
-          }
+        }
         System.out.println("theme " + theme);
         setupLabels();
         setupplabels();
-        if (load)
-          {
+        if (load) {
             changeimagesLoad();
             txtLog.setText(log);
-           String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-              addLog("------------------------------Game Loaded ("+timeStamp+")------------------------------");
-          } else
-          {
+            String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            addLog("------------------------------Game Loaded (" + timeStamp + ")------------------------------");
+        } else {
             changeimages();
-          }
+        }
         addpCount();
         setupCards();
         setupBuyStatus();
         repaintBuyLabels();
         setupHouses();
         upgradeButton();
-        addWindowListener(new WindowAdapter()
-          {
+        addWindowListener(new WindowAdapter() {
 
             @Override
-            public void windowClosing(WindowEvent we)
-              {
+            public void windowClosing(WindowEvent we) {
                 String ObjButtons[]
-                        =
-                          {
+                        = {
                             "Yes", "No", "Save"
-                          };
+                        };
                 int PromptResult = JOptionPane.showOptionDialog(null,
                         "Are you sure you want to exit?", "Monopoly Java",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
                         ObjButtons, ObjButtons[2]);
-                if (PromptResult == 0)
-                  {
+                if (PromptResult == 0) {
                     System.exit(0);
-                  }
-                if (PromptResult == 2)
-                  {
+                }
+                if (PromptResult == 2) {
                     new Save_Manager().setVisible(true);
-                  }
-              }
-          });
-      }
+                }
+            }
+        });
+    }
 
-    public void propDataTransfer(String thm)
-      {
+    public void propDataTransfer(String thm) {
         pd.GetProp(thm);
-        for (int i = 0; i < 36; i++)
-          {
+        for (int i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
             propRent[i] = pd.prop[i].rent1;
@@ -167,45 +154,40 @@ public class Board extends javax.swing.JFrame
             propOwner[i] = pd.prop[i].owner;
             propBuyable[i] = pd.prop[i].buyable;
             propType[i] = pd.prop[i].type;
-          }
+        }
 //        propOwned[1]=true;
 //        propOwned[2]=true;
 //        propOwned[4]=true;
 //        propOwner[1]=2;
 //        propOwner[2]=2;
 //        propOwner[4]=2;
-      }
+    }
 
-    public void propDataTransferLoad(String thm)
-      {
+    public void propDataTransferLoad(String thm) {
         pd.GetProp(thm);
-        for (int i = 0; i < 36; i++)
-          {
+        for (int i = 0; i < 36; i++) {
             propName[i] = pd.prop[i].name;
             propPrice[i] = pd.prop[i].price;
             propRent[i] = pd.prop[i].rent1;
-            if (propOwner[i] != -1)
-              {
+            if (propOwner[i] != -1) {
                 propOwned[i] = true;
-              }
+            }
             propBuyable[i] = pd.prop[i].buyable;
             propType[i] = pd.prop[i].type;
-          }
+        }
 //        propOwned[1]=true;
 //        propOwned[2]=true;
 //        propOwned[4]=true;
 //        propOwner[1]=2;
 //        propOwner[2]=2;
 //        propOwner[4]=2;
-      }
+    }
 
-    public void getLog()
-      {
+    public void getLog() {
         log = txtLog.getText();
-      }
+    }
 
-    public void setupCards()
-      {
+    public void setupCards() {
         cardInfo[0] = null;
         cardInfo[1] = lblHoverB1;
         cardInfo[2] = lblHoverB2;
@@ -242,36 +224,28 @@ public class Board extends javax.swing.JFrame
         cardInfo[33] = lblHoverB33;
         cardInfo[34] = lblHoverB34;
         cardInfo[35] = lblHoverB35;
-        for (i = 0; i < 36; i++)
-          {
-            if (cardInfo[i] != null)
-              {
-                cardInfo[i].addMouseListener(new MouseAdapter()
-                  {
+        for (i = 0; i < 36; i++) {
+            if (cardInfo[i] != null) {
+                cardInfo[i].addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e)
-                      {
+                    public void mouseClicked(MouseEvent e) {
                         JLabel label = (JLabel) e.getSource();
                         int j;
-                        for (j = 0; j < 36; j++)
-                          {
-                            if (cardInfo[j] == label)
-                              {
+                        for (j = 0; j < 36; j++) {
+                            if (cardInfo[j] == label) {
                                 //System.out.println("Index: Sent" + j);
                                 makeCard(j);
-                              }
-                          }
-                      }
-                  });
-              }
-          }
-      }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
 
-    public void changeimages()
-      {
+    public void changeimages() {
         //Seting up colors for user names        
-        for (int i = 0; i < 4; i++)
-          {
+        for (int i = 0; i < 4; i++) {
             Random random = new Random();
             float hue = random.nextFloat(); // Saturation between 0.1 and 0.3 
             float saturation = (random.nextInt(4000) + 2000) / 10000f;
@@ -279,31 +253,27 @@ public class Board extends javax.swing.JFrame
             Color color = Color.getHSBColor(hue, saturation, luminance);
             colorPalette[i] = color;
             System.out.println(color);
-          }
-        for (int i = 0; i < players; i++)
-          {
+        }
+        for (int i = 0; i < players; i++) {
             image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             icons[i] = new ImageIcon(image);
             plnames[i].setOpaque(true);
             plnames[i].setBackground(colorPalette[i]);
-          }
+        }
         System.out.println("Board: Image Changed!");
-      }
+    }
 
-    public void changeimagesLoad()
-      {
-        for (int i = 0; i < players; i++)
-          {
+    public void changeimagesLoad() {
+        for (int i = 0; i < players; i++) {
             image = icon[i].getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             icons[i] = new ImageIcon(image);
             plnames[i].setOpaque(true);
             plnames[i].setBackground(colorPalette[i]);
-          }
+        }
         System.out.println("Board: Image Changed!");
-      }
+    }
 
-    public void setupplabels()
-      {
+    public void setupplabels() {
         plnames[0] = lblNameP1;
         plnames[1] = lblNameP2;
         plicons[0] = lblIconP1;
@@ -317,19 +287,15 @@ public class Board extends javax.swing.JFrame
         plmoney[2] = lblMoneyP3;
         plmoney[3] = lblMoneyP4;
         System.out.println("Board: Labels setup done!");
-      }
+    }
 
-    public void setupBuyStatus()
-      {
+    public void setupBuyStatus() {
         Dimension labelSize = new Dimension(10, 10);
-        for (int i = 0; i < buyStatus.length; i++)
-          {
+        for (int i = 0; i < buyStatus.length; i++) {
             buyStatus[i] = new JLabel();
-            if (propBuyable[i])
-              {
+            if (propBuyable[i]) {
 
-                if (i > 0 && i < 10)
-                  {
+                if (i > 0 && i < 10) {
                     int y = (boxPanes[i].getSize().height + boxPanes[i].getLocation().y) - (boxPanes[i].getHeight() / 2) - 5;
                     buyStatus[i].setOpaque(true);
                     buyStatus[i].setBackground(Color.darkGray);
@@ -338,9 +304,8 @@ public class Board extends javax.swing.JFrame
                     paneBoard.add(buyStatus[i]);
                     buyStatus[i].setIcon(houseImg[propHouse[i]]);
 //                        buyStatus[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png"));
-                  }
-                if (i > 9 && i < 19)
-                  {
+                }
+                if (i > 9 && i < 19) {
                     int x = (boxPanes[i].getSize().width + boxPanes[i].getLocation().x) - (boxPanes[i].getWidth() / 2) - 5;
                     buyStatus[i].setOpaque(true);
                     buyStatus[i].setSize(labelSize);
@@ -349,9 +314,8 @@ public class Board extends javax.swing.JFrame
                     paneBoard.add(buyStatus[i]);
                     buyStatus[i].setIcon(houseImg[propHouse[i]]);
 //                        buyStatus[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png"));
-                  }
-                if (i > 18 && i < 28)
-                  {
+                }
+                if (i > 18 && i < 28) {
                     int y = (boxPanes[i].getSize().height + boxPanes[i].getLocation().y) - (boxPanes[i].getHeight() / 2) - 5;
                     buyStatus[i].setOpaque(true);
                     buyStatus[i].setSize(labelSize);
@@ -360,9 +324,8 @@ public class Board extends javax.swing.JFrame
                     paneBoard.add(buyStatus[i]);
                     buyStatus[i].setIcon(houseImg[propHouse[i]]);
 //                        buyStatus[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png"));
-                  }
-                if (i > 27 && i <= 35)
-                  {
+                }
+                if (i > 27 && i <= 35) {
                     int x = (boxPanes[i].getSize().width + boxPanes[i].getLocation().x) - (boxPanes[i].getWidth() / 2) - 5;
                     buyStatus[i].setOpaque(true);
                     buyStatus[i].setSize(labelSize);
@@ -371,39 +334,31 @@ public class Board extends javax.swing.JFrame
                     paneBoard.add(buyStatus[i]);
                     buyStatus[i].setIcon(houseImg[propHouse[i]]);
 //                        buyStatus[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png"));
-                  }
-              }
+                }
+            }
             paneBoard.validate();
             paneBoard.repaint();
-          }
+        }
 //        for (JLabel house : houses)
 //          {
 //            house.setVisible(false);
 //          }
-      }
+    }
 
-    public void repaintBuyLabels()
-      {
-        for (int i = 0; i < buyStatus.length; i++)
-          {
-            if (propOwner[i] != -1)
-              {
+    public void repaintBuyLabels() {
+        for (int i = 0; i < buyStatus.length; i++) {
+            if (propOwner[i] != -1) {
                 updateColors(propOwner[i], i);
-              }
-          }
-      }
+            }
+        }
+    }
 
-    public void setupHouses()
-      {
-        for (int i = 0; i < boxPanes.length; i++)
-          {
+    public void setupHouses() {
+        for (int i = 0; i < boxPanes.length; i++) {
             houses[i] = new JLabel();
-            if (propBuyable[i])
-              {
-                if ("N".equals(propType[i]))
-                  {
-                    if (i > 0 && i < 10)
-                      {
+            if (propBuyable[i]) {
+                if ("N".equals(propType[i])) {
+                    if (i > 0 && i < 10) {
 //                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
@@ -411,9 +366,8 @@ public class Board extends javax.swing.JFrame
                         paneBoard.add(houses[i]);
                         houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png"));
-                      }
-                    if (i > 9 && i < 19)
-                      {
+                    }
+                    if (i > 9 && i < 19) {
 //                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
@@ -421,9 +375,8 @@ public class Board extends javax.swing.JFrame
                         paneBoard.add(houses[i]);
                         houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png"));
-                      }
-                    if (i > 18 && i < 28)
-                      {
+                    }
+                    if (i > 18 && i < 28) {
 //                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
@@ -431,9 +384,8 @@ public class Board extends javax.swing.JFrame
                         paneBoard.add(houses[i]);
                         houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png"));
-                      }
-                    if (i > 27 && i <= 35)
-                      {
+                    }
+                    if (i > 27 && i <= 35) {
 //                        houses[i].setOpaque(false);
                         houses[i].setSize(20, 20);
 //                    houses[i].setBorder(new LineBorder(Color.BLACK,2));
@@ -441,23 +393,21 @@ public class Board extends javax.swing.JFrame
                         paneBoard.add(houses[i]);
                         houses[i].setIcon(houseImg[propHouse[i]]);
 //                        houses[i].setIcon(new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png"));
-                      }
-                  }
-              }
+                    }
+                }
+            }
             paneBoard.validate();
             paneBoard.repaint();
-          }
+        }
 //        for (JLabel house : houses)
 //          {
 //            house.setVisible(false);
 //          }
-      }
+    }
 
-    public void setupData()
-      {
+    public void setupData() {
         int chances = 0;
-        switch (EGS)
-          {
+        switch (EGS) {
             case 0:
                 chances = 36345;
                 break;
@@ -470,7 +420,7 @@ public class Board extends javax.swing.JFrame
             case 3:
                 chances = 75;
                 break;
-          }
+        }
 
         plHouse[0] = btnHouseP1;
         plHouse[1] = btnHouseP2;
@@ -490,26 +440,22 @@ public class Board extends javax.swing.JFrame
         plMC[2].setVisible(true);
         plMC[3].setVisible(true);
 
-        for (int i = 0; i < 4; i++)
-          {
+        for (int i = 0; i < 4; i++) {
             oy[i] = plMC[i].getY();
             ny[i] = oy[i] + 20;
-          }
+        }
 
-        for (int i = 0; i < players; i++)
-          {
+        for (int i = 0; i < players; i++) {
             plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
-            final Board board=  this;
-            plHouse[i].addActionListener(new ActionListener()
-              {
+            final Board board = this;
+            plHouse[i].addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     new HouseFrm(propOwner, propH, turn, propHouse, board).setVisible(true);
-                  }
-              });
-              board.dispose();
+                }
+            });
+            board.dispose();
             propMoney[i] = 0;
             totMoney[i] = 0;
             Game[i] = true;
@@ -526,18 +472,16 @@ public class Board extends javax.swing.JFrame
             mess.add("Good Job!");
             mess.add("Jordar!");
             mess.add("OMG!");
-          }
+        }
         System.out.println("Board: Data Transfered!");
-        for (int i = 0; i < 36; i++)
-          {
+        for (int i = 0; i < 36; i++) {
             propHouse[i] = 0;
             propH[i] = false;
-          }
+        }
 
-        for (int i = 0; i < 14; i++)
-          {
+        for (int i = 0; i < 14; i++) {
             housable[i] = false;
-          }
+        }
 
         houseImg[0] = null;
         houseImg[1] = new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png");
@@ -545,15 +489,13 @@ public class Board extends javax.swing.JFrame
         houseImg[3] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
         houseImg[4] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
 
-      }
+    }
 
-    public void setupDataLoad()
-      {
+    public void setupDataLoad() {
         plHouse[0] = btnHouseP1;
         plHouse[1] = btnHouseP2;
         plHouse[2] = btnHouseP3;
         plHouse[3] = btnHouseP4;
-       
 
         plMC[0] = PMCP1;
         plMC[1] = PMCP2;
@@ -564,26 +506,21 @@ public class Board extends javax.swing.JFrame
         plMC[2].setVisible(true);
         plMC[3].setVisible(true);
 
-        for (int i = 0; i < 4; i++)
-          {
+        for (int i = 0; i < 4; i++) {
             oy[i] = plMC[i].getY();
             ny[i] = oy[i] + 20;
-          }
+        }
 
-        for (int i = 0; i < players; i++)
-          {
+        for (int i = 0; i < players; i++) {
             plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
-            final Board board= this;
-            plHouse[i].addActionListener(new ActionListener()
-                    
-              {
+            final Board board = this;
+            plHouse[i].addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     new HouseFrm(propOwner, propH, turn, propHouse, board).setVisible(true);
-                  }
-              });
+                }
+            });
             board.dispose();
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
 
@@ -592,17 +529,16 @@ public class Board extends javax.swing.JFrame
             mess.add("Good Job!");
             mess.add("Jordar!");
             mess.add("OMG!");
-          }
+        }
         System.out.println("Board: Data Transfered!");
         houseImg[0] = null;
         houseImg[1] = new ImageIcon("Icons/Miscellaneous/Property Icons/Pink.png");
         houseImg[2] = new ImageIcon("Icons/Miscellaneous/Property Icons/Brown.png");
         houseImg[3] = new ImageIcon("Icons/Miscellaneous/Property Icons/Grey.png");
         houseImg[4] = new ImageIcon("Icons/Miscellaneous/Property Icons/Hotel.png");
-      }
+    }
 
-    public void datatransfer(InitTest it)
-      {
+    public void datatransfer(InitTest it) {
 //        it.setplayers();
 //        this.players=it.sldPlayer.getValue();
 //        this.players = it.pCount;  //This is the only errror it takes 2 as default value instead of "pCount" from Init Test Fix it if u can
@@ -614,10 +550,9 @@ public class Board extends javax.swing.JFrame
         this.dice = it.dicenum;
         this.EGS = it.EGS;
 
-      }
+    }
 
-    private void setupLabels()
-      {
+    private void setupLabels() {
         //1
         boxes[0][0] = P1B1;
         boxes[0][1] = P1B2;
@@ -809,8 +744,8 @@ public class Board extends javax.swing.JFrame
 //               boxes[i][k].setIcon(new ImageIcon("Icons/Pieces/Canada/1.png"));
 //            }
 //        }
-      }
-    
+    }
+
     public void upgradeButton() {
         JButton[] upgradehouse = new JButton[4];
         ImageIcon upgradePic = new ImageIcon("Icons/Miscellaneous/House Upgrade.jpg");
@@ -820,39 +755,32 @@ public class Board extends javax.swing.JFrame
         upgradehouse[3] = btnHouseP4;
 
         for (int x = 0; x < 4; x++) {
-            upgradehouse[x].setSize(upgradePic.getIconWidth(),upgradePic.getIconHeight());
+            upgradehouse[x].setSize(upgradePic.getIconWidth(), upgradePic.getIconHeight());
             upgradehouse[x].setText("");
             upgradehouse[x].setIcon(upgradePic);
         }
 
     }
 
-    public void playSound(String soundFile)
-      {
-        try
-          {
+    public void playSound(String soundFile) {
+        try {
             f = new File(soundFile);
             audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
             clip = AudioSystem.getClip();
             clip.open(audioIn);
             clip.start();
-          } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex)
-          {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
-          } finally
-          {
-            try
-              {
+        } finally {
+            try {
                 audioIn.close();
-              } catch (IOException ex)
-              {
+            } catch (IOException ex) {
                 Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
-              }
-          }
-      }
+            }
+        }
+    }
 
-    public java.awt.Color moreSat(java.awt.Color c)
-      {
+    public java.awt.Color moreSat(java.awt.Color c) {
         int r = c.getRed();
         int g = c.getGreen();
         int b = c.getBlue();
@@ -865,7 +793,7 @@ public class Board extends javax.swing.JFrame
                 (float) fxColor.getBlue(),
                 (float) fxColor.getOpacity());
         return endFinal;
-      }
+    }
 //    public Color moreSat(Color c) {
 //        float[] hsbvals = new float[3];
 //        hsbvals = c.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), null);
@@ -878,19 +806,16 @@ public class Board extends javax.swing.JFrame
 //        return Color.getHSBColor(hsbvals[0], hsbvals[1], hsbvals[2]);
 //    }
 
-    public void addpCount()
-      {
-        for (int i = 0; i < players; i++)
-          {
+    public void addpCount() {
+        for (int i = 0; i < players; i++) {
             plnames[i].setText("" + name[i]);
             plicons[i].setIcon(icon[i]);
             plmoney[i].setText("$ " + Integer.toString(money[i]));
             boxes[i][cpos[i]].setIcon(icons[i]);
-          }
-        for (int i = 0; i < keyWord.length; i++)
-          {
+        }
+        for (int i = 0; i < keyWord.length; i++) {
             keyWord[i] = new SimpleAttributeSet();
-          }
+        }
         paneP1.setVisible(true);
         paneP2.setVisible(true);
         StyleConstants.setForeground(keyWord[0], moreSat(colorPalette[0]));
@@ -899,90 +824,72 @@ public class Board extends javax.swing.JFrame
         StyleConstants.setForeground(keyWord[3], moreSat(colorPalette[3]));
         StyleConstants.setForeground(keyWord[4], Color.BLACK);
         System.out.println("Board: pCount Added!");
-      }
+    }
 
-    public void makeCard(int index)
-      {
-        if (clicked == false)
-          {
+    public void makeCard(int index) {
+        if (clicked == false) {
             clicked = true;
             counter = 0;
             c = new Card(pd.prop[index].colour, pd.prop[index].cardIcon, index, pd);
             c.setVisible(true);
-            timerC = new Timer(1000, new ActionListener()
-              {
+            timerC = new Timer(1000, new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     counter++;
-                    if (counter == 2)
-                      {
+                    if (counter == 2) {
                         c.dispose();
                         timerC.stop();
                         clicked = false;
-                      }
-                  }
-              });
+                    }
+                }
+            });
             timerC.start();
-          }
-      }
+        }
+    }
 
-    public void appendS(String s, int playerID)
-      {
-        try
-          {
+    public void appendS(String s, int playerID) {
+        try {
             StyledDocument doc = txtLog.getStyledDocument();
             doc.insertString(doc.getLength(), s, keyWord[playerID]);
-          } catch (BadLocationException exc)
-          {
+        } catch (BadLocationException exc) {
             exc.printStackTrace();
-          }
-      }
+        }
+    }
 
-    public void ProptertyText(int propertyIndex)
-      {
-        try
-          {
+    public void ProptertyText(int propertyIndex) {
+        try {
             StyledDocument doc = txtLog.getStyledDocument();
             doc.insertString(doc.getLength(), propName[propertyIndex], getPropText(new SimpleAttributeSet(), propertyIndex));
-          } catch (BadLocationException exc)
-          {
+        } catch (BadLocationException exc) {
             exc.printStackTrace();
-          }
-      }
+        }
+    }
 
-    public SimpleAttributeSet getPropText(SimpleAttributeSet att, int prop)
-      {
+    public SimpleAttributeSet getPropText(SimpleAttributeSet att, int prop) {
         StyleConstants.setForeground(att, moreSat(pd.prop[prop].colour));
         return att;
-      }
+    }
 
-    public void addLog(String s)
-      {
+    public void addLog(String s) {
         appendS(s + "\n", 4);
 
-      }
+    }
 
-    public void move(final int turnn)
-      {
+    public void move(final int turnn) {
         npos[turnn] = cpos[turnn] + roll;
         System.out.println("Board:: Roll:" + roll + " Turn:" + turn + " CPos:" + cpos[turnn]);
         //addLog("Roll: " + roll + " New Position: " + npos[turnn] + " Current Position: " + cpos[turnn] + " Turn: " + turnn);
-        if (npos[turnn] > 35)
-          {
+        if (npos[turnn] > 35) {
             npos[turnn] = npos[turnn] - 35;
-          }
+        }
         count = 0;
-        moveTimer = new Timer(500, new ActionListener()
-          {
+        moveTimer = new Timer(500, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 btnRoll.setEnabled(false);
                 count++;
                 cpos[turnn]++;
-                if (cpos[turnn] > 35)
-                  {
+                if (cpos[turnn] > 35) {
                     money[turnn] += 200;
                     displayChangeRE();
                     appendS(name[turnn], turnn);
@@ -991,266 +898,215 @@ public class Board extends javax.swing.JFrame
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][35].setIcon(null);
 
-                  } else
-                  {
+                } else {
                     System.out.println("Current Position: " + cpos[turnn]);
                     boxes[turnn][cpos[turnn]].setIcon(icons[turnn]);
                     boxes[turnn][cpos[turnn] - 1].setIcon(null);
-                  }
-                if (count == roll)
-                  {
+                }
+                if (count == roll) {
                     moveTimer.stop();
                     propcall(cpos, turnn, roll);
-                  }
-              }
-          });
+                }
+            }
+        });
         moveTimer.start();
-      }
+    }
 
-    public void Goto(int npos, int[] cpos, int turn, int roll)
-      {
-        if (npos == 36)
-          {
+    public void Goto(int npos, int[] cpos, int turn, int roll) {
+        if (npos == 36) {
             npos = 0;
-          }
+        }
         boxes[turn][cpos[turn]].setIcon(null);
         boxes[turn][npos].setIcon(icons[turn]);
         cpos[turn] = npos;
         propcall(cpos, turn, roll);
-      }
+    }
 
-    public void enableNext()
-      {
+    public void enableNext() {
         btnNext.setEnabled(true);
-      }
+    }
 
-    public void propcall(int[] cpos, int turn, int roll)
-      {
-        if (propBuyable[cpos[turn]] == true)
-          {
-            if (propOwned[cpos[turn]] == true)
-              {
+    public void propcall(int[] cpos, int turn, int roll) {
+        if (propBuyable[cpos[turn]] == true) {
+            if (propOwned[cpos[turn]] == true) {
                 int pOwner = propOwner[cpos[turn]];
-                if (pOwner != turn)
-                  {
+                if (pOwner != turn) {
                     propOwnedCheck(pOwner, turn, cpos);
-                  } else
-                  {
+                } else {
                     btnReBuy.setText("Sell");
                     btnReBuy.setEnabled(true);
                     BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell", this);
                     buy.setVisible(true);
-                  }
-              } else
-              {
+                }
+            } else {
                 btnReBuy.setText("Buy");
                 btnReBuy.setEnabled(true);
                 BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy", this);
                 buy.setVisible(true);
-              }
-          } else
-          {
+            }
+        } else {
             btnReBuy.setEnabled(false);
             System.out.println("Board:: Turn:" + turn + " CPos:" + cpos[turn] + " Buyable:" + propBuyable[cpos[turn]]);
             propNBCheck(turn, cpos, roll);
-          }
+        }
         enableNext();
         plChancesLeft[turn]--;
         plChances[turn]--;
         houseCheck(cpos, turn);
         plHouseCheck(turn);
         hover = true;
-        if (plChancesLeft[turn] <= 0)
-          {
+        if (plChancesLeft[turn] <= 0) {
             gameOver(turn);
-          }
-        if (money[turn] >= 0)
-          {
+        }
+        if (money[turn] >= 0) {
 //            sellShit(turn);//A method or fram to be made to sell properties if money on hand is 0 or less than 0
-          }
-        if (totMoney[turn] == 0)
-          {
+        }
+        if (totMoney[turn] == 0) {
             gameOver(turn);
-          }
-      }
+        }
+    }
 
-    public void houseCheck(int[] cpos, int turn)
-      {
-        if (propOwned[1] == true && propOwned[2] == true && propOwned[4] == true)
-          {
-            if (propOwner[1] == propOwner[2] && propOwner[2] == propOwner[4])
-              {
+    public void houseCheck(int[] cpos, int turn) {
+        if (propOwned[1] == true && propOwned[2] == true && propOwned[4] == true) {
+            if (propOwner[1] == propOwner[2] && propOwner[2] == propOwner[4]) {
                 housable[0] = true;
                 propH[1] = true;
                 propH[2] = true;
                 propH[4] = true;
-              }
-          }
-        if (propOwned[7] == true && propOwned[8] == true && propOwned[10] == true)
-          {
-            if (propOwner[7] == propOwner[8] && propOwner[8] == propOwner[10])
-              {
+            }
+        }
+        if (propOwned[7] == true && propOwned[8] == true && propOwned[10] == true) {
+            if (propOwner[7] == propOwner[8] && propOwner[8] == propOwner[10]) {
                 housable[1] = true;
                 propH[7] = true;
                 propH[8] = true;
                 propH[10] = true;
-              }
-          }
-        if (propOwned[11] == true && propOwned[13] == true && propOwned[14] == true)
-          {
-            if (propOwner[11] == propOwner[13] && propOwner[13] == propOwner[14])
-              {
+            }
+        }
+        if (propOwned[11] == true && propOwned[13] == true && propOwned[14] == true) {
+            if (propOwner[11] == propOwner[13] && propOwner[13] == propOwner[14]) {
                 housable[2] = true;
                 propH[11] = true;
                 propH[13] = true;
                 propH[14] = true;
-              }
-          }
-        if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true)
-          {
-            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20])
-              {
+            }
+        }
+        if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true) {
+            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20]) {
                 housable[3] = true;
                 propH[17] = true;
                 propH[19] = true;
                 propH[20] = true;
-              }
-          }
-        if (propOwned[17] == true && propOwned[19] == true && propOwned[22] == true)
-          {
-            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[22])
-              {
+            }
+        }
+        if (propOwned[17] == true && propOwned[19] == true && propOwned[22] == true) {
+            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[22]) {
                 housable[4] = true;
                 propH[17] = true;
                 propH[19] = true;
                 propH[22] = true;
-              }
-          }
-        if (propOwned[17] == true && propOwned[20] == true && propOwned[22] == true)
-          {
-            if (propOwner[17] == propOwner[2] && propOwner[20] == propOwner[22])
-              {
+            }
+        }
+        if (propOwned[17] == true && propOwned[20] == true && propOwned[22] == true) {
+            if (propOwner[17] == propOwner[2] && propOwner[20] == propOwner[22]) {
                 housable[5] = true;
                 propH[17] = true;
                 propH[20] = true;
                 propH[22] = true;
-              }
-          }
-        if (propOwned[19] == true && propOwned[20] == true && propOwned[22] == true)
-          {
-            if (propOwner[19] == propOwner[20] && propOwner[20] == propOwner[22])
-              {
+            }
+        }
+        if (propOwned[19] == true && propOwned[20] == true && propOwned[22] == true) {
+            if (propOwner[19] == propOwner[20] && propOwner[20] == propOwner[22]) {
                 housable[6] = true;
                 propH[19] = true;
                 propH[20] = true;
                 propH[22] = true;
-              }
-          }
-        if (propOwned[25] == true && propOwned[26] == true && propOwned[28] == true)
-          {
-            if (propOwner[25] == propOwner[26] && propOwner[26] == propOwner[28])
-              {
+            }
+        }
+        if (propOwned[25] == true && propOwned[26] == true && propOwned[28] == true) {
+            if (propOwner[25] == propOwner[26] && propOwner[26] == propOwner[28]) {
                 housable[7] = true;
                 propH[25] = true;
                 propH[26] = true;
                 propH[28] = true;
-              }
-          }
-        if (propOwned[25] == true && propOwned[26] == true && propOwned[29] == true)
-          {
-            if (propOwner[25] == propOwner[26] && propOwner[26] == propOwner[29])
-              {
+            }
+        }
+        if (propOwned[25] == true && propOwned[26] == true && propOwned[29] == true) {
+            if (propOwner[25] == propOwner[26] && propOwner[26] == propOwner[29]) {
                 housable[8] = true;
                 propH[25] = true;
                 propH[26] = true;
                 propH[29] = true;
-              }
-          }
-        if (propOwned[25] == true && propOwned[28] == true && propOwned[29] == true)
-          {
-            if (propOwner[25] == propOwner[28] && propOwner[28] == propOwner[29])
-              {
+            }
+        }
+        if (propOwned[25] == true && propOwned[28] == true && propOwned[29] == true) {
+            if (propOwner[25] == propOwner[28] && propOwner[28] == propOwner[29]) {
                 housable[9] = true;
                 propH[25] = true;
                 propH[28] = true;
                 propH[29] = true;
-              }
-          }
-        if (propOwned[26] == true && propOwned[28] == true && propOwned[29] == true)
-          {
-            if (propOwner[26] == propOwner[28] && propOwner[28] == propOwner[29])
-              {
+            }
+        }
+        if (propOwned[26] == true && propOwned[28] == true && propOwned[29] == true) {
+            if (propOwner[26] == propOwner[28] && propOwner[28] == propOwner[29]) {
                 housable[10] = true;
                 propH[26] = true;
                 propH[28] = true;
                 propH[29] = true;
-              }
-          }
-        if (propOwned[26] == true && propOwned[25] == true && propOwned[28] == true && propOwned[29] == true)
-          {
-            if (propOwner[26] == propOwner[25] && propOwner[25] == propOwner[28] && propOwner[28] == propOwner[29])
-              {
+            }
+        }
+        if (propOwned[26] == true && propOwned[25] == true && propOwned[28] == true && propOwned[29] == true) {
+            if (propOwner[26] == propOwner[25] && propOwner[25] == propOwner[28] && propOwner[28] == propOwner[29]) {
                 housable[12] = true;
                 propH[26] = true;
                 propH[25] = true;
                 propH[28] = true;
                 propH[29] = true;
-              }
-          }
-        if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true && propOwned[22] == true)
-          {
-            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20] && propOwner[20] == propOwner[22])
-              {
+            }
+        }
+        if (propOwned[17] == true && propOwned[19] == true && propOwned[20] == true && propOwned[22] == true) {
+            if (propOwner[17] == propOwner[19] && propOwner[19] == propOwner[20] && propOwner[20] == propOwner[22]) {
                 housable[13] = true;
                 propH[17] = true;
                 propH[19] = true;
                 propH[20] = true;
                 propH[22] = true;
-              }
-          }
-        if (propOwned[32] == true && propOwned[34] == true && propOwned[35] == true)
-          {
-            if (propOwner[32] == propOwner[34] && propOwner[34] == propOwner[35])
-              {
+            }
+        }
+        if (propOwned[32] == true && propOwned[34] == true && propOwned[35] == true) {
+            if (propOwner[32] == propOwner[34] && propOwner[34] == propOwner[35]) {
                 housable[11] = true;
                 propH[32] = true;
                 propH[34] = true;
                 propH[35] = true;
-              }
-          }
-      }
+            }
+        }
+    }
 
-    public void setHouses()
-      {
+    public void setHouses() {
 //        setupHouses();
-        for (int i = 0; i < 36; i++)
-          {
+        for (int i = 0; i < 36; i++) {
 //            houses[i].setIcon(houseImg[0]);
             houses[i].setIcon(houseImg[propHouse[i]]);
-          }
-      }
+        }
+    }
 
-    public void gameOver(int turn)
-      {
-        for (int i = 0; i < 36; i++)
-          {
-            if (propOwner[i] == turn)
-              {
+    public void gameOver(int turn) {
+        for (int i = 0; i < 36; i++) {
+            if (propOwner[i] == turn) {
                 propOwner[i] = -1;
                 propOwned[i] = false;
-              }
-          }
+            }
+        }
 
         //Other stuff to be added and thought
-      }
+    }
 
-    public void updateColors(int player, int pos)
-      {
+    public void updateColors(int player, int pos) {
         buyStatus[pos].setBackground(moreSat(colorPalette[player]));
-      }
+    }
 
-    public void propBuy(int turn)
-      {
+    public void propBuy(int turn) {
         updateColors(turn, cpos[turn]);
         money[turn] -= propPrice[cpos[turn]];
         propMoney[turn] += propPrice[cpos[turn]];
@@ -1262,10 +1118,9 @@ public class Board extends javax.swing.JFrame
         appendS(name[turn] + " ", turn);
         addLog("just bought " + propName[cpos[turn]] + " for $ " + propPrice[cpos[turn]]);
         btnReBuy.setEnabled(false);
-      }
+    }
 
-    public void propSell(int turn)
-      {
+    public void propSell(int turn) {
         buyStatus[cpos[turn]].setBackground(Color.darkGray);
         money[turn] += propPrice[cpos[turn]] / 2;
         propMoney[turn] -= propPrice[cpos[turn]];
@@ -1275,42 +1130,35 @@ public class Board extends javax.swing.JFrame
         numprop[turn]--;
         displayChangeSell(turn);
         btnReBuy.setEnabled(false);
-      }
+    }
 
-    public void propOwnedCheck(int pOwner, int turn, int[] cpos)
-      {
+    public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
         String pType = propType[cpos[turn]];
         System.out.println("Boadr:: Name:" + propName[cpos[turn]] + " Type:" + pType);
         int pRent = 0;
-        switch (pType)
-          {
+        switch (pType) {
             case "STH":
                 pRent = (25 * roll) + (25 * numprop[turn]);
                 break;
             case "S1230":
-                if (propOwner[12] == propOwner[30])
-                  {
+                if (propOwner[12] == propOwner[30]) {
                     pRent = (50 * roll);
-                  } else
-                  {
+                } else {
                     pRent = (25 * roll);
-                  }
+                }
                 break;
             case "S1533":
-                if (propOwner[15] == propOwner[33])
-                  {
+                if (propOwner[15] == propOwner[33]) {
                     pRent = (50 * roll);
-                  } else
-                  {
+                } else {
                     pRent = (25 * roll);
-                  }
+                }
                 break;
             case "SRBC":
                 pRent = (25 * roll);
                 break;
             default:
-                switch (propHouse[cpos[turn]])
-                  {
+                switch (propHouse[cpos[turn]]) {
                     case 0:
                         pRent = pd.prop[cpos[turn]].rent1;
                         break;
@@ -1326,25 +1174,46 @@ public class Board extends javax.swing.JFrame
                     case 4:
                         pRent = pd.prop[cpos[turn]].rentH;
                         break;
-                  }
-          }
+                }
+        }
         money[pOwner] += pRent;
         money[turn] -= pRent;
         displayChangePay(turn, pOwner, pRent);
         btnNext.setEnabled(true);
         System.out.println("Board:: Name:" + propName[cpos[turn]] + " Old Owner:" + pOwner + " Rent: " + pRent);
-      }
+    }
 
-    public void propNBCheck(int turn, int[] cpos, int roll)
-      {
+    public void propNBCheck(int turn, int[] cpos, int roll) {
         String pType = propType[cpos[turn]];
         int pRent = 0;
         System.out.println("Board:: NB Type:" + propType[cpos[turn]]);
-        switch (propType[cpos[turn]])
-          {
-            case "FP":
-                pRent = -(10 * numprop[turn]);
+        switch (propType[cpos[turn]]) {
+            case "JK":
+                jackpotMoney jk = new jackpotMoney();
+
+                pRent = jk.Jack();
                 money[turn] += pRent;
+                count = 0;
+                ops = 255;
+                lblBought.setForeground(new Color(255, 215, 0, ops));
+                lblBought.setText(name[turn] + " won $" + pRent + " in Jackpot!");
+                lblBought.setVisible(true);
+                messDisplay = new Timer(10, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        count++;
+                        if (count >= 200) {
+                            ops -= 2;
+                            lblBought.setForeground(new Color(255, 215, 0, ops));
+                        }
+                        if (count >= 300) {
+                            messDisplay.stop();
+                            lblBought.setVisible(false);
+                            nextStuff();
+                        }
+                    }
+                });
+                messDisplay.start();
                 displayChangeS(turn, pRent);
                 break;
             case "IT":
@@ -1358,15 +1227,13 @@ public class Board extends javax.swing.JFrame
                 displayChangeS(turn, pRent);
                 break;
             case "J":
-                if (jailfee[turn] != 0)
-                  {
+                if (jailfee[turn] != 0) {
                     pRent = -(jailfee[turn]);
                     money[turn] += pRent;
                     displayChangeS(turn, pRent);
-                  } else if (jailTerm[turn] == 0)
-                  {
+                } else if (jailTerm[turn] == 0) {
                     jailTerm[turn] = 1;
-                  }
+                }
                 break;
             case "CH":
                 chanceCard(roll);
@@ -1374,91 +1241,80 @@ public class Board extends javax.swing.JFrame
             case "CO":
                 communityCard(roll);
                 break;
-            case "UK":
-                pRent = -100;
-                money[turn] -= pRent;
-                displayChangeS(turn, pRent);
+            case "GTJ":
+                int n = 9;
+                Goto(n, cpos, turn, roll);
                 break;
             case "ST":
 //                appendS(name[turn], turn);
 //                addLog(" just collected $200 for landing on Go");
                 pRent = 0;
                 break;
-          }
-        if (!pType.equals("CH") || !pType.equals("CO"))
-          {
+        }
+        if (!pType.equals("CH") || !pType.equals("CO")) {
             btnNext.setEnabled(true);
-          }
-      }
+        }
+    }
 
-    public void displayChangeBuy(final int turn)
-      {
+    public void displayChangeBuy(final int turn) {
         Collections.shuffle(mess);
         lblMessage.setText("" + mess.get(0));
         lblBought.setText("" + name[turn] + " bought " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]]);
         yy[turn] = oy[turn];
         plMC[turn].setForeground(Color.red);
         playSound(ching);
-        moneyTimer = new Timer(50, new ActionListener()
-          {
+        moneyTimer = new Timer(50, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 lblMessage.setVisible(true);
                 lblBought.setVisible(true);
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
                 plMC[turn].setText("(-$ " + propPrice[cpos[turn]] + ")");
                 yy[turn]++;
-                if (yy[turn] == ny[turn])
-                  {
+                if (yy[turn] == ny[turn]) {
                     lblMessage.setVisible(false);
                     lblBought.setVisible(false);
                     moneyTimer.stop();
                     plMC[turn].setVisible(false);
                     plMC[turn].setText(null);
-                  }
-              }
-          });
+                }
+            }
+        });
         moneyTimer.start();
         plmoney[turn].setText("$ " + money[turn]);
-      }
+    }
 
-    public void displayChangeSell(final int turn)
-      {
+    public void displayChangeSell(final int turn) {
         Collections.shuffle(mess);
         lblMessage.setText("" + mess.get(0));
         lblBought.setText("" + name[turn] + " sold " + propName[cpos[turn]] + " for $" + propPrice[cpos[turn]] / 2);
         yy[turn] = oy[turn];
         plMC[turn].setForeground(Color.green);
         playSound(ching);
-        moneyTimer = new Timer(50, new ActionListener()
-          {
+        moneyTimer = new Timer(50, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 lblMessage.setVisible(true);
                 lblBought.setVisible(true);
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
                 plMC[turn].setText("(+$ " + propPrice[cpos[turn]] / 2 + ")");
                 yy[turn]++;
-                if (yy[turn] == ny[turn])
-                  {
+                if (yy[turn] == ny[turn]) {
                     lblMessage.setVisible(false);
                     lblBought.setVisible(false);
                     moneyTimer.stop();
                     plMC[turn].setVisible(false);
                     plMC[turn].setText(null);
-                  }
-              }
-          });
+                }
+            }
+        });
         moneyTimer.start();
         plmoney[turn].setText("$" + money[turn]);
-      }
+    }
 
-    public void displayChangePay(final int turn, final int propOwner, final int pRent)
-      {
+    public void displayChangePay(final int turn, final int propOwner, final int pRent) {
 //        plmoney[turn].setForeground(Color.red);
         plmoney[turn].setText("$" + money[turn]);
 
@@ -1470,11 +1326,9 @@ public class Board extends javax.swing.JFrame
         plMC[propOwner].setForeground(Color.green);
 
         playSound(ching);
-        moneyTimer = new Timer(50, new ActionListener()
-          {
+        moneyTimer = new Timer(50, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
                 plMC[turn].setText("(-$ " + pRent + ")");
@@ -1483,125 +1337,106 @@ public class Board extends javax.swing.JFrame
                 plMC[propOwner].setText("(+$ " + pRent + ")");
                 yy[propOwner]--;
                 yy[turn]++;
-                if (yy[turn] == ny[turn] || yy[propOwner] == oy[propOwner])
-                  {
+                if (yy[turn] == ny[turn] || yy[propOwner] == oy[propOwner]) {
                     moneyTimer.stop();
                     plMC[turn].setVisible(false);
                     plMC[turn].setText(null);
                     plMC[propOwner].setVisible(false);
                     plMC[propOwner].setText(null);
-                  }
-              }
-          });
+                }
+            }
+        });
         moneyTimer.start();
-      }
+    }
 
-    public void displayChangeRE()
-      {
+    public void displayChangeRE() {
         plMC[turn].setForeground(Color.green);
         yy[turn] = oy[turn];
 //        plMC[turn].setForeground(Color.red);
         playSound(ching);
-        moneyTimer = new Timer(50, new ActionListener()
-          {
+        moneyTimer = new Timer(50, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                 plMC[turn].setVisible(true);
                 plMC[turn].setText("(-$ " + 200 + ")");
                 yy[turn]++;
-                if (yy[turn] == ny[turn])
-                  {
+                if (yy[turn] == ny[turn]) {
                     moneyTimer.stop();
                     plMC[turn].setVisible(false);
                     plMC[turn].setText(null);
-                  }
-              }
-          });
+                }
+            }
+        });
         moneyTimer.start();
         plmoney[turn].setText("$" + money[turn]);
-      }
+    }
 
-    public void displayChangeS(final int turn, final int pRent)
-      {
-        if (pRent < 0)
-          {
+    public void displayChangeS(final int turn, final int pRent) {
+        if (pRent < 0) {
             yy[turn] = oy[turn];
             plMC[turn].setForeground(Color.red);
             playSound(ching);
-            moneyTimer = new Timer(50, new ActionListener()
-              {
+            moneyTimer = new Timer(50, new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                     plMC[turn].setVisible(true);
                     plMC[turn].setText("($ " + pRent + ")");
                     yy[turn]++;
-                    if (yy[turn] == ny[turn])
-                      {
+                    if (yy[turn] == ny[turn]) {
                         moneyTimer.stop();
                         plMC[turn].setVisible(false);
                         plMC[turn].setText(null);
-                      }
-                  }
-              });
+                    }
+                }
+            });
             moneyTimer.start();
             plmoney[turn].setText("$" + money[turn]);
-          } else if (pRent > 0)
-          {
+        } else if (pRent > 0) {
             final String sign = "+";
             yy[turn] = ny[turn];
             plMC[turn].setForeground(Color.green);
             playSound(ching);
-            moneyTimer = new Timer(50, new ActionListener()
-              {
+            moneyTimer = new Timer(50, new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                     plMC[turn].setVisible(true);
                     plMC[turn].setText("($ " + sign + pRent + ")");
                     yy[turn]--;
-                    if (yy[turn] == oy[turn])
-                      {
+                    if (yy[turn] == oy[turn]) {
                         moneyTimer.stop();
                         plMC[turn].setVisible(false);
                         plMC[turn].setText(null);
-                      }
-                  }
-              });
+                    }
+                }
+            });
             moneyTimer.start();
             plmoney[turn].setText("$ " + money[turn]);
-          } else
-          {
+        } else {
             yy[turn] = oy[turn];
             plMC[turn].setForeground(Color.gray);
-            moneyTimer = new Timer(50, new ActionListener()
-              {
+            moneyTimer = new Timer(50, new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     plMC[turn].setLocation(plMC[turn].getX(), yy[turn]);
                     plMC[turn].setVisible(true);
                     plMC[turn].setText("($ " + pRent + ")");
                     yy[turn]++;
-                    if (yy[turn] == ny[turn])
-                      {
+                    if (yy[turn] == ny[turn]) {
                         moneyTimer.stop();
                         plMC[turn].setVisible(false);
                         plMC[turn].setText(null);
-                      }
-                  }
-              });
+                    }
+                }
+            });
             moneyTimer.start();
             plmoney[turn].setText("$ " + money[turn]);
-          }
-      }
+        }
+    }
 
-    public void chanceCard(final int roll)
-      {
+    public void chanceCard(final int roll) {
 
         Random rand = new Random();
         final int ind = rand.nextInt(15);
@@ -1626,34 +1461,29 @@ public class Board extends javax.swing.JFrame
         card.setAlwaysOnTop(true);
         System.out.println("ChanceCard:: Index:" + ind);
         counter = 0;
-        timer = new Timer(1000, new ActionListener()
-          {
+        timer = new Timer(1000, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 btnNext.setEnabled(false);
                 counter++;
                 System.out.println(btnNext.isEnabled());
                 System.out.println("Counter:" + counter);
-                if (counter == 5)
-                  {
+                if (counter == 5) {
                     System.out.println("Counter Stop!");
                     card.setVisible(false);
                     card.dispose();
                     checkChance(ind, roll);
                     btnNext.setEnabled(true);
                     timer.stop();
-                  }
-              }
-          });
+                }
+            }
+        });
         timer.start();
 
-      }
+    }
 
-    public void checkChance(int ind, int roll)
-      {
-        switch (pd.chanceActs[ind])
-          {
+    public void checkChance(int ind, int roll) {
+        switch (pd.chanceActs[ind]) {
             case "$":
                 money[turn] += pd.chanceVals[ind];
                 displayChangeS(turn, pd.chanceVals[ind]);
@@ -1667,14 +1497,12 @@ public class Board extends javax.swing.JFrame
                 displayChangeS(turn, pd.chanceVals[ind]);
                 break;
             case "P$":
-                for (int i = 0; i < players; i++)
-                  {
+                for (int i = 0; i < players; i++) {
                     money[i] += pd.chanceVals[ind];
-                    if (i != turn)
-                      {
+                    if (i != turn) {
                         displayChangeS(i, pd.chanceVals[ind]);
-                      }
-                  }
+                    }
+                }
                 money[turn] -= (pd.chanceVals[ind] * (players));
                 displayChangeS(turn, -1 * (pd.chanceVals[ind]));
                 break;
@@ -1688,21 +1516,18 @@ public class Board extends javax.swing.JFrame
                 displayChangeS(turn, pd.chanceVals[ind]);
                 break;
             case "MMS":
-                if (cpos[turn] <= pd.chancePos[ind])
-                  {
+                if (cpos[turn] <= pd.chancePos[ind]) {
                     Goto(pd.chancePos[ind], cpos, turn, roll);
-                  } else
-                  {
+                } else {
                     Goto(pd.chancePos[ind], cpos, turn, roll);
                     money[turn] += pd.chanceVals[ind];
                     displayChangeS(turn, pd.chanceVals[ind]);
-                  }
+                }
                 break;
-          }
-      }
+        }
+    }
 
-    public void communityCard(final int roll)
-      {
+    public void communityCard(final int roll) {
         btnNext.setEnabled(false);
         Random rand = new Random();
         final int ind = rand.nextInt(15);
@@ -1727,31 +1552,26 @@ public class Board extends javax.swing.JFrame
         comCard.setAlwaysOnTop(true);
         System.out.println("CommCard:: Index:" + ind);
         counter = 0;
-        timer = new Timer(1000, new ActionListener()
-          {
+        timer = new Timer(1000, new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-              {
+            public void actionPerformed(ActionEvent e) {
                 btnNext.setEnabled(false);
                 counter++;
-                if (counter == 5)
-                  {
+                if (counter == 5) {
                     comCard.setVisible(false);
                     comCard.dispose();
                     commCheck(ind, roll);
                     btnNext.setEnabled(true);
                     timer.stop();
-                  }
-              }
-          });
+                }
+            }
+        });
         timer.start();
 
-      }
+    }
 
-    public void commCheck(int ind, int roll)
-      {
-        switch (pd.commActs[ind])
-          {
+    public void commCheck(int ind, int roll) {
+        switch (pd.commActs[ind]) {
             case "$":
                 money[turn] += pd.commVals[ind];
                 displayChangeS(turn, pd.commVals[ind]);
@@ -1765,11 +1585,10 @@ public class Board extends javax.swing.JFrame
                 displayChangeS(turn, pd.commVals[ind]);
                 break;
             case "P$":
-                for (int i = 0; i < players; i++)
-                  {
+                for (int i = 0; i < players; i++) {
                     money[i] -= pd.commVals[ind];
                     displayChangeS(i, pd.commVals[ind]);
-                  }
+                }
                 money[turn] += (pd.commVals[ind] * (players));
                 displayChangeS(turn, pd.commVals[ind]);
                 break;
@@ -1783,66 +1602,53 @@ public class Board extends javax.swing.JFrame
                 displayChangeS(turn, pd.commVals[ind]);
                 break;
             case "MMS":
-                if (cpos[turn] <= pd.commPos[ind])
-                  {
+                if (cpos[turn] <= pd.commPos[ind]) {
                     Goto(pd.commPos[ind], cpos, turn, roll);
-                  } else
-                  {
+                } else {
                     Goto(pd.commPos[ind], cpos, turn, roll);
                     money[turn] += pd.commVals[ind];
                     displayChangeS(turn, pd.commVals[ind]);
-                  }
+                }
                 break;
             case "MB":
                 Goto(cpos[turn] + pd.commPos[ind], cpos, turn, roll);
-          }
-      }
+        }
+    }
 
-    public void rolling()
-      {
-        if (snake)
-          {
+    public void rolling() {
+        if (snake) {
 //            roll = Dice.rollDice(dice);
 //            if (Dice.randomNumber1 == Dice.randomNumber2) {
 //                money[turn] += bonus[turn];
 //            }
-          } else
-          {
-            if (turn == players)
-              {
+        } else {
+            if (turn == players) {
                 turn = 0;
-              }
+            }
 //        roll = Dice.rollDice(dice);
 //      Temporary Testing Cause
-            if (dice == 2)
-              {
+            if (dice == 2) {
                 roll = (int) (Math.random() * 12 + 1);
-              } else
-              {
+            } else {
                 roll = (int) (Math.random() * 6 + 1);
-              }
-          }
+            }
+        }
         move(turn);
         appendS(name[turn], turn);
         addLog(" rolled: " + roll);
-      }
+    }
 
-    public void plHouseCheck(int turn)
-      {
-        for (int i = 0; i < 36; i++)
-          {
-            if ("N".equals(propType[i]))
-              {
-                if (propOwner[i] == turn)
-                  {
-                    if (propH[i] == true)
-                      {
+    public void plHouseCheck(int turn) {
+        for (int i = 0; i < 36; i++) {
+            if ("N".equals(propType[i])) {
+                if (propOwner[i] == turn) {
+                    if (propH[i] == true) {
                         plHouse[turn].setEnabled(true);
-                      }
-                  }
-              }
-          }
-      }
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -4060,14 +3866,12 @@ public class Board extends javax.swing.JFrame
 
     private void btnRollKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnRollKeyReleased
     {//GEN-HEADEREND:event_btnRollKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_R)
-          {
+        if (evt.getKeyCode() == KeyEvent.VK_R) {
             rolling();
-          }
-        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE)
-          {
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(0);
-          }
+        }
     }//GEN-LAST:event_btnRollKeyReleased
 
     private void btnCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCDActionPerformed
@@ -4086,21 +3890,18 @@ public class Board extends javax.swing.JFrame
         nextStuff();
     }//GEN-LAST:event_btnNextActionPerformed
 
-    public void nextStuff()
-      {
+    public void nextStuff() {
         enableNext();
         appendS(name[turn] + "'s", turn);
         addLog(" turn ended.");
         turn++;
-        if (turn == players)
-          {
+        if (turn == players) {
             turn = 0;
-          }
-        if (jailTerm[turn] == 1)
-          {
+        }
+        if (jailTerm[turn] == 1) {
             btnNext.setEnabled(false);
-              playSound(boo);
-            ops=200;
+            playSound(boo);
+            ops = 200;
             jailTerm[turn] = 0;
             count = 0;
             ops = 255;
@@ -4110,70 +3911,60 @@ public class Board extends javax.swing.JFrame
             lblBought.setText("You have to wait one more turn in JAIL!");
             lblMessage.setVisible(true);
             lblBought.setVisible(true);
-            messDisplay = new Timer(10, new ActionListener()
-              {
+            messDisplay = new Timer(10, new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e)
-                  {
+                public void actionPerformed(ActionEvent e) {
                     count++;
-                    if (count >= 200)
-                      {
+                    if (count >= 200) {
                         ops -= 2;
                         lblMessage.setForeground(new Color(255, 215, 0, ops));
                         lblBought.setForeground(new Color(255, 215, 0, ops));
-                      }
-                    if(count>=300)
-                      {
+                    }
+                    if (count >= 300) {
                         messDisplay.stop();
                         lblMessage.setVisible(false);
                         lblBought.setVisible(false);
                         nextStuff();
-                      }
-                  }
-              });
+                    }
+                }
+            });
             messDisplay.start();
-          } else
-          {
+        } else {
             btnRoll.setEnabled(true);
             displayChange(turn);
             btnNext.setEnabled(false);
             plHouseCheck(turn);
-          }
-      }
+        }
+    }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         String ObjButtons[]
-                =
-                  {
+                = {
                     "Yes", "No", "Save"
-                  };
+                };
         int PromptResult = JOptionPane.showOptionDialog(null,
                 "Are you sure you want to exit?", "Monopoly Java",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
                 ObjButtons, ObjButtons[2]);
         getLog();
-        if (PromptResult == 0)
-          {
+        if (PromptResult == 0) {
             System.exit(0);
-          }
-        if (PromptResult == 2)
-          {
+        }
+        if (PromptResult == 2) {
             new Save_Manager().setVisible(true);
-          }
+        }
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnReBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReBuyActionPerformed
         // TODO add your handling code here:
-        if (btnReBuy.getText().equals("Buy"))
-          {
+        if (btnReBuy.getText().equals("Buy")) {
             BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "buy", this);
             buy.setVisible(true);
-          }
-        if (btnReBuy.getText().equals("Sell"))
-          {
+        }
+        if (btnReBuy.getText().equals("Sell")) {
             BuyScreen buy = new BuyScreen(new Card(pd.prop[cpos[turn]].colour, pd.prop[cpos[turn]].cardIcon, cpos[turn], pd), "sell", this);
             buy.setVisible(true);
-          }
+        }
 
     }//GEN-LAST:event_btnReBuyActionPerformed
 
@@ -4383,78 +4174,64 @@ public class Board extends javax.swing.JFrame
 
     }//GEN-LAST:event_lblHoverB35MouseExited
 
-    public void displayChange(int turn)
-      {
+    public void displayChange(int turn) {
 
-        for (int i = 0; i < players; i++)
-          {
-            if (i == turn)
-              {
+        for (int i = 0; i < players; i++) {
+            if (i == turn) {
                 plnames[i].setEnabled(true);
                 plmoney[i].setEnabled(true);
                 plicons[i].setEnabled(true);
-              } else
-              {
+            } else {
                 plHouse[i].setEnabled(false);
                 plnames[i].setEnabled(false);
                 plmoney[i].setEnabled(false);
                 plicons[i].setEnabled(false);
-              }
-          }
-      }
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-      {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-          {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-              {
-                if ("Nimbus".equals(info.getName()))
-                  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                  }
-              }
-          } catch (ClassNotFoundException ex)
-          {
+                }
+            }
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-          } catch (InstantiationException ex)
-          {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-          } catch (IllegalAccessException ex)
-          {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-          } catch (javax.swing.UnsupportedLookAndFeelException ex)
-          {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Board.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-          }
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-          {
-            public void run()
-              {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new StartScreenfrm().setVisible(true);
-              }
-          });
-      }
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel P1B1;
     private javax.swing.JLabel P1B10;
@@ -4711,4 +4488,4 @@ public class Board extends javax.swing.JFrame
     private javax.swing.JTextPane txtLog;
     // End of variables declaration//GEN-END:variables
 
-  }
+}

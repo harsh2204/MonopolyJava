@@ -6,6 +6,7 @@
 package monopolyalpha;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -32,12 +33,12 @@ public class jackpotMoney
         JackMoney.add(3000);
         JackMoney.add(3000);
         JackMoney.add(10000);
-        Jack();
       }
 
-    public ArrayList Jack()
+    public int Jack()
       {
-        return JackMoney;
+        Collections.shuffle(JackMoney);
+        return (int) JackMoney.get(0);
       }
     
     /**

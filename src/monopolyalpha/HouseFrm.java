@@ -50,10 +50,10 @@ public class HouseFrm extends javax.swing.JFrame
                     nums[j] = i;
                     final int k = i;
                     System.out.println("House:: Number:" + j + " Name:" + bd.propName[i] + "   " + nums[j]);
-                    if (propHouse[i] > 4)
-                      {
-                        props[y].setEnabled(false);
-                      }
+//                    if (propHouse[i] == 4)
+//                      {
+//                        props[y].setEnabled(false);
+//                      }
                     this.props[y].addActionListener(new ActionListener()
                       {
                         @Override

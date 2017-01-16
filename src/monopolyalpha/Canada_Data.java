@@ -238,7 +238,7 @@ public class Canada_Data {
 
         property[18].buyable = false;
         property[18].colour = Color.GRAY;
-        property[18].type = "FP";
+        property[18].type = "JK";
         //ST. JOHN'S
         property[19].propName = "St. John's";
         property[19].price = 220;
@@ -288,7 +288,7 @@ public class Canada_Data {
         property[22].cardIcon = new ImageIcon("Board Pictures/Canada/Hal Image.jpg");
         property[22].type = "N";
 
-        property[23].propName = "Blank";
+        property[23].propName = "Car Insuarance";
         property[23].buyable = false;
         property[23].colour = Color.WHITE;
         property[23].type = "HT";
@@ -325,9 +325,10 @@ public class Canada_Data {
         property[26].cardIcon = new ImageIcon("Board Pictures/Canada/Edm Image.jpg");
         property[26].type = "N";
 
+        property[27].propName="Go to Jail";
         property[27].buyable = false;
         property[27].colour = Color.GRAY;
-        property[27].type = "JK";
+        property[27].type = "GTJ";
 
         //CALGARY
         property[28].propName = "Calgary";
