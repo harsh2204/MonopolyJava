@@ -256,7 +256,7 @@ public class Board extends javax.swing.JFrame
                           {
                             if (cardInfo[j] == label)
                               {
-                                System.out.println("Index: Sent" + j);
+                                //System.out.println("Index: Sent" + j);
                                 makeCard(j);
                               }
                           }
@@ -897,9 +897,9 @@ public class Board extends javax.swing.JFrame
                 public void actionPerformed(ActionEvent e)
                   {
                     counter++;
-                    if (counter == 10)
+                    if (counter == 2)
                       {
-                        c.setVisible(false);
+                        c.dispose();
                         timerC.stop();
                         clicked = false;
                       }

@@ -91,6 +91,11 @@ public class Card extends javax.swing.JFrame {
         setAutoRequestFocus(false);
         setFocusable(false);
         setUndecorated(true);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanel1.setBackground(background);
 
@@ -223,6 +228,11 @@ public class Card extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
