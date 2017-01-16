@@ -2929,7 +2929,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblMoneyP1" max="32767" attributes="0"/>
-                          <Component id="btnHouseP1" pref="59" max="32767" attributes="0"/>
+                          <Component id="btnHouseP1" pref="50" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -3018,7 +3018,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblMoneyP2" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="btnHouseP2" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="btnHouseP2" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -3105,7 +3105,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblMoneyP3" max="32767" attributes="0"/>
-                          <Component id="btnHouseP3" pref="59" max="32767" attributes="0"/>
+                          <Component id="btnHouseP3" pref="50" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -3191,7 +3191,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lblMoneyP4" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="btnHouseP4" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="btnHouseP4" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
