@@ -38,13 +38,13 @@ public class Help extends javax.swing.JFrame {
         btnBuyProp = new javax.swing.JButton();
         btnChaComm = new javax.swing.JButton();
         btnTax = new javax.swing.JButton();
-        btnEGS = new javax.swing.JButton();
+        btnSaveGame = new javax.swing.JButton();
         btnCar = new javax.swing.JButton();
         btnJail = new javax.swing.JButton();
         btnHouse = new javax.swing.JButton();
-        btnHotel = new javax.swing.JButton();
-        btnTrade = new javax.swing.JButton();
+        btnTrading = new javax.swing.JButton();
         btnMortgage = new javax.swing.JButton();
+        btnEGS = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,12 +127,12 @@ public class Help extends javax.swing.JFrame {
             }
         });
 
-        btnEGS.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnEGS.setText("End Game Scenario");
-        btnEGS.setToolTipText("");
-        btnEGS.addActionListener(new java.awt.event.ActionListener() {
+        btnSaveGame.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnSaveGame.setText("Save Game");
+        btnSaveGame.setToolTipText("");
+        btnSaveGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEGSActionPerformed(evt);
+                btnSaveGameActionPerformed(evt);
             }
         });
 
@@ -145,7 +145,7 @@ public class Help extends javax.swing.JFrame {
         });
 
         btnJail.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnJail.setText("Jail & Go to Jail");
+        btnJail.setText("Jail");
         btnJail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJailActionPerformed(evt);
@@ -153,26 +153,18 @@ public class Help extends javax.swing.JFrame {
         });
 
         btnHouse.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnHouse.setText("House");
+        btnHouse.setText("House & Hotel");
         btnHouse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHouseActionPerformed(evt);
             }
         });
 
-        btnHotel.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnHotel.setText("Hotel");
-        btnHotel.addActionListener(new java.awt.event.ActionListener() {
+        btnTrading.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnTrading.setText("Trading");
+        btnTrading.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHotelActionPerformed(evt);
-            }
-        });
-
-        btnTrade.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnTrade.setText("Trading");
-        btnTrade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTradeActionPerformed(evt);
+                btnTradingActionPerformed(evt);
             }
         });
 
@@ -181,6 +173,14 @@ public class Help extends javax.swing.JFrame {
         btnMortgage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMortgageActionPerformed(evt);
+            }
+        });
+
+        btnEGS.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
+        btnEGS.setText("End Game Scenario");
+        btnEGS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEGSActionPerformed(evt);
             }
         });
 
@@ -219,19 +219,19 @@ public class Help extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTrading, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnTrade, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnMortgage, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuyProp, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnMortgage, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnChaComm)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEGS, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
@@ -260,19 +260,19 @@ public class Help extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRent)
-                    .addComponent(btnHotel))
+                    .addComponent(btnTrading))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPlay)
-                    .addComponent(btnTrade))
+                    .addComponent(btnMortgage))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuyProp)
-                    .addComponent(btnMortgage))
+                    .addComponent(btnEGS))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnChaComm)
-                    .addComponent(btnEGS))
+                    .addComponent(btnSaveGame))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBack)
                 .addContainerGap(13, Short.MAX_VALUE))
@@ -317,9 +317,9 @@ public class Help extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTaxActionPerformed
 
-    private void btnEGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEGSActionPerformed
+    private void btnSaveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveGameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEGSActionPerformed
+    }//GEN-LAST:event_btnSaveGameActionPerformed
 
     private void btnCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarActionPerformed
         // TODO add your handling code here:
@@ -333,18 +333,18 @@ public class Help extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHouseActionPerformed
 
-    private void btnHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHotelActionPerformed
+    private void btnTradingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnHotelActionPerformed
-
-    private void btnTradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTradeActionPerformed
+    }//GEN-LAST:event_btnTradingActionPerformed
 
     private void btnMortgageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageActionPerformed
         // TODO add your handling code here:
-     
     }//GEN-LAST:event_btnMortgageActionPerformed
+
+    private void btnEGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEGSActionPerformed
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_btnEGSActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
@@ -393,7 +393,6 @@ public class Help extends javax.swing.JFrame {
     private javax.swing.JButton btnChaComm;
     private javax.swing.JButton btnEGS;
     private javax.swing.JButton btnGo;
-    private javax.swing.JButton btnHotel;
     private javax.swing.JButton btnHouse;
     private javax.swing.JButton btnJail;
     private javax.swing.JButton btnMortgage;
@@ -401,8 +400,9 @@ public class Help extends javax.swing.JFrame {
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnPrep;
     private javax.swing.JButton btnRent;
+    private javax.swing.JButton btnSaveGame;
     private javax.swing.JButton btnTax;
-    private javax.swing.JButton btnTrade;
+    private javax.swing.JButton btnTrading;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

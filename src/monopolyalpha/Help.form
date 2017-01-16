@@ -51,22 +51,22 @@
                   <Group type="102" attributes="0">
                       <Component id="btnRent" min="-2" pref="207" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="btnHotel" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="btnTrading" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="btnPlay" min="-2" pref="207" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="btnTrade" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="btnMortgage" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="btnBuyProp" min="-2" pref="207" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="btnMortgage" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="btnEGS" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="btnChaComm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="btnEGS" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="btnSaveGame" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -104,22 +104,22 @@
               <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnRent" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnHotel" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTrading" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnPlay" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnTrade" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMortgage" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnBuyProp" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnMortgage" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEGS" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnChaComm" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnEGS" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSaveGame" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
@@ -238,16 +238,16 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaxActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEGS">
+    <Component class="javax.swing.JButton" name="btnSaveGame">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Showcard Gothic" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="End Game Scenario"/>
+        <Property name="text" type="java.lang.String" value="Save Game"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEGSActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveGameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCar">
@@ -266,7 +266,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Showcard Gothic" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Jail &amp; Go to Jail"/>
+        <Property name="text" type="java.lang.String" value="Jail"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJailActionPerformed"/>
@@ -277,24 +277,13 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Showcard Gothic" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="House"/>
+        <Property name="text" type="java.lang.String" value="House &amp; Hotel"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHouseActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnHotel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Showcard Gothic" size="11" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Hotel"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHotelActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnTrade">
+    <Component class="javax.swing.JButton" name="btnTrading">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Showcard Gothic" size="11" style="0"/>
@@ -302,7 +291,7 @@
         <Property name="text" type="java.lang.String" value="Trading"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTradeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTradingActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnMortgage">
@@ -314,6 +303,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMortgageActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEGS">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Showcard Gothic" size="11" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="End Game Scenario"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEGSActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
