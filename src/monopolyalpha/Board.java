@@ -508,6 +508,7 @@ public class Board extends javax.swing.JFrame
                     new HouseFrm(propOwner, propH, turn, propHouse, board).setVisible(true);
                   }
               });
+              board.dispose();
             propMoney[i] = 0;
             totMoney[i] = 0;
             Game[i] = true;
