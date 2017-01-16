@@ -16,17 +16,17 @@ import javax.swing.JCheckBox;
 public class HouseFrm extends javax.swing.JFrame
   {
 
-    int pl, turn, j = -1, money = 0, x = 0, y = 0;
-    InitTest it = new InitTest();
-    Board bd = InitTest.board;
+    int pl, turn, j = -1, money = 0, x = 0, y = 0;    
+    Board bd;
     Properties_Data pd = new Properties_Data();
     public int[] propOwner = new int[36], nums = new int[36], sel = new int[36], propHouse = new int[36];
     public boolean[] propH = new boolean[36];
     public JCheckBox[] props = new JCheckBox[100];
 
-    public HouseFrm(int[] propOwner, boolean[] propH, int turn, int[] propHouse)
+    public HouseFrm(int[] propOwner, boolean[] propH, int turn, int[] propHouse, Board board)
       {
-        pl = it.pCount;
+          bd = board;
+        pl = bd.players;
         this.turn = turn;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -48,6 +48,7 @@ public class HouseFrm extends javax.swing.JFrame
                     this.paneprops.add(props[y]);
                     j++;
                     nums[j] = i;
+                    final int k = i;
                     System.out.println("House:: Number:" + j + " Name:" + bd.propName[i] + "   " + nums[j]);
                     if (propHouse[i] > 4)
                       {
@@ -58,6 +59,11 @@ public class HouseFrm extends javax.swing.JFrame
                         @Override
                         public void actionPerformed(ActionEvent e)
                           {
+                              if(propHouse[k]>=1){
+                                  btnDng.setEnabled(true);
+                              }else{
+                                  btnDng.setEnabled(false);
+                              }
                             updateMoney();
                           }
                       });
@@ -104,6 +110,7 @@ public class HouseFrm extends javax.swing.JFrame
         lblMoney = new javax.swing.JLabel();
         btnUpg = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        btnDng = new javax.swing.JButton();
 
         jToolBar1.setRollover(true);
 
@@ -120,21 +127,21 @@ public class HouseFrm extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Build your custom house!");
 
         lblnameP.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblnameP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Showcard Gothic", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Cost");
 
         lblMoney.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblMoney.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        btnUpg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnUpg.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnUpg.setText("Upgrade");
         btnUpg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,11 +149,19 @@ public class HouseFrm extends javax.swing.JFrame
             }
         });
 
-        btnExit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
+            }
+        });
+
+        btnDng.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnDng.setText("Downgrade");
+        btnDng.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDngActionPerformed(evt);
             }
         });
 
@@ -157,7 +172,7 @@ public class HouseFrm extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblnameP, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -168,7 +183,8 @@ public class HouseFrm extends javax.swing.JFrame
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblMoney, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnUpg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDng, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -185,11 +201,13 @@ public class HouseFrm extends javax.swing.JFrame
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(1, 1, 1)
                         .addComponent(btnUpg, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDng, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -220,6 +238,25 @@ public class HouseFrm extends javax.swing.JFrame
           }
         btnUpg.setEnabled(false);
     }//GEN-LAST:event_btnUpgActionPerformed
+
+    private void btnDngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDngActionPerformed
+        // TODO add your handling code here:
+        bd.money[turn] += money;
+        bd.displayChangeS(this.turn,(this.money));
+        for (int i = 0; i <= j; i++)
+          {
+            if (props[i].isSelected())
+              {
+                bd.propHouse[nums[i]]--;
+                props[i].setSelected(false);
+                updateMoney();
+                bd.houses[nums[i]].setIcon(null);
+                bd.houses[nums[i]].validate();
+                bd.houses[nums[i]].repaint();
+              }
+          }
+        btnDng.setEnabled(false);
+    }//GEN-LAST:event_btnDngActionPerformed
 
 
     /**
@@ -269,6 +306,7 @@ public class HouseFrm extends javax.swing.JFrame
       }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnDng;
     public javax.swing.JButton btnExit;
     public javax.swing.JButton btnUpg;
     public javax.swing.JDesktopPane jDesktopPane1;

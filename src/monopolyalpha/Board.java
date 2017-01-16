@@ -499,12 +499,13 @@ public class Board extends javax.swing.JFrame
           {
             plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
+            final Board board=  this;
             plHouse[i].addActionListener(new ActionListener()
               {
                 @Override
                 public void actionPerformed(ActionEvent e)
                   {
-                    new HouseFrm(propOwner, propH, turn, propHouse).setVisible(true);
+                    new HouseFrm(propOwner, propH, turn, propHouse, board).setVisible(true);
                   }
               });
             propMoney[i] = 0;
@@ -550,10 +551,7 @@ public class Board extends javax.swing.JFrame
         plHouse[1] = btnHouseP2;
         plHouse[2] = btnHouseP3;
         plHouse[3] = btnHouseP4;
-        plHouse[0].setVisible(false);
-        plHouse[1].setVisible(false);
-        plHouse[2].setVisible(false);
-        plHouse[3].setVisible(false);
+       
 
         plMC[0] = PMCP1;
         plMC[1] = PMCP2;
@@ -574,15 +572,17 @@ public class Board extends javax.swing.JFrame
           {
             plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
+            final Board board= this;
             plHouse[i].addActionListener(new ActionListener()
+                    
               {
                 @Override
                 public void actionPerformed(ActionEvent e)
                   {
-                    new HouseFrm(propOwner, propH, turn, propHouse).setVisible(true);
+                    new HouseFrm(propOwner, propH, turn, propHouse, board).setVisible(true);
                   }
               });
-
+            board.dispose();
             System.out.println("Board: Info:-" + i + " " + name[i] + " " + icon[i] + " " + money[i]);
 
             mess.add("Awesome!");

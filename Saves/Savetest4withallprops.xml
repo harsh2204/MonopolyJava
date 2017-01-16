@@ -1,0 +1,375 @@
+<?xml version="1.0"?><monopolyalpha.Save__Data>
+  <players>4</players>
+  <dice>1</dice>
+  <chance>0</chance>
+  <roll>4</roll>
+  <turn>0</turn>
+  <count>4</count>
+  <EGS>0</EGS>
+  <counter>0</counter>
+  <theme>Canada</theme>
+  <numprop>
+    <int>7</int>
+    <int>7</int>
+    <int>6</int>
+    <int>6</int>
+  </numprop>
+  <cpos>
+    <int>1</int>
+    <int>34</int>
+    <int>35</int>
+    <int>4</int>
+  </cpos>
+  <bonus>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+  </bonus>
+  <jailfee>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+  </jailfee>
+  <propOwner>
+    <int>-1</int>
+    <int>0</int>
+    <int>1</int>
+    <int>2</int>
+    <int>3</int>
+    <int>-1</int>
+    <int>-1</int>
+    <int>0</int>
+    <int>1</int>
+    <int>-1</int>
+    <int>2</int>
+    <int>3</int>
+    <int>0</int>
+    <int>1</int>
+    <int>3</int>
+    <int>2</int>
+    <int>-1</int>
+    <int>0</int>
+    <int>-1</int>
+    <int>1</int>
+    <int>3</int>
+    <int>2</int>
+    <int>0</int>
+    <int>-1</int>
+    <int>-1</int>
+    <int>1</int>
+    <int>3</int>
+    <int>-1</int>
+    <int>0</int>
+    <int>1</int>
+    <int>2</int>
+    <int>-1</int>
+    <int>3</int>
+    <int>0</int>
+    <int>1</int>
+    <int>2</int>
+  </propOwner>
+  <plChances>
+    <int>92</int>
+    <int>93</int>
+    <int>93</int>
+    <int>93</int>
+  </plChances>
+  <plChancesLeft>
+    <int>36337</int>
+    <int>36338</int>
+    <int>36338</int>
+    <int>36338</int>
+  </plChancesLeft>
+  <propMoney>
+    <int>1650</int>
+    <int>1535</int>
+    <int>2020</int>
+    <int>1285</int>
+  </propMoney>
+  <totMoney>
+    <int>2000</int>
+    <int>2000</int>
+    <int>2000</int>
+    <int>2000</int>
+  </totMoney>
+  <propHouse>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+    <int>0</int>
+  </propHouse>
+  <money>
+    <int>550</int>
+    <int>465</int>
+    <int>-20</int>
+    <int>915</int>
+  </money>
+  <name>
+    <string>Ultra Fab</string>
+    <string>Yellow Goblin</string>
+    <string>Optimus Ghost</string>
+    <string>Water Devil</string>
+  </name>
+  <iconpaths>
+    <string>Icons/Pieces/Generic/3.png</string>
+    <string>Icons/Pieces/Generic/1.png</string>
+    <string>Icons/Pieces/Generic/2.png</string>
+    <string>Icons/Pieces/Canada/1.png</string>
+  </iconpaths>
+  <colorPalette>
+    <awt-color>
+      <red>156</red>
+      <green>230</green>
+      <blue>185</blue>
+      <alpha>255</alpha>
+    </awt-color>
+    <awt-color>
+      <red>230</red>
+      <green>131</green>
+      <blue>142</blue>
+      <alpha>255</alpha>
+    </awt-color>
+    <awt-color>
+      <red>230</red>
+      <green>148</green>
+      <blue>193</blue>
+      <alpha>255</alpha>
+    </awt-color>
+    <awt-color>
+      <red>109</red>
+      <green>149</green>
+      <blue>230</blue>
+      <alpha>255</alpha>
+    </awt-color>
+  </colorPalette>
+  <snake>false</snake>
+  <bail>false</bail>
+  <propOwned>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+  </propOwned>
+  <propBuyable>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>false</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+  </propBuyable>
+  <Game>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+    <boolean>true</boolean>
+  </Game>
+  <housable>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+  </housable>
+  <propH>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+    <boolean>false</boolean>
+  </propH>
+  <log>Ultra Fab just bought Brampton for 60 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought Mississauga for 60 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost just bought Tim Horton&apos;s for 325 $&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just bought YellowKnife for 80 $&#xd;
+Water Devil&apos;s turn ended.&#xd;
+------------------------------Game Loaded (2017/01/15 19:57:35)------------------------------&#xd;
+Ultra Fab just bought Whitehorse for 100 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought Iqaluit for 120 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost just bought Saskatoon for 120 $&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just bought Thunder Bay for 140 $&#xd;
+Water Devil&apos;s turn ended.&#xd;
+Ultra Fab just bought CNR for 375 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought Windsor for 150 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost just bought Niagara Falls for 375 $&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just bought Fredricton for 180 $&#xd;
+Water Devil&apos;s turn ended.&#xd;
+Ultra Fab just bought Regina for 200 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought St. John&apos;s for 220 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost just bought RBC for 325 $&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just bought Quebec City for 220 $&#xd;
+Water Devil&apos;s turn ended.&#xd;
+Ultra Fab just bought Halifax for 250 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought Winnipeg for 260 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just bought Edmonton for 290 $&#xd;
+Water Devil&apos;s turn ended.&#xd;
+Ultra Fab just bought Calgary for 290 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought Ottawa for 325 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost just bought CN Tower for 375 $&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just bought Vancouver for 375 $&#xd;
+Water Devil&apos;s turn ended.&#xd;
+Ultra Fab just bought Pariliament Hill for 375 $&#xd;
+Ultra Fab&apos;s turn ended.&#xd;
+Yellow Goblin just bought Montreal for 400 $&#xd;
+Yellow Goblin&apos;s turn ended.&#xd;
+Optimus Ghost just bought Toronto for 500 $&#xd;
+Optimus Ghost&apos;s turn ended.&#xd;
+Water Devil just collected $200 for passing Go&#xd;
+Water Devil&apos;s turn ended.&#xd;
+Ultra Fab just collected $200 for passing Go&#xd;
+</log>
+</monopolyalpha.Save__Data>
