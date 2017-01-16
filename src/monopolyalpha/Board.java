@@ -127,6 +127,7 @@ public class Board extends javax.swing.JFrame
         setupBuyStatus();
         repaintBuyLabels();
         setupHouses();
+        upgradeButton();
         addWindowListener(new WindowAdapter()
           {
 
@@ -819,6 +820,8 @@ public class Board extends javax.swing.JFrame
         upgradehouse[3] = btnHouseP4;
 
         for (int x = 0; x < 4; x++) {
+            upgradehouse[x].setSize(upgradePic.getIconWidth(),upgradePic.getIconHeight());
+            upgradehouse[x].setText("");
             upgradehouse[x].setIcon(upgradePic);
         }
 

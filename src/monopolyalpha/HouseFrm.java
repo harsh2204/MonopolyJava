@@ -59,6 +59,9 @@ public class HouseFrm extends javax.swing.JFrame
                         @Override
                         public void actionPerformed(ActionEvent e)
                           {
+                              if(propHouse[k]==4){
+                                  btnUpg.setEnabled(false);
+                              }
                               if(propHouse[k]>=1){
                                   btnDng.setEnabled(true);
                               }else{
