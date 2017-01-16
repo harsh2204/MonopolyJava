@@ -15,7 +15,7 @@ import javax.swing.*;
 public class Help extends javax.swing.JFrame {
     //Initialize dialog box and label
     public static JDialog help = new JDialog();
-    JLabel manual = new JLabel();
+    static JLabel manual = new JLabel();
 
     /**
      * Creates new form Help
@@ -27,15 +27,18 @@ public class Help extends javax.swing.JFrame {
 
     public static void Centre() {
         //Get screen size 
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+//        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         //Set dialog box at centre by finding distance between the edge of screen and box and dividing by 2
-        help.setLocation((int) ((dimension.getWidth() - help.getWidth()) / 2), (int) ((dimension.getHeight() - help.getHeight()) / 2));
+//        help.setLocation((int) ((dimension.getWidth() - help.getWidth()) / 2), (int) ((dimension.getHeight() - help.getHeight()) / 2));
+        help.setLocationRelativeTo(null);
+        help.setSize(manual.getIcon().getIconWidth()+20,manual.getIcon().getIconHeight()+50);
 //        int x = (int) ((dimension.getWidth() - help.getWidth()) / 2);
 //        int y = (int) ((dimension.getHeight() - help.getHeight()) / 2);
 //        help.setLocation(x, y);
     }
 
     public void createDialog() {
+        help.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         help.setLayout(new BorderLayout());//Set Border Layout
         help.add(manual, BorderLayout.CENTER);//Add and centre label
         help.setSize(manual.getWidth(), manual.getHeight());//Set dialog box to label size
@@ -306,6 +309,7 @@ public class Help extends javax.swing.JFrame {
 
     private void btnObjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Object.png"));//Set label to corresponding image
+        manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
         createDialog();//Create dialog box 
         Centre();//Centre dialog box
         help.setVisible(true);//Display dialog box
@@ -313,98 +317,112 @@ public class Help extends javax.swing.JFrame {
 
     private void btnBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Bank.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnBankActionPerformed
 
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Go.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnGoActionPerformed
 
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/RENT.png"));
-        createDialog();
+              manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+  createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnRentActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Play.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void btnBuyPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyPropActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Buy.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnBuyPropActionPerformed
 
     private void btnChaCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChaCommActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Chance Community.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnChaCommActionPerformed
 
     private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Tax.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnTaxActionPerformed
 
     private void btnSaveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveGameActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/SAVEGAME.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnSaveGameActionPerformed
 
     private void btnCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Car.png"));
-        createDialog();
+                manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnCarActionPerformed
 
     private void btnJailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJailActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/JAIL.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnJailActionPerformed
 
     private void btnHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHouseActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/HOUSES.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnHouseActionPerformed
 
     private void btnTradingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradingActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/TRADING.png"));
-        createDialog();
+             manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+   createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnTradingActionPerformed
 
     private void btnMortgageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/MORTGAGE.png"));
-        createDialog();
+              manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+  createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnMortgageActionPerformed
 
     private void btnEGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEGSActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/EGS.png"));
-        createDialog();
+              manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+  createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnEGSActionPerformed
@@ -416,7 +434,8 @@ public class Help extends javax.swing.JFrame {
 
     private void btnPrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrepActionPerformed
         manual.setIcon(new ImageIcon("Icons/Help Manual/Preparation.png"));
-        createDialog();
+               manual.setSize(manual.getIcon().getIconWidth(),manual.getIcon().getIconHeight());
+ createDialog();
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnPrepActionPerformed
