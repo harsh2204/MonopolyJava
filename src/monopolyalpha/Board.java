@@ -808,6 +808,20 @@ public class Board extends javax.swing.JFrame
 //            }
 //        }
       }
+    
+    public void upgradeButton() {
+        JButton[] upgradehouse = new JButton[4];
+        ImageIcon upgrade = new ImageIcon("Icons/Miscellaneous/Upgrade Arrow.png");
+        upgradehouse[0] = btnHouseP1;
+        upgradehouse[1] = btnHouseP2;
+        upgradehouse[2] = btnHouseP3;
+        upgradehouse[3] = btnHouseP4;
+
+        for (int x = 0; x < 4; x++) {
+            upgradehouse[x].setIcon(upgrade);
+        }
+
+    }
 
     public void playSound(String soundFile)
       {
@@ -866,7 +880,7 @@ public class Board extends javax.swing.JFrame
           {
             plnames[i].setText("" + name[i]);
             plicons[i].setIcon(icon[i]);
-            plmoney[i].setText("$" + Integer.toString(money[i]));
+            plmoney[i].setText("$ " + Integer.toString(money[i]));
             boxes[i][cpos[i]].setIcon(icons[i]);
           }
         for (int i = 0; i < keyWord.length; i++)
@@ -1242,7 +1256,7 @@ public class Board extends javax.swing.JFrame
         numprop[turn]++;
         displayChangeBuy(turn);
         appendS(name[turn] + " ", turn);
-        addLog("just bought " + propName[cpos[turn]] + " for " + propPrice[cpos[turn]] + " $");
+        addLog("just bought " + propName[cpos[turn]] + " for $ " + propPrice[cpos[turn]]);
         btnReBuy.setEnabled(false);
       }
 
@@ -1436,16 +1450,16 @@ public class Board extends javax.swing.JFrame
               }
           });
         moneyTimer.start();
-        plmoney[turn].setText("$ " + money[turn]);
+        plmoney[turn].setText("$" + money[turn]);
       }
 
     public void displayChangePay(final int turn, final int propOwner, final int pRent)
       {
 //        plmoney[turn].setForeground(Color.red);
-        plmoney[turn].setText("$ " + money[turn]);
+        plmoney[turn].setText("$" + money[turn]);
 
 //        plmoney[propOwner].setForeground(Color.red);
-        plmoney[propOwner].setText("$ " + money[propOwner]);
+        plmoney[propOwner].setText("$" + money[propOwner]);
         yy[turn] = oy[turn];
         yy[propOwner] = ny[propOwner];
         plMC[turn].setForeground(Color.red);
@@ -1502,7 +1516,7 @@ public class Board extends javax.swing.JFrame
               }
           });
         moneyTimer.start();
-        plmoney[turn].setText("$ " + money[turn]);
+        plmoney[turn].setText("$" + money[turn]);
       }
 
     public void displayChangeS(final int turn, final int pRent)
@@ -1530,7 +1544,7 @@ public class Board extends javax.swing.JFrame
                   }
               });
             moneyTimer.start();
-            plmoney[turn].setText("$ " + money[turn]);
+            plmoney[turn].setText("$" + money[turn]);
           } else if (pRent > 0)
           {
             final String sign = "+";
