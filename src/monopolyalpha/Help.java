@@ -5,11 +5,17 @@
  */
 package monopolyalpha;
 
+import java.awt.*;
+import javax.swing.*;
+
 /**
  *
- * @author HaardTrivedi
+ * @author Haard Trivedi
  */
 public class Help extends javax.swing.JFrame {
+    //Initialize dialog box and label
+    public static JDialog help = new JDialog();
+    JLabel manual = new JLabel();
 
     /**
      * Creates new form Help
@@ -17,6 +23,23 @@ public class Help extends javax.swing.JFrame {
     public Help() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    public static void Centre() {
+        //Get screen size 
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        //Set dialog box at centre by finding distance between the edge of screen and box and dividing by 2
+        help.setLocation((int) ((dimension.getWidth() - help.getWidth()) / 2), (int) ((dimension.getHeight() - help.getHeight()) / 2));
+//        int x = (int) ((dimension.getWidth() - help.getWidth()) / 2);
+//        int y = (int) ((dimension.getHeight() - help.getHeight()) / 2);
+//        help.setLocation(x, y);
+    }
+
+    public void createDialog() {
+        help.setLayout(new BorderLayout());//Set Border Layout
+        help.add(manual, BorderLayout.CENTER);//Add and centre label
+        help.setSize(manual.getWidth(), manual.getHeight());//Set dialog box to label size
+//        help.pack();
     }
 
     /**
@@ -56,7 +79,7 @@ public class Help extends javax.swing.JFrame {
         lblTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         btnObject.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnObject.setText("oBJECT");
+        btnObject.setText("Object");
         btnObject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnObjectActionPerformed(evt);
@@ -96,7 +119,7 @@ public class Help extends javax.swing.JFrame {
         });
 
         btnPlay.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
-        btnPlay.setText("Equipment");
+        btnPlay.setText("Play");
         btnPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayActionPerformed(evt);
@@ -213,15 +236,15 @@ public class Help extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnJail, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnTrading, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnMortgage, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -254,17 +277,17 @@ public class Help extends javax.swing.JFrame {
                     .addComponent(btnBank)
                     .addComponent(btnJail))
                 .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGo)
-                    .addComponent(btnHouse))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHouse)
+                    .addComponent(btnPlay))
                 .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRent)
-                    .addComponent(btnTrading))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTrading)
+                    .addComponent(btnGo))
                 .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPlay)
-                    .addComponent(btnMortgage))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMortgage)
+                    .addComponent(btnRent))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuyProp)
@@ -275,80 +298,128 @@ public class Help extends javax.swing.JFrame {
                     .addComponent(btnSaveGame))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBack)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnObjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Object.png"));//Set label to corresponding image
+        createDialog();//Create dialog box 
+        Centre();//Centre dialog box
+        help.setVisible(true);//Display dialog box
     }//GEN-LAST:event_btnObjectActionPerformed
 
-    private void btnPrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrepActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrepActionPerformed
-
     private void btnBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Bank.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnBankActionPerformed
 
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Go.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnGoActionPerformed
 
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/RENT.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnRentActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Play.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void btnBuyPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyPropActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Buy.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnBuyPropActionPerformed
 
     private void btnChaCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChaCommActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Chance Community.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnChaCommActionPerformed
 
     private void btnTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaxActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Tax.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnTaxActionPerformed
 
     private void btnSaveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveGameActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/SAVEGAME.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnSaveGameActionPerformed
 
     private void btnCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Car.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnCarActionPerformed
 
     private void btnJailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJailActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/JAIL.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnJailActionPerformed
 
     private void btnHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHouseActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/HOUSES.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnHouseActionPerformed
 
     private void btnTradingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradingActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/TRADING.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnTradingActionPerformed
 
     private void btnMortgageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageActionPerformed
-        // TODO add your handling code here:
+        manual.setIcon(new ImageIcon("Icons/Help Manual/MORTGAGE.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnMortgageActionPerformed
 
     private void btnEGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEGSActionPerformed
-        // TODO add your handling code here:
-     
+        manual.setIcon(new ImageIcon("Icons/Help Manual/EGS.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
     }//GEN-LAST:event_btnEGSActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        //Close Help screen
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnPrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrepActionPerformed
+        manual.setIcon(new ImageIcon("Icons/Help Manual/Preparation.png"));
+        createDialog();
+        Centre();
+        help.setVisible(true);
+    }//GEN-LAST:event_btnPrepActionPerformed
 
     /**
      * @param args the command line arguments

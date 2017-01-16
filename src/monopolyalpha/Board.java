@@ -1887,6 +1887,7 @@ public class Board extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnTrade = new javax.swing.JButton();
         btnReBuy = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         PMCP1 = new javax.swing.JLabel();
         PMCP2 = new javax.swing.JLabel();
         PMCP3 = new javax.swing.JLabel();
@@ -3545,7 +3546,7 @@ public class Board extends javax.swing.JFrame {
         paneBoss.add(paneBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 700, 700));
 
         btnRoll.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        btnRoll.setText("Roll!");
+        btnRoll.setText("ROLL!");
         btnRoll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRollActionPerformed(evt);
@@ -3574,8 +3575,8 @@ public class Board extends javax.swing.JFrame {
             }
         });
 
-        btnExit.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        btnExit.setText("Exit");
+        btnExit.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        btnExit.setText("EXIT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -3583,7 +3584,7 @@ public class Board extends javax.swing.JFrame {
         });
 
         btnTrade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        btnTrade.setText("Trade");
+        btnTrade.setText("TRADE");
         btnTrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTradeActionPerformed(evt);
@@ -3596,6 +3597,14 @@ public class Board extends javax.swing.JFrame {
         btnReBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReBuyActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jButton1.setText("HELP");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -3614,8 +3623,10 @@ public class Board extends javax.swing.JFrame {
                 .addComponent(btnTrade, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paneControlsLayout.setVerticalGroup(
             paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3623,14 +3634,16 @@ public class Board extends javax.swing.JFrame {
             .addGroup(paneControlsLayout.createSequentialGroup()
                 .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnTrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(btnRoll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLog, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNext, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        paneBoss.add(paneControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 710, -1, -1));
+        paneBoss.add(paneControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 710, 810, -1));
 
         PMCP1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         PMCP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -4174,6 +4187,10 @@ public class Board extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lblHoverB35MouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Help().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void displayChange(int turn) {
 
         for (int i = 0; i < players; i++) {
@@ -4396,6 +4413,7 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JButton btnTrade;
     private javax.swing.JDialog dlgLog;
     private javax.swing.JFrame frmBuy;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBoard;
@@ -4487,5 +4505,4 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JPanel paneP4;
     private javax.swing.JTextPane txtLog;
     // End of variables declaration//GEN-END:variables
-
 }
