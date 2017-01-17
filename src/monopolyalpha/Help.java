@@ -15,10 +15,12 @@ import javax.swing.*;
  * @author Haard Trivedi
  */
 public class Help extends javax.swing.JFrame {
+
     //Initialize dialog box and label
-    public static JDialog help = new JDialog();
+    JDialog help = new JDialog();
     JLabel manual = new JLabel();
     ImageIcon ic;
+
     /**
      * Creates new form Help
      */
@@ -28,48 +30,52 @@ public class Help extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public static void Centre() {
+    public void Centre() {
         //Get screen size 
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+//        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         //Set dialog box at centre by finding distance between the edge of screen and box and dividing by 2
-        help.setLocation((int) ((dimension.getWidth() - help.getWidth()) / 2), (int) ((dimension.getHeight() - help.getHeight()) / 2));
+//        help.setLocation((int) ((dimension.getWidth() - help.getWidth()) / 2), (int) ((dimension.getHeight() - help.getHeight()) / 2));
+        help.setLocationRelativeTo(null);
+        help.setSize(ic.getIconWidth(), ic.getIconHeight());
 //        int x = (int) ((dimension.getWidth() - help.getWidth()) / 2);
 //        int y = (int) ((dimension.getHeight() - help.getHeight()) / 2);
 //        help.setLocation(x, y);
     }
 
     public void createDialog() {
+        help.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         help.setLayout(new BorderLayout());//Set Border Layout
         help.add(manual, BorderLayout.CENTER);//Add and centre label
-        help.setSize(ic.getIconWidth(),ic.getIconHeight());//Set dialog box
+        help.setSize(ic.getIconWidth(), ic.getIconHeight());//Set dialog box
         help.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                     help.setVisible(false);
-                 }
+                //If escape key is pressed, close help dialog box
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    help.setVisible(false);
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
             }
         });
 //        help.pack();
     }
-    
-    public ImageIcon imageSet(String path){
-         ic = new ImageIcon(path);
+
+    public ImageIcon imageSet(String path) {
+        ic = new ImageIcon(path);//Get image path
 //        Image img =ic.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 //        ig = new ImageIcon(img);
-        return ic;
+        return ic;//Return image
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -448,7 +454,7 @@ public class Help extends javax.swing.JFrame {
         Centre();
         help.setVisible(true);
     }//GEN-LAST:event_btnPrepActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
