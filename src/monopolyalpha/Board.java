@@ -1887,7 +1887,7 @@ public class Board extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnTrade = new javax.swing.JButton();
         btnReBuy = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
         PMCP1 = new javax.swing.JLabel();
         PMCP2 = new javax.swing.JLabel();
         PMCP3 = new javax.swing.JLabel();
@@ -3600,11 +3600,11 @@ public class Board extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton1.setText("HELP");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnHelp.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnHelp.setText("HELP");
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnHelpActionPerformed(evt);
             }
         });
 
@@ -3624,7 +3624,7 @@ public class Board extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -3639,7 +3639,7 @@ public class Board extends javax.swing.JFrame {
                     .addComponent(btnNext, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(paneControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnReBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -4187,9 +4187,9 @@ public class Board extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lblHoverB35MouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
         new Help().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnHelpActionPerformed
 
     public void displayChange(int turn) {
 
@@ -4401,6 +4401,7 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnCD;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnHouseP1;
     private javax.swing.JButton btnHouseP2;
     private javax.swing.JButton btnHouseP3;
@@ -4413,7 +4414,6 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JButton btnTrade;
     private javax.swing.JDialog dlgLog;
     private javax.swing.JFrame frmBuy;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBoard;
