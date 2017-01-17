@@ -19,25 +19,18 @@ public class Help extends javax.swing.JFrame {
     JDialog help = new JDialog();
     JLabel manual = new JLabel();
     ImageIcon ic;
+    
     /**
      * Creates new form Help
      */
     public Help() {
         initComponents();
-//        help.setUndecorated(true);
+        help.setUndecorated(true);
         this.setLocationRelativeTo(null);
     }
 
-    public void Centre() {
-        //Get screen size 
-//        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        //Set dialog box at centre by finding distance between the edge of screen and box and dividing by 2
-//        help.setLocation((int) ((dimension.getWidth() - help.getWidth()) / 2), (int) ((dimension.getHeight() - help.getHeight()) / 2));
-        help.setLocationRelativeTo(null);
+    public void Centre() {help.setLocationRelativeTo(null);
         help.setSize(ic.getIconWidth(), ic.getIconHeight());
-//        int x = (int) ((dimension.getWidth() - help.getWidth()) / 2);
-//        int y = (int) ((dimension.getHeight() - help.getHeight()) / 2);
-//        help.setLocation(x, y);
     }
 
     public void createDialog() {
