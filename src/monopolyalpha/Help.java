@@ -15,12 +15,10 @@ import javax.swing.*;
  * @author Haard Trivedi
  */
 public class Help extends javax.swing.JFrame {
-
     //Initialize dialog box and label
     JDialog help = new JDialog();
     JLabel manual = new JLabel();
     ImageIcon ic;
-
     /**
      * Creates new form Help
      */
