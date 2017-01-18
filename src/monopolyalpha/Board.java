@@ -1231,7 +1231,6 @@ public class Board extends javax.swing.JFrame {
         switch (propType[cpos[turn]]) {
             case "JK":
                 jackpotMoney jk = new jackpotMoney();
-
                 pRent = jk.Jack();
                 money[turn] += pRent;
                 count = 0;
@@ -1289,7 +1288,7 @@ public class Board extends javax.swing.JFrame {
             case "ST":
 //                appendS(name[turn], turn);
 //                addLog(" just collected $200 for landing on Go");
-                pRent = 0;
+//                pRent = 0;
                 break;
         }
         if (!pType.equals("CH") || !pType.equals("CO")) {
@@ -1662,17 +1661,17 @@ public class Board extends javax.swing.JFrame {
             if (Dice.randomNumber1 == Dice.randomNumber2) {
                 money[turn] += bonus[turn];
             }
-        } else {
-            if (turn == players) {
-                turn = 0;
-            }
-        roll = Dice.rollDice(dice);
-////      Temporary Testing Cause
-//            if (dice == 2) {
-//                roll = (int) (Math.random() * 12 + 1);
-//            } else {
-//                roll = (int) (Math.random() * 6 + 1);
+//        } else {
+//            if (turn == players) {
+//                turn = 0;
 //            }
+//        roll = Dice.rollDice(dice);
+////      Temporary Testing Cause
+            if (dice == 2) {
+                roll = (int) (Math.random() * 12 + 1);
+            } else {
+                roll = (int) (Math.random() * 6 + 1);
+            }
         }
         move(turn);
         appendS(name[turn], turn);
@@ -2181,7 +2180,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB3);
-        paneB3.setBounds(10, 485, 58, 52);
+        paneB3.setBounds(10, 485, 58, 51);
 
         paneB4.setBackground(new java.awt.Color(255, 255, 255));
         paneB4.setOpaque(false);
@@ -2216,7 +2215,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB4);
-        paneB4.setBounds(10, 420, 58, 52);
+        paneB4.setBounds(10, 420, 58, 51);
 
         paneB5.setBackground(new java.awt.Color(255, 255, 255));
         paneB5.setOpaque(false);
@@ -2251,7 +2250,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB5);
-        paneB5.setBounds(10, 355, 58, 52);
+        paneB5.setBounds(10, 355, 58, 51);
 
         paneB6.setBackground(new java.awt.Color(255, 255, 255));
         paneB6.setOpaque(false);
@@ -2286,7 +2285,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB6);
-        paneB6.setBounds(10, 295, 58, 52);
+        paneB6.setBounds(10, 295, 58, 51);
 
         paneB7.setBackground(new java.awt.Color(255, 255, 255));
         paneB7.setOpaque(false);
@@ -2321,7 +2320,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB7);
-        paneB7.setBounds(10, 230, 58, 52);
+        paneB7.setBounds(10, 230, 58, 51);
 
         paneB8.setBackground(new java.awt.Color(255, 255, 255));
         paneB8.setOpaque(false);
@@ -2354,7 +2353,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB8);
-        paneB8.setBounds(10, 160, 60, 61);
+        paneB8.setBounds(10, 160, 60, 60);
 
         paneB9.setBackground(new java.awt.Color(255, 255, 255));
         paneB9.setOpaque(false);
@@ -2395,7 +2394,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB9);
-        paneB9.setBounds(10, 100, 58, 52);
+        paneB9.setBounds(10, 100, 58, 51);
 
         paneB10.setBackground(new java.awt.Color(255, 255, 255));
         paneB10.setOpaque(false);
@@ -2430,7 +2429,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB10);
-        paneB10.setBounds(5, 10, 58, 52);
+        paneB10.setBounds(5, 10, 58, 51);
 
         paneB11.setBackground(new java.awt.Color(255, 255, 255));
         paneB11.setOpaque(false);
@@ -2465,7 +2464,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB11);
-        paneB11.setBounds(98, 10, 58, 52);
+        paneB11.setBounds(98, 10, 58, 51);
 
         paneB12.setBackground(new java.awt.Color(255, 255, 255));
         paneB12.setOpaque(false);
@@ -2500,7 +2499,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB12);
-        paneB12.setBounds(160, 10, 58, 52);
+        paneB12.setBounds(160, 10, 58, 51);
 
         paneB13.setBackground(new java.awt.Color(255, 255, 255));
         paneB13.setOpaque(false);
@@ -2535,7 +2534,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB13);
-        paneB13.setBounds(225, 10, 58, 52);
+        paneB13.setBounds(225, 10, 58, 51);
 
         paneB14.setBackground(new java.awt.Color(255, 255, 255));
         paneB14.setOpaque(false);
@@ -2570,7 +2569,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB14);
-        paneB14.setBounds(290, 10, 58, 52);
+        paneB14.setBounds(290, 10, 58, 51);
 
         paneB15.setBackground(new java.awt.Color(255, 255, 255));
         paneB15.setOpaque(false);
@@ -2605,7 +2604,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB15);
-        paneB15.setBounds(355, 10, 58, 52);
+        paneB15.setBounds(355, 10, 58, 51);
 
         paneB16.setBackground(new java.awt.Color(255, 255, 255));
         paneB16.setOpaque(false);
@@ -2640,7 +2639,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB16);
-        paneB16.setBounds(415, 10, 58, 52);
+        paneB16.setBounds(415, 10, 58, 51);
 
         paneB17.setBackground(new java.awt.Color(255, 255, 255));
         paneB17.setOpaque(false);
@@ -2675,7 +2674,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB17);
-        paneB17.setBounds(480, 10, 58, 52);
+        paneB17.setBounds(480, 10, 58, 51);
 
         paneB18.setBackground(new java.awt.Color(255, 255, 255));
         paneB18.setOpaque(false);
@@ -2710,7 +2709,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB18);
-        paneB18.setBounds(545, 10, 58, 52);
+        paneB18.setBounds(545, 10, 58, 51);
 
         paneB19.setBackground(new java.awt.Color(255, 255, 255));
         paneB19.setOpaque(false);
@@ -2745,7 +2744,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB19);
-        paneB19.setBounds(630, 10, 58, 52);
+        paneB19.setBounds(630, 10, 58, 51);
 
         paneB20.setBackground(new java.awt.Color(255, 255, 255));
         paneB20.setOpaque(false);
@@ -2780,7 +2779,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB20);
-        paneB20.setBounds(630, 100, 58, 52);
+        paneB20.setBounds(630, 100, 58, 51);
 
         paneB21.setBackground(new java.awt.Color(255, 255, 255));
         paneB21.setOpaque(false);
@@ -2815,7 +2814,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB21);
-        paneB21.setBounds(630, 165, 58, 52);
+        paneB21.setBounds(630, 165, 58, 51);
 
         paneB22.setBackground(new java.awt.Color(255, 255, 255));
         paneB22.setOpaque(false);
@@ -2850,7 +2849,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB22);
-        paneB22.setBounds(630, 230, 58, 52);
+        paneB22.setBounds(630, 230, 58, 51);
 
         paneB23.setBackground(new java.awt.Color(255, 255, 255));
         paneB23.setOpaque(false);
@@ -2885,7 +2884,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB23);
-        paneB23.setBounds(630, 295, 58, 52);
+        paneB23.setBounds(630, 295, 58, 51);
 
         paneB24.setBackground(new java.awt.Color(255, 255, 255));
         paneB24.setOpaque(false);
@@ -2920,7 +2919,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB24);
-        paneB24.setBounds(630, 355, 58, 52);
+        paneB24.setBounds(630, 355, 58, 51);
 
         paneB25.setBackground(new java.awt.Color(255, 255, 255));
         paneB25.setOpaque(false);
@@ -2955,7 +2954,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB25);
-        paneB25.setBounds(630, 420, 58, 52);
+        paneB25.setBounds(630, 420, 58, 51);
 
         paneB26.setBackground(new java.awt.Color(255, 255, 255));
         paneB26.setOpaque(false);
@@ -2990,7 +2989,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB26);
-        paneB26.setBounds(630, 485, 58, 52);
+        paneB26.setBounds(630, 485, 58, 51);
 
         paneB27.setBackground(new java.awt.Color(255, 255, 255));
         paneB27.setOpaque(false);
@@ -3025,7 +3024,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB27);
-        paneB27.setBounds(630, 545, 58, 52);
+        paneB27.setBounds(630, 545, 58, 51);
 
         paneB28.setBackground(new java.awt.Color(255, 255, 255));
         paneB28.setOpaque(false);
@@ -3060,7 +3059,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB28);
-        paneB28.setBounds(630, 640, 58, 52);
+        paneB28.setBounds(630, 640, 58, 51);
 
         paneB29.setBackground(new java.awt.Color(255, 255, 255));
         paneB29.setOpaque(false);
@@ -3095,7 +3094,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB29);
-        paneB29.setBounds(545, 640, 58, 52);
+        paneB29.setBounds(545, 640, 58, 51);
 
         paneB30.setBackground(new java.awt.Color(255, 255, 255));
         paneB30.setOpaque(false);
@@ -3130,7 +3129,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB30);
-        paneB30.setBounds(480, 640, 58, 52);
+        paneB30.setBounds(480, 640, 58, 51);
 
         paneB31.setBackground(new java.awt.Color(255, 255, 255));
         paneB31.setOpaque(false);
@@ -3165,7 +3164,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB31);
-        paneB31.setBounds(415, 640, 58, 52);
+        paneB31.setBounds(415, 640, 58, 51);
 
         paneB32.setBackground(new java.awt.Color(255, 255, 255));
         paneB32.setOpaque(false);
@@ -3200,7 +3199,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB32);
-        paneB32.setBounds(352, 640, 58, 52);
+        paneB32.setBounds(352, 640, 58, 51);
 
         paneB33.setBackground(new java.awt.Color(255, 255, 255));
         paneB33.setOpaque(false);
@@ -3235,7 +3234,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB33);
-        paneB33.setBounds(290, 640, 58, 52);
+        paneB33.setBounds(290, 640, 58, 51);
 
         paneB34.setBackground(new java.awt.Color(255, 255, 255));
         paneB34.setOpaque(false);
@@ -3270,7 +3269,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB34);
-        paneB34.setBounds(225, 640, 58, 52);
+        paneB34.setBounds(225, 640, 58, 51);
 
         paneB35.setBackground(new java.awt.Color(255, 255, 255));
         paneB35.setOpaque(false);
@@ -3305,7 +3304,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB35);
-        paneB35.setBounds(160, 640, 58, 52);
+        paneB35.setBounds(160, 640, 58, 51);
 
         paneB36.setBackground(new java.awt.Color(255, 255, 255));
         paneB36.setOpaque(false);
@@ -3340,7 +3339,7 @@ public class Board extends javax.swing.JFrame {
         );
 
         paneBoard.add(paneB36);
-        paneB36.setBounds(95, 640, 58, 52);
+        paneB36.setBounds(95, 640, 58, 51);
 
         lblHoverB7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -3707,6 +3706,7 @@ public class Board extends javax.swing.JFrame {
         lblNameP1.setBackground(new java.awt.Color(255, 0, 0));
         lblNameP1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNameP1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         lblIconP1.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -3754,6 +3754,7 @@ public class Board extends javax.swing.JFrame {
         lblNameP2.setBackground(new java.awt.Color(0, 255, 0));
         lblNameP2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNameP2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         lblIconP2.setBackground(new java.awt.Color(0, 255, 0));
 
@@ -3799,6 +3800,7 @@ public class Board extends javax.swing.JFrame {
         lblNameP3.setBackground(new java.awt.Color(0, 0, 255));
         lblNameP3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNameP3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         lblIconP3.setBackground(new java.awt.Color(0, 0, 255));
 
@@ -3845,6 +3847,7 @@ public class Board extends javax.swing.JFrame {
         lblNameP4.setBackground(new java.awt.Color(255, 255, 0));
         lblNameP4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNameP4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNameP4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         lblIconP4.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -4288,8 +4291,9 @@ public class Board extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        Splash_Screen.makeSplash();
+//        Splash_Screen.makeSplash();
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new StartScreenfrm().setVisible(true);
             }
