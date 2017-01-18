@@ -155,7 +155,7 @@ public class Board extends javax.swing.JFrame {
                 lblBoard.setIcon(new ImageIcon("Icons/SuperHero Board.jpg"));
                 break;
             default:
-                lblBoard.setIcon(new ImageIcon("Board Pictures/Canada/Canada Green Board.png"));
+                lblBoard.setIcon(new ImageIcon("Icons/Generic Board.png"));
         }
     }
 
