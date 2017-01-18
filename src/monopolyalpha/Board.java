@@ -971,14 +971,24 @@ public class Board extends javax.swing.JFrame {
         houseCheck(cpos, turn);
         plHouseCheck(turn);
         hover = true;
-        if (plChancesLeft[turn] <= 0) {
-            gameOver(turn);
-        }
-        if (money[turn] <= 0) {
-            new TradeForm(this);
-        }
-        if (totMoney[turn] <= 0) {
-            gameOver(turn);
+        checkPlayerMoney(turn);
+
+    }
+
+    public void checkPlayerMoney(int turn) {
+        if (Game[turn] == true) {
+            if (plChancesLeft[turn] <= 0) {
+                gameOver(turn);
+            }
+            if (money[turn] <= 0) {
+                TradeForm tradeForm = new TradeForm(this);
+                tradeForm.setVisible(true);
+            }
+            if (totMoney[turn] <= 0) {
+                gameOver(turn);
+            }
+        } else {
+            nextStuff();
         }
     }
 
@@ -1114,8 +1124,7 @@ public class Board extends javax.swing.JFrame {
                 propOwned[i] = false;
             }
         }
-
-        //Other stuff to be added and thought
+        Game[turn] = false;
     }
 
     public void updateColors(int player, int pos) {
@@ -1134,6 +1143,7 @@ public class Board extends javax.swing.JFrame {
         appendS(name[turn] + " ", turn);
         addLog("just bought " + propName[cpos[turn]] + " for $ " + propPrice[cpos[turn]]);
         btnReBuy.setEnabled(false);
+//        checkPlayerMoney(turn);
     }
 
     public void propSell(int turn) {
@@ -1146,6 +1156,7 @@ public class Board extends javax.swing.JFrame {
         numprop[turn]--;
         displayChangeSell(turn);
         btnReBuy.setEnabled(false);
+//        checkPlayerMoney(turn);
     }
 
     public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
@@ -3927,42 +3938,46 @@ public class Board extends javax.swing.JFrame {
         if (turn == players) {
             turn = 0;
         }
-        if (jailTerm[turn] == 1) {
-            btnNext.setEnabled(false);
-            playSound(boo);
-            ops = 200;
-            jailTerm[turn] = 0;
-            count = 0;
-            ops = 255;
-            lblMessage.setForeground(new Color(255, 215, 0, ops));
-            lblBought.setForeground(new Color(255, 215, 0, ops));
-            lblMessage.setText("OOPS!");
-            lblBought.setText("You have to wait one more turn in JAIL!");
-            lblMessage.setVisible(true);
-            lblBought.setVisible(true);
-            messDisplay = new Timer(10, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    count++;
-                    if (count >= 200) {
-                        ops -= 2;
-                        lblMessage.setForeground(new Color(255, 215, 0, ops));
-                        lblBought.setForeground(new Color(255, 215, 0, ops));
+        if (Game[turn] == true) {
+            if (jailTerm[turn] == 1) {
+                btnNext.setEnabled(false);
+                playSound(boo);
+                ops = 200;
+                jailTerm[turn] = 0;
+                count = 0;
+                ops = 255;
+                lblMessage.setForeground(new Color(255, 215, 0, ops));
+                lblBought.setForeground(new Color(255, 215, 0, ops));
+                lblMessage.setText("OOPS!");
+                lblBought.setText("You have to wait one more turn in JAIL!");
+                lblMessage.setVisible(true);
+                lblBought.setVisible(true);
+                messDisplay = new Timer(10, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        count++;
+                        if (count >= 200) {
+                            ops -= 2;
+                            lblMessage.setForeground(new Color(255, 215, 0, ops));
+                            lblBought.setForeground(new Color(255, 215, 0, ops));
+                        }
+                        if (count >= 300) {
+                            messDisplay.stop();
+                            lblMessage.setVisible(false);
+                            lblBought.setVisible(false);
+                            nextStuff();
+                        }
                     }
-                    if (count >= 300) {
-                        messDisplay.stop();
-                        lblMessage.setVisible(false);
-                        lblBought.setVisible(false);
-                        nextStuff();
-                    }
-                }
-            });
-            messDisplay.start();
+                });
+                messDisplay.start();
+            } else {
+                btnRoll.setEnabled(true);
+                displayChange(turn);
+                btnNext.setEnabled(false);
+                plHouseCheck(turn);
+            }
         } else {
-            btnRoll.setEnabled(true);
-            displayChange(turn);
-            btnNext.setEnabled(false);
-            plHouseCheck(turn);
+            nextStuff();
         }
     }
 
