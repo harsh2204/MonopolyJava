@@ -97,6 +97,7 @@ public class Board extends javax.swing.JFrame {
             datatransfer(it);//no need to load when load game
             setupData();
             this.theme = ts.theme;
+            setupBoard(theme);
             propDataTransfer(theme);
             System.out.println("Board: Number of pCount: " + players);
 //        setPlayernumber();
@@ -104,6 +105,7 @@ public class Board extends javax.swing.JFrame {
         } else {
             propDataTransferLoad(theme);
             setupDataLoad();
+            setupBoard(theme);
         }
         System.out.println("theme " + theme);
         setupLabels();
@@ -142,6 +144,19 @@ public class Board extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    public void setupBoard(String theme) {
+        switch (theme) {
+            case "Canada":
+                lblBoard.setIcon(new ImageIcon("Board Pictures/Canada/Canada Green Board.png"));
+                break;
+            case "Super":
+                lblBoard.setIcon(new ImageIcon("Icons/SuperHero Board.jpg"));
+                break;
+            default:
+                lblBoard.setIcon(new ImageIcon("Board Pictures/Canada/Canada Green Board.png"));
+        }
     }
 
     public void propDataTransfer(String thm) {
@@ -959,10 +974,10 @@ public class Board extends javax.swing.JFrame {
         if (plChancesLeft[turn] <= 0) {
             gameOver(turn);
         }
-        if (money[turn] >= 0) {
-//            sellShit(turn);//A method or fram to be made to sell properties if money on hand is 0 or less than 0
+        if (money[turn] <= 0) {
+            new TradeForm(this);
         }
-        if (totMoney[turn] == 0) {
+        if (totMoney[turn] <= 0) {
             gameOver(turn);
         }
     }

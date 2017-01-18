@@ -343,7 +343,8 @@ public class Properties_Data {
             }
             case "Super": {
                 SuperHero_Data sup = new SuperHero_Data();//Change to super
-                sup.setProp();//same as above.
+                sup.setProp();
+                sup.getCards();//same as above.
                 //Chance and community stuff                   
                 chance = sup.chance.clone();
                 chanceActs = sup.chanceActs.clone();
