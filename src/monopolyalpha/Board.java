@@ -448,6 +448,7 @@ public class Board extends javax.swing.JFrame {
         for (int i = 0; i < players; i++) {
             plHouse[i].setVisible(true);
             plHouse[i].setEnabled(false);
+            plHouse[i].setIcon(new ImageIcon("Icons/Miscellaneous/House Upgrade.png"));
             final Board board = this;
             plHouse[i].addActionListener(new ActionListener() {
                 @Override
