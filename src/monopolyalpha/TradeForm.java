@@ -425,13 +425,13 @@ public class TradeForm extends javax.swing.JFrame {
         if (chkMon1.isSelected()) {
             board.displayChangePay(tradeFrom, tradeTo, Integer.parseInt(txtMon1.getText()));
         }
-
+        board.checkPlayerMoney(board.turn);
 //        board.addLog(constructString());
         this.dispose();
     }//GEN-LAST:event_btnTrdActionPerformed
 
     private void chkMon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         if (chkMon1.isSelected()) {
             txtMon1.setEnabled(true);
         } else {
@@ -441,6 +441,12 @@ public class TradeForm extends javax.swing.JFrame {
 
     private void chkMon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMon2ActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < others.length; i++) {
+            if (paneOthers.getTitleAt(tradeToInd).equals(board.name[i])) {
+                System.out.println("other player found");
+                tradeTo = i;
+            }
+        }
         if (chkMon2.isSelected()) {
             txtMon2.setEnabled(true);
         } else {

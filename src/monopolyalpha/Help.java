@@ -8,6 +8,8 @@ package monopolyalpha;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 /**
@@ -37,26 +39,13 @@ public class Help extends javax.swing.JFrame {
         help.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         help.setLayout(new BorderLayout());//Set Border Layout
         help.add(manual, BorderLayout.CENTER);//Add and centre label
-        help.setSize(ic.getIconWidth(), ic.getIconHeight());//Set dialog box
-        help.addKeyListener(new KeyListener() {
+        help.setSize(ic.getIconWidth(), ic.getIconHeight());//Set dialog box      
+        help.addMouseListener(new MouseAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
-
+            public void mouseClicked(MouseEvent e){
+                help.dispose();
             }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //If escape key is pressed, close help dialog box
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    help.setVisible(false);
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
+});
 //        help.pack();
     }
 
