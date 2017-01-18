@@ -976,7 +976,16 @@ public class Board extends javax.swing.JFrame {
 
     public void checkPlayerMoney(int turn) {
         if (Game[turn] == true) {
-            System.out.println("Turn::"+turn+" Money::"+money[turn]);
+            int prop = 0;
+            for(i=0;i<36;i++)
+            {
+                if(propOwner[i]==turn)
+                {
+                    prop+=propPrice[i];
+                }
+            }
+            int tot=money[turn]+prop;
+            System.out.println("Turn::"+turn+" Money::"+money[turn]+" "+tot);
             if (plChancesLeft[turn] <= 0) {
                 System.out.println("Chances");
                 gameOver(turn);
@@ -985,7 +994,7 @@ public class Board extends javax.swing.JFrame {
                 TradeForm tradeForm = new TradeForm(this);
                 tradeForm.setVisible(true);
             }
-            else if (totMoney[turn] < 0) {
+            else if (tot < 0) {
                 System.out.println("Money");
                 gameOver(turn);
             }
