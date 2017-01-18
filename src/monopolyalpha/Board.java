@@ -971,20 +971,22 @@ public class Board extends javax.swing.JFrame {
         houseCheck(cpos, turn);
         plHouseCheck(turn);
         hover = true;
-        checkPlayerMoney(turn);
 
     }
 
     public void checkPlayerMoney(int turn) {
         if (Game[turn] == true) {
+            System.out.println("Turn::"+turn+" Money::"+money[turn]);
             if (plChancesLeft[turn] <= 0) {
+                System.out.println("Chances");
                 gameOver(turn);
             }
-            if (money[turn] <= 0) {
+            else if (money[turn] < 0) {
                 TradeForm tradeForm = new TradeForm(this);
                 tradeForm.setVisible(true);
             }
-            if (totMoney[turn] <= 0) {
+            else if (totMoney[turn] < 0) {
+                System.out.println("Money");
                 gameOver(turn);
             }
         } else {
@@ -1143,7 +1145,8 @@ public class Board extends javax.swing.JFrame {
         appendS(name[turn] + " ", turn);
         addLog("just bought " + propName[cpos[turn]] + " for $ " + propPrice[cpos[turn]]);
         btnReBuy.setEnabled(false);
-//        checkPlayerMoney(turn);
+        System.out.println("Player:"+turn+" TotMoney:"+totMoney[turn]);
+        checkPlayerMoney(turn);
     }
 
     public void propSell(int turn) {
@@ -1156,7 +1159,8 @@ public class Board extends javax.swing.JFrame {
         numprop[turn]--;
         displayChangeSell(turn);
         btnReBuy.setEnabled(false);
-//        checkPlayerMoney(turn);
+        System.out.println("Player:"+turn+" TotMoney:"+totMoney[turn]);
+        checkPlayerMoney(turn);
     }
 
     public void propOwnedCheck(int pOwner, int turn, int[] cpos) {
