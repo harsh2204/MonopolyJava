@@ -46,8 +46,9 @@ public class AboutDialogfrm extends javax.swing.JFrame {
             }
         });
 
-        lblAbout.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        lblAbout.setFont(new java.awt.Font("Showcard Gothic", 1, 24)); // NOI18N
         this.setContentPane(new JLabel(new ImageIcon("Icons/Miscellaneous/about form green pattern.png")));
+        lblAbout.setForeground(new java.awt.Color(0, 0, 0));
         lblAbout.setText("<html><center>Monopoly is trademark of Hasbro<br>"
             + "in which it holds all rights reserved towards all names<br>"
             + " and convention used in this game.<br><br>This game was coded"
@@ -74,9 +75,9 @@ public class AboutDialogfrm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBack)
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
 
         pack();

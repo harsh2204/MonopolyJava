@@ -88,6 +88,7 @@ public class Board extends javax.swing.JFrame {
 
     public Board(int playerCount, boolean load) {
         initComponents();
+        btnHelp.setFont(new Font("Showcard Gothic", 0, 18));
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.players = playerCount;
@@ -1657,21 +1658,21 @@ public class Board extends javax.swing.JFrame {
 
     public void rolling() {
         if (snake) {
-//            roll = Dice.rollDice(dice);
-//            if (Dice.randomNumber1 == Dice.randomNumber2) {
-//                money[turn] += bonus[turn];
-//            }
+            roll = Dice.rollDice(dice);
+            if (Dice.randomNumber1 == Dice.randomNumber2) {
+                money[turn] += bonus[turn];
+            }
         } else {
             if (turn == players) {
                 turn = 0;
             }
-//        roll = Dice.rollDice(dice);
-//      Temporary Testing Cause
-            if (dice == 2) {
-                roll = (int) (Math.random() * 12 + 1);
-            } else {
-                roll = (int) (Math.random() * 6 + 1);
-            }
+        roll = Dice.rollDice(dice);
+////      Temporary Testing Cause
+//            if (dice == 2) {
+//                roll = (int) (Math.random() * 12 + 1);
+//            } else {
+//                roll = (int) (Math.random() * 6 + 1);
+//            }
         }
         move(turn);
         appendS(name[turn], turn);
@@ -3909,11 +3910,11 @@ public class Board extends javax.swing.JFrame {
     private void btnRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollActionPerformed
 
         btnRoll.setEnabled(false);
-//        rolling();
+        rolling();
         hover = false;
-        int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
-        roll = m;
-        move(turn);
+//        int m = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to move"));
+//        roll = m;
+//        move(turn);
 //        chanceCard(roll);
     }//GEN-LAST:event_btnRollActionPerformed
 
@@ -4287,6 +4288,7 @@ public class Board extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        Splash_Screen.makeSplash();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartScreenfrm().setVisible(true);

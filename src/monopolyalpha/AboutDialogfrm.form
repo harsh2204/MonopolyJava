@@ -25,11 +25,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAbout" pref="470" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="lblAbout" alignment="0" pref="470" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -43,9 +43,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblAbout" pref="341" max="32767" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,7 +65,10 @@
     <Component class="javax.swing.JLabel" name="lblAbout">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="this.setContentPane(new JLabel(new ImageIcon(&quot;Icons/Miscellaneous/about form green pattern.png&quot;)));">
-          <Font name="Showcard Gothic" size="24" style="0"/>
+          <Font name="Showcard Gothic" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;&lt;html&gt;&lt;center&gt;Monopoly is trademark of Hasbro&lt;br&gt;&quot;&#xa;    + &quot;in which it holds all rights reserved towards all names&lt;br&gt;&quot;&#xa;    + &quot; and convention used in this game.&lt;br&gt;&lt;br&gt;This game was coded&quot;&#xa;    + &quot; for educatoinal purposes by Karsheel Lab inc. consisting of Karmit Patel,&quot;&#xa;    + &quot; Harsh Gupta, Haard Trivedi, and Neel Mistry. We hope you enjoy playing&quot;&#xa;    + &quot; this game.&lt;/html&gt;&quot;" type="code"/>
